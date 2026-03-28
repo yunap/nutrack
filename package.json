@@ -1,10 +1,17 @@
 {
   "name": "meal-nutrition-app",
-  "version": "1.0.0",
-  "description": "AI-powered meal nutrition analyzer",
+  "version": "3.0.0",
+  "description": "AI-powered meal nutrition tracker",
   "main": "server.js",
   "scripts": {
-    "start": "node server.js"
+    "start": "node server.js",
+    "test": "jest --forceExit --detectOpenHandles",
+    "test:watch": "jest --watch --forceExit"
+  },
+  "jest": {
+    "testEnvironment": "node",
+    "testMatch": ["**/tests/**/*.test.js"],
+    "verbose": true
   },
   "dependencies": {
     "dotenv": "^16.3.1",
@@ -13,5 +20,9 @@
     "multer": "^1.4.5-lts.1",
     "node-fetch": "^2.7.0",
     "sql.js": "^1.14.1"
+  },
+  "devDependencies": {
+    "jest": "^30.3.0",
+    "supertest": "^7.2.2"
   }
 }

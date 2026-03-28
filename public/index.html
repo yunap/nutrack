@@ -98,7 +98,7 @@ nav{background:var(--surface);border-bottom:1px solid var(--border);position:sti
 .meal-info{flex:1;min-width:0}
 .meal-nm{font-size:13px;font-weight:500;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .meal-mt{font-size:11px;color:var(--t2);margin-top:2px}
-.meal-kcal{font-size:14px;font-weight:600;color:var(--red);flex-shrink:0}
+.meal-kcal{font-size:14px;font-weight:600;color:var(--text);flex-shrink:0}
 .badge{display:inline-block;font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:.04em;padding:1px 6px;border-radius:99px;margin-right:5px}
 .b-breakfast{background:#FEF3C7;color:#92400E}.b-lunch{background:#DCFCE7;color:#166534}
 .b-dinner{background:#EDE9FE;color:#4C1D95}.b-snack{background:#F0F9FF;color:#0C4A6E}
@@ -154,7 +154,7 @@ nav{background:var(--surface);border-bottom:1px solid var(--border);position:sti
 .cmp-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
 .cmp-grid h4{font-size:13px;font-weight:600;margin-bottom:.6rem;padding-bottom:.4rem;border-bottom:1px solid var(--border)}
 .diff-p{color:var(--green);font-weight:500}
-.diff-n{color:var(--red);font-weight:500}
+.diff-n{color:var(--amber);font-weight:500}
 
 /* FOCUS TOGGLES */
 .focus-wrap{display:flex;gap:7px;flex-wrap:wrap;margin-bottom:1rem}
@@ -210,6 +210,7 @@ nav{background:var(--surface);border-bottom:1px solid var(--border);position:sti
       <div style="display:flex;gap:0;border:1px solid var(--border);border-radius:var(--rs);overflow:hidden">
         <button id="mode-photo-btn" onclick="setInputMode('photo')" style="padding:.3rem .85rem;font-size:12px;font-weight:500;border:none;cursor:pointer;background:var(--green);color:#fff;transition:all .15s">📷 Photo</button>
         <button id="mode-text-btn" onclick="setInputMode('text')" style="padding:.3rem .85rem;font-size:12px;font-weight:500;border:none;cursor:pointer;background:var(--surface);color:var(--t2);transition:all .15s">✏️ Describe</button>
+        <button id="mode-url-btn" onclick="setInputMode('url')" style="padding:.3rem .85rem;font-size:12px;font-weight:500;border:none;cursor:pointer;background:var(--surface);color:var(--t2);transition:all .15s">🔗 Recipe URL</button>
       </div>
     </div>
     <div class="card-body">
@@ -233,6 +234,12 @@ nav{background:var(--surface);border-bottom:1px solid var(--border);position:sti
       <div id="text-mode" style="display:none">
         <textarea id="meal-description" placeholder="Describe your meal in as much detail as you can&#10;&#10;e.g. 2 scrambled eggs cooked in 15ml olive oil, 1 slice sourdough bread, 1 cup black coffee" style="width:100%;min-height:130px;font-size:14px;line-height:1.6;padding:.75rem;border:1.5px solid var(--border);border-radius:var(--rs);background:var(--surface);color:var(--text);resize:vertical;font-family:inherit" oninput="toggleTextAnalyzeBtn()"></textarea>
         <p style="font-size:11px;color:var(--t3);margin-top:.4rem">The more detail you add — quantities, cooking methods, brands — the more accurate the estimate</p>
+      </div>
+
+      <!-- URL MODE -->
+      <div id="url-mode" style="display:none">
+        <input type="url" id="recipe-url" placeholder="https://www.allrecipes.com/recipe/..." style="width:100%;font-size:14px;padding:.75rem;border:1.5px solid var(--border);border-radius:var(--rs);background:var(--surface);color:var(--text);font-family:inherit" oninput="toggleUrlAnalyzeBtn()">
+        <p style="font-size:11px;color:var(--t3);margin-top:.4rem">Paste a recipe URL — works with most cooking sites (AllRecipes, NYT Cooking, Serious Eats, etc.). Nutrition is calculated per serving.</p>
       </div>
 
       <div style="margin-top:.9rem">
@@ -269,7 +276,7 @@ nav{background:var(--surface);border-bottom:1px solid var(--border);position:sti
       </div>
       <div class="card-body">
         <div class="macros-grid">
-          <div class="mc"><div class="mc-val" id="r-cal" style="color:var(--red)">—</div><div class="mc-lbl">Calories</div></div>
+          <div class="mc"><div class="mc-val" id="r-cal" style="color:var(--text)">—</div><div class="mc-lbl">Calories</div></div>
           <div class="mc"><div class="mc-val" id="r-prot" style="color:var(--blue)">—</div><div class="mc-lbl">Protein</div></div>
           <div class="mc"><div class="mc-val" id="r-carb" style="color:var(--amber)">—</div><div class="mc-lbl">Carbs</div></div>
           <div class="mc"><div class="mc-val" id="r-fat" style="color:var(--purple)">—</div><div class="mc-lbl">Fat</div></div>
@@ -310,7 +317,7 @@ nav{background:var(--surface);border-bottom:1px solid var(--border);position:sti
     <img id="lib-det-img" style="width:100%;max-height:300px;object-fit:cover;display:none" alt="meal photo">
     <div class="card-body">
       <div class="macros-grid">
-        <div class="mc"><div class="mc-val" id="ld-cal" style="color:var(--red)">&#8212;</div><div class="mc-lbl">Calories</div></div>
+        <div class="mc"><div class="mc-val" id="ld-cal" style="color:var(--text)">&#8212;</div><div class="mc-lbl">Calories</div></div>
         <div class="mc"><div class="mc-val" id="ld-prot" style="color:var(--blue)">&#8212;</div><div class="mc-lbl">Protein</div></div>
         <div class="mc"><div class="mc-val" id="ld-carb" style="color:var(--amber)">&#8212;</div><div class="mc-lbl">Carbs</div></div>
         <div class="mc"><div class="mc-val" id="ld-fat" style="color:var(--purple)">&#8212;</div><div class="mc-lbl">Fat</div></div>
@@ -375,7 +382,7 @@ nav{background:var(--surface);border-bottom:1px solid var(--border);position:sti
       <div class="card-head"><h3>Daily macros</h3></div>
       <div class="card-body">
         <div class="macros-grid">
-          <div class="mc"><div class="mc-val" id="t-cal" style="color:var(--red)">—</div><div class="mc-lbl">Calories</div></div>
+          <div class="mc"><div class="mc-val" id="t-cal" style="color:var(--text)">—</div><div class="mc-lbl">Calories</div></div>
           <div class="mc"><div class="mc-val" id="t-prot" style="color:var(--blue)">—</div><div class="mc-lbl">Protein</div></div>
           <div class="mc"><div class="mc-val" id="t-carb" style="color:var(--amber)">—</div><div class="mc-lbl">Carbs</div></div>
           <div class="mc"><div class="mc-val" id="t-fat" style="color:var(--purple)">—</div><div class="mc-lbl">Fat</div></div>
@@ -576,15 +583,18 @@ function setInputMode(mode) {
   inputMode = mode;
   document.getElementById('photo-mode').style.display = mode==='photo' ? 'block' : 'none';
   document.getElementById('text-mode').style.display  = mode==='text'  ? 'block' : 'none';
-  document.getElementById('mode-photo-btn').style.background = mode==='photo' ? 'var(--green)' : 'var(--surface)';
-  document.getElementById('mode-photo-btn').style.color = mode==='photo' ? '#fff' : 'var(--t2)';
-  document.getElementById('mode-text-btn').style.background = mode==='text' ? 'var(--green)' : 'var(--surface)';
-  document.getElementById('mode-text-btn').style.color = mode==='text' ? '#fff' : 'var(--t2)';
-  // reset results when switching modes
+  document.getElementById('url-mode').style.display   = mode==='url'   ? 'block' : 'none';
+  ['photo','text','url'].forEach(m => {
+    const btn = document.getElementById('mode-'+m+'-btn');
+    btn.style.background = mode===m ? 'var(--green)' : 'var(--surface)';
+    btn.style.color = mode===m ? '#fff' : 'var(--t2)';
+  });
   document.getElementById('log-results').style.display='none';
   document.getElementById('log-err').style.display='none';
   if (mode==='text') {
     document.getElementById('analyze-btn').style.display = document.getElementById('meal-description').value.trim() ? 'flex' : 'none';
+  } else if (mode==='url') {
+    document.getElementById('analyze-btn').style.display = document.getElementById('recipe-url').value.trim() ? 'flex' : 'none';
   } else {
     document.getElementById('analyze-btn').style.display = imageBase64 ? 'flex' : 'none';
   }
@@ -593,6 +603,11 @@ function setInputMode(mode) {
 function toggleTextAnalyzeBtn() {
   const hasText = document.getElementById('meal-description').value.trim().length > 0;
   document.getElementById('analyze-btn').style.display = hasText ? 'flex' : 'none';
+}
+
+function toggleUrlAnalyzeBtn() {
+  const hasUrl = document.getElementById('recipe-url').value.trim().length > 0;
+  document.getElementById('analyze-btn').style.display = hasUrl ? 'flex' : 'none';
 }
 
 async function analyze() {
@@ -607,6 +622,15 @@ async function analyze() {
       if (!desc) throw new Error('Please describe your meal first');
       const r=await fetch('/api/analyze-text',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({description:desc})});
       d=await r.json(); if(!r.ok) throw new Error(d.error);
+      currentThumbFile=null;
+    } else if (inputMode === 'url') {
+      const url = document.getElementById('recipe-url').value.trim();
+      if (!url) throw new Error('Please enter a recipe URL first');
+      btn.innerHTML='<div class="spin"></div> Fetching recipe…';
+      const r=await fetch('/api/analyze-url',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({url})});
+      d=await r.json(); if(!r.ok) throw new Error(d.error);
+      if(d.meal_name==='Recipe not found') throw new Error('Could not find a recipe on that page. Try copying the ingredients and using the Describe mode instead.');
+      currentThumbFile=null;
     } else {
       if(!imageBase64) throw new Error('Please upload a photo first');
       const fd=new FormData(); fd.append('image',b64Blob(imageBase64,imageMime),'meal.jpg');
@@ -641,7 +665,7 @@ function renderLogResult(d) {
   document.getElementById('r-fat').textContent=r1(d.fat_g)+'g';
   renderIngs(d.ingredients||[]);
   const mins=[['Sodium',d.sodium_mg,'mg','#378ADD',2300],['Potassium',d.potassium_mg,'mg','#1D9E75',3500],
-    ['Calcium',d.calcium_mg,'mg','#534AB7',1000],['Iron',d.iron_mg,'mg','#D85A30',18],
+    ['Calcium',d.calcium_mg,'mg','#534AB7',1000],['Iron',d.iron_mg,'mg','#0891b2',18],
     ['Magnesium',d.magnesium_mg,'mg','#639922',400],['Phosphorus',d.phosphorus_mg,'mg','#BA7517',700],['Zinc',d.zinc_mg,'mg','#D4537E',11]];
   document.getElementById('r-minerals').innerHTML=mins.map(([n,v,u,c,mx])=>{
     const p=Math.min(100,Math.round((v/mx)*100));
@@ -714,6 +738,7 @@ function resetLog() {
   document.getElementById('log-err').style.display='none';
   document.getElementById('file-input').value='';
   document.getElementById('meal-description').value='';
+  document.getElementById('recipe-url').value='';
   currentThumbFile=null;
 }
 
@@ -772,7 +797,7 @@ function showDetail(id) {
   document.getElementById('ld-fat').textContent = r1(m.nutrition.fat_g)+'g';
 
   const mins=[['Sodium',m.nutrition.sodium_mg,'mg','#378ADD',2300],['Potassium',m.nutrition.potassium_mg,'mg','#1D9E75',3500],
-    ['Calcium',m.nutrition.calcium_mg,'mg','#534AB7',1000],['Iron',m.nutrition.iron_mg,'mg','#D85A30',18],
+    ['Calcium',m.nutrition.calcium_mg,'mg','#534AB7',1000],['Iron',m.nutrition.iron_mg,'mg','#0891b2',18],
     ['Magnesium',m.nutrition.magnesium_mg,'mg','#639922',400],['Phosphorus',m.nutrition.phosphorus_mg,'mg','#BA7517',700],
     ['Zinc',m.nutrition.zinc_mg,'mg','#D4537E',11]];
   document.getElementById('ld-minerals').innerHTML=mins.map(([n,v,u,c,mx])=>{
@@ -890,14 +915,14 @@ function renderToday(s){
     const target=parseFloat(T2[k])||parseFloat(DEFAULT_TARGETS[k])||1;
     const pct=Math.min(150,Math.round((eaten/target)*100));
     const gap=Math.max(0,r2(target-eaten));
-    const cls=pct>=90?'gap-ok':pct>=50?'gap-low':'gap-high';
-    const barCol=pct>=90?'#1D9E75':pct>=50?'#BA7517':'#D85A30';
+    const cls=pct>110?'gap-high':pct>=90?'gap-ok':pct>=50?'gap-low':'gap-high';
+    const barCol=pct>110?'#D85A30':pct>=90?'#1D9E75':pct>=50?'#BA7517':'#378ADD';
     return `<tr>
       <td><strong>${LABELS[k]}</strong></td>
       <td>${r2(eaten)} ${UNITS[k]}</td>
       <td>${r2(target)} ${UNITS[k]}</td>
       <td><div class="gap-bar-wrap"><div class="gap-bar-fill" style="width:${Math.min(100,pct)}%;background:${barCol}"></div></div><span class="${cls}">${pct}%</span></td>
-      <td class="${gap>0?'gap-low':'gap-ok'}">${gap>0?gap+' '+UNITS[k]:'✓ Met'}</td>
+      <td class="${pct>110?'gap-high':gap>0?'gap-low':'gap-ok'}">${pct>110?'Over by '+r2(Math.abs(gap))+' '+UNITS[k]:gap>0?gap+' '+UNITS[k]:'✓ Met'}</td>
     </tr>`;
   }).join('');
 

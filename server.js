@@ -8,10 +8,10 @@ const low = require('lowdb');
 const FileSync = require('lowdb/adapters/FileSync');
 
 // --- DB setup ---
-const dbPath = path.join(__dirname, 'data');
-const thumbPath = path.join(__dirname, 'data', 'thumbs');
-if (!fs.existsSync(dbPath)) fs.mkdirSync(dbPath);
-if (!fs.existsSync(thumbPath)) fs.mkdirSync(thumbPath);
+const dbPath = process.env.DATA_DIR || path.join(__dirname, 'data');
+const thumbPath = path.join(dbPath, 'thumbs');
+if (!fs.existsSync(dbPath)) fs.mkdirSync(dbPath, { recursive: true });
+if (!fs.existsSync(thumbPath)) fs.mkdirSync(thumbPath, { recursive: true });
 
 const mealsDb = low(new FileSync(path.join(dbPath, 'meals.json')));
 mealsDb.defaults({ meals: [] }).write();
@@ -67,7 +67,53 @@ app.post('/api/analyze', upload.single('image'), async (req, res) => {
   } catch (err) { console.error(err); res.status(500).json({ error: err.message }); }
 });
 
-// ── Analyze from text description ───────────────────────────────────────────
+// ── Analyze from recipe URL ──────────────────────────────────────────────────
+app.post('/api/analyze-url', async (req, res) => {
+  try {
+    const { url } = req.body;
+    if (!url || !url.trim()) return res.status(400).json({ error: 'No URL provided' });
+
+    // basic URL validation
+    let parsed;
+    try { parsed = new URL(url.trim()); } catch(e) {
+      return res.status(400).json({ error: 'Invalid URL — please include https://' });
+    }
+    if (!['http:', 'https:'].includes(parsed.protocol)) {
+      return res.status(400).json({ error: 'Only http/https URLs are supported' });
+    }
+
+    // fetch the page
+    let html;
+    try {
+      const controller = new AbortController();
+      const fetchTimeout = setTimeout(() => controller.abort(), 10000);
+      const pageRes = await fetch(url.trim(), {
+        headers: { 'User-Agent': 'Mozilla/5.0 (compatible; NutritionTracker/1.0)' },
+        redirect: 'follow',
+        signal: controller.signal
+      });
+      clearTimeout(fetchTimeout);
+      if (!pageRes.ok) return res.status(400).json({ error: `Could not fetch page (HTTP ${pageRes.status})` });
+      html = await pageRes.text();
+    } catch(e) {
+      return res.status(400).json({ error: `Could not reach URL: ${e.message}` });
+    }
+
+    // strip HTML tags to get readable text (keep it under ~8000 chars for the prompt)
+    const text = html
+      .replace(/<script[\s\S]*?<\/script>/gi, '')
+      .replace(/<style[\s\S]*?<\/style>/gi, '')
+      .replace(/<[^>]+>/g, ' ')
+      .replace(/\s+/g, ' ')
+      .trim()
+      .substring(0, 8000);
+
+    const result = await callClaudeUrl(url.trim(), text);
+    res.json(result);
+  } catch (err) { console.error(err); res.status(500).json({ error: err.message }); }
+});
+
+
 app.post('/api/analyze-text', async (req, res) => {
   try {
     const { description } = req.body;
@@ -256,6 +302,40 @@ Return this JSON structure:
 Replace all 0s with your best estimates.`;
 }
 
+async function callClaudeUrl(url, pageText) {
+  const prompt = `You are a professional nutritionist. A user has provided a recipe URL and the extracted page text below.
+
+Your job:
+1. Find the recipe ingredients and serving size in the text
+2. Calculate the nutrition for ONE serving of this recipe
+3. Return ONLY a valid JSON object (no markdown, no backticks, no extra text)
+
+Recipe URL: ${url}
+Page text:
+---
+${pageText}
+---
+
+Return this JSON:
+{"meal_name":"string (recipe name)","description":"string (brief description, include serving size)","ingredients":[{"name":"string","quantity":"string (per serving)","notes":"string"}],
+"calories":0,"protein_g":0,"carbs_g":0,"fat_g":0,"fiber_g":0,"sugar_g":0,"sodium_mg":0,"potassium_mg":0,
+"calcium_mg":0,"iron_mg":0,"magnesium_mg":0,"phosphorus_mg":0,"zinc_mg":0,"vitamin_a_mcg":0,"vitamin_c_mg":0,
+"vitamin_d_mcg":0,"vitamin_e_mg":0,"vitamin_k_mcg":0,"vitamin_b1_mg":0,"vitamin_b2_mg":0,"vitamin_b3_mg":0,
+"vitamin_b6_mg":0,"vitamin_b12_mcg":0,"folate_mcg":0}
+
+If you cannot find a recipe in the page text, set meal_name to "Recipe not found" and all numbers to 0.
+Replace all 0s with your best nutritional estimates per serving.`;
+
+  const resp = await fetch('https://api.anthropic.com/v1/messages', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json', 'x-api-key': process.env.ANTHROPIC_API_KEY, 'anthropic-version': '2023-06-01' },
+    body: JSON.stringify({ model: 'claude-sonnet-4-20250514', max_tokens: 1500, messages: [{ role: 'user', content: prompt }] })
+  });
+  if (!resp.ok) { const e = await resp.json(); throw new Error(e.error?.message || `API error ${resp.status}`); }
+  const data = await resp.json();
+  return JSON.parse(data.content.map(c => c.text || '').join('').replace(/```json|```/g, '').trim());
+}
+
 async function callClaudeText(description) {
   const prompt = `You are a professional nutritionist. The user has described a meal. Return ONLY a valid JSON object (no markdown, no backticks, no extra text):
 {"meal_name":"string","description":"string","ingredients":[{"name":"string","quantity":"string","notes":"string"}],
@@ -295,5 +375,9 @@ async function callClaude(base64, mime, corrections) {
   return JSON.parse(data.content.map(c => c.text || '').join('').replace(/```json|```/g, '').trim());
 }
 
-const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => console.log(`\n✅ Meal Nutrition Tracker v3 running at http://localhost:${PORT}\n`));
+if (require.main === module) {
+  const PORT = process.env.PORT || 3000;
+  app.listen(PORT, () => console.log(`\n✅ Meal Nutrition Tracker v3 running at http://localhost:${PORT}\n`));
+}
+
+module.exports = { app, sumNutrition };
