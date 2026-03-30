@@ -1,0 +1,16 @@
+{
+  "profiles": [
+    {
+      "id": "eugene_1774743355860",
+      "name": "Eugene",
+      "createdAt": "2026-03-29T00:15:55.860Z",
+      "avatar": "E"
+    },
+    {
+      "id": "yuna_1774743540413",
+      "name": "Yuna",
+      "createdAt": "2026-03-29T00:19:00.414Z",
+      "avatar": "Y"
+    }
+  ]
+}

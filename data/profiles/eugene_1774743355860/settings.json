@@ -1,0 +1,40 @@
+{
+  "targets": {
+    "calories": 1800,
+    "protein_g": 120,
+    "carbs_g": 275,
+    "fat_g": 78,
+    "fiber_g": 28,
+    "sugar_g": 50,
+    "sodium_mg": 2300,
+    "potassium_mg": 4700,
+    "calcium_mg": 1300,
+    "iron_mg": 10,
+    "magnesium_mg": 420,
+    "phosphorus_mg": 1250,
+    "zinc_mg": 25,
+    "vitamin_a_mcg": 900,
+    "vitamin_c_mg": 500,
+    "vitamin_d_mcg": 150,
+    "vitamin_e_mg": 15,
+    "vitamin_k_mcg": 200,
+    "vitamin_b1_mg": 1.2,
+    "vitamin_b2_mg": 1.3,
+    "vitamin_b3_mg": 16,
+    "vitamin_b6_mg": 1.7,
+    "vitamin_b12_mcg": 2.4,
+    "folate_mcg": 400,
+    "omega3_mg": 1600,
+    "copper_mg": 0.9
+  },
+  "priorityNutrients": [
+    "protein_g",
+    "calcium_mg",
+    "iron_mg",
+    "magnesium_mg",
+    "zinc_mg",
+    "vitamin_c_mg",
+    "vitamin_d_mcg",
+    "vitamin_k_mcg"
+  ]
+}

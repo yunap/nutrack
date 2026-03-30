@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Nutrition Tracker</title>
+<title>NuTrack</title>
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
@@ -11,7 +11,7 @@
   --bg:#f5f4f0;--surface:#fff;--s2:#f0efe9;--border:#e2e0d6;
   --text:#1a1a18;--t2:#6b6a64;--t3:#9b9a93;
   --green:#1D9E75;--gl:#E1F5EE;--gd:#0F6E56;
-  --red:#D85A30;--blue:#378ADD;--purple:#534AB7;--amber:#BA7517;
+  --red:#D85A30;--blue:#378ADD;--purple:#534AB7;--amber:#0891b2;
   --r:10px;--rs:6px;
 }
 body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif;background:var(--bg);color:var(--text);min-height:100vh}
@@ -110,7 +110,7 @@ nav{background:var(--surface);border-bottom:1px solid var(--border);position:sti
 .gap-table tr:last-child td{border-bottom:none}
 .gap-table tr:hover td{background:var(--s2)}
 .gap-ok{color:var(--green);font-weight:600}
-.gap-low{color:var(--amber);font-weight:600}
+.gap-low{color:#0891b2;font-weight:600}
 .gap-high{color:var(--red);font-weight:600}
 .gap-bar-wrap{width:80px;height:6px;background:var(--s2);border-radius:99px;overflow:hidden;display:inline-block;vertical-align:middle;margin-right:6px}
 .gap-bar-fill{height:100%;border-radius:99px}
@@ -154,7 +154,7 @@ nav{background:var(--surface);border-bottom:1px solid var(--border);position:sti
 .cmp-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
 .cmp-grid h4{font-size:13px;font-weight:600;margin-bottom:.6rem;padding-bottom:.4rem;border-bottom:1px solid var(--border)}
 .diff-p{color:var(--green);font-weight:500}
-.diff-n{color:var(--amber);font-weight:500}
+.diff-n{color:#0891b2;font-weight:500}
 
 /* FOCUS TOGGLES */
 .focus-wrap{display:flex;gap:7px;flex-wrap:wrap;margin-bottom:1rem}
@@ -185,18 +185,89 @@ nav{background:var(--surface);border-bottom:1px solid var(--border);position:sti
   .cmp-grid{grid-template-columns:1fr}
   .lib-grid{grid-template-columns:repeat(auto-fill,minmax(130px,1fr))}
 }
+
+/* PROFILE SCREEN */
+#profile-screen{position:fixed;inset:0;background:var(--bg);z-index:500;display:flex;align-items:center;justify-content:center;padding:1rem}
+.profile-wrap{width:100%;max-width:420px}
+.profile-wrap h1{font-size:22px;font-weight:600;margin-bottom:4px}
+.profile-wrap p{font-size:13px;color:var(--t2);margin-bottom:1.5rem}
+.profile-cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(110px,1fr));gap:10px;margin-bottom:1rem}
+.profile-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--r);padding:1rem .75rem;text-align:center;cursor:pointer;transition:all .15s}
+.profile-card:hover{border-color:var(--green);background:var(--gl)}
+.profile-avatar{width:48px;height:48px;border-radius:50%;background:var(--purple);color:#fff;display:flex;align-items:center;justify-content:center;font-size:20px;font-weight:600;margin:0 auto 8px}
+.profile-name{font-size:13px;font-weight:500}
+.add-profile-card{background:var(--s2);border:1.5px dashed var(--border);cursor:pointer}
+.add-profile-card:hover{border-color:var(--green)}
+.add-profile-form{display:none;margin-top:.75rem}
+.add-profile-form input{width:100%;font-size:14px;padding:.55rem .75rem;border:1px solid var(--border);border-radius:var(--rs);background:var(--surface);color:var(--text);margin-bottom:.5rem}
+.add-profile-form input:focus{outline:none;border-color:var(--green)}
+
+/* SUPPLEMENTS */
+.supp-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--r);overflow:hidden;margin-bottom:10px}
+.supp-card-head{display:flex;align-items:center;justify-content:space-between;padding:.65rem 1rem;cursor:pointer;transition:background .15s}
+.supp-card-head:hover{background:var(--s2)}
+.supp-name{font-size:13px;font-weight:500}
+.supp-summary{font-size:11px;color:var(--t2);margin-top:2px}
+.supp-taken{display:flex;align-items:center;gap:8px;flex-shrink:0}
+.supp-toggle{width:36px;height:20px;border-radius:99px;background:var(--border);position:relative;cursor:pointer;transition:background .2s;border:none;flex-shrink:0}
+.supp-toggle.on{background:var(--green)}
+.supp-toggle::after{content:'';position:absolute;width:16px;height:16px;border-radius:50%;background:#fff;top:2px;left:2px;transition:transform .2s}
+.supp-toggle.on::after{transform:translateX(16px)}
+.supp-doses{font-size:12px;color:var(--t2);display:none}
+.supp-doses.show{display:flex;align-items:center;gap:5px}
+.supp-doses input{width:48px;font-size:12px;padding:2px 6px;border:1px solid var(--border);border-radius:var(--rs);background:var(--surface);color:var(--text);text-align:center}
+.supp-nutrients{padding:.5rem 1rem .75rem;border-top:1px solid var(--border);display:none;background:var(--s2)}
+.supp-nutrients.open{display:block}
+.supp-edit-form{padding:.75rem 1rem;border-top:1px solid var(--border);display:none;background:var(--surface)}
+.supp-edit-form.open{display:block}
+.nutr-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:6px;margin-top:.5rem}
+.nutr-row{display:flex;justify-content:space-between;align-items:center;font-size:12px;padding:2px 0}
+.nutr-row label{color:var(--t2);flex:1}
+.nutr-row input{width:72px;font-size:12px;padding:2px 5px;border:1px solid var(--border);border-radius:var(--rs);background:var(--surface);color:var(--text);text-align:right}
+.add-supp-form{background:var(--s2);border:1.5px dashed var(--border);border-radius:var(--r);padding:1rem;margin-top:.5rem;display:none}
+.add-supp-form.open{display:block}
+.gap-table th,.gap-table td{padding:.45rem .65rem}
+
+/* PROFILE SWITCHER in nav */
+.profile-switcher{display:flex;align-items:center;gap:7px;margin-left:auto;padding:.5rem .75rem;border-radius:var(--rs);cursor:pointer;transition:background .15s}
+.profile-switcher:hover{background:var(--s2)}
+.prof-avatar-sm{width:28px;height:28px;border-radius:50%;background:var(--purple);color:#fff;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:600;flex-shrink:0}
+.prof-name-sm{font-size:13px;font-weight:500;color:var(--text)}
+.prof-chevron{font-size:10px;color:var(--t2)}
 </style>
 </head>
 <body>
 
+<!-- PROFILE SELECTION SCREEN -->
+<div id="profile-screen">
+  <div class="profile-wrap">
+    <h1>Nu<span style="color:var(--green)">Track</span></h1>
+    <p>Who is logging today?</p>
+    <div class="profile-cards" id="profile-cards"></div>
+    <div class="add-profile-form" id="add-profile-form">
+      <input type="text" id="new-profile-name" placeholder="Enter your name" maxlength="30">
+      <div style="display:flex;gap:8px">
+        <button class="btn btn-primary btn-sm" onclick="submitNewProfile()">Create profile</button>
+        <button class="btn btn-outline btn-sm" onclick="toggleAddForm(false)">Cancel</button>
+      </div>
+      <div class="err" id="profile-err" style="margin-top:.5rem"></div>
+    </div>
+  </div>
+</div>
+
 <nav>
   <div class="nav-inner">
-    <div class="nav-brand">Nutrition<span>Track</span></div>
+    <div class="nav-brand">Nu<span>Track</span></div>
     <div class="nav-tab active" data-page="log">Log Meal</div>
     <div class="nav-tab" data-page="library">Library</div>
     <div class="nav-tab" data-page="today">Today</div>
     <div class="nav-tab" data-page="history">History</div>
     <div class="nav-tab" data-page="settings">Settings</div>
+    <div class="profile-switcher" id="profile-switcher" onclick="showProfileScreen()" title="Switch profile">
+      <div class="prof-avatar-sm" id="nav-avatar">?</div>
+      <span class="prof-name-sm" id="nav-name">Select profile</span>
+      <span class="prof-chevron">▼</span>
+    </div>
   </div>
 </nav>
 
@@ -278,7 +349,7 @@ nav{background:var(--surface);border-bottom:1px solid var(--border);position:sti
         <div class="macros-grid">
           <div class="mc"><div class="mc-val" id="r-cal" style="color:var(--text)">—</div><div class="mc-lbl">Calories</div></div>
           <div class="mc"><div class="mc-val" id="r-prot" style="color:var(--blue)">—</div><div class="mc-lbl">Protein</div></div>
-          <div class="mc"><div class="mc-val" id="r-carb" style="color:var(--amber)">—</div><div class="mc-lbl">Carbs</div></div>
+          <div class="mc"><div class="mc-val" id="r-carb" style="color:var(--green)">—</div><div class="mc-lbl">Carbs</div></div>
           <div class="mc"><div class="mc-val" id="r-fat" style="color:var(--purple)">—</div><div class="mc-lbl">Fat</div></div>
         </div>
         <p class="sec">Minerals</p><div id="r-minerals"></div>
@@ -319,7 +390,7 @@ nav{background:var(--surface);border-bottom:1px solid var(--border);position:sti
       <div class="macros-grid">
         <div class="mc"><div class="mc-val" id="ld-cal" style="color:var(--text)">&#8212;</div><div class="mc-lbl">Calories</div></div>
         <div class="mc"><div class="mc-val" id="ld-prot" style="color:var(--blue)">&#8212;</div><div class="mc-lbl">Protein</div></div>
-        <div class="mc"><div class="mc-val" id="ld-carb" style="color:var(--amber)">&#8212;</div><div class="mc-lbl">Carbs</div></div>
+        <div class="mc"><div class="mc-val" id="ld-carb" style="color:var(--green)">&#8212;</div><div class="mc-lbl">Carbs</div></div>
         <div class="mc"><div class="mc-val" id="ld-fat" style="color:var(--purple)">&#8212;</div><div class="mc-lbl">Fat</div></div>
       </div>
       <p class="sec">Minerals</p><div id="ld-minerals"></div>
@@ -327,8 +398,10 @@ nav{background:var(--surface);border-bottom:1px solid var(--border);position:sti
       <p class="sec">Fiber &amp; other</p><div id="ld-other" class="pill-grid"></div>
       <p class="sec">Ingredients</p><div id="ld-ingredients" style="font-size:13px;color:var(--t2);line-height:1.8"></div>
     </div>
-    <div style="padding:.85rem 1.1rem;border-top:1px solid var(--border);display:flex;gap:9px;flex-wrap:wrap">
+    <div style="padding:.85rem 1.1rem;border-top:1px solid var(--border);display:flex;gap:9px;flex-wrap:wrap;align-items:center">
       <button class="btn btn-primary" onclick="openLibModal(currentDetailId, currentDetailType)">Log this meal</button>
+      <button class="btn btn-outline btn-sm" onclick="document.getElementById('lib-photo-input').click()" id="lib-photo-btn">📷 Add photo</button>
+      <input type="file" id="lib-photo-input" accept="image/*" style="display:none" onchange="uploadLibPhoto(this.files[0])">
       <button class="btn btn-danger btn-sm" onclick="deleteLibAndClose()">Remove from library</button>
     </div>
   </div>
@@ -384,7 +457,7 @@ nav{background:var(--surface);border-bottom:1px solid var(--border);position:sti
         <div class="macros-grid">
           <div class="mc"><div class="mc-val" id="t-cal" style="color:var(--text)">—</div><div class="mc-lbl">Calories</div></div>
           <div class="mc"><div class="mc-val" id="t-prot" style="color:var(--blue)">—</div><div class="mc-lbl">Protein</div></div>
-          <div class="mc"><div class="mc-val" id="t-carb" style="color:var(--amber)">—</div><div class="mc-lbl">Carbs</div></div>
+          <div class="mc"><div class="mc-val" id="t-carb" style="color:var(--green)">—</div><div class="mc-lbl">Carbs</div></div>
           <div class="mc"><div class="mc-val" id="t-fat" style="color:var(--purple)">—</div><div class="mc-lbl">Fat</div></div>
         </div>
         <div class="chart-wrap"><canvas id="macros-chart"></canvas></div>
@@ -406,9 +479,21 @@ nav{background:var(--surface);border-bottom:1px solid var(--border);position:sti
       </div>
       <div class="card-body" style="padding:0">
         <table class="gap-table">
-          <thead><tr><th>Nutrient</th><th>Eaten</th><th>Target</th><th>From food</th><th>Still needed</th></tr></thead>
+          <thead><tr><th>Nutrient</th><th>From food</th><th>From supps</th><th>Target</th><th>Still needed</th></tr></thead>
           <tbody id="gap-tbody"></tbody>
         </table>
+      </div>
+    </div>
+
+    <!-- SUPPLEMENTS TODAY -->
+    <div class="card">
+      <div class="card-head">
+        <h3>Supplements today</h3>
+        <span style="font-size:11px;color:var(--t2)">Tap to mark taken</span>
+      </div>
+      <div id="supps-today-list"></div>
+      <div style="padding:.6rem 1rem;border-top:1px solid var(--border)">
+        <button class="btn btn-outline btn-sm" onclick="go('settings');setTimeout(()=>document.getElementById('supp-section').scrollIntoView({behavior:'smooth'}),300)">Manage supplements →</button>
       </div>
     </div>
 
@@ -475,6 +560,42 @@ nav{background:var(--surface);border-bottom:1px solid var(--border);position:sti
     </div>
   </div>
 
+  <!-- SUPPLEMENTS LIBRARY -->
+  <div class="card" id="supp-section">
+    <div class="card-head">
+      <h3>Supplement library</h3>
+      <span style="font-size:11px;color:var(--t2)">Add supplements to track daily</span>
+    </div>
+    <div class="card-body">
+      <div id="supp-library-list"></div>
+      <!-- Add supplement options -->
+      <div style="display:flex;gap:9px;margin-top:.75rem;flex-wrap:wrap">
+        <button class="btn btn-primary btn-sm" onclick="openAddSuppForm('manual')">+ Add manually</button>
+        <button class="btn btn-outline btn-sm" onclick="openAddSuppForm('photo')">📷 Scan label</button>
+      </div>
+      <!-- Manual add form -->
+      <div class="add-supp-form" id="add-supp-manual">
+        <p style="font-size:13px;font-weight:500;margin-bottom:.75rem">New supplement</p>
+        <input type="text" id="supp-name-input" placeholder="Supplement name (e.g. Vitamin D3 5000 IU)" style="width:100%;font-size:13px;padding:.45rem .65rem;border:1px solid var(--border);border-radius:var(--rs);background:var(--surface);color:var(--text);margin-bottom:.75rem">
+        <p style="font-size:11px;font-weight:600;color:var(--t2);text-transform:uppercase;letter-spacing:.05em;margin-bottom:.4rem">Nutrients per serving (leave 0 if not applicable)</p>
+        <div class="nutr-grid" id="add-supp-nutr-grid"></div>
+        <div style="display:flex;gap:8px;margin-top:.75rem">
+          <button class="btn btn-primary btn-sm" onclick="saveNewSupp()">Save supplement</button>
+          <button class="btn btn-outline btn-sm" onclick="closeAddSuppForm()">Cancel</button>
+        </div>
+        <div class="err" id="supp-err"></div>
+      </div>
+      <!-- Label photo form -->
+      <div class="add-supp-form" id="add-supp-photo">
+        <p style="font-size:13px;font-weight:500;margin-bottom:.5rem">Scan supplement label</p>
+        <p style="font-size:12px;color:var(--t2);margin-bottom:.75rem">Take a photo of the Supplement Facts panel and Claude will read the nutrients automatically.</p>
+        <input type="file" id="supp-label-input" accept="image/*" style="display:none" onchange="analyzeSuppLabel(this.files[0])">
+        <button class="btn btn-outline btn-sm" onclick="document.getElementById('supp-label-input').click()" id="scan-label-btn">Choose photo</button>
+        <div class="err" id="supp-scan-err"></div>
+      </div>
+    </div>
+  </div>
+
   <div class="card">
     <div class="card-head">
       <h3>Personal daily targets</h3>
@@ -500,8 +621,8 @@ const DEFAULT_TARGETS = {
   calories:2000,protein_g:50,carbs_g:275,fat_g:78,fiber_g:28,sugar_g:50,
   sodium_mg:2300,potassium_mg:4700,calcium_mg:1300,iron_mg:18,magnesium_mg:420,
   phosphorus_mg:1250,zinc_mg:11,vitamin_a_mcg:900,vitamin_c_mg:90,vitamin_d_mcg:20,
-  vitamin_e_mg:15,vitamin_k_mcg:120,vitamin_b1_mg:1.2,vitamin_b2_mg:1.3,
-  vitamin_b3_mg:16,vitamin_b6_mg:1.7,vitamin_b12_mcg:2.4,folate_mcg:400
+  vitamin_e_mg:15,vitamin_k1_mcg:120,vitamin_k2_mcg:200,vitamin_b1_mg:1.2,vitamin_b2_mg:1.3,
+  vitamin_b3_mg:16,vitamin_b6_mg:1.7,vitamin_b12_mcg:2.4,folate_mcg:400,omega3_mg:1600,copper_mg:0.9
 };
 const LABELS = {
   calories:'Calories',protein_g:'Protein',carbs_g:'Carbs',fat_g:'Fat',
@@ -509,21 +630,28 @@ const LABELS = {
   calcium_mg:'Calcium',iron_mg:'Iron',magnesium_mg:'Magnesium',
   phosphorus_mg:'Phosphorus',zinc_mg:'Zinc',vitamin_a_mcg:'Vitamin A',
   vitamin_c_mg:'Vitamin C',vitamin_d_mcg:'Vitamin D',vitamin_e_mg:'Vitamin E',
-  vitamin_k_mcg:'Vitamin K',vitamin_b1_mg:'B1 (Thiamine)',vitamin_b2_mg:'B2 (Riboflavin)',
-  vitamin_b3_mg:'B3 (Niacin)',vitamin_b6_mg:'B6',vitamin_b12_mcg:'B12',folate_mcg:'Folate'
+  vitamin_k1_mcg:'Vitamin K1',
+  vitamin_k2_mcg:'Vitamin K2',vitamin_b1_mg:'B1 (Thiamine)',vitamin_b2_mg:'B2 (Riboflavin)',
+  vitamin_b3_mg:'B3 (Niacin)',vitamin_b6_mg:'B6',vitamin_b12_mcg:'B12',folate_mcg:'Folate',
+  omega3_mg:'Omega-3',
+  copper_mg:'Copper'
 };
 const UNITS = {
   calories:'kcal',protein_g:'g',carbs_g:'g',fat_g:'g',fiber_g:'g',sugar_g:'g',
   sodium_mg:'mg',potassium_mg:'mg',calcium_mg:'mg',iron_mg:'mg',magnesium_mg:'mg',
   phosphorus_mg:'mg',zinc_mg:'mg',vitamin_a_mcg:'mcg',vitamin_c_mg:'mg',
-  vitamin_d_mcg:'mcg',vitamin_e_mg:'mg',vitamin_k_mcg:'mcg',vitamin_b1_mg:'mg',
-  vitamin_b2_mg:'mg',vitamin_b3_mg:'mg',vitamin_b6_mg:'mg',vitamin_b12_mcg:'mcg',folate_mcg:'mcg'
+  vitamin_d_mcg:'mcg',vitamin_e_mg:'mg',vitamin_k1_mcg:'mcg',vitamin_k2_mcg:'mcg',vitamin_b1_mg:'mg',
+  vitamin_b2_mg:'mg',vitamin_b3_mg:'mg',vitamin_b6_mg:'mg',vitamin_b12_mcg:'mcg',folate_mcg:'mcg',
+  omega3_mg:'mg',
+  copper_mg:'mg'
 };
 
 let imageBase64=null, imageMime=null, currentNutrition=null, currentThumbFile=null;
+let currentProfileId=null, currentProfileName=null;
 let selMealType='breakfast';
 let settings={ targets:{...DEFAULT_TARGETS}, priorityNutrients:['protein_g','calcium_mg','vitamin_d_mcg','vitamin_c_mg','iron_mg','magnesium_mg'] };
 let focusNutrients=['protein_g','calcium_mg','vitamin_c_mg','vitamin_d_mcg'];
+let suppTotals={};
 let charts={};
 let pendingLibId=null, pendingLibDefaultType='snack';
 
@@ -532,11 +660,27 @@ let pendingLibId=null, pendingLibDefaultType='snack';
 // ═══════════════════════════════════════════════════════════════════════════
 async function init() {
   setTodayDate();
-  try {
-    const r = await fetch('/api/settings');
-    settings = await r.json();
-  } catch(e) {}
-  buildSettingsUI();
+  await loadProfileScreen();
+  // try to restore last used profile
+  const savedId   = localStorage.getItem('activeProfileId');
+  const savedName = localStorage.getItem('activeProfileName');
+  if (savedId && savedName) {
+    // verify it still exists
+    const res = await fetch('/api/profiles');
+    const profiles = await res.json();
+    const match = profiles.findIndex(p => p.id === savedId);
+    if (match >= 0) {
+      selectProfile(savedId, savedName, match);
+      try {
+        const r = await fetch('/api/settings');
+        settings = await r.json();
+      } catch(e) {}
+      buildSettingsUI();
+      return;
+    }
+  }
+  // no saved profile — show the picker
+  document.getElementById('profile-screen').style.display = 'flex';
 }
 
 // ═══════════════════════════════════════════════════════════════════════════
@@ -666,16 +810,16 @@ function renderLogResult(d) {
   renderIngs(d.ingredients||[]);
   const mins=[['Sodium',d.sodium_mg,'mg','#378ADD',2300],['Potassium',d.potassium_mg,'mg','#1D9E75',3500],
     ['Calcium',d.calcium_mg,'mg','#534AB7',1000],['Iron',d.iron_mg,'mg','#0891b2',18],
-    ['Magnesium',d.magnesium_mg,'mg','#639922',400],['Phosphorus',d.phosphorus_mg,'mg','#BA7517',700],['Zinc',d.zinc_mg,'mg','#D4537E',11]];
+    ['Magnesium',d.magnesium_mg,'mg','#639922',400],['Phosphorus',d.phosphorus_mg,'mg','#0891b2',700],['Zinc',d.zinc_mg,'mg','#D4537E',11]];
   document.getElementById('r-minerals').innerHTML=mins.map(([n,v,u,c,mx])=>{
     const p=Math.min(100,Math.round((v/mx)*100));
     return `<div class="bar-row"><div class="bar-name">${n}</div><div class="bar-track"><div class="bar-fill" style="width:${p}%;background:${c}"></div></div><div class="bar-pct">${p}%</div><div class="bar-amt">${r1(v)}${u}</div></div>`;
   }).join('');
   const vits=[['A',d.vitamin_a_mcg,'mcg'],['C',d.vitamin_c_mg,'mg'],['D',d.vitamin_d_mcg,'mcg'],['E',d.vitamin_e_mg,'mg'],
-    ['K',d.vitamin_k_mcg,'mcg'],['B1',d.vitamin_b1_mg,'mg'],['B2',d.vitamin_b2_mg,'mg'],['B3',d.vitamin_b3_mg,'mg'],
+    ['K1',d.vitamin_k1_mcg,'mcg'],['K2',d.vitamin_k2_mcg,'mcg'],['B1',d.vitamin_b1_mg,'mg'],['B2',d.vitamin_b2_mg,'mg'],['B3',d.vitamin_b3_mg,'mg'],
     ['B6',d.vitamin_b6_mg,'mg'],['B12',d.vitamin_b12_mcg,'mcg'],['Folate',d.folate_mcg,'mcg']];
   document.getElementById('r-vitamins').innerHTML=vits.map(([n,v,u])=>`<div class="pill"><span class="pill-name">Vit. ${n}</span><span class="pill-val">${r2(v)}${u}</span></div>`).join('');
-  document.getElementById('r-other').innerHTML=`<div class="pill"><span class="pill-name">Fiber</span><span class="pill-val">${r1(d.fiber_g)}g</span></div><div class="pill"><span class="pill-name">Sugar</span><span class="pill-val">${r1(d.sugar_g)}g</span></div>`;
+  document.getElementById('r-other').innerHTML=`<div class="pill"><span class="pill-name">Fiber</span><span class="pill-val">${r1(d.fiber_g)}g</span></div><div class="pill"><span class="pill-name">Sugar</span><span class="pill-val">${r1(d.sugar_g)}g</span></div><div class="pill"><span class="pill-name">Omega-3</span><span class="pill-val">${Math.round(d.omega3_mg||0)}mg</span></div><div class="pill"><span class="pill-name">Copper</span><span class="pill-val">${r2(d.copper_mg||0)}mg</span></div>`;
   document.getElementById('log-results').style.display='block';
   document.getElementById('save-btn').textContent="Save to today's log";
   document.getElementById('save-btn').disabled=false;
@@ -788,8 +932,11 @@ function showDetail(id) {
   document.getElementById('lib-det-name').textContent = m.name;
   document.getElementById('lib-det-desc').textContent = m.nutrition.description || '';
   const img = document.getElementById('lib-det-img');
-  if (m.thumbFile) { img.src='/thumbs/'+m.thumbFile; img.style.display='block'; }
-  else { img.style.display='none'; }
+  if (m.thumbFile) {
+    img.src='/thumbs/'+m.thumbFile;
+    img.style.display='block';
+    img.onerror = function() { this.style.display='none'; };
+  } else { img.style.display='none'; }
 
   document.getElementById('ld-cal').textContent = Math.round(m.nutrition.calories);
   document.getElementById('ld-prot').textContent = r1(m.nutrition.protein_g)+'g';
@@ -798,7 +945,7 @@ function showDetail(id) {
 
   const mins=[['Sodium',m.nutrition.sodium_mg,'mg','#378ADD',2300],['Potassium',m.nutrition.potassium_mg,'mg','#1D9E75',3500],
     ['Calcium',m.nutrition.calcium_mg,'mg','#534AB7',1000],['Iron',m.nutrition.iron_mg,'mg','#0891b2',18],
-    ['Magnesium',m.nutrition.magnesium_mg,'mg','#639922',400],['Phosphorus',m.nutrition.phosphorus_mg,'mg','#BA7517',700],
+    ['Magnesium',m.nutrition.magnesium_mg,'mg','#639922',400],['Phosphorus',m.nutrition.phosphorus_mg,'mg','#0891b2',700],
     ['Zinc',m.nutrition.zinc_mg,'mg','#D4537E',11]];
   document.getElementById('ld-minerals').innerHTML=mins.map(([n,v,u,c,mx])=>{
     const p=Math.min(100,Math.round(((v||0)/mx)*100));
@@ -806,11 +953,11 @@ function showDetail(id) {
   }).join('');
 
   const vits=[['A',m.nutrition.vitamin_a_mcg,'mcg'],['C',m.nutrition.vitamin_c_mg,'mg'],['D',m.nutrition.vitamin_d_mcg,'mcg'],
-    ['E',m.nutrition.vitamin_e_mg,'mg'],['K',m.nutrition.vitamin_k_mcg,'mcg'],['B1',m.nutrition.vitamin_b1_mg,'mg'],
+    ['E',m.nutrition.vitamin_e_mg,'mg'],['K1',m.nutrition.vitamin_k1_mcg,'mcg'],['K2',m.nutrition.vitamin_k2_mcg,'mcg'],['B1',m.nutrition.vitamin_b1_mg,'mg'],
     ['B2',m.nutrition.vitamin_b2_mg,'mg'],['B3',m.nutrition.vitamin_b3_mg,'mg'],['B6',m.nutrition.vitamin_b6_mg,'mg'],
     ['B12',m.nutrition.vitamin_b12_mcg,'mcg'],['Folate',m.nutrition.folate_mcg,'mcg']];
   document.getElementById('ld-vitamins').innerHTML=vits.map(([n,v,u])=>`<div class="pill"><span class="pill-name">Vit. ${n}</span><span class="pill-val">${r2(v||0)}${u}</span></div>`).join('');
-  document.getElementById('ld-other').innerHTML=`<div class="pill"><span class="pill-name">Fiber</span><span class="pill-val">${r1(m.nutrition.fiber_g||0)}g</span></div><div class="pill"><span class="pill-name">Sugar</span><span class="pill-val">${r1(m.nutrition.sugar_g||0)}g</span></div>`;
+  document.getElementById('ld-other').innerHTML=`<div class="pill"><span class="pill-name">Fiber</span><span class="pill-val">${r1(m.nutrition.fiber_g||0)}g</span></div><div class="pill"><span class="pill-name">Sugar</span><span class="pill-val">${r1(m.nutrition.sugar_g||0)}g</span></div><div class="pill"><span class="pill-name">Omega-3</span><span class="pill-val">${Math.round(m.nutrition.omega3_mg||0)}mg</span></div><div class="pill"><span class="pill-name">Copper</span><span class="pill-val">${r2(m.nutrition.copper_mg||0)}mg</span></div>`;
 
   const ings = m.nutrition.ingredients || [];
   document.getElementById('ld-ingredients').innerHTML = ings.length
@@ -860,6 +1007,53 @@ async function deleteLibAndClose() {
   loadLibrary();
 }
 
+async function uploadLibPhoto(file) {
+  if (!file || !currentDetailId) return;
+  const btn = document.getElementById('lib-photo-btn');
+  btn.textContent = 'Uploading…';
+  btn.disabled = true;
+
+  const fd = new FormData();
+  fd.append('image', file);
+
+  try {
+    const r = await fetch('/api/library/'+currentDetailId+'/photo', { method:'POST', body: fd });
+    const d = await r.json();
+    if (!r.ok) throw new Error(d.error);
+
+    // update the detail panel image immediately
+    const img = document.getElementById('lib-det-img');
+    img.src = '/thumbs/' + d.thumbFile + '?t=' + Date.now();
+    img.style.display = 'block';
+    img.onerror = function() { this.style.display='none'; };
+
+    // update the library card thumbnail too
+    const card = document.getElementById('lc-'+currentDetailId);
+    if (card) {
+      const cardImg = card.querySelector('.lib-card-img');
+      if (cardImg) {
+        cardImg.src = '/thumbs/' + d.thumbFile + '?t=' + Date.now();
+      } else {
+        const ph = card.querySelector('.lib-card-ph');
+        if (ph) ph.outerHTML = `<img class="lib-card-img" src="/thumbs/${d.thumbFile}?t=${Date.now()}" onerror="this.outerHTML='<div class=\'lib-card-ph\'>🍽️</div>'">`;
+      }
+    }
+
+    // update local libraryMeals cache
+    const cached = libraryMeals.find(m => m.id === currentDetailId);
+    if (cached) cached.thumbFile = d.thumbFile;
+
+    toast('Photo saved');
+    btn.textContent = '✓ Photo updated';
+    setTimeout(() => { btn.innerHTML = '📷 Change photo'; btn.disabled = false; }, 2000);
+  } catch(e) {
+    showErr('log-err', e.message);
+    btn.innerHTML = '📷 Add photo';
+    btn.disabled = false;
+  }
+  document.getElementById('lib-photo-input').value = '';
+}
+
 // ═══════════════════════════════════════════════════════════════════════════
 // TODAY
 // ═══════════════════════════════════════════════════════════════════════════
@@ -869,14 +1063,23 @@ function setTodayDate(){
 }
 async function loadToday(){
   const date=document.getElementById('today-date').value; if(!date) return;
-  const r=await fetch('/api/summary/'+date); const s=await r.json();
-  if(!s){
+  const [summaryRes, suppTotalsRes, suppLogRes] = await Promise.all([
+    fetch('/api/summary/'+date),
+    fetch('/api/supplog/'+date+'/totals'),
+    fetch('/api/supplog/'+date)
+  ]);
+  const s = await summaryRes.json();
+  suppTotals = await suppTotalsRes.json();
+  const suppLog = await suppLogRes.json();
+  if(!s && !suppLog.length){
     document.getElementById('today-empty').style.display='block';
-    document.getElementById('today-content').style.display='none'; return;
+    document.getElementById('today-content').style.display='none';
+  } else {
+    document.getElementById('today-empty').style.display='none';
+    document.getElementById('today-content').style.display='block';
+    if(s) renderToday(s);
   }
-  document.getElementById('today-empty').style.display='none';
-  document.getElementById('today-content').style.display='block';
-  renderToday(s);
+  renderSuppsToday(suppLog, date);
 }
 function renderToday(s){
   document.getElementById('t-cal').textContent=Math.round(s.calories);
@@ -888,7 +1091,7 @@ function renderToday(s){
   // macros donut
   dChart('macros-chart'); charts['macros-chart']=new Chart(document.getElementById('macros-chart'),{
     type:'doughnut',
-    data:{labels:['Protein','Carbs','Fat'],datasets:[{data:[Math.round(s.protein_g*4),Math.round(s.carbs_g*4),Math.round(s.fat_g*9)],backgroundColor:['#378ADD','#BA7517','#534AB7'],borderWidth:2,borderColor:'#fff'}]},
+    data:{labels:['Protein','Carbs','Fat'],datasets:[{data:[Math.round(s.protein_g*4),Math.round(s.carbs_g*4),Math.round(s.fat_g*9)],backgroundColor:['#378ADD','#1D9E75','#534AB7'],borderWidth:2,borderColor:'#fff'}]},
     options:{plugins:{legend:{position:'bottom',labels:{boxWidth:12,font:{size:12}}}},cutout:'65%',responsive:true,maintainAspectRatio:true}
   });
 
@@ -914,15 +1117,20 @@ function renderToday(s){
     const eaten=parseFloat(s[k])||0;
     const target=parseFloat(T2[k])||parseFloat(DEFAULT_TARGETS[k])||1;
     const pct=Math.min(150,Math.round((eaten/target)*100));
-    const gap=Math.max(0,r2(target-eaten));
-    const cls=pct>110?'gap-high':pct>=90?'gap-ok':pct>=50?'gap-low':'gap-high';
-    const barCol=pct>110?'#D85A30':pct>=90?'#1D9E75':pct>=50?'#BA7517':'#378ADD';
+    const suppAmt=r2((suppTotals&&suppTotals[k])||0);
+    const total=r2(eaten+(suppTotals&&suppTotals[k]||0));
+    const gap=Math.max(0,r2(target-total));
+    const overage=r2(total-target);
+    const totalPct=Math.min(150,Math.round((total/target)*100));
+    const foodPct=Math.min(100,Math.round((eaten/target)*100));
+    const cls=totalPct>110?'gap-high':totalPct>=90?'gap-ok':totalPct>=50?'gap-low':'gap-low';
+    const barCol=totalPct>110?'#D85A30':totalPct>=90?'#1D9E75':totalPct>=50?'#0891b2':'#378ADD';
     return `<tr>
       <td><strong>${LABELS[k]}</strong></td>
-      <td>${r2(eaten)} ${UNITS[k]}</td>
+      <td><div class="gap-bar-wrap"><div class="gap-bar-fill" style="width:${foodPct}%;background:#378ADD"></div></div> ${r2(eaten)} ${UNITS[k]}</td>
+      <td style="color:${suppAmt>0?'var(--green)':'var(--t3)'}">${suppAmt>0?'+'+suppAmt+' '+UNITS[k]:'—'}</td>
       <td>${r2(target)} ${UNITS[k]}</td>
-      <td><div class="gap-bar-wrap"><div class="gap-bar-fill" style="width:${Math.min(100,pct)}%;background:${barCol}"></div></div><span class="${cls}">${pct}%</span></td>
-      <td class="${pct>110?'gap-high':gap>0?'gap-low':'gap-ok'}">${pct>110?'Over by '+r2(Math.abs(gap))+' '+UNITS[k]:gap>0?gap+' '+UNITS[k]:'✓ Met'}</td>
+      <td class="${totalPct>110?'gap-high':'gap-ok'}" style="${totalPct>110?'':'color:var(--text2)'}">${totalPct>110?'Over by '+overage+' '+UNITS[k]:gap>0?gap+' '+UNITS[k]:'✓ Met'}</td>
     </tr>`;
   }).join('');
 
@@ -964,7 +1172,7 @@ async function loadHistory(){
   // focus chart — last 10 days
   const last10=dates.slice(0,10).reverse();
   const summaries=await Promise.all(last10.map(d=>fetch('/api/summary/'+d).then(r=>r.json())));
-  const cols=['#534AB7','#1D9E75','#D85A30','#378ADD','#BA7517','#D4537E','#639922','#0891b2'];
+  const cols=['#534AB7','#1D9E75','#D85A30','#378ADD','#0891b2','#D4537E','#639922','#0891b2'];
   dChart('focus-chart');
   charts['focus-chart']=new Chart(document.getElementById('focus-chart'),{
     type:'line',
@@ -1036,6 +1244,7 @@ function renderCompare(data){
 // SETTINGS
 // ═══════════════════════════════════════════════════════════════════════════
 function buildSettingsUI(){
+  loadSuppLibrary();
   // Priority nutrients
   document.getElementById('prio-grid').innerHTML=Object.keys(LABELS).map(k=>
     `<div class="prio-btn${(settings.priorityNutrients||[]).includes(k)?' on':''}" data-key="${k}" onclick="this.classList.toggle('on')">${LABELS[k]}</div>`
@@ -1085,10 +1294,309 @@ function fmtDate(d){ return new Date(d+'T12:00:00').toLocaleDateString('en-US',{
 function fmtShort(d){ return new Date(d+'T12:00:00').toLocaleDateString('en-US',{month:'short',day:'numeric'}); }
 function toast(msg){ const el=document.getElementById('toast'); el.textContent=msg; el.style.display='block'; setTimeout(()=>el.style.display='none',2500); }
 
-// Wire up nav tabs via event delegation (avoids inline onclick timing issues)
+
+// ═══════════════════════════════════════════════════════════════════════════
+// SUPPLEMENTS
+// ═══════════════════════════════════════════════════════════════════════════
+
+// Key nutrients to show in supplement forms (most relevant for supplements)
+const SUPP_NUTR_KEYS = [
+  'vitamin_d_mcg','vitamin_c_mg','vitamin_b12_mcg','vitamin_b6_mg','vitamin_k1_mcg','vitamin_k2_mcg',
+  'vitamin_a_mcg','vitamin_e_mg','vitamin_b1_mg','vitamin_b2_mg','vitamin_b3_mg',
+  'folate_mcg','omega3_mg','copper_mg','calcium_mg','magnesium_mg','zinc_mg','iron_mg',
+  'potassium_mg','sodium_mg','phosphorus_mg','protein_g','calories'
+];
+
+// Build the nutrient input grid for add/edit forms
+function buildNutrGrid(containerId, existingNutrients={}) {
+  document.getElementById(containerId).innerHTML = SUPP_NUTR_KEYS.map(k =>
+    `<div class="nutr-row">
+      <label>${LABELS[k]} (${UNITS[k]})</label>
+      <input type="number" id="sn-${containerId}-${k}" value="${existingNutrients[k]||0}" min="0" step="0.01">
+    </div>`
+  ).join('');
+}
+
+function getNutrFromGrid(containerId) {
+  const nutrients = {};
+  SUPP_NUTR_KEYS.forEach(k => {
+    const v = parseFloat(document.getElementById('sn-'+containerId+'-'+k)?.value);
+    if (!isNaN(v) && v > 0) nutrients[k] = v;
+  });
+  return nutrients;
+}
+
+function openAddSuppForm(mode) {
+  document.getElementById('add-supp-manual').classList.remove('open');
+  document.getElementById('add-supp-photo').classList.remove('open');
+  if (mode === 'manual') {
+    buildNutrGrid('add-supp-nutr-grid');
+    document.getElementById('supp-name-input').value = '';
+    document.getElementById('add-supp-manual').classList.add('open');
+    setTimeout(() => document.getElementById('supp-name-input').focus(), 50);
+  } else {
+    document.getElementById('add-supp-photo').classList.add('open');
+  }
+}
+
+function closeAddSuppForm() {
+  document.getElementById('add-supp-manual').classList.remove('open');
+  document.getElementById('add-supp-photo').classList.remove('open');
+}
+
+async function saveNewSupp() {
+  const name = document.getElementById('supp-name-input').value.trim();
+  const errEl = document.getElementById('supp-err');
+  errEl.style.display = 'none';
+  if (!name) { errEl.textContent = 'Please enter a supplement name'; errEl.style.display = 'block'; return; }
+  const nutrients = getNutrFromGrid('add-supp-nutr-grid');
+  const r = await fetch('/api/supplements', {
+    method:'POST', headers:{'Content-Type':'application/json'},
+    body: JSON.stringify({ name, nutrients })
+  });
+  const d = await r.json();
+  if (!r.ok) { errEl.textContent = d.error; errEl.style.display = 'block'; return; }
+  closeAddSuppForm();
+  toast('Supplement saved');
+  loadSuppLibrary();
+}
+
+async function analyzeSuppLabel(file) {
+  if (!file) return;
+  const btn = document.getElementById('scan-label-btn');
+  const errEl = document.getElementById('supp-scan-err');
+  errEl.style.display = 'none';
+  btn.textContent = 'Analyzing label…'; btn.disabled = true;
+  const fd = new FormData(); fd.append('image', file);
+  try {
+    const r = await fetch('/api/supplements/analyze-label', { method:'POST', body: fd });
+    const d = await r.json();
+    if (!r.ok) throw new Error(d.error);
+    // pre-fill manual form with scanned data
+    document.getElementById('add-supp-photo').classList.remove('open');
+    document.getElementById('supp-name-input').value = d.name || '';
+    buildNutrGrid('add-supp-nutr-grid', d.nutrients || {});
+    document.getElementById('add-supp-manual').classList.add('open');
+    toast('Label scanned — review and save');
+  } catch(e) { errEl.textContent = 'Error: '+e.message; errEl.style.display='block'; }
+  btn.textContent = 'Choose photo'; btn.disabled = false;
+  document.getElementById('supp-label-input').value = '';
+}
+
+async function loadSuppLibrary() {
+  if (!currentProfileId) return;
+  const r = await fetch('/api/supplements');
+  const supps = await r.json();
+  const el = document.getElementById('supp-library-list');
+  if (!el) return;
+  if (!supps.length) {
+    el.innerHTML = '<p style="font-size:13px;color:var(--t2);padding:.5rem 0">No supplements saved yet. Add your first one below.</p>';
+    return;
+  }
+  el.innerHTML = supps.map(s => {
+    const nutrientSummary = Object.entries(s.nutrients||{})
+      .filter(([k,v])=>v>0)
+      .map(([k,v])=>`${LABELS[k]}: ${v}${UNITS[k]}`)
+      .slice(0,4).join(' · ');
+    return `<div class="supp-card" id="sc-${s.id}">
+      <div class="supp-card-head" onclick="toggleSuppEdit('${s.id}')">
+        <div>
+          <div class="supp-name">${esc(s.name)}</div>
+          <div class="supp-summary">${nutrientSummary || 'No nutrients set'}</div>
+        </div>
+        <div style="display:flex;gap:7px">
+          <button class="btn btn-outline btn-sm" onclick="event.stopPropagation();toggleSuppEdit('${s.id}')">Edit</button>
+          <button class="btn btn-danger btn-sm" onclick="event.stopPropagation();deleteSupp('${s.id}')">✕</button>
+        </div>
+      </div>
+      <div class="supp-edit-form" id="se-${s.id}">
+        <p style="font-size:12px;font-weight:500;margin-bottom:.5rem">Edit: ${esc(s.name)}</p>
+        <input type="text" id="se-name-${s.id}" value="${esc(s.name)}" style="width:100%;font-size:13px;padding:.4rem .6rem;border:1px solid var(--border);border-radius:var(--rs);background:var(--surface);color:var(--text);margin-bottom:.6rem">
+        <div class="nutr-grid" id="se-grid-${s.id}"></div>
+        <div style="display:flex;gap:7px;margin-top:.6rem">
+          <button class="btn btn-primary btn-sm" onclick="saveEditSupp('${s.id}')">Save changes</button>
+          <button class="btn btn-outline btn-sm" onclick="toggleSuppEdit('${s.id}')">Cancel</button>
+        </div>
+      </div>
+    </div>`;
+  }).join('');
+}
+
+function toggleSuppEdit(id) {
+  const form = document.getElementById('se-'+id);
+  if (!form) return;
+  if (form.classList.contains('open')) { form.classList.remove('open'); return; }
+  // build nutr grid with current values
+  fetch('/api/supplements').then(r=>r.json()).then(supps => {
+    const s = supps.find(x=>x.id===id); if (!s) return;
+    buildNutrGrid('se-grid-'+id, s.nutrients||{});
+    form.classList.add('open');
+  });
+}
+
+async function saveEditSupp(id) {
+  const name = document.getElementById('se-name-'+id)?.value.trim();
+  const nutrients = getNutrFromGrid('se-grid-'+id);
+  const r = await fetch('/api/supplements/'+id, {
+    method:'PUT', headers:{'Content-Type':'application/json'},
+    body: JSON.stringify({ name, nutrients })
+  });
+  if (!r.ok) { alert('Error saving'); return; }
+  document.getElementById('se-'+id)?.classList.remove('open');
+  toast('Supplement updated');
+  loadSuppLibrary();
+}
+
+async function deleteSupp(id) {
+  if (!confirm('Remove this supplement?')) return;
+  await fetch('/api/supplements/'+id, {method:'DELETE'});
+  toast('Supplement removed');
+  loadSuppLibrary();
+}
+
+// ── Supplements Today ─────────────────────────────────────────────────────────
+async function renderSuppsToday(suppLog, date) {
+  const el = document.getElementById('supps-today-list');
+  if (!el) return;
+  // get full supplement library
+  const r = await fetch('/api/supplements');
+  const allSupps = await r.json();
+  if (!allSupps.length) {
+    el.innerHTML = '<div style="padding:.75rem 1.1rem;font-size:13px;color:var(--t2)">No supplements in your library yet. <a href="#" onclick="go(&quot;settings&quot;);return false" style="color:var(--green)">Add supplements →</a></div>';
+    return;
+  }
+  // build a map of what's already logged
+  const logMap = {};
+  suppLog.forEach(e => { logMap[e.supplementId] = e.doses || 1; });
+  el.innerHTML = allSupps.map(s => {
+    const taken = !!logMap[s.id];
+    const doses = logMap[s.id] || 1;
+    const nutrientHighlights = Object.entries(s.nutrients||{})
+      .filter(([k,v])=>v>0).slice(0,3)
+      .map(([k,v])=>`${LABELS[k]} ${v}${UNITS[k]}`).join(' · ');
+    return `<div class="meal-item" id="st-${s.id}">
+      <div style="flex:1">
+        <div style="font-size:13px;font-weight:500">${esc(s.name)}</div>
+        ${nutrientHighlights ? `<div style="font-size:11px;color:var(--t2);margin-top:2px">${nutrientHighlights}</div>` : ''}
+      </div>
+      <div class="supp-doses ${taken?'show':''}" id="sd-${s.id}">
+        <span style="font-size:11px;color:var(--t2)">×</span>
+        <input type="number" min="0.5" max="20" step="0.5" value="${doses}" style="width:48px;font-size:12px;padding:2px 5px;border:1px solid var(--border);border-radius:var(--rs);background:var(--surface);color:var(--text);text-align:center" onchange="updateDoses('${s.id}','${date}',this.value)">
+        <span style="font-size:11px;color:var(--t2)">doses</span>
+      </div>
+      <button class="supp-toggle${taken?' on':''}" id="stog-${s.id}" onclick="toggleSupp('${s.id}','${date}',${taken})" title="${taken?'Mark not taken':'Mark taken'}"></button>
+    </div>`;
+  }).join('');
+}
+
+async function toggleSupp(suppId, date, currentlyTaken) {
+  if (currentlyTaken) {
+    await fetch('/api/supplog/'+suppId+'/'+date, {method:'DELETE'});
+    document.getElementById('stog-'+suppId)?.classList.remove('on');
+    document.getElementById('sd-'+suppId)?.classList.remove('show');
+  } else {
+    await fetch('/api/supplog', {method:'POST', headers:{'Content-Type':'application/json'},
+      body: JSON.stringify({supplementId:suppId, date, doses:1})});
+    document.getElementById('stog-'+suppId)?.classList.add('on');
+    document.getElementById('sd-'+suppId)?.classList.add('show');
+  }
+  // refresh gap table with updated supp totals
+  const r = await fetch('/api/supplog/'+date+'/totals');
+  suppTotals = await r.json();
+  loadToday();
+}
+
+async function updateDoses(suppId, date, doses) {
+  const d = parseFloat(doses);
+  if (isNaN(d) || d <= 0) return;
+  await fetch('/api/supplog', {method:'POST', headers:{'Content-Type':'application/json'},
+    body: JSON.stringify({supplementId:suppId, date, doses:d})});
+  const r = await fetch('/api/supplog/'+date+'/totals');
+  suppTotals = await r.json();
+  loadToday();
+}
+
+// Wire up nav tabs
 document.querySelectorAll('.nav-tab[data-page]').forEach(tab => {
   tab.addEventListener('click', () => go(tab.dataset.page));
 });
+
+// ── Profile screen ───────────────────────────────────────────────────────────
+async function loadProfileScreen() {
+  const res = await fetch('/api/profiles');
+  const profiles = await res.json();
+  const container = document.getElementById('profile-cards');
+  const avatarColors = ['#534AB7','#1D9E75','#D85A30','#378ADD','#0891b2','#D4537E','#0891b2','#639922'];
+  container.innerHTML = profiles.map((p, i) => `
+    <div class="profile-card" onclick="selectProfile('${p.id}','${esc(p.name)}',${i})">
+      <div class="prof-avatar-sm profile-avatar" style="background:${avatarColors[i % avatarColors.length]}">${p.avatar}</div>
+      <div class="profile-name">${esc(p.name)}</div>
+    </div>`).join('') +
+    `<div class="profile-card add-profile-card" onclick="toggleAddForm(true)">
+      <div class="profile-avatar" style="background:var(--s2);color:var(--t2);font-size:24px">+</div>
+      <div class="profile-name" style="color:var(--t2)">Add profile</div>
+    </div>`;
+}
+
+function toggleAddForm(show) {
+  document.getElementById('add-profile-form').style.display = show ? 'block' : 'none';
+  if (show) setTimeout(() => document.getElementById('new-profile-name').focus(), 50);
+}
+
+async function submitNewProfile() {
+  const name = document.getElementById('new-profile-name').value.trim();
+  const errEl = document.getElementById('profile-err');
+  errEl.style.display = 'none';
+  if (!name) { errEl.textContent = 'Please enter a name'; errEl.style.display = 'block'; return; }
+  const res = await fetch('/api/profiles', {
+    method: 'POST', headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ name })
+  });
+  const d = await res.json();
+  if (!res.ok) { errEl.textContent = d.error; errEl.style.display = 'block'; return; }
+  document.getElementById('new-profile-name').value = '';
+  toggleAddForm(false);
+  await loadProfileScreen();
+  selectProfile(d.profile.id, d.profile.name, 0);
+}
+
+const avatarColors = ['#534AB7','#1D9E75','#D85A30','#378ADD','#0891b2','#D4537E','#0891b2','#639922'];
+
+function selectProfile(id, name, idx) {
+  currentProfileId = id;
+  currentProfileName = name;
+  localStorage.setItem('activeProfileId', id);
+  localStorage.setItem('activeProfileName', name);
+  // update nav
+  const color = avatarColors[idx % avatarColors.length];
+  document.getElementById('nav-avatar').textContent = name[0].toUpperCase();
+  document.getElementById('nav-avatar').style.background = color;
+  document.getElementById('nav-name').textContent = name;
+  // hide profile screen
+  document.getElementById('profile-screen').style.display = 'none';
+  // reload current page data
+  const activePage = document.querySelector('.nav-tab.active')?.dataset.page;
+  if (activePage === 'today') loadToday();
+  if (activePage === 'library') loadLibrary();
+  if (activePage === 'history') loadHistory();
+  if (activePage === 'settings') buildSettingsUI();
+}
+
+function showProfileScreen() {
+  document.getElementById('profile-screen').style.display = 'flex';
+  loadProfileScreen();
+}
+
+// ── Patched fetch that injects x-profile-id header ───────────────────────────
+const _origFetch = window.fetch;
+window.fetch = function(url, opts = {}) {
+  if (typeof url === 'string' && url.startsWith('/api/') &&
+      !url.startsWith('/api/profiles') && !url.startsWith('/api/analyze') &&
+      currentProfileId) {
+    opts.headers = { ...(opts.headers || {}), 'x-profile-id': currentProfileId };
+  }
+  return _origFetch(url, opts);
+};
 
 init();
 </script>

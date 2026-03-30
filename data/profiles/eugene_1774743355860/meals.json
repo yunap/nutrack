@@ -1,0 +1,379 @@
+{
+  "meals": [
+    {
+      "id": "1774743612115",
+      "date": "2026-03-28",
+      "time": "2026-03-29T00:20:12.115Z",
+      "mealType": "breakfast",
+      "nutrition": {
+        "meal_name": "Fresh Fruit and Yogurt Bowl",
+        "description": "A healthy snack or light meal featuring plain whole milk yogurt served with fresh sliced banana and strawberries",
+        "ingredients": [
+          {
+            "name": "Plain yogurt",
+            "quantity": "1/2 cup",
+            "notes": "appears to be whole milk yogurt"
+          },
+          {
+            "name": "Banana",
+            "quantity": "1 medium",
+            "notes": "sliced"
+          },
+          {
+            "name": "Strawberries",
+            "quantity": "2 large",
+            "notes": "fresh, hulled"
+          }
+        ],
+        "calories": 195,
+        "protein_g": 8,
+        "carbs_g": 35,
+        "fat_g": 4,
+        "fiber_g": 5,
+        "sugar_g": 28,
+        "sodium_mg": 65,
+        "potassium_mg": 520,
+        "calcium_mg": 180,
+        "iron_mg": 0.6,
+        "magnesium_mg": 40,
+        "phosphorus_mg": 140,
+        "zinc_mg": 1.2,
+        "vitamin_a_mcg": 45,
+        "vitamin_c_mg": 75,
+        "vitamin_d_mcg": 0.5,
+        "vitamin_e_mg": 0.8,
+        "vitamin_k_mcg": 5,
+        "vitamin_b1_mg": 0.1,
+        "vitamin_b2_mg": 0.25,
+        "vitamin_b3_mg": 1.2,
+        "vitamin_b6_mg": 0.4,
+        "vitamin_b12_mcg": 0.6,
+        "folate_mcg": 35
+      },
+      "fromLibrary": true,
+      "libraryId": "lib_1774732346050"
+    },
+    {
+      "id": "1774763504888",
+      "date": "2026-03-28",
+      "time": "2026-03-29T05:51:44.888Z",
+      "mealType": "lunch",
+      "nutrition": {
+        "meal_name": "Caviar and Zucchini Pancakes",
+        "description": "A gourmet appetizer plate featuring zucchini pancakes topped with red caviar, a thin baguette slice with orange caviar, and lemon wedges for garnish",
+        "ingredients": [
+          {
+            "name": "red caviar",
+            "quantity": "1.3 tablespoons",
+            "notes": "salmon or trout roe"
+          },
+          {
+            "name": "bread",
+            "quantity": "1 slice",
+            "notes": "thin baguette slice"
+          },
+          {
+            "name": "orange caviar",
+            "quantity": "1 tablespoon",
+            "notes": "different type of fish roe"
+          },
+          {
+            "name": "lemon",
+            "quantity": "1 wedge",
+            "notes": "for garnish and flavoring"
+          },
+          {
+            "name": "zucchini pancake",
+            "quantity": "4 small",
+            "notes": "made out of central milling type 80 wheat flour"
+          }
+        ],
+        "calories": 285,
+        "protein_g": 15.2,
+        "carbs_g": 28.5,
+        "fat_g": 12.8,
+        "fiber_g": 3.2,
+        "sugar_g": 6.8,
+        "sodium_mg": 950,
+        "potassium_mg": 420,
+        "calcium_mg": 85,
+        "iron_mg": 2.8,
+        "magnesium_mg": 35,
+        "phosphorus_mg": 285,
+        "zinc_mg": 1.2,
+        "vitamin_a_mcg": 125,
+        "vitamin_c_mg": 22,
+        "vitamin_d_mcg": 8.5,
+        "vitamin_e_mg": 1.8,
+        "vitamin_k_mcg": 15,
+        "vitamin_b1_mg": 0.25,
+        "vitamin_b2_mg": 0.35,
+        "vitamin_b3_mg": 3.2,
+        "vitamin_b6_mg": 0.18,
+        "vitamin_b12_mcg": 12.5,
+        "folate_mcg": 45,
+        "_thumbFile": "1774748562779_4krmnxt9rhg.jpg"
+      },
+      "thumbFile": "1774748562779_4krmnxt9rhg.jpg",
+      "fromLibrary": true,
+      "libraryId": "lib_1774763331989"
+    },
+    {
+      "id": "1774765052073",
+      "date": "2026-03-28",
+      "time": "2026-03-29T06:17:32.073Z",
+      "mealType": "breakfast",
+      "nutrition": {
+        "meal_name": "Farmers Cheese with Berry Jam",
+        "description": "A bowl of fresh farmers cheese topped with dark berry jam, served as a breakfast meal",
+        "ingredients": [
+          {
+            "name": "farmers cheese",
+            "quantity": "1 cup",
+            "notes": "made from 6% milk, white crumbly texture"
+          },
+          {
+            "name": "berry jam",
+            "quantity": "1 tablespoon",
+            "notes": "dark berry preserve, possibly blueberry or mixed berry"
+          }
+        ],
+        "calories": 285,
+        "protein_g": 28,
+        "carbs_g": 18,
+        "fat_g": 12,
+        "fiber_g": 0.5,
+        "sugar_g": 15,
+        "sodium_mg": 450,
+        "potassium_mg": 180,
+        "calcium_mg": 320,
+        "iron_mg": 0.8,
+        "magnesium_mg": 25,
+        "phosphorus_mg": 280,
+        "zinc_mg": 1.2,
+        "vitamin_a_mcg": 110,
+        "vitamin_c_mg": 2,
+        "vitamin_d_mcg": 0.3,
+        "vitamin_e_mg": 0.2,
+        "vitamin_k_mcg": 1.5,
+        "vitamin_b1_mg": 0.05,
+        "vitamin_b2_mg": 0.35,
+        "vitamin_b3_mg": 0.2,
+        "vitamin_b6_mg": 0.08,
+        "vitamin_b12_mcg": 1.8,
+        "folate_mcg": 15
+      },
+      "thumbFile": "1774748268861_bhf6eh8zjee.png",
+      "fromLibrary": true,
+      "libraryId": "lib_1774733224230"
+    },
+    {
+      "id": "1774767123604",
+      "date": "2026-03-28",
+      "time": "2026-03-29T06:52:03.604Z",
+      "mealType": "dinner",
+      "nutrition": {
+        "meal_name": "Mediterranean Herb-Crusted Salmon Plate",
+        "description": "Baked herb-crusted salmon served with dark rye bread, mixed salad with goat cheese and avocado, baked ratatouille, boiled potatoes, grilled shishito peppers, and caper berries",
+        "ingredients": [
+          {
+            "name": "dark rye bread",
+            "quantity": "3 thin slices",
+            "notes": "dense seeded rye bread"
+          },
+          {
+            "name": "baked ratatouille",
+            "quantity": "1/4 cup",
+            "notes": "eggplant, zucchini, tomatoes, peppers, carrots"
+          },
+          {
+            "name": "mixed salad",
+            "quantity": "1 cup",
+            "notes": "lettuce, tomatoes, peppers, goat cheese, avocado, strawberry, 1/2 egg"
+          },
+          {
+            "name": "boiled potatoes",
+            "quantity": "4 small",
+            "notes": "small boiled potatoes"
+          },
+          {
+            "name": "baked salmon",
+            "quantity": "6 oz",
+            "notes": "herb-crusted with herbs and olive oil"
+          },
+          {
+            "name": "caper berries",
+            "quantity": "2",
+            "notes": "large caper berries"
+          },
+          {
+            "name": "shishito peppers",
+            "quantity": "6",
+            "notes": "grilled shishito peppers"
+          }
+        ],
+        "calories": 895,
+        "protein_g": 52,
+        "carbs_g": 48,
+        "fat_g": 58,
+        "fiber_g": 12,
+        "sugar_g": 15,
+        "sodium_mg": 1245,
+        "potassium_mg": 1680,
+        "calcium_mg": 285,
+        "iron_mg": 6.2,
+        "magnesium_mg": 125,
+        "phosphorus_mg": 625,
+        "zinc_mg": 3.8,
+        "vitamin_a_mcg": 245,
+        "vitamin_c_mg": 85,
+        "vitamin_d_mcg": 12.5,
+        "vitamin_e_mg": 8.5,
+        "vitamin_k_mcg": 125,
+        "vitamin_b1_mg": 0.65,
+        "vitamin_b2_mg": 0.85,
+        "vitamin_b3_mg": 18.5,
+        "vitamin_b6_mg": 1.25,
+        "vitamin_b12_mcg": 5.8,
+        "folate_mcg": 125,
+        "_thumbFile": "1774766018659_4mc2cotmzf9.png"
+      },
+      "thumbFile": "1774766018659_4mc2cotmzf9.png",
+      "fromLibrary": true,
+      "libraryId": "lib_1774767097858"
+    },
+    {
+      "id": "1774822707295",
+      "date": "2026-03-29",
+      "time": "2026-03-29T22:18:27.295Z",
+      "mealType": "breakfast",
+      "nutrition": {
+        "meal_name": "Breakfast Plate with Scrambled Eggs and Dark Bread",
+        "description": "A hearty breakfast featuring fluffy scrambled eggs, mixed cherry tomatoes with fresh herbs, dense dark bread, soft cheese, avocado slices, served with black tea and double espresso",
+        "ingredients": [
+          {
+            "name": "scrambled eggs",
+            "quantity": "2 large eggs",
+            "notes": "fluffy yellow scrambled eggs, likely cooked with butter or oil"
+          },
+          {
+            "name": "cherry tomatoes",
+            "quantity": "4-5 pieces",
+            "notes": "halved red and yellow cherry tomatoes"
+          },
+          {
+            "name": "fresh herbs",
+            "quantity": "1 tablespoon",
+            "notes": "appears to be parsley or similar green herbs"
+          },
+          {
+            "name": "dark bread",
+            "quantity": "2 slices",
+            "notes": "dense dark rye or pumpernickel bread"
+          },
+          {
+            "name": "cheese",
+            "quantity": "1 small slice",
+            "notes": "white soft cheese, possibly goat cheese or fresh mozzarella"
+          },
+          {
+            "name": "avocado",
+            "quantity": "1/3 medium",
+            "notes": "sliced avocado"
+          },
+          {
+            "name": "black tea",
+            "quantity": "1 cup",
+            "notes": "black tea"
+          },
+          {
+            "name": "espresso",
+            "quantity": "1 cup",
+            "notes": "double espresso, small espresso cup"
+          }
+        ],
+        "calories": 485,
+        "protein_g": 22,
+        "carbs_g": 32,
+        "fat_g": 32,
+        "fiber_g": 12,
+        "sugar_g": 8,
+        "sodium_mg": 720,
+        "potassium_mg": 680,
+        "calcium_mg": 180,
+        "iron_mg": 4.2,
+        "magnesium_mg": 58,
+        "phosphorus_mg": 280,
+        "zinc_mg": 2.8,
+        "vitamin_a_mcg": 280,
+        "vitamin_c_mg": 18,
+        "vitamin_d_mcg": 2.2,
+        "vitamin_e_mg": 3.8,
+        "vitamin_k_mcg": 45,
+        "vitamin_b1_mg": 0.3,
+        "vitamin_b2_mg": 0.5,
+        "vitamin_b3_mg": 3.2,
+        "vitamin_b6_mg": 0.4,
+        "vitamin_b12_mcg": 1.2,
+        "folate_mcg": 85,
+        "omega3_mg": 180,
+        "_thumbFile": "1774822328673_7ds3zwr063y.jpg"
+      },
+      "thumbFile": "1774822328673_7ds3zwr063y.jpg"
+    },
+    {
+      "id": "1774830572089",
+      "date": "2026-03-29",
+      "time": "2026-03-30T00:29:32.089Z",
+      "mealType": "snack",
+      "nutrition": {
+        "meal_name": "Fresh Fruit and Yogurt Bowl",
+        "description": "A healthy snack or light meal featuring plain whole milk yogurt served with fresh sliced banana and strawberries",
+        "ingredients": [
+          {
+            "name": "Plain yogurt",
+            "quantity": "1/2 cup",
+            "notes": "appears to be whole milk yogurt"
+          },
+          {
+            "name": "Banana",
+            "quantity": "1 medium",
+            "notes": "sliced"
+          },
+          {
+            "name": "Strawberries",
+            "quantity": "2 large",
+            "notes": "fresh, hulled"
+          }
+        ],
+        "calories": 195,
+        "protein_g": 8,
+        "carbs_g": 35,
+        "fat_g": 4,
+        "fiber_g": 5,
+        "sugar_g": 28,
+        "sodium_mg": 65,
+        "potassium_mg": 520,
+        "calcium_mg": 180,
+        "iron_mg": 0.6,
+        "magnesium_mg": 40,
+        "phosphorus_mg": 140,
+        "zinc_mg": 1.2,
+        "vitamin_a_mcg": 45,
+        "vitamin_c_mg": 75,
+        "vitamin_d_mcg": 0.5,
+        "vitamin_e_mg": 0.8,
+        "vitamin_k_mcg": 5,
+        "vitamin_b1_mg": 0.1,
+        "vitamin_b2_mg": 0.25,
+        "vitamin_b3_mg": 1.2,
+        "vitamin_b6_mg": 0.4,
+        "vitamin_b12_mcg": 0.6,
+        "folate_mcg": 35
+      },
+      "thumbFile": "1774748248046_emoj5wmd4wo.jpg",
+      "fromLibrary": true,
+      "libraryId": "lib_1774732346050"
+    }
+  ]
+}
