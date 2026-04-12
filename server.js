@@ -46,7 +46,10 @@ function getProfileDbs(profileId) {
       vitamin_b2_mg: 1.3, vitamin_b3_mg: 16, vitamin_b6_mg: 1.7, vitamin_b12_mcg: 2.4,
       folate_mcg: 400,
       omega3_mg: 1600,
-      copper_mg: 0.9
+      copper_mg: 0.9,
+      selenium_mcg: 55,
+      manganese_mg: 2.3,
+      vitamin_b5_mg: 5
     },
     priorityNutrients: ['protein_g', 'calcium_mg', 'vitamin_d_mcg', 'vitamin_c_mg', 'iron_mg', 'magnesium_mg']
   }).write();
@@ -188,16 +191,28 @@ app.post('/api/analyze-url', async (req, res) => {
 
 app.post('/api/reanalyze', requireProfile, async (req, res) => {
   try {
-    const { imageBase64, imageMime, thumbFile, ingredients } = req.body;
+    const { imageBase64, imageMime, thumbFile, ingredients, mealName } = req.body;
     if (!ingredients) return res.status(400).json({ error: 'Missing ingredients' });
+
+    // try to get image — not required for text/URL-based meals
     let base64 = imageBase64;
     if (!base64 && thumbFile) {
       const fp = path.join(THUMB_DIR, thumbFile);
       if (fs.existsSync(fp)) base64 = fs.readFileSync(fp).toString('base64');
     }
-    if (!base64) return res.status(400).json({ error: 'No image available for reanalysis' });
-    const result = await callClaude(base64, imageMime || 'image/jpeg', ingredients);
-    result._thumbFile = thumbFile || null;
+
+    let result;
+    if (base64) {
+      // photo-based meal: re-send image with corrected ingredients
+      result = await callClaude(base64, imageMime || 'image/jpeg', ingredients);
+      result._thumbFile = thumbFile || null;
+    } else {
+      // text/URL-based meal: recalculate from ingredient list alone
+      const description = (mealName ? mealName + '. ' : '') +
+        'Recalculate nutrition using EXACTLY these corrected ingredients per serving:\n' + ingredients;
+      result = await callClaudeText(description);
+      result._thumbFile = null;
+    }
     res.json(result);
   } catch (err) { console.error(err); res.status(500).json({ error: err.message }); }
 });
@@ -338,6 +353,19 @@ app.post('/api/library', requireProfile, (req, res) => {
   } catch (err) { res.status(500).json({ error: err.message }); }
 });
 
+// ── Update nutrition for a library entry (after edit+recalculate) ─────────────
+app.put('/api/library/:id/nutrition', requireProfile, (req, res) => {
+  try {
+    const { nutrition } = req.body;
+    if (!nutrition) return res.status(400).json({ error: 'Missing nutrition data' });
+    const meal = req.dbs.libraryDb.get('meals').find({ id: req.params.id }).value();
+    if (!meal) return res.status(404).json({ error: 'Library meal not found' });
+    req.dbs.libraryDb.get('meals').find({ id: req.params.id })
+      .assign({ nutrition, name: nutrition.meal_name || meal.name }).write();
+    res.json({ success: true });
+  } catch (err) { res.status(500).json({ error: err.message }); }
+});
+
 app.delete('/api/library/:id', requireProfile, (req, res) => {
   req.dbs.libraryDb.get('meals').remove({ id: req.params.id }).write();
   res.json({ success: true });
@@ -366,17 +394,30 @@ app.post('/api/library/:id/log', requireProfile, (req, res) => {
   try {
     const libMeal = req.dbs.libraryDb.get('meals').find({ id: req.params.id }).value();
     if (!libMeal) return res.status(404).json({ error: 'Library meal not found' });
-    const { mealType, date } = req.body;
+    const { mealType, date, servingSize } = req.body;
+    const srv = parseFloat(servingSize) || 1;
 
     // always use the library's current (potentially freshly uploaded) thumbFile
     const thumbFile = (libMeal.thumbFile && isThumbFileValid(libMeal.thumbFile))
       ? libMeal.thumbFile : null;
 
+    // scale nutrition by serving size if not 1×
+    let nutrition = libMeal.nutrition;
+    if (srv !== 1) {
+      nutrition = { ...libMeal.nutrition };
+      NUTR_KEYS.forEach(k => {
+        if (nutrition[k] !== undefined) nutrition[k] = Math.round(nutrition[k] * srv * 10) / 10;
+      });
+      nutrition.meal_name = libMeal.nutrition.meal_name;
+      nutrition.description = libMeal.nutrition.description +
+        (srv !== 1 ? ` (${srv}× serving)` : '');
+    }
+
     const meal = {
       id: Date.now().toString(), date: date || new Date().toISOString().split('T')[0],
       time: new Date().toISOString(), mealType: mealType || libMeal.defaultMealType || 'snack',
-      nutrition: libMeal.nutrition, thumbFile,
-      fromLibrary: true, libraryId: libMeal.id
+      nutrition, thumbFile, fromLibrary: true, libraryId: libMeal.id,
+      servingSize: srv
     };
     req.dbs.mealsDb.get('meals').push(meal).write();
     res.json({ success: true, meal });
@@ -384,7 +425,25 @@ app.post('/api/library/:id/log', requireProfile, (req, res) => {
 });
 
 app.get('/api/settings', requireProfile, (req, res) => {
-  res.json(req.dbs.settingsDb.value());
+  const data = req.dbs.settingsDb.value();
+  // migrate stale vitamin_k_mcg → vitamin_k1_mcg + vitamin_k2_mcg
+  if (data.priorityNutrients && data.priorityNutrients.includes('vitamin_k_mcg')) {
+    const updated = data.priorityNutrients
+      .filter(k => k !== 'vitamin_k_mcg')
+      .concat(['vitamin_k1_mcg', 'vitamin_k2_mcg']);
+    req.dbs.settingsDb.set('priorityNutrients', updated).write();
+    data.priorityNutrients = updated;
+  }
+  // migrate stale vitamin_k_mcg target → k1 + k2
+  if (data.targets && data.targets.vitamin_k_mcg !== undefined) {
+    req.dbs.settingsDb.set('targets.vitamin_k1_mcg', 120).write();
+    req.dbs.settingsDb.set('targets.vitamin_k2_mcg', 200).write();
+    req.dbs.settingsDb.unset('targets.vitamin_k_mcg').write();
+    data.targets.vitamin_k1_mcg = 120;
+    data.targets.vitamin_k2_mcg = 200;
+    delete data.targets.vitamin_k_mcg;
+  }
+  res.json(data);
 });
 
 app.put('/api/settings/targets', requireProfile, (req, res) => {
@@ -558,7 +617,7 @@ Return this JSON:
 "calories":0,"protein_g":0,"carbs_g":0,"fat_g":0,"fiber_g":0,"sugar_g":0,"sodium_mg":0,"potassium_mg":0,
 "calcium_mg":0,"iron_mg":0,"magnesium_mg":0,"phosphorus_mg":0,"zinc_mg":0,"vitamin_a_mcg":0,"vitamin_c_mg":0,
 "vitamin_d_mcg":0,"vitamin_e_mg":0,"vitamin_k1_mcg":0,"vitamin_k2_mcg":0,"vitamin_b1_mg":0,"vitamin_b2_mg":0,"vitamin_b3_mg":0,
-"vitamin_b6_mg":0,"vitamin_b12_mcg":0,"folate_mcg":0,"omega3_mg":0,"copper_mg":0}${note}
+"vitamin_b6_mg":0,"vitamin_b12_mcg":0,"folate_mcg":0,"omega3_mg":0,"copper_mg":0,"selenium_mcg":0,"manganese_mg":0,"vitamin_b5_mg":0}${note}
 
 Replace all 0s with your best estimates.`;
 }
@@ -577,7 +636,7 @@ ${pageText}
 "calories":0,"protein_g":0,"carbs_g":0,"fat_g":0,"fiber_g":0,"sugar_g":0,"sodium_mg":0,"potassium_mg":0,
 "calcium_mg":0,"iron_mg":0,"magnesium_mg":0,"phosphorus_mg":0,"zinc_mg":0,"vitamin_a_mcg":0,"vitamin_c_mg":0,
 "vitamin_d_mcg":0,"vitamin_e_mg":0,"vitamin_k1_mcg":0,"vitamin_k2_mcg":0,"vitamin_b1_mg":0,"vitamin_b2_mg":0,"vitamin_b3_mg":0,
-"vitamin_b6_mg":0,"vitamin_b12_mcg":0,"folate_mcg":0}
+"vitamin_b6_mg":0,"vitamin_b12_mcg":0,"folate_mcg":0,"omega3_mg":0,"copper_mg":0,"selenium_mcg":0,"manganese_mg":0,"vitamin_b5_mg":0}
 
 If no recipe found, set meal_name to "Recipe not found" and all numbers to 0. Otherwise replace all 0s with estimates.`;
 
@@ -595,48 +654,48 @@ async function callClaudeSuppLabel(base64, mime) {
   const prompt = `You are analyzing a supplement label photo. Extract the supplement name and all nutrient amounts per serving.
 Return ONLY a valid JSON object (no markdown, no backticks):
 {
-  "name": "string (product name, e.g. Vitamin D3 5000 IU)",
-  "serving_size": "string (e.g. 1 capsule)",
+  "name": "string (product name)",
+  "serving_size": "string (e.g. 1 scoop, 1 capsule)",
   "nutrients": {
     "calories": 0, "protein_g": 0, "carbs_g": 0, "fat_g": 0, "fiber_g": 0, "sugar_g": 0,
     "sodium_mg": 0, "potassium_mg": 0, "calcium_mg": 0, "iron_mg": 0, "magnesium_mg": 0,
-    "phosphorus_mg": 0, "zinc_mg": 0, "vitamin_a_mcg": 0, "vitamin_c_mg": 0,
-    "vitamin_d_mcg": 0, "vitamin_e_mg": 0, "vitamin_k1_mcg": 0, "vitamin_k2_mcg": 0, "vitamin_b1_mg": 0,
-    "vitamin_b2_mg": 0, "vitamin_b3_mg": 0, "vitamin_b6_mg": 0, "vitamin_b12_mcg": 0,
-    "folate_mcg": 0, "omega3_mg": 0, "copper_mg": 0
+    "phosphorus_mg": 0, "zinc_mg": 0, "selenium_mcg": 0, "manganese_mg": 0, "chromium_mcg": 0,
+    "vitamin_a_mcg": 0, "vitamin_c_mg": 0, "vitamin_d_mcg": 0, "vitamin_e_mg": 0,
+    "vitamin_k1_mcg": 0, "vitamin_k2_mcg": 0,
+    "vitamin_b1_mg": 0, "vitamin_b2_mg": 0, "vitamin_b3_mg": 0, "vitamin_b5_mg": 0,
+    "vitamin_b6_mg": 0, "vitamin_b12_mcg": 0, "folate_mcg": 0,
+    "omega3_mg": 0, "copper_mg": 0
   }
 }
 
-IMPORTANT:
-- Read the label carefully. Use the "per serving" or "per capsule/tablet" amounts, not the whole bottle.
-- Convert all units to match the JSON keys: IU to mcg for vitamins (Vitamin D: 1 IU = 0.025mcg; Vitamin A: 1 IU = 0.3mcg; Vitamin E: 1 IU = 0.67mg), mg stays mg, mcg stays mcg.
-- Only include nutrients that are actually on the label with non-zero values. Leave others as 0.
-- For omega3_mg: look for EPA + DHA or "Total Omega-3" on fish oil labels.
-- For Vitamin K supplements: map MK-4, MK-7, MK-9, menaquinone, or any K2 form to vitamin_k2_mcg. Map phylloquinone or K1 to vitamin_k1_mcg. If the label just says "Vitamin K" without specifying the form, check context — most standalone K supplements are K2 (MK-7); most multivitamins use K1.
+CRITICAL — READ EVERY LINE OF THE LABEL:
+- Read ALL macros: Calories, Total Carbohydrate → carbs_g, Dietary Fiber → fiber_g, Total Sugars → sugar_g, Protein → protein_g, Total Fat → fat_g. These matter for greens powders, protein supplements, and meal replacements.
+- Thiamine / Thiamin = vitamin_b1_mg
+- Riboflavin = vitamin_b2_mg (do NOT skip this)
+- Niacin / Niacinamide = vitamin_b3_mg
+- Pantothenic Acid / Pantothenate = vitamin_b5_mg
+- Pyridoxine / Pyridoxal = vitamin_b6_mg
+- Cyanocobalamin / Methylcobalamin = vitamin_b12_mcg
+- Folate / Folic Acid = folate_mcg
+- Selenium = selenium_mcg (convert mg → mcg if needed: 1mg = 1000mcg)
+- Manganese = manganese_mg
+- Chromium = chromium_mcg
 
-MAGNESIUM PROPRIETARY BLENDS — CRITICAL:
-If the label lists a magnesium supplement as a proprietary blend with a total blend weight (rather than stating elemental magnesium directly), you MUST estimate the elemental magnesium content — do NOT log the blend weight as magnesium_mg.
+UNITS: IU → mcg for fat-soluble vitamins (D: 1 IU = 0.025mcg; A: 1 IU = 0.3mcg; E: 1 IU = 0.67mg). mg stays mg. mcg stays mcg.
+Only include nutrients actually on the label. Leave others as 0.
+For omega3_mg: look for EPA + DHA or "Total Omega-3".
+For Vitamin K: MK-4/MK-7/MK-9/menaquinone → vitamin_k2_mcg. Phylloquinone/K1 → vitamin_k1_mcg. Unlabeled "Vitamin K" in a multivitamin → vitamin_k1_mcg.
 
-Use these molecular weight ratios to estimate elemental magnesium per form:
-- Magnesium oxide: ~60% elemental (but note very low bioavailability ~4%)
-- Magnesium citrate: ~16% elemental
-- Magnesium glycinate / bisglycinate: ~14% elemental
-- Magnesium malate: ~15% elemental
-- Magnesium taurinate: ~8% elemental
-- Magnesium threonate: ~8% elemental
-- Magnesium chloride: ~12% elemental
-
-If the label names the specific form(s), apply the ratio(s) above. If the form is unknown or it is simply labeled "Magnesium Blend" or "Proprietary Blend" without specifying the form, estimate elemental magnesium at 15–20% of the total blend weight (use 17.5% as the midpoint default).
-
-Always log the elemental magnesium amount in magnesium_mg, never the raw blend weight.
-
-Example: "Magnesium Blend 500mg (as glycinate, malate)" → estimate ~75mg elemental (500 × 15%). Log magnesium_mg: 75.`;
+MAGNESIUM PROPRIETARY BLENDS:
+If magnesium is listed as a blend total (not elemental), estimate elemental using:
+oxide ~60%, citrate ~16%, glycinate/bisglycinate ~14%, malate ~15%, taurinate ~8%, threonate ~8%, chloride ~12%.
+Unknown blend → use 17.5%. Always log elemental mg, never the blend weight.`;
 
   const resp = await fetch('https://api.anthropic.com/v1/messages', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json', 'x-api-key': process.env.ANTHROPIC_API_KEY, 'anthropic-version': '2023-06-01' },
     body: JSON.stringify({
-      model: 'claude-sonnet-4-20250514', max_tokens: 1000,
+      model: 'claude-sonnet-4-20250514', max_tokens: 1500,
       messages: [{ role: 'user', content: [
         { type: 'image', source: { type: 'base64', media_type: mime, data: base64 } },
         { type: 'text', text: prompt }
@@ -654,7 +713,7 @@ async function callClaudeText(description) {
 "calories":0,"protein_g":0,"carbs_g":0,"fat_g":0,"fiber_g":0,"sugar_g":0,"sodium_mg":0,"potassium_mg":0,
 "calcium_mg":0,"iron_mg":0,"magnesium_mg":0,"phosphorus_mg":0,"zinc_mg":0,"vitamin_a_mcg":0,"vitamin_c_mg":0,
 "vitamin_d_mcg":0,"vitamin_e_mg":0,"vitamin_k1_mcg":0,"vitamin_k2_mcg":0,"vitamin_b1_mg":0,"vitamin_b2_mg":0,"vitamin_b3_mg":0,
-"vitamin_b6_mg":0,"vitamin_b12_mcg":0,"folate_mcg":0,"omega3_mg":0,"copper_mg":0}
+"vitamin_b6_mg":0,"vitamin_b12_mcg":0,"folate_mcg":0,"omega3_mg":0,"copper_mg":0,"selenium_mcg":0,"manganese_mg":0,"vitamin_b5_mg":0}
 
 Meal description: "${description}"
 Replace all 0s with realistic estimates.`;

@@ -593,3 +593,63 @@ describe('Supplement Log API', () => {
     expect(res.body).toEqual([]);
   });
 });
+
+// ══ Library nutrition update + serving size ════════════════════════════════════
+describe('Library nutrition update & serving size', () => {
+  let pid, libId;
+
+  beforeAll(async () => {
+    pid = await makeProfile('EditSrvUser');
+    const save = await as(pid).post('/api/library', { nutrition: MEAL_A, defaultMealType: 'breakfast' });
+    libId = save.body.meal.id;
+  });
+
+  test('PUT /api/library/:id/nutrition updates stored nutrition', async () => {
+    const updated = { ...MEAL_A, calories: 250, protein_g: 18, meal_name: 'Scrambled Eggs' };
+    const res = await as(pid).put('/api/library/' + libId + '/nutrition', { nutrition: updated });
+    expect(res.status).toBe(200);
+    expect(res.body.success).toBe(true);
+
+    const list = await as(pid).get('/api/library');
+    const meal = list.body.find(m => m.id === libId);
+    expect(meal.nutrition.calories).toBe(250);
+    expect(meal.nutrition.protein_g).toBe(18);
+  });
+
+  test('PUT /api/library/:id/nutrition returns 400 when nutrition missing', async () => {
+    const res = await as(pid).put('/api/library/' + libId + '/nutrition', {});
+    expect(res.status).toBe(400);
+  });
+
+  test('PUT /api/library/:id/nutrition returns 404 for unknown id', async () => {
+    const res = await as(pid).put('/api/library/lib_nonexistent/nutrition', { nutrition: MEAL_A });
+    expect(res.status).toBe(404);
+  });
+
+  test('log from library at 0.5× serving scales all nutrients', async () => {
+    const res = await as(pid).post('/api/library/' + libId + '/log', {
+      mealType: 'snack', date: '2032-01-01', servingSize: 0.5
+    });
+    expect(res.status).toBe(200);
+    expect(res.body.meal.servingSize).toBe(0.5);
+    // calories stored were 250 after update above, so 0.5× = 125
+    expect(res.body.meal.nutrition.calories).toBe(125);
+    expect(res.body.meal.nutrition.protein_g).toBe(9);
+  });
+
+  test('log from library at 1× serving (default) keeps full nutrition', async () => {
+    const res = await as(pid).post('/api/library/' + libId + '/log', {
+      mealType: 'breakfast', date: '2032-01-02'
+    });
+    expect(res.status).toBe(200);
+    expect(res.body.meal.nutrition.calories).toBe(250);
+  });
+
+  test('log from library at 2× doubles calories', async () => {
+    const res = await as(pid).post('/api/library/' + libId + '/log', {
+      mealType: 'dinner', date: '2032-01-03', servingSize: 2
+    });
+    expect(res.body.meal.nutrition.calories).toBe(500);
+    expect(res.body.meal.nutrition.protein_g).toBe(36);
+  });
+});
