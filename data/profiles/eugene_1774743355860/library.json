@@ -3,54 +3,60 @@
     {
       "id": "lib_1774732346050",
       "savedAt": "2026-03-28T21:12:26.050Z",
-      "name": "Fresh Fruit and Yogurt Bowl",
+      "name": "Banana strawberry smoothy",
       "defaultMealType": "snack",
       "nutrition": {
-        "meal_name": "Fresh Fruit and Yogurt Bowl",
-        "description": "A healthy snack or light meal featuring plain whole milk yogurt served with fresh sliced banana and strawberries",
+        "meal_name": "Banana strawberry smoothy",
+        "description": "A nutritious bowl with whole milk plain yogurt topped with sliced large bananas and fresh strawberries",
         "ingredients": [
           {
             "name": "Plain yogurt",
-            "quantity": "1/2 cup",
-            "notes": "appears to be whole milk yogurt"
+            "quantity": "1.5 cup",
+            "notes": "whole milk yogurt"
           },
           {
             "name": "Banana",
-            "quantity": "1 medium",
+            "quantity": "2 large",
             "notes": "sliced"
           },
           {
             "name": "Strawberries",
-            "quantity": "2 large",
+            "quantity": "6 large",
             "notes": "fresh, hulled"
           }
         ],
-        "calories": 195,
-        "protein_g": 8,
-        "carbs_g": 35,
-        "fat_g": 4,
-        "fiber_g": 5,
-        "sugar_g": 28,
-        "sodium_mg": 65,
-        "potassium_mg": 520,
-        "calcium_mg": 180,
-        "iron_mg": 0.6,
-        "magnesium_mg": 40,
-        "phosphorus_mg": 140,
-        "zinc_mg": 1.2,
-        "vitamin_a_mcg": 45,
-        "vitamin_c_mg": 75,
-        "vitamin_d_mcg": 0.5,
-        "vitamin_e_mg": 0.8,
-        "vitamin_k_mcg": 5,
-        "vitamin_b1_mg": 0.1,
-        "vitamin_b2_mg": 0.25,
-        "vitamin_b3_mg": 1.2,
-        "vitamin_b6_mg": 0.4,
-        "vitamin_b12_mcg": 0.6,
-        "folate_mcg": 35
+        "calories": 520,
+        "protein_g": 18.2,
+        "carbs_g": 67.8,
+        "fat_g": 18.4,
+        "fiber_g": 8.6,
+        "sugar_g": 55.2,
+        "sodium_mg": 184,
+        "potassium_mg": 1085,
+        "calcium_mg": 482,
+        "iron_mg": 0.9,
+        "magnesium_mg": 68,
+        "phosphorus_mg": 398,
+        "zinc_mg": 2.1,
+        "vitamin_a_mcg": 142,
+        "vitamin_c_mg": 88.6,
+        "vitamin_d_mcg": 1.2,
+        "vitamin_e_mg": 1.4,
+        "vitamin_k1_mcg": 3.8,
+        "vitamin_k2_mcg": 2.4,
+        "vitamin_b1_mg": 0.14,
+        "vitamin_b2_mg": 0.58,
+        "vitamin_b3_mg": 1.86,
+        "vitamin_b6_mg": 0.82,
+        "vitamin_b12_mcg": 1.52,
+        "folate_mcg": 58,
+        "omega3_mg": 185,
+        "copper_mg": 0.28,
+        "selenium_mcg": 12.4,
+        "manganese_mg": 0.64,
+        "vitamin_b5_mg": 1.68
       },
-      "thumbFile": "1774748248046_emoj5wmd4wo.jpg"
+      "thumbFile": "1775980314274_owdii0c1hea.png"
     },
     {
       "id": "lib_1774733224230",
@@ -521,6 +527,4623 @@
         "vitamin_b6_mg": 0.18,
         "vitamin_b12_mcg": 0.8,
         "folate_mcg": 55
+      },
+      "thumbFile": "1774849962804_rnuubufm5cg.png"
+    },
+    {
+      "id": "lib_1774850470996",
+      "savedAt": "2026-03-30T06:01:10.996Z",
+      "name": "Buckwheat with Beef Stew",
+      "defaultMealType": "breakfast",
+      "nutrition": {
+        "meal_name": "Buckwheat with Beef Stew",
+        "description": "Hearty meal featuring cooked buckwheat groats served with tender beef chuck stew containing onions, carrots, celery, mushrooms, and tomato paste in beef broth",
+        "ingredients": [
+          {
+            "name": "Buckwheat groats",
+            "quantity": "1 cup cooked",
+            "notes": "whole grain buckwheat"
+          },
+          {
+            "name": "Beef chuck",
+            "quantity": "5 oz",
+            "notes": "stewed until tender"
+          },
+          {
+            "name": "Onions",
+            "quantity": "1/2 medium",
+            "notes": "diced and cooked in stew"
+          },
+          {
+            "name": "Carrots",
+            "quantity": "1/2 cup",
+            "notes": "chopped"
+          },
+          {
+            "name": "Celery",
+            "quantity": "1/4 cup",
+            "notes": "diced"
+          },
+          {
+            "name": "Beef broth",
+            "quantity": "1/2 cup",
+            "notes": "for stewing"
+          },
+          {
+            "name": "Tomato paste",
+            "quantity": "1 tbsp",
+            "notes": "for flavor"
+          },
+          {
+            "name": "Cooking oil",
+            "quantity": "1 tsp",
+            "notes": "for browning meat"
+          },
+          {
+            "name": "mushrooms",
+            "quantity": "3 oz",
+            "notes": "diced and cooked in stew"
+          }
+        ],
+        "calories": 625,
+        "protein_g": 42.8,
+        "carbs_g": 48.2,
+        "fat_g": 25.6,
+        "fiber_g": 8.4,
+        "sugar_g": 9.2,
+        "sodium_mg": 785,
+        "potassium_mg": 1245,
+        "calcium_mg": 85,
+        "iron_mg": 6.8,
+        "magnesium_mg": 145,
+        "phosphorus_mg": 485,
+        "zinc_mg": 8.2,
+        "vitamin_a_mcg": 485,
+        "vitamin_c_mg": 12.5,
+        "vitamin_d_mcg": 2.8,
+        "vitamin_e_mg": 2.4,
+        "vitamin_k1_mcg": 18.5,
+        "vitamin_k2_mcg": 4.2,
+        "vitamin_b1_mg": 0.65,
+        "vitamin_b2_mg": 0.48,
+        "vitamin_b3_mg": 12.8,
+        "vitamin_b6_mg": 0.85,
+        "vitamin_b12_mcg": 3.2,
+        "folate_mcg": 65,
+        "omega3_mg": 125,
+        "copper_mg": 0.42
+      },
+      "thumbFile": "1775030473741_1s1b9geqi9v.png"
+    },
+    {
+      "id": "lib_1774851458800",
+      "savedAt": "2026-03-30T06:17:38.800Z",
+      "name": "Mediterranean Mixed Salad with Lingonberry Dressing",
+      "defaultMealType": "dinner",
+      "nutrition": {
+        "meal_name": "Mediterranean Mixed Salad with Lingonberry Dressing",
+        "description": "Fresh salad with cherry tomatoes, bell peppers, avocado, feta cheese, and strawberry, dressed with olive oil, lemon juice, and lingonberry jam",
+        "ingredients": [
+          {
+            "name": "Cherry tomatoes",
+            "quantity": "1 cup",
+            "notes": "red and orange varieties"
+          },
+          {
+            "name": "Yellow bell pepper",
+            "quantity": "1/2 medium pepper",
+            "notes": "sliced into strips"
+          },
+          {
+            "name": "Avocado",
+            "quantity": "1 medium",
+            "notes": "fresh"
+          },
+          {
+            "name": "Feta cheese",
+            "quantity": "1 oz",
+            "notes": "crumbled"
+          },
+          {
+            "name": "Strawberry",
+            "quantity": "1 large",
+            "notes": "fresh"
+          },
+          {
+            "name": "Olive oil",
+            "quantity": "1.5 tbsp",
+            "notes": "extra virgin"
+          },
+          {
+            "name": "Lemon juice",
+            "quantity": "2 tbsp",
+            "notes": "from 1 small lemon"
+          },
+          {
+            "name": "Lingonberry jam",
+            "quantity": "0.5 tsp",
+            "notes": "sweetener"
+          },
+          {
+            "name": "Fresh mint leaves",
+            "quantity": "2 tbsp",
+            "notes": "chopped"
+          }
+        ],
+        "calories": 425,
+        "protein_g": 9,
+        "carbs_g": 22,
+        "fat_g": 37,
+        "fiber_g": 12,
+        "sugar_g": 14,
+        "sodium_mg": 320,
+        "potassium_mg": 890,
+        "calcium_mg": 180,
+        "iron_mg": 2.1,
+        "magnesium_mg": 45,
+        "phosphorus_mg": 160,
+        "zinc_mg": 1.3,
+        "vitamin_a_mcg": 95,
+        "vitamin_c_mg": 85,
+        "vitamin_d_mcg": 0.1,
+        "vitamin_e_mg": 4.2,
+        "vitamin_k1_mcg": 35,
+        "vitamin_k2_mcg": 2,
+        "vitamin_b1_mg": 0.15,
+        "vitamin_b2_mg": 0.25,
+        "vitamin_b3_mg": 2.8,
+        "vitamin_b6_mg": 0.4,
+        "vitamin_b12_mcg": 0.8,
+        "folate_mcg": 120,
+        "omega3_mg": 180,
+        "copper_mg": 0.3
+      },
+      "thumbFile": "1775030430615_p8kekrmwd1.png"
+    },
+    {
+      "id": "lib_1774896747861",
+      "savedAt": "2026-03-30T18:52:27.861Z",
+      "name": "Red Caviar Toast with Tea",
+      "defaultMealType": "breakfast",
+      "nutrition": {
+        "meal_name": "Red Caviar Toast with Tea",
+        "description": "Three slices of rye bread topped with generous portions of salmon roe caviar, served with a cup of black tea",
+        "ingredients": [
+          {
+            "name": "bread",
+            "quantity": "3 slices",
+            "notes": "rye bread, 45 g"
+          },
+          {
+            "name": "red caviar",
+            "quantity": "1.3 tablespoons",
+            "notes": "salmon roe, bright orange-red color, generous portion on each slice"
+          },
+          {
+            "name": "tea",
+            "quantity": "1 cup",
+            "notes": "black tea"
+          }
+        ],
+        "calories": 245,
+        "protein_g": 12.8,
+        "carbs_g": 32.1,
+        "fat_g": 8.2,
+        "fiber_g": 4.1,
+        "sugar_g": 1.8,
+        "sodium_mg": 485,
+        "potassium_mg": 168,
+        "calcium_mg": 28,
+        "iron_mg": 1.9,
+        "magnesium_mg": 31,
+        "phosphorus_mg": 158,
+        "zinc_mg": 0.8,
+        "vitamin_a_mcg": 85,
+        "vitamin_c_mg": 0.8,
+        "vitamin_d_mcg": 2.1,
+        "vitamin_e_mg": 1.2,
+        "vitamin_k1_mcg": 2.8,
+        "vitamin_k2_mcg": 0.3,
+        "vitamin_b1_mg": 0.18,
+        "vitamin_b2_mg": 0.12,
+        "vitamin_b3_mg": 1.8,
+        "vitamin_b6_mg": 0.15,
+        "vitamin_b12_mcg": 3.2,
+        "folate_mcg": 28,
+        "omega3_mg": 245,
+        "copper_mg": 0.15,
+        "selenium_mcg": 18.5,
+        "manganese_mg": 0.85,
+        "vitamin_b5_mg": 0.42
+      },
+      "thumbFile": "1774896666026_ap9q5kph3r.jpg"
+    },
+    {
+      "id": "lib_1774898101191",
+      "savedAt": "2026-03-30T19:15:01.191Z",
+      "name": "Marinated Goat Cheese",
+      "defaultMealType": "breakfast",
+      "nutrition": {
+        "meal_name": "Marinated Goat Cheese",
+        "description": "Australian pasteurised goat cheese marinated in oil with herbs and spices, based on nutrition label showing 1oz serving",
+        "ingredients": [
+          {
+            "name": "pasteurised goat cheese",
+            "quantity": "1 oz",
+            "notes": "main ingredient, goat's milk with salt and cultures"
+          },
+          {
+            "name": "canola oil",
+            "quantity": "small amount",
+            "notes": "GMO-free, for marinating"
+          },
+          {
+            "name": "extra virgin olive oil",
+            "quantity": "small amount",
+            "notes": "for marinating"
+          },
+          {
+            "name": "peppercorns",
+            "quantity": "pinch",
+            "notes": "visible spice"
+          },
+          {
+            "name": "fresh thyme",
+            "quantity": "pinch",
+            "notes": "herb seasoning"
+          },
+          {
+            "name": "garlic",
+            "quantity": "pinch",
+            "notes": "flavoring agent"
+          },
+          {
+            "name": "rennet",
+            "quantity": "trace",
+            "notes": "cheese-making agent"
+          }
+        ],
+        "calories": 145,
+        "protein_g": 3,
+        "carbs_g": 0,
+        "fat_g": 14,
+        "fiber_g": 0,
+        "sugar_g": 0,
+        "sodium_mg": 260,
+        "potassium_mg": 99,
+        "calcium_mg": 61,
+        "iron_mg": 0,
+        "magnesium_mg": 8,
+        "phosphorus_mg": 70,
+        "zinc_mg": 0.3,
+        "vitamin_a_mcg": 85,
+        "vitamin_c_mg": 0,
+        "vitamin_d_mcg": 2,
+        "vitamin_e_mg": 1.2,
+        "vitamin_k1_mcg": 2,
+        "vitamin_k2_mcg": 15,
+        "vitamin_b1_mg": 0.02,
+        "vitamin_b2_mg": 0.15,
+        "vitamin_b3_mg": 0.3,
+        "vitamin_b6_mg": 0.03,
+        "vitamin_b12_mcg": 0.1,
+        "folate_mcg": 3,
+        "omega3_mg": 50,
+        "copper_mg": 0.05,
+        "selenium_mcg": 4,
+        "manganese_mg": 0.02,
+        "vitamin_b5_mg": 0.2,
+        "_thumbFile": "1774898075631_hmk9eestuh.jpg",
+        "_mime": "image/jpeg"
+      },
+      "thumbFile": "1774898075631_hmk9eestuh.jpg"
+    },
+    {
+      "id": "lib_1774937505076",
+      "savedAt": "2026-03-31T06:11:45.076Z",
+      "name": "Yotam Ottolenghi's Seeded Chicken Schnitzel",
+      "defaultMealType": "dinner",
+      "nutrition": {
+        "meal_name": "Yotam Ottolenghi's Seeded Chicken Schnitzel",
+        "description": "Crispy breaded chicken strips coated in a flavorful mixture of sesame seeds, sunflower seeds, coriander seeds, and spices. Serves 4-8 (calculated per serving assuming 6 servings)",
+        "ingredients": [
+          {
+            "name": "boneless, skinless chicken breasts",
+            "quantity": "4 oz",
+            "notes": "cut into strips, flattened"
+          },
+          {
+            "name": "all-purpose flour",
+            "quantity": "1.3 tbsp",
+            "notes": "for dredging"
+          },
+          {
+            "name": "salt",
+            "quantity": "0.17 tsp",
+            "notes": "divided between flour and coating"
+          },
+          {
+            "name": "black pepper",
+            "quantity": "pinch",
+            "notes": "to taste"
+          },
+          {
+            "name": "eggs",
+            "quantity": "0.33 large",
+            "notes": "lightly beaten"
+          },
+          {
+            "name": "panko breadcrumbs",
+            "quantity": "3.5 tbsp",
+            "notes": ""
+          },
+          {
+            "name": "white sesame seeds",
+            "quantity": "1 tbsp",
+            "notes": ""
+          },
+          {
+            "name": "black sesame seeds",
+            "quantity": "1 tsp",
+            "notes": ""
+          },
+          {
+            "name": "sunflower seeds",
+            "quantity": "2.25 tsp",
+            "notes": "roughly chopped"
+          },
+          {
+            "name": "coriander seeds",
+            "quantity": "0.75 tsp",
+            "notes": "roughly crushed"
+          },
+          {
+            "name": "ground turmeric",
+            "quantity": "0.17 tsp",
+            "notes": ""
+          },
+          {
+            "name": "cayenne pepper",
+            "quantity": "0.08 tsp",
+            "notes": ""
+          },
+          {
+            "name": "sunflower oil",
+            "quantity": "1.2 tbsp",
+            "notes": "for frying"
+          },
+          {
+            "name": "lemon",
+            "quantity": "0.17 medium",
+            "notes": "for serving"
+          }
+        ],
+        "calories": 385,
+        "protein_g": 28,
+        "carbs_g": 18,
+        "fat_g": 22,
+        "fiber_g": 3,
+        "sugar_g": 2,
+        "sodium_mg": 420,
+        "potassium_mg": 285,
+        "calcium_mg": 95,
+        "iron_mg": 2.8,
+        "magnesium_mg": 65,
+        "phosphorus_mg": 220,
+        "zinc_mg": 1.8,
+        "vitamin_a_mcg": 15,
+        "vitamin_c_mg": 8,
+        "vitamin_d_mcg": 0.3,
+        "vitamin_e_mg": 4.2,
+        "vitamin_k1_mcg": 12,
+        "vitamin_k2_mcg": 2,
+        "vitamin_b1_mg": 0.25,
+        "vitamin_b2_mg": 0.18,
+        "vitamin_b3_mg": 8.5,
+        "vitamin_b6_mg": 0.45,
+        "vitamin_b12_mcg": 0.35,
+        "folate_mcg": 25,
+        "omega3_mg": 185,
+        "copper_mg": 0.35,
+        "selenium_mcg": 22,
+        "manganese_mg": 0.65,
+        "vitamin_b5_mg": 0.95
+      },
+      "thumbFile": "1775029606943_81plvekryt5.png"
+    },
+    {
+      "id": "lib_1774937972457",
+      "savedAt": "2026-03-31T06:19:32.457Z",
+      "name": "Cooked Buckwheat",
+      "defaultMealType": "dinner",
+      "nutrition": {
+        "meal_name": "Cooked Buckwheat",
+        "description": "Plain cooked buckwheat groats served as a nutritious whole grain side dish or base",
+        "ingredients": [
+          {
+            "name": "buckwheat groats",
+            "quantity": "1 cup cooked (168g)",
+            "notes": "cooked in water"
+          }
+        ],
+        "calories": 155,
+        "protein_g": 5.7,
+        "carbs_g": 33.5,
+        "fat_g": 1,
+        "fiber_g": 4.5,
+        "sugar_g": 1.5,
+        "sodium_mg": 7,
+        "potassium_mg": 148,
+        "calcium_mg": 12,
+        "iron_mg": 1.3,
+        "magnesium_mg": 86,
+        "phosphorus_mg": 118,
+        "zinc_mg": 1,
+        "vitamin_a_mcg": 0,
+        "vitamin_c_mg": 0,
+        "vitamin_d_mcg": 0,
+        "vitamin_e_mg": 0.2,
+        "vitamin_k1_mcg": 1.9,
+        "vitamin_k2_mcg": 0,
+        "vitamin_b1_mg": 0.1,
+        "vitamin_b2_mg": 0.07,
+        "vitamin_b3_mg": 0.9,
+        "vitamin_b6_mg": 0.21,
+        "vitamin_b12_mcg": 0,
+        "folate_mcg": 14,
+        "omega3_mg": 28,
+        "copper_mg": 0.18,
+        "selenium_mcg": 8.3,
+        "manganese_mg": 1.3,
+        "vitamin_b5_mg": 0.44
+      },
+      "thumbFile": "1775030559255_ou1z2s5ijk9.png"
+    },
+    {
+      "id": "lib_1774999159348",
+      "savedAt": "2026-03-31T23:19:19.348Z",
+      "name": "Burrata Caprese",
+      "defaultMealType": "breakfast",
+      "nutrition": {
+        "meal_name": "Burrata Caprese",
+        "description": "Fresh burrata cheese served with sliced tomatoes, fresh basil leaves, drizzled with olive oil and balsamic glaze",
+        "ingredients": [
+          {
+            "name": "burrata cheese",
+            "quantity": "125g",
+            "notes": "fresh, creamy mozzarella with cream center"
+          },
+          {
+            "name": "tomatoes",
+            "quantity": "150g",
+            "notes": "fresh, ripe sliced tomatoes"
+          },
+          {
+            "name": "fresh basil",
+            "quantity": "10g",
+            "notes": "fresh basil leaves"
+          },
+          {
+            "name": "extra virgin olive oil",
+            "quantity": "15ml",
+            "notes": "drizzled over salad"
+          },
+          {
+            "name": "balsamic glaze",
+            "quantity": "10ml",
+            "notes": "reduced balsamic vinegar"
+          }
+        ],
+        "calories": 385,
+        "protein_g": 18.5,
+        "carbs_g": 12.8,
+        "fat_g": 31.2,
+        "fiber_g": 2.4,
+        "sugar_g": 9.6,
+        "sodium_mg": 485,
+        "potassium_mg": 425,
+        "calcium_mg": 320,
+        "iron_mg": 1.2,
+        "magnesium_mg": 28,
+        "phosphorus_mg": 245,
+        "zinc_mg": 2.1,
+        "vitamin_a_mcg": 165,
+        "vitamin_c_mg": 22.5,
+        "vitamin_d_mcg": 0.3,
+        "vitamin_e_mg": 3.8,
+        "vitamin_k1_mcg": 18.5,
+        "vitamin_k2_mcg": 2.8,
+        "vitamin_b1_mg": 0.08,
+        "vitamin_b2_mg": 0.28,
+        "vitamin_b3_mg": 1.4,
+        "vitamin_b6_mg": 0.15,
+        "vitamin_b12_mcg": 1.2,
+        "folate_mcg": 32,
+        "omega3_mg": 185,
+        "copper_mg": 0.12,
+        "selenium_mcg": 14.2,
+        "manganese_mg": 0.18,
+        "vitamin_b5_mg": 0.45
+      },
+      "thumbFile": "1775029731106_yg0vz2ytrv.png"
+    },
+    {
+      "id": "lib_1774999268317",
+      "savedAt": "2026-03-31T23:21:08.317Z",
+      "name": "Smoked Butterfish",
+      "defaultMealType": "breakfast",
+      "nutrition": {
+        "meal_name": "Smoked Butterfish",
+        "description": "A serving of smoked butterfish, a rich and flaky fish with a delicate smoky flavor",
+        "ingredients": [
+          {
+            "name": "butterfish",
+            "quantity": "100g",
+            "notes": "smoked preparation"
+          }
+        ],
+        "calories": 190,
+        "protein_g": 22,
+        "carbs_g": 0,
+        "fat_g": 11,
+        "fiber_g": 0,
+        "sugar_g": 0,
+        "sodium_mg": 850,
+        "potassium_mg": 420,
+        "calcium_mg": 25,
+        "iron_mg": 0.8,
+        "magnesium_mg": 28,
+        "phosphorus_mg": 220,
+        "zinc_mg": 0.6,
+        "vitamin_a_mcg": 45,
+        "vitamin_c_mg": 0,
+        "vitamin_d_mcg": 8.5,
+        "vitamin_e_mg": 1.2,
+        "vitamin_k1_mcg": 0.5,
+        "vitamin_k2_mcg": 0.2,
+        "vitamin_b1_mg": 0.08,
+        "vitamin_b2_mg": 0.12,
+        "vitamin_b3_mg": 4.2,
+        "vitamin_b6_mg": 0.35,
+        "vitamin_b12_mcg": 2.8,
+        "folate_mcg": 8,
+        "omega3_mg": 850,
+        "copper_mg": 0.08,
+        "selenium_mcg": 38,
+        "manganese_mg": 0.02,
+        "vitamin_b5_mg": 0.65
+      },
+      "thumbFile": "1775030976423_x44bmgnclhc.png"
+    },
+    {
+      "id": "lib_1775028768719",
+      "savedAt": "2026-04-01T07:32:48.719Z",
+      "name": "Easy Mushroom Ragu",
+      "defaultMealType": "dinner",
+      "nutrition": {
+        "meal_name": "Easy Mushroom Ragu",
+        "description": "Rich and savory portobello mushroom ragu with umami-packed mushrooms, tomato paste, and Parmesan cheese. Makes 4 servings.",
+        "ingredients": [
+          {
+            "name": "extra-virgin olive oil",
+            "quantity": "3 tablespoons",
+            "notes": "45 ml"
+          },
+          {
+            "name": "shallots",
+            "quantity": "2",
+            "notes": "halved lengthwise and thinly sliced"
+          },
+          {
+            "name": "kosher salt",
+            "quantity": "to taste",
+            "notes": ""
+          },
+          {
+            "name": "portobello mushroom caps",
+            "quantity": "1 pound",
+            "notes": "500 g, sliced into 1-inch chunks"
+          },
+          {
+            "name": "garlic clove",
+            "quantity": "1",
+            "notes": "thinly sliced"
+          },
+          {
+            "name": "fresh rosemary or thyme",
+            "quantity": "2 teaspoons",
+            "notes": "finely chopped"
+          },
+          {
+            "name": "crushed red pepper",
+            "quantity": "0.5 teaspoon",
+            "notes": ""
+          },
+          {
+            "name": "tomato paste",
+            "quantity": "3 tablespoons",
+            "notes": "45 g"
+          },
+          {
+            "name": "balsamic vinegar",
+            "quantity": "1 teaspoon",
+            "notes": ""
+          },
+          {
+            "name": "unsalted butter",
+            "quantity": "2 tablespoons",
+            "notes": "30 g"
+          },
+          {
+            "name": "vegetable broth",
+            "quantity": "1/3 to 1/2 cup",
+            "notes": "75-125 ml"
+          },
+          {
+            "name": "freshly grated Parmesan cheese",
+            "quantity": "0.5 cup",
+            "notes": "50 g"
+          }
+        ],
+        "calories": 240,
+        "protein_g": 8,
+        "carbs_g": 10,
+        "fat_g": 20,
+        "fiber_g": 2,
+        "sugar_g": 6,
+        "sodium_mg": 391,
+        "potassium_mg": 680,
+        "calcium_mg": 180,
+        "iron_mg": 1.2,
+        "magnesium_mg": 25,
+        "phosphorus_mg": 150,
+        "zinc_mg": 1.1,
+        "vitamin_a_mcg": 45,
+        "vitamin_c_mg": 4,
+        "vitamin_d_mcg": 0.8,
+        "vitamin_e_mg": 2.5,
+        "vitamin_k1_mcg": 8,
+        "vitamin_k2_mcg": 1.2,
+        "vitamin_b1_mg": 0.1,
+        "vitamin_b2_mg": 0.4,
+        "vitamin_b3_mg": 4.2,
+        "vitamin_b6_mg": 0.1,
+        "vitamin_b12_mcg": 0.3,
+        "folate_mcg": 18,
+        "omega3_mg": 85,
+        "copper_mg": 0.3,
+        "selenium_mcg": 12,
+        "manganese_mg": 0.1,
+        "vitamin_b5_mg": 1.8
+      },
+      "thumbFile": "1775029501265_z6vyywsnyc7.png"
+    },
+    {
+      "id": "lib_1775029044433",
+      "savedAt": "2026-04-01T07:37:24.433Z",
+      "name": "Grilled Lamb Chop",
+      "defaultMealType": "dinner",
+      "nutrition": {
+        "meal_name": "Grilled Lamb Chop",
+        "description": "A single grilled lamb chop, approximately 4 oz serving",
+        "ingredients": [
+          {
+            "name": "Lamb chop",
+            "quantity": "4 oz (113g)",
+            "notes": "Grilled, bone-in"
+          }
+        ],
+        "calories": 294,
+        "protein_g": 25.5,
+        "carbs_g": 0,
+        "fat_g": 20.9,
+        "fiber_g": 0,
+        "sugar_g": 0,
+        "sodium_mg": 72,
+        "potassium_mg": 310,
+        "calcium_mg": 17,
+        "iron_mg": 1.9,
+        "magnesium_mg": 24,
+        "phosphorus_mg": 188,
+        "zinc_mg": 4.2,
+        "vitamin_a_mcg": 0,
+        "vitamin_c_mg": 0,
+        "vitamin_d_mcg": 0.1,
+        "vitamin_e_mg": 0.2,
+        "vitamin_k1_mcg": 5.2,
+        "vitamin_k2_mcg": 8.1,
+        "vitamin_b1_mg": 0.1,
+        "vitamin_b2_mg": 0.3,
+        "vitamin_b3_mg": 6.6,
+        "vitamin_b6_mg": 0.14,
+        "vitamin_b12_mcg": 2.6,
+        "folate_mcg": 18,
+        "omega3_mg": 95,
+        "copper_mg": 0.1,
+        "selenium_mcg": 26.4,
+        "manganese_mg": 0.02,
+        "vitamin_b5_mg": 0.6
+      },
+      "thumbFile": "1775029537802_7c4tfpt1o93.png"
+    },
+    {
+      "id": "lib_1775029271226",
+      "savedAt": "2026-04-01T07:41:11.226Z",
+      "name": "Quinoa Tabbouleh Salad",
+      "defaultMealType": "dinner",
+      "nutrition": {
+        "meal_name": "Quinoa Tabbouleh Salad",
+        "description": "A fresh Middle Eastern-inspired salad featuring cooked quinoa mixed with diced tomatoes, cucumber, parsley, mint, lemon juice and olive oil",
+        "ingredients": [
+          {
+            "name": "quinoa",
+            "quantity": "1 cup cooked",
+            "notes": "provides protein and fiber base"
+          },
+          {
+            "name": "tomatoes",
+            "quantity": "2 medium diced",
+            "notes": "fresh ripe tomatoes"
+          },
+          {
+            "name": "cucumber",
+            "quantity": "1 medium diced",
+            "notes": "peeled and seeded"
+          },
+          {
+            "name": "fresh parsley",
+            "quantity": "1/2 cup chopped",
+            "notes": "flat-leaf preferred"
+          },
+          {
+            "name": "fresh mint",
+            "quantity": "2 tablespoons chopped",
+            "notes": "adds aromatic freshness"
+          },
+          {
+            "name": "lemon juice",
+            "quantity": "3 tablespoons",
+            "notes": "freshly squeezed"
+          },
+          {
+            "name": "olive oil",
+            "quantity": "2 tablespoons",
+            "notes": "extra virgin"
+          },
+          {
+            "name": "salt",
+            "quantity": "1/2 teaspoon",
+            "notes": "to taste"
+          }
+        ],
+        "calories": 285,
+        "protein_g": 8.2,
+        "carbs_g": 39.5,
+        "fat_g": 12.8,
+        "fiber_g": 5.1,
+        "sugar_g": 8.3,
+        "sodium_mg": 485,
+        "potassium_mg": 585,
+        "calcium_mg": 68,
+        "iron_mg": 3.2,
+        "magnesium_mg": 89,
+        "phosphorus_mg": 195,
+        "zinc_mg": 1.8,
+        "vitamin_a_mcg": 285,
+        "vitamin_c_mg": 45,
+        "vitamin_d_mcg": 0.2,
+        "vitamin_e_mg": 2.8,
+        "vitamin_k1_mcg": 165,
+        "vitamin_k2_mcg": 1.2,
+        "vitamin_b1_mg": 0.28,
+        "vitamin_b2_mg": 0.18,
+        "vitamin_b3_mg": 1.85,
+        "vitamin_b6_mg": 0.32,
+        "vitamin_b12_mcg": 0.1,
+        "folate_mcg": 78,
+        "omega3_mg": 85,
+        "copper_mg": 0.35,
+        "selenium_mcg": 5.2,
+        "manganese_mg": 1.15,
+        "vitamin_b5_mg": 0.45
+      },
+      "thumbFile": "1775029390274_grp8cki7ti.png"
+    },
+    {
+      "id": "lib_1775063592576",
+      "savedAt": "2026-04-01T17:13:12.576Z",
+      "name": "Matzah",
+      "defaultMealType": "dinner",
+      "nutrition": {
+        "meal_name": "Matzah",
+        "description": "Traditional unleavened flatbread made from flour and water, commonly eaten during Passover",
+        "ingredients": [
+          {
+            "name": "wheat flour",
+            "quantity": "28g",
+            "notes": "main ingredient"
+          },
+          {
+            "name": "water",
+            "quantity": "10ml",
+            "notes": "for binding"
+          }
+        ],
+        "calories": 112,
+        "protein_g": 3.8,
+        "carbs_g": 22.4,
+        "fat_g": 0.4,
+        "fiber_g": 0.9,
+        "sugar_g": 0.3,
+        "sodium_mg": 1,
+        "potassium_mg": 87,
+        "calcium_mg": 8,
+        "iron_mg": 1.3,
+        "magnesium_mg": 13,
+        "phosphorus_mg": 76,
+        "zinc_mg": 0.5,
+        "vitamin_a_mcg": 0,
+        "vitamin_c_mg": 0,
+        "vitamin_d_mcg": 0,
+        "vitamin_e_mg": 0.2,
+        "vitamin_k1_mcg": 0.4,
+        "vitamin_k2_mcg": 0,
+        "vitamin_b1_mg": 0.1,
+        "vitamin_b2_mg": 0.08,
+        "vitamin_b3_mg": 1.2,
+        "vitamin_b6_mg": 0.04,
+        "vitamin_b12_mcg": 0,
+        "folate_mcg": 23,
+        "omega3_mg": 12,
+        "copper_mg": 0.1,
+        "selenium_mcg": 13.8,
+        "manganese_mg": 0.9,
+        "vitamin_b5_mg": 0.4
+      },
+      "thumbFile": "1775063697194_9n5g9kbzqis.png"
+    },
+    {
+      "id": "lib_1775063970650",
+      "savedAt": "2026-04-01T17:19:30.650Z",
+      "name": "Rustic Bakery Organic Sourdough Flatbread",
+      "defaultMealType": "dinner",
+      "nutrition": {
+        "meal_name": "Rustic Bakery Organic Sourdough Flatbread",
+        "description": "One serving of organic sourdough flatbread made with olive oil and sel gris (gray sea salt)",
+        "ingredients": [
+          {
+            "name": "organic sourdough flatbread",
+            "quantity": "1 oz",
+            "notes": "made with olive oil and sel gris, contains wheat flour"
+          }
+        ],
+        "calories": 80,
+        "protein_g": 2,
+        "carbs_g": 14,
+        "fat_g": 1.5,
+        "fiber_g": 0,
+        "sugar_g": 1,
+        "sodium_mg": 300,
+        "potassium_mg": 20,
+        "calcium_mg": 0,
+        "iron_mg": 2,
+        "magnesium_mg": 8,
+        "phosphorus_mg": 25,
+        "zinc_mg": 0.2,
+        "vitamin_a_mcg": 0,
+        "vitamin_c_mg": 0,
+        "vitamin_d_mcg": 0,
+        "vitamin_e_mg": 0.2,
+        "vitamin_k1_mcg": 1,
+        "vitamin_k2_mcg": 0,
+        "vitamin_b1_mg": 0.1,
+        "vitamin_b2_mg": 0.06,
+        "vitamin_b3_mg": 1.2,
+        "vitamin_b6_mg": 0.03,
+        "vitamin_b12_mcg": 0,
+        "folate_mcg": 15,
+        "omega3_mg": 20,
+        "copper_mg": 0.05,
+        "selenium_mcg": 8,
+        "manganese_mg": 0.3,
+        "vitamin_b5_mg": 0.2,
+        "_thumbFile": "1775063960631_jdt18ekn2ke.png",
+        "_mime": "image/png"
+      },
+      "thumbFile": "1775063960631_jdt18ekn2ke.png"
+    },
+    {
+      "id": "lib_1775065119297",
+      "savedAt": "2026-04-01T17:38:39.297Z",
+      "name": "Favorite Chickpea Salad",
+      "defaultMealType": "dinner",
+      "nutrition": {
+        "meal_name": "Favorite Chickpea Salad",
+        "description": "A healthy Mediterranean chickpea salad with bell pepper, celery, parsley and lemon. Recipe yields 4 generous side salads or 6 medium servings. Nutrition calculated per serving based on 4 servings.",
+        "ingredients": [
+          {
+            "name": "chickpeas",
+            "quantity": "2 cans (15 oz each)",
+            "notes": "rinsed and drained, or 3 cups cooked"
+          },
+          {
+            "name": "red bell pepper",
+            "quantity": "1 medium",
+            "notes": "chopped"
+          },
+          {
+            "name": "fresh flat-leaf parsley",
+            "quantity": "1.5 cups",
+            "notes": "chopped, about 1 bunch"
+          },
+          {
+            "name": "red onion",
+            "quantity": "0.5 cup",
+            "notes": "chopped, about half small onion"
+          },
+          {
+            "name": "celery",
+            "quantity": "0.5 cup",
+            "notes": "chopped, about 2 ribs"
+          },
+          {
+            "name": "extra-virgin olive oil",
+            "quantity": "3 tablespoons",
+            "notes": ""
+          },
+          {
+            "name": "lemon juice",
+            "quantity": "3 tablespoons",
+            "notes": "from 1 to 1.5 lemons"
+          },
+          {
+            "name": "garlic",
+            "quantity": "2 cloves",
+            "notes": "pressed or minced"
+          },
+          {
+            "name": "fine salt",
+            "quantity": "0.5 teaspoon",
+            "notes": ""
+          },
+          {
+            "name": "black pepper",
+            "quantity": "to taste",
+            "notes": "freshly ground"
+          }
+        ],
+        "calories": 285,
+        "protein_g": 12,
+        "carbs_g": 35,
+        "fat_g": 12,
+        "fiber_g": 10,
+        "sugar_g": 8,
+        "sodium_mg": 520,
+        "potassium_mg": 485,
+        "calcium_mg": 95,
+        "iron_mg": 3.2,
+        "magnesium_mg": 65,
+        "phosphorus_mg": 185,
+        "zinc_mg": 1.8,
+        "vitamin_a_mcg": 185,
+        "vitamin_c_mg": 85,
+        "vitamin_d_mcg": 0,
+        "vitamin_e_mg": 2.1,
+        "vitamin_k1_mcg": 165,
+        "vitamin_k2_mcg": 0,
+        "vitamin_b1_mg": 0.18,
+        "vitamin_b2_mg": 0.12,
+        "vitamin_b3_mg": 1.8,
+        "vitamin_b6_mg": 0.35,
+        "vitamin_b12_mcg": 0,
+        "folate_mcg": 185,
+        "omega3_mg": 125,
+        "copper_mg": 0.35,
+        "selenium_mcg": 8.5,
+        "manganese_mg": 1.2,
+        "vitamin_b5_mg": 0.45
+      },
+      "thumbFile": "1775065182132_3d7tcv41zcf.png"
+    },
+    {
+      "id": "lib_1775181167331",
+      "savedAt": "2026-04-03T01:52:47.331Z",
+      "name": "Two Egg Omelette",
+      "defaultMealType": "breakfast",
+      "nutrition": {
+        "meal_name": "Two Egg Omelette",
+        "description": "A simple omelette made with two large eggs, cooked with a small amount of butter or oil",
+        "ingredients": [
+          {
+            "name": "Large eggs",
+            "quantity": "2",
+            "notes": "beaten and cooked into omelette"
+          },
+          {
+            "name": "Butter",
+            "quantity": "1 teaspoon",
+            "notes": "for cooking"
+          }
+        ],
+        "calories": 180,
+        "protein_g": 13,
+        "carbs_g": 1,
+        "fat_g": 14,
+        "fiber_g": 0,
+        "sugar_g": 1,
+        "sodium_mg": 200,
+        "potassium_mg": 150,
+        "calcium_mg": 60,
+        "iron_mg": 2,
+        "magnesium_mg": 12,
+        "phosphorus_mg": 200,
+        "zinc_mg": 1.5,
+        "vitamin_a_mcg": 180,
+        "vitamin_c_mg": 0,
+        "vitamin_d_mcg": 2,
+        "vitamin_e_mg": 1.2,
+        "vitamin_k1_mcg": 0.3,
+        "vitamin_k2_mcg": 15,
+        "vitamin_b1_mg": 0.04,
+        "vitamin_b2_mg": 0.45,
+        "vitamin_b3_mg": 0.1,
+        "vitamin_b6_mg": 0.17,
+        "vitamin_b12_mcg": 1.1,
+        "folate_mcg": 45,
+        "omega3_mg": 75,
+        "copper_mg": 0.08,
+        "selenium_mcg": 30,
+        "manganese_mg": 0.03,
+        "vitamin_b5_mg": 1.5
+      },
+      "thumbFile": "1775181604590_shlgb65dtf.png"
+    },
+    {
+      "id": "lib_1775181400515",
+      "savedAt": "2026-04-03T01:56:40.515Z",
+      "name": "Orange Juice",
+      "defaultMealType": "breakfast",
+      "nutrition": {
+        "meal_name": "Orange Juice",
+        "description": "8 fl oz serving of orange juice",
+        "ingredients": [
+          {
+            "name": "orange juice",
+            "quantity": "8 fl oz",
+            "notes": "100% orange juice"
+          }
+        ],
+        "calories": 112,
+        "protein_g": 1.7,
+        "carbs_g": 25.8,
+        "fat_g": 0.5,
+        "fiber_g": 0.5,
+        "sugar_g": 20.8,
+        "sodium_mg": 2,
+        "potassium_mg": 496,
+        "calcium_mg": 27,
+        "iron_mg": 0.5,
+        "magnesium_mg": 27,
+        "phosphorus_mg": 42,
+        "zinc_mg": 0.1,
+        "vitamin_a_mcg": 50,
+        "vitamin_c_mg": 124,
+        "vitamin_d_mcg": 0,
+        "vitamin_e_mg": 0.1,
+        "vitamin_k1_mcg": 0.2,
+        "vitamin_k2_mcg": 0,
+        "vitamin_b1_mg": 0.2,
+        "vitamin_b2_mg": 0.07,
+        "vitamin_b3_mg": 1,
+        "vitamin_b6_mg": 0.1,
+        "vitamin_b12_mcg": 0,
+        "folate_mcg": 45,
+        "omega3_mg": 24,
+        "copper_mg": 0.1,
+        "selenium_mcg": 0.1,
+        "manganese_mg": 0.03,
+        "vitamin_b5_mg": 0.5
+      },
+      "thumbFile": "1775181463015_jti35ij5p1j.png"
+    },
+    {
+      "id": "lib_1775182130842",
+      "savedAt": "2026-04-03T02:08:50.842Z",
+      "name": "Marinated Herring Salad",
+      "defaultMealType": "breakfast",
+      "nutrition": {
+        "meal_name": "Marinated Herring Salad",
+        "description": "A traditional European-style salad featuring marinated herring with hard-boiled eggs, fresh apple, and onion, lightly dressed with sunflower oil and a touch of sugar",
+        "ingredients": [
+          {
+            "name": "Marinated herring",
+            "quantity": "10.5 oz jar (drained)",
+            "notes": "drained weight"
+          },
+          {
+            "name": "Yellow onion",
+            "quantity": "1 small",
+            "notes": "peeled and quartered"
+          },
+          {
+            "name": "Granny Smith apple",
+            "quantity": "1 small",
+            "notes": "peeled, cored, chopped"
+          },
+          {
+            "name": "Hard-boiled eggs",
+            "quantity": "3 large",
+            "notes": "peeled and halved"
+          },
+          {
+            "name": "Sunflower oil",
+            "quantity": "1/2 tablespoon",
+            "notes": ""
+          },
+          {
+            "name": "Granulated sugar",
+            "quantity": "1/4 teaspoon",
+            "notes": ""
+          },
+          {
+            "name": "Kosher salt",
+            "quantity": "to taste",
+            "notes": "if needed"
+          }
+        ],
+        "calories": 685,
+        "protein_g": 48,
+        "carbs_g": 18,
+        "fat_g": 48,
+        "fiber_g": 3,
+        "sugar_g": 14,
+        "sodium_mg": 2850,
+        "potassium_mg": 685,
+        "calcium_mg": 145,
+        "iron_mg": 3.2,
+        "magnesium_mg": 85,
+        "phosphorus_mg": 525,
+        "zinc_mg": 2.8,
+        "vitamin_a_mcg": 285,
+        "vitamin_c_mg": 8,
+        "vitamin_d_mcg": 4.5,
+        "vitamin_e_mg": 8.5,
+        "vitamin_k1_mcg": 15,
+        "vitamin_k2_mcg": 12,
+        "vitamin_b1_mg": 0.25,
+        "vitamin_b2_mg": 0.85,
+        "vitamin_b3_mg": 12,
+        "vitamin_b6_mg": 0.65,
+        "vitamin_b12_mcg": 28,
+        "folate_mcg": 125,
+        "omega3_mg": 1850,
+        "copper_mg": 0.35,
+        "selenium_mcg": 95,
+        "manganese_mg": 0.45,
+        "vitamin_b5_mg": 2.8,
+        "_thumbFile": null
+      },
+      "thumbFile": "1775182176733_wjqc2uion1o.png"
+    },
+    {
+      "id": "lib_1775249941551",
+      "savedAt": "2026-04-03T20:59:01.551Z",
+      "name": "Apple Buttermilk Pancakes",
+      "defaultMealType": "breakfast",
+      "nutrition": {
+        "meal_name": "Apple Buttermilk Pancakes",
+        "description": "Fluffy whole grain pancakes made with organic wheat flour, buttermilk, and fresh Granny Smith apples, served with sour cream and fruit jam",
+        "ingredients": [
+          {
+            "name": "Organic Type 80 Wheat Flour",
+            "quantity": "3/4 cup",
+            "notes": "whole grain flour"
+          },
+          {
+            "name": "Low-Fat Buttermilk",
+            "quantity": "3/4 cup",
+            "notes": "low-fat dairy"
+          },
+          {
+            "name": "Eggs",
+            "quantity": "2 large",
+            "notes": "whole eggs"
+          },
+          {
+            "name": "Vanilla Extract",
+            "quantity": "1/2 tsp",
+            "notes": "flavoring"
+          },
+          {
+            "name": "Salt",
+            "quantity": "1 pinch",
+            "notes": "seasoning"
+          },
+          {
+            "name": "Baking Powder",
+            "quantity": "1/2 tsp",
+            "notes": "leavening agent"
+          },
+          {
+            "name": "Granny Smith Apple",
+            "quantity": "1 small",
+            "notes": "fresh fruit"
+          },
+          {
+            "name": "Sour cream",
+            "quantity": "6 tbsp",
+            "notes": ""
+          },
+          {
+            "name": "Fruit jam",
+            "quantity": "6 tsp",
+            "notes": ""
+          }
+        ],
+        "calories": 685,
+        "protein_g": 22.5,
+        "carbs_g": 98.2,
+        "fat_g": 24.8,
+        "fiber_g": 8.5,
+        "sugar_g": 45.3,
+        "sodium_mg": 485,
+        "potassium_mg": 580,
+        "calcium_mg": 385,
+        "iron_mg": 3.8,
+        "magnesium_mg": 65,
+        "phosphorus_mg": 420,
+        "zinc_mg": 2.2,
+        "vitamin_a_mcg": 285,
+        "vitamin_c_mg": 6.5,
+        "vitamin_d_mcg": 1.8,
+        "vitamin_e_mg": 2.1,
+        "vitamin_k1_mcg": 12.5,
+        "vitamin_k2_mcg": 8.2,
+        "vitamin_b1_mg": 0.35,
+        "vitamin_b2_mg": 0.52,
+        "vitamin_b3_mg": 4.2,
+        "vitamin_b6_mg": 0.28,
+        "vitamin_b12_mcg": 1.65,
+        "folate_mcg": 85,
+        "omega3_mg": 145,
+        "copper_mg": 0.25,
+        "selenium_mcg": 28.5,
+        "manganese_mg": 1.8,
+        "vitamin_b5_mg": 1.45
+      },
+      "thumbFile": "1775250054440_wha8qksb3f.jpg"
+    },
+    {
+      "id": "lib_1775250693910",
+      "savedAt": "2026-04-03T21:11:33.910Z",
+      "name": "Deviled Eggs Stuffed with Фаршмак",
+      "defaultMealType": "breakfast",
+      "nutrition": {
+        "meal_name": "Deviled Eggs Stuffed with Фаршмак",
+        "description": "Hard-boiled eggs with yolks mixed with фаршмак (a traditional Eastern European spread made from herring, hard-boiled eggs, and vegetables) served as an appetizer",
+        "ingredients": [
+          {
+            "name": "Hard-boiled eggs",
+            "quantity": "4 large eggs",
+            "notes": "Used for both whites and additional yolks in filling"
+          },
+          {
+            "name": "Salted herring fillets",
+            "quantity": "100g",
+            "notes": "Main protein component of фаршмак"
+          },
+          {
+            "name": "Onion",
+            "quantity": "50g",
+            "notes": "Finely chopped for фаршмак mixture"
+          },
+          {
+            "name": "Pickles",
+            "quantity": "30g",
+            "notes": "Diced for texture and flavor"
+          },
+          {
+            "name": "Mayonnaise",
+            "quantity": "45g",
+            "notes": "Binding agent for the mixture"
+          },
+          {
+            "name": "Fresh dill",
+            "quantity": "10g",
+            "notes": "Garnish and flavor enhancement"
+          }
+        ],
+        "calories": 485,
+        "protein_g": 28.5,
+        "carbs_g": 6.2,
+        "fat_g": 38.8,
+        "fiber_g": 1.8,
+        "sugar_g": 3.1,
+        "sodium_mg": 1850,
+        "potassium_mg": 420,
+        "calcium_mg": 125,
+        "iron_mg": 3.2,
+        "magnesium_mg": 32,
+        "phosphorus_mg": 385,
+        "zinc_mg": 2.1,
+        "vitamin_a_mcg": 285,
+        "vitamin_c_mg": 8.5,
+        "vitamin_d_mcg": 3.8,
+        "vitamin_e_mg": 4.2,
+        "vitamin_k1_mcg": 18.5,
+        "vitamin_k2_mcg": 12.5,
+        "vitamin_b1_mg": 0.18,
+        "vitamin_b2_mg": 0.65,
+        "vitamin_b3_mg": 6.8,
+        "vitamin_b6_mg": 0.32,
+        "vitamin_b12_mcg": 8.5,
+        "folate_mcg": 85,
+        "omega3_mg": 850,
+        "copper_mg": 0.25,
+        "selenium_mcg": 45,
+        "manganese_mg": 0.18,
+        "vitamin_b5_mg": 1.8
+      },
+      "thumbFile": "1775979451056_tqc1cpke4st.png"
+    },
+    {
+      "id": "lib_1775281800711",
+      "savedAt": "2026-04-04T05:50:00.711Z",
+      "name": "Mediterranean Lentil Salad with Roasted Fish and Sweet Potato Fries",
+      "defaultMealType": "dinner",
+      "nutrition": {
+        "meal_name": "Mediterranean Lentil Salad with Roasted Fish and Sweet Potato Fries",
+        "description": "A nutritious meal featuring a green lentil salad with diced vegetables dressed in olive oil, served alongside glazed white fish fillet and baked sweet potato fries, with matzo crackers",
+        "ingredients": [
+          {
+            "name": "green lentils",
+            "quantity": "1 cup cooked",
+            "notes": "mixed with vegetables in salad"
+          },
+          {
+            "name": "cucumber",
+            "quantity": "1/4 cup diced",
+            "notes": "visible in lentil salad"
+          },
+          {
+            "name": "red bell pepper",
+            "quantity": "2 tablespoons diced",
+            "notes": "red pieces in salad"
+          },
+          {
+            "name": "celery",
+            "quantity": "2 tablespoons diced",
+            "notes": "light green pieces in salad"
+          },
+          {
+            "name": "olive oil",
+            "quantity": "1 tablespoon",
+            "notes": "likely used as dressing"
+          },
+          {
+            "name": "white fish fillet",
+            "quantity": "5 oz",
+            "notes": "appears to be cod or similar, roasted with glaze"
+          },
+          {
+            "name": "sweet potato",
+            "quantity": "1 medium",
+            "notes": "cut into fries and baked"
+          },
+          {
+            "name": "matzo crackers",
+            "quantity": "2 pieces",
+            "notes": "unleavened bread crackers"
+          }
+        ],
+        "calories": 742,
+        "protein_g": 48,
+        "carbs_g": 82,
+        "fat_g": 18,
+        "fiber_g": 18,
+        "sugar_g": 12,
+        "sodium_mg": 285,
+        "potassium_mg": 1685,
+        "calcium_mg": 95,
+        "iron_mg": 7.2,
+        "magnesium_mg": 128,
+        "phosphorus_mg": 485,
+        "zinc_mg": 3.8,
+        "vitamin_a_mcg": 1142,
+        "vitamin_c_mg": 42,
+        "vitamin_d_mcg": 1.2,
+        "vitamin_e_mg": 4.8,
+        "vitamin_k1_mcg": 18,
+        "vitamin_k2_mcg": 2,
+        "vitamin_b1_mg": 0.62,
+        "vitamin_b2_mg": 0.28,
+        "vitamin_b3_mg": 8.5,
+        "vitamin_b6_mg": 0.85,
+        "vitamin_b12_mcg": 2.8,
+        "folate_mcg": 385,
+        "omega3_mg": 285,
+        "copper_mg": 0.68,
+        "selenium_mcg": 58,
+        "manganese_mg": 1.42,
+        "vitamin_b5_mg": 1.85,
+        "_thumbFile": "1775279702451_hns4emr51fg.jpg"
+      },
+      "thumbFile": "1775279702451_hns4emr51fg.jpg"
+    },
+    {
+      "id": "lib_1775282340326",
+      "savedAt": "2026-04-04T05:59:00.326Z",
+      "name": "Sautéed Mixed Mushrooms",
+      "defaultMealType": "dinner",
+      "nutrition": {
+        "meal_name": "Sautéed Mixed Mushrooms",
+        "description": "A bowl of sautéed mixed mushrooms including shiitake and other varieties, cooked until tender and glossy, likely seasoned with salt and oil",
+        "ingredients": [
+          {
+            "name": "mixed mushrooms",
+            "quantity": "150g",
+            "notes": "appears to be shiitake and other Asian mushroom varieties, sliced and sautéed"
+          },
+          {
+            "name": "cooking oil",
+            "quantity": "1 tablespoon",
+            "notes": "likely vegetable or sesame oil used for sautéing"
+          },
+          {
+            "name": "salt",
+            "quantity": "1/2 teaspoon",
+            "notes": "for seasoning"
+          }
+        ],
+        "calories": 85,
+        "protein_g": 5.2,
+        "carbs_g": 8.1,
+        "fat_g": 4.8,
+        "fiber_g": 2.8,
+        "sugar_g": 3.2,
+        "sodium_mg": 290,
+        "potassium_mg": 485,
+        "calcium_mg": 8,
+        "iron_mg": 1.2,
+        "magnesium_mg": 18,
+        "phosphorus_mg": 135,
+        "zinc_mg": 1.1,
+        "vitamin_a_mcg": 2,
+        "vitamin_c_mg": 3.5,
+        "vitamin_d_mcg": 12.5,
+        "vitamin_e_mg": 1.2,
+        "vitamin_k1_mcg": 2.5,
+        "vitamin_k2_mcg": 0.5,
+        "vitamin_b1_mg": 0.12,
+        "vitamin_b2_mg": 0.35,
+        "vitamin_b3_mg": 4.8,
+        "vitamin_b6_mg": 0.15,
+        "vitamin_b12_mcg": 0.1,
+        "folate_mcg": 28,
+        "omega3_mg": 25,
+        "copper_mg": 0.48,
+        "selenium_mcg": 18.5,
+        "manganese_mg": 0.85,
+        "vitamin_b5_mg": 2.1,
+        "_thumbFile": "1775282309383_3i1bqfrhz87.jpg",
+        "_mime": "image/jpeg"
+      },
+      "thumbFile": "1775282309383_3i1bqfrhz87.jpg"
+    },
+    {
+      "id": "lib_1775283221483",
+      "savedAt": "2026-04-04T06:13:41.483Z",
+      "name": "Villa A La Mer Dealcoholized Chardonnay",
+      "defaultMealType": "dinner",
+      "nutrition": {
+        "meal_name": "Villa A La Mer Dealcoholized Chardonnay",
+        "description": "A dealcoholized white wine made from French Chardonnay with notes of green apple, peach, lemon and honeydew melon. Contains 85% dealcoholized Chardonnay wine and 15% fresh Chardonnay grape juice.",
+        "ingredients": [
+          {
+            "name": "Dealcoholized Chardonnay wine",
+            "quantity": "85%",
+            "notes": "Primary ingredient providing wine character"
+          },
+          {
+            "name": "Fresh Chardonnay grape juice",
+            "quantity": "15%",
+            "notes": "Adds natural grape sweetness"
+          },
+          {
+            "name": "Sulfites",
+            "quantity": "trace",
+            "notes": "Added as preservative"
+          }
+        ],
+        "calories": 20,
+        "protein_g": 0,
+        "carbs_g": 4,
+        "fat_g": 1,
+        "fiber_g": 0,
+        "sugar_g": 4,
+        "sodium_mg": 0,
+        "potassium_mg": 95,
+        "calcium_mg": 8,
+        "iron_mg": 0.2,
+        "magnesium_mg": 7,
+        "phosphorus_mg": 12,
+        "zinc_mg": 0.05,
+        "vitamin_a_mcg": 0,
+        "vitamin_c_mg": 2,
+        "vitamin_d_mcg": 0,
+        "vitamin_e_mg": 0.1,
+        "vitamin_k1_mcg": 0.5,
+        "vitamin_k2_mcg": 0,
+        "vitamin_b1_mg": 0.01,
+        "vitamin_b2_mg": 0.02,
+        "vitamin_b3_mg": 0.1,
+        "vitamin_b6_mg": 0.05,
+        "vitamin_b12_mcg": 0,
+        "folate_mcg": 1,
+        "omega3_mg": 0,
+        "copper_mg": 0.02,
+        "selenium_mcg": 0.2,
+        "manganese_mg": 0.15,
+        "vitamin_b5_mg": 0.02,
+        "_thumbFile": "1775283098174_i3d03c5gsgn.jpg",
+        "_mime": "image/jpeg"
+      },
+      "thumbFile": "1775288006284_4256zykstj3.jpg"
+    },
+    {
+      "id": "lib_1775541638721",
+      "savedAt": "2026-04-07T06:00:38.721Z",
+      "name": "Sardines with Rye Bread and Pickles",
+      "defaultMealType": "breakfast",
+      "nutrition": {
+        "meal_name": "Sardines with Rye Bread and Pickles",
+        "description": "A nutritious meal featuring canned sardines in olive oil served with dense dark rye bread and pickled vegetables",
+        "ingredients": [
+          {
+            "name": "Canned sardines in oil",
+            "quantity": "65g",
+            "notes": "Small whole sardines with visible bones, appears to be in olive oil"
+          },
+          {
+            "name": "Dark rye bread",
+            "quantity": "40g",
+            "notes": "Dense, dark colored bread with visible seeds and grains"
+          },
+          {
+            "name": "caper berries",
+            "quantity": "30g",
+            "notes": "Appears to be pickled cucumbers or gherkins"
+          }
+        ],
+        "calories": 285,
+        "protein_g": 19.2,
+        "carbs_g": 18.5,
+        "fat_g": 16.8,
+        "fiber_g": 4.2,
+        "sugar_g": 2.1,
+        "sodium_mg": 945,
+        "potassium_mg": 385,
+        "calcium_mg": 285,
+        "iron_mg": 2.8,
+        "magnesium_mg": 42,
+        "phosphorus_mg": 365,
+        "zinc_mg": 1.8,
+        "vitamin_a_mcg": 15,
+        "vitamin_c_mg": 2.5,
+        "vitamin_d_mcg": 3.2,
+        "vitamin_e_mg": 1.8,
+        "vitamin_k1_mcg": 4.2,
+        "vitamin_k2_mcg": 1.2,
+        "vitamin_b1_mg": 0.18,
+        "vitamin_b2_mg": 0.28,
+        "vitamin_b3_mg": 4.5,
+        "vitamin_b6_mg": 0.22,
+        "vitamin_b12_mcg": 7.8,
+        "folate_mcg": 28,
+        "omega3_mg": 985,
+        "copper_mg": 0.18,
+        "selenium_mcg": 38,
+        "manganese_mg": 0.85,
+        "vitamin_b5_mg": 0.68
+      },
+      "thumbFile": "1775541537606_1m9hdtf9ueo.jpg"
+    },
+    {
+      "id": "lib_1775541798677",
+      "savedAt": "2026-04-07T06:03:18.677Z",
+      "name": "Grilled Beef Steak with Buckwheat and Mixed Greens",
+      "defaultMealType": "dinner",
+      "nutrition": {
+        "meal_name": "Grilled Beef Steak with Buckwheat and Mixed Greens",
+        "description": "A hearty meal featuring grilled beef steak with char marks, cooked buckwheat groats mixed with sautéed mushrooms, fresh mixed greens salad with tomatoes and crumbled feta cheese, served with dark rye bread and pickled vegetables",
+        "ingredients": [
+          {
+            "name": "beef steak",
+            "quantity": "6 oz",
+            "notes": "grilled with visible char marks"
+          },
+          {
+            "name": "buckwheat groats",
+            "quantity": "1 cup cooked",
+            "notes": "mixed with sautéed mushrooms"
+          },
+          {
+            "name": "mushrooms",
+            "quantity": "2 oz",
+            "notes": "appears to be mixed with buckwheat"
+          },
+          {
+            "name": "mixed greens salad",
+            "quantity": "1 cup",
+            "notes": "with tomatoes and herbs"
+          },
+          {
+            "name": "tomatoes",
+            "quantity": "2 medium slices",
+            "notes": "fresh tomato in salad"
+          },
+          {
+            "name": "feta cheese",
+            "quantity": "1 oz",
+            "notes": "crumbled on salad"
+          },
+          {
+            "name": "dark rye bread",
+            "quantity": "2 slices",
+            "notes": "dense, seeded bread"
+          },
+          {
+            "name": "pickled cucumber",
+            "quantity": "1 small",
+            "notes": "appears pickled/preserved"
+          },
+          {
+            "name": "pickled peppers",
+            "quantity": "1 oz",
+            "notes": "orange/red preserved peppers"
+          }
+        ],
+        "calories": 1085,
+        "protein_g": 56,
+        "carbs_g": 58,
+        "fat_g": 62,
+        "fiber_g": 12,
+        "sugar_g": 14,
+        "sodium_mg": 1890,
+        "potassium_mg": 1340,
+        "calcium_mg": 285,
+        "iron_mg": 8.2,
+        "magnesium_mg": 145,
+        "phosphorus_mg": 620,
+        "zinc_mg": 12.8,
+        "vitamin_a_mcg": 285,
+        "vitamin_c_mg": 32,
+        "vitamin_d_mcg": 1.2,
+        "vitamin_e_mg": 3.8,
+        "vitamin_k1_mcg": 85,
+        "vitamin_k2_mcg": 8.5,
+        "vitamin_b1_mg": 0.52,
+        "vitamin_b2_mg": 0.68,
+        "vitamin_b3_mg": 16.8,
+        "vitamin_b6_mg": 1.25,
+        "vitamin_b12_mcg": 4.8,
+        "folate_mcg": 98,
+        "omega3_mg": 125,
+        "copper_mg": 1.15,
+        "selenium_mcg": 42,
+        "manganese_mg": 2.8,
+        "vitamin_b5_mg": 2.65,
+        "_thumbFile": "1775541744234_bt1zmv9tdo4.jpg"
+      },
+      "thumbFile": "1775541744234_bt1zmv9tdo4.jpg"
+    },
+    {
+      "id": "lib_1775542347849",
+      "savedAt": "2026-04-07T06:12:27.849Z",
+      "name": "Soft-Boiled Egg Breakfast with Dark Bread and Cheese",
+      "defaultMealType": "breakfast",
+      "nutrition": {
+        "meal_name": "Soft-Boiled Egg Breakfast with Dark Bread and Cheese",
+        "description": "A hearty breakfast featuring a soft-boiled large egg served with dense dark rye bread, artisanal truffle cheese, accompanied by black tea and double espresso",
+        "ingredients": [
+          {
+            "name": "soft-boiled egg",
+            "quantity": "1 large",
+            "notes": "large egg, soft-boiled"
+          },
+          {
+            "name": "dark rye bread",
+            "quantity": "2 small slices",
+            "notes": "dense dark rye or pumpernickel bread"
+          },
+          {
+            "name": "Marin French petite truffle cheese",
+            "quantity": "1 oz",
+            "notes": "artisanal truffle cheese"
+          },
+          {
+            "name": "black tea",
+            "quantity": "1 cup",
+            "notes": "brewed black tea"
+          },
+          {
+            "name": "double espresso",
+            "quantity": "1 small cup",
+            "notes": "double shot espresso"
+          }
+        ],
+        "calories": 395,
+        "protein_g": 18.5,
+        "carbs_g": 28.2,
+        "fat_g": 24.8,
+        "fiber_g": 4.2,
+        "sugar_g": 3.1,
+        "sodium_mg": 485,
+        "potassium_mg": 285,
+        "calcium_mg": 195,
+        "iron_mg": 2.8,
+        "magnesium_mg": 42,
+        "phosphorus_mg": 285,
+        "zinc_mg": 2.1,
+        "vitamin_a_mcg": 165,
+        "vitamin_c_mg": 1.2,
+        "vitamin_d_mcg": 1.1,
+        "vitamin_e_mg": 1.8,
+        "vitamin_k1_mcg": 8.5,
+        "vitamin_k2_mcg": 15.2,
+        "vitamin_b1_mg": 0.18,
+        "vitamin_b2_mg": 0.42,
+        "vitamin_b3_mg": 2.8,
+        "vitamin_b6_mg": 0.28,
+        "vitamin_b12_mcg": 0.85,
+        "folate_mcg": 48,
+        "omega3_mg": 185,
+        "copper_mg": 0.15,
+        "selenium_mcg": 22.5,
+        "manganese_mg": 0.95,
+        "vitamin_b5_mg": 1.25,
+        "_thumbFile": null
+      },
+      "thumbFile": null
+    },
+    {
+      "id": "lib_1775543588254",
+      "savedAt": "2026-04-07T06:33:08.254Z",
+      "name": "Mediterranean Vegetable Platter with Fritters",
+      "defaultMealType": "dinner",
+      "nutrition": {
+        "meal_name": "Mediterranean Vegetable Platter with Fritters",
+        "description": "A colorful Mediterranean-style meal featuring roasted beet salad with goat cheese, sautéed broccolini, whole grain bread, and stuffed bell peppers with ground beef, served with a creamy sauce",
+        "ingredients": [
+          {
+            "name": "Roasted beet salad with goat cheese",
+            "quantity": "1 cup",
+            "notes": "Deep purple roasted beets, tomatoes, onion, walnuts, basil"
+          },
+          {
+            "name": "sour cream",
+            "quantity": "2 tablespoons",
+            "notes": "Appears to be sour cream, yogurt, or similar white creamy sauce"
+          },
+          {
+            "name": "Broccolini",
+            "quantity": "7 stalks",
+            "notes": "Sautéed or grilled baby broccoli"
+          },
+          {
+            "name": "Whole grain bread",
+            "quantity": "80 g",
+            "notes": "Dense, seeded whole grain bread"
+          },
+          {
+            "name": "Stuffed bell peppers with ground beef",
+            "quantity": "1.5",
+            "notes": "large bell peppers"
+          }
+        ],
+        "calories": 785,
+        "protein_g": 38,
+        "carbs_g": 52,
+        "fat_g": 48,
+        "fiber_g": 12,
+        "sugar_g": 18,
+        "sodium_mg": 1180,
+        "potassium_mg": 1450,
+        "calcium_mg": 285,
+        "iron_mg": 8.2,
+        "magnesium_mg": 145,
+        "phosphorus_mg": 420,
+        "zinc_mg": 6.8,
+        "vitamin_a_mcg": 485,
+        "vitamin_c_mg": 125,
+        "vitamin_d_mcg": 0.8,
+        "vitamin_e_mg": 6.2,
+        "vitamin_k1_mcg": 185,
+        "vitamin_k2_mcg": 8.5,
+        "vitamin_b1_mg": 0.65,
+        "vitamin_b2_mg": 0.85,
+        "vitamin_b3_mg": 12.5,
+        "vitamin_b6_mg": 1.2,
+        "vitamin_b12_mcg": 3.8,
+        "folate_mcg": 165,
+        "omega3_mg": 420,
+        "copper_mg": 0.85,
+        "selenium_mcg": 28,
+        "manganese_mg": 2.1,
+        "vitamin_b5_mg": 2.8
+      },
+      "thumbFile": "1775543177278_tgimw90hapg.jpg"
+    },
+    {
+      "id": "lib_1775544017866",
+      "savedAt": "2026-04-07T06:40:17.866Z",
+      "name": "Wagyu Beef Jerky",
+      "defaultMealType": "dinner",
+      "nutrition": {
+        "meal_name": "Wagyu Beef Jerky",
+        "description": "One serving (1 oz) of classic Wagyu beef jerky from Snake River Farms",
+        "ingredients": [
+          {
+            "name": "Wagyu beef jerky",
+            "quantity": "1 oz (28g)",
+            "notes": "Premium Wagyu beef jerky with water, brown sugar, cane sugar, vinegar, beef stock, salt, tamari soy sauce, spices, cultured celery salt, sugar, garlic powder, onion powder"
+          }
+        ],
+        "calories": 100,
+        "protein_g": 11,
+        "carbs_g": 3,
+        "fat_g": 4.5,
+        "fiber_g": 0,
+        "sugar_g": 3,
+        "sodium_mg": 420,
+        "potassium_mg": 280,
+        "calcium_mg": 8,
+        "iron_mg": 1.8,
+        "magnesium_mg": 12,
+        "phosphorus_mg": 85,
+        "zinc_mg": 3.2,
+        "vitamin_a_mcg": 0,
+        "vitamin_c_mg": 0,
+        "vitamin_d_mcg": 0.1,
+        "vitamin_e_mg": 0.2,
+        "vitamin_k1_mcg": 1,
+        "vitamin_k2_mcg": 2,
+        "vitamin_b1_mg": 0.04,
+        "vitamin_b2_mg": 0.12,
+        "vitamin_b3_mg": 3.8,
+        "vitamin_b6_mg": 0.25,
+        "vitamin_b12_mcg": 1.8,
+        "folate_mcg": 6,
+        "omega3_mg": 25,
+        "copper_mg": 0.08,
+        "selenium_mcg": 14,
+        "manganese_mg": 0.02,
+        "vitamin_b5_mg": 0.3,
+        "_thumbFile": "1775544005744_f2e77rudep.jpg",
+        "_mime": "image/jpeg"
+      },
+      "thumbFile": "1775544005744_f2e77rudep.jpg"
+    },
+    {
+      "id": "lib_1775544413859",
+      "savedAt": "2026-04-07T06:46:53.859Z",
+      "name": "Beef Stew with Potatoes and Chickpeas",
+      "defaultMealType": "dinner",
+      "nutrition": {
+        "meal_name": "Beef Stew with Potatoes and Chickpeas",
+        "description": "Hearty stew featuring tender beef chunks, potatoes, and chickpeas in a savory broth",
+        "ingredients": [
+          {
+            "name": "beef chuck",
+            "quantity": "4 oz",
+            "notes": "cubed"
+          },
+          {
+            "name": "potatoes",
+            "quantity": "1 medium",
+            "notes": "diced"
+          },
+          {
+            "name": "chickpeas",
+            "quantity": "1/2 cup",
+            "notes": "cooked"
+          },
+          {
+            "name": "onion",
+            "quantity": "1/4 medium",
+            "notes": "diced"
+          },
+          {
+            "name": "carrots",
+            "quantity": "1/4 cup",
+            "notes": "sliced"
+          },
+          {
+            "name": "beef broth",
+            "quantity": "1 cup",
+            "notes": "base"
+          },
+          {
+            "name": "tomato paste",
+            "quantity": "1 tbsp",
+            "notes": "flavor base"
+          },
+          {
+            "name": "olive oil",
+            "quantity": "1 tsp",
+            "notes": "for cooking"
+          }
+        ],
+        "calories": 485,
+        "protein_g": 32,
+        "carbs_g": 42,
+        "fat_g": 18,
+        "fiber_g": 8,
+        "sugar_g": 6,
+        "sodium_mg": 820,
+        "potassium_mg": 1150,
+        "calcium_mg": 85,
+        "iron_mg": 4.2,
+        "magnesium_mg": 68,
+        "phosphorus_mg": 285,
+        "zinc_mg": 5.8,
+        "vitamin_a_mcg": 425,
+        "vitamin_c_mg": 18,
+        "vitamin_d_mcg": 0.1,
+        "vitamin_e_mg": 1.8,
+        "vitamin_k1_mcg": 12,
+        "vitamin_k2_mcg": 2.1,
+        "vitamin_b1_mg": 0.15,
+        "vitamin_b2_mg": 0.22,
+        "vitamin_b3_mg": 6.8,
+        "vitamin_b6_mg": 0.65,
+        "vitamin_b12_mcg": 2.4,
+        "folate_mcg": 145,
+        "omega3_mg": 85,
+        "copper_mg": 0.35,
+        "selenium_mcg": 28,
+        "manganese_mg": 0.85,
+        "vitamin_b5_mg": 1.2
+      },
+      "thumbFile": "1775979728420_y12io2ej1c.png"
+    },
+    {
+      "id": "lib_1775545425638",
+      "savedAt": "2026-04-07T07:03:45.638Z",
+      "name": "Canned Yellowfin Tuna",
+      "defaultMealType": "lunch",
+      "nutrition": {
+        "meal_name": "Canned Yellowfin Tuna",
+        "description": "Canned yellowfin tuna in water with sea salt served with two slices of dense dark rye bread",
+        "ingredients": [
+          {
+            "name": "Yellowfin Tuna",
+            "quantity": "85g",
+            "notes": "Canned tuna in water with sea salt, tested for mercury limit of 0.1 parts per million"
+          },
+          {
+            "name": "dark bread",
+            "quantity": "2 slices",
+            "notes": "dense dark rye"
+          }
+        ],
+        "calories": 264,
+        "protein_g": 28.5,
+        "carbs_g": 30.2,
+        "fat_g": 2.8,
+        "fiber_g": 7.6,
+        "sugar_g": 2.1,
+        "sodium_mg": 485,
+        "potassium_mg": 385,
+        "calcium_mg": 45,
+        "iron_mg": 2.8,
+        "magnesium_mg": 58,
+        "phosphorus_mg": 265,
+        "zinc_mg": 1.2,
+        "vitamin_a_mcg": 18,
+        "vitamin_c_mg": 1.2,
+        "vitamin_d_mcg": 3.8,
+        "vitamin_e_mg": 1.1,
+        "vitamin_k1_mcg": 2.1,
+        "vitamin_k2_mcg": 0.8,
+        "vitamin_b1_mg": 0.25,
+        "vitamin_b2_mg": 0.18,
+        "vitamin_b3_mg": 14.2,
+        "vitamin_b6_mg": 0.65,
+        "vitamin_b12_mcg": 2.5,
+        "folate_mcg": 48,
+        "omega3_mg": 285,
+        "copper_mg": 0.15,
+        "selenium_mcg": 68,
+        "manganese_mg": 1.2,
+        "vitamin_b5_mg": 0.8
+      },
+      "thumbFile": "1775545328136_dqnq88wwysl.jpg"
+    },
+    {
+      "id": "lib_1775545610613",
+      "savedAt": "2026-04-07T07:06:50.613Z",
+      "name": "Cured Black Olives",
+      "defaultMealType": "snack",
+      "nutrition": {
+        "meal_name": "Cured Black Olives",
+        "description": "A serving of cured black olives, typically Mediterranean-style, providing healthy fats and distinctive briny flavor",
+        "ingredients": [
+          {
+            "name": "Cured black olives",
+            "quantity": "15 olives (84g)",
+            "notes": "Medium-sized Mediterranean-style cured olives"
+          }
+        ],
+        "calories": 125,
+        "protein_g": 0.8,
+        "carbs_g": 3.1,
+        "fat_g": 11.5,
+        "fiber_g": 3.2,
+        "sugar_g": 0.5,
+        "sodium_mg": 735,
+        "potassium_mg": 8,
+        "calcium_mg": 88,
+        "iron_mg": 3.3,
+        "magnesium_mg": 4,
+        "phosphorus_mg": 3,
+        "zinc_mg": 0.2,
+        "vitamin_a_mcg": 17,
+        "vitamin_c_mg": 0.9,
+        "vitamin_d_mcg": 0,
+        "vitamin_e_mg": 1.7,
+        "vitamin_k1_mcg": 1.4,
+        "vitamin_k2_mcg": 0,
+        "vitamin_b1_mg": 0.003,
+        "vitamin_b2_mg": 0.01,
+        "vitamin_b3_mg": 0.04,
+        "vitamin_b6_mg": 0.009,
+        "vitamin_b12_mcg": 0,
+        "folate_mcg": 0,
+        "omega3_mg": 76,
+        "copper_mg": 0.25,
+        "selenium_mcg": 0.9,
+        "manganese_mg": 0.02,
+        "vitamin_b5_mg": 0.01
+      },
+      "thumbFile": "1775979589517_glunf2akmr7.png"
+    },
+    {
+      "id": "lib_1775545952971",
+      "savedAt": "2026-04-07T07:12:32.971Z",
+      "name": "Vegetable Juice",
+      "defaultMealType": "snack",
+      "nutrition": {
+        "meal_name": "Vegetable Juice",
+        "description": "A serving of 100% vegetable juice containing tomato, carrot, and other vegetable concentrates",
+        "ingredients": [
+          {
+            "name": "Vegetable juice blend",
+            "quantity": "8 fl oz (240mL)",
+            "notes": "Contains filtered water, tomato concentrate, carrot juice concentrate, beet juice concentrate, parsley juice concentrate, lettuce juice concentrate, watercress juice concentrate, spinach juice concentrate, potassium chloride, salt, ascorbic acid, vitamin C, citric acid, natural flavors"
+          }
+        ],
+        "calories": 50,
+        "protein_g": 2,
+        "carbs_g": 10,
+        "fat_g": 0,
+        "fiber_g": 2,
+        "sugar_g": 7,
+        "sodium_mg": 140,
+        "potassium_mg": 900,
+        "calcium_mg": 20,
+        "iron_mg": 0.4,
+        "magnesium_mg": 25,
+        "phosphorus_mg": 30,
+        "zinc_mg": 0.3,
+        "vitamin_a_mcg": 450,
+        "vitamin_c_mg": 72,
+        "vitamin_d_mcg": 0,
+        "vitamin_e_mg": 1.5,
+        "vitamin_k1_mcg": 15,
+        "vitamin_k2_mcg": 0,
+        "vitamin_b1_mg": 0.08,
+        "vitamin_b2_mg": 0.06,
+        "vitamin_b3_mg": 1.2,
+        "vitamin_b6_mg": 0.2,
+        "vitamin_b12_mcg": 0,
+        "folate_mcg": 25,
+        "omega3_mg": 15,
+        "copper_mg": 0.1,
+        "selenium_mcg": 2,
+        "manganese_mg": 0.3,
+        "vitamin_b5_mg": 0.4,
+        "_thumbFile": "1775545947250_xzlnrpak8l.jpg",
+        "_mime": "image/jpeg"
+      },
+      "thumbFile": "1775545947250_xzlnrpak8l.jpg"
+    },
+    {
+      "id": "lib_1775546002286",
+      "savedAt": "2026-04-07T07:13:22.286Z",
+      "name": "Kombucha Beverage",
+      "defaultMealType": "snack",
+      "nutrition": {
+        "meal_name": "Kombucha Beverage",
+        "description": "A 12 fl oz can of live and raw kombucha beverage made with organic ingredients including green tea, black tea, and fruit juices",
+        "ingredients": [
+          {
+            "name": "Kombucha drink",
+            "quantity": "12 fl oz (355mL)",
+            "notes": "Made with live and raw kombucha, contains 18% juice, organic green tea, black tea, organic cane sugar, kombucha cultures, organic apple juice, mango puree, passion fruit juice, natural flavors, probiotics, vitamin B12"
+          }
+        ],
+        "calories": 35,
+        "protein_g": 0,
+        "carbs_g": 9,
+        "fat_g": 0,
+        "fiber_g": 0,
+        "sugar_g": 8,
+        "sodium_mg": 0,
+        "potassium_mg": 150,
+        "calcium_mg": 15,
+        "iron_mg": 0.5,
+        "magnesium_mg": 10,
+        "phosphorus_mg": 10,
+        "zinc_mg": 0.1,
+        "vitamin_a_mcg": 5,
+        "vitamin_c_mg": 10,
+        "vitamin_d_mcg": 0,
+        "vitamin_e_mg": 0.2,
+        "vitamin_k1_mcg": 2,
+        "vitamin_k2_mcg": 0,
+        "vitamin_b1_mg": 0.01,
+        "vitamin_b2_mg": 0.02,
+        "vitamin_b3_mg": 0.1,
+        "vitamin_b6_mg": 0.02,
+        "vitamin_b12_mcg": 36,
+        "folate_mcg": 5,
+        "omega3_mg": 10,
+        "copper_mg": 0.05,
+        "selenium_mcg": 2,
+        "manganese_mg": 0.3,
+        "vitamin_b5_mg": 0.1,
+        "_thumbFile": "1775545990846_cklvch6g91o.jpg",
+        "_mime": "image/jpeg"
+      },
+      "thumbFile": "1775545990846_cklvch6g91o.jpg"
+    },
+    {
+      "id": "lib_1775548174720",
+      "savedAt": "2026-04-07T07:49:34.720Z",
+      "name": "Portuguese Custard Tarts (Pastéis de Nata)",
+      "defaultMealType": "dinner",
+      "nutrition": {
+        "meal_name": "Portuguese Custard Tarts (Pastéis de Nata)",
+        "description": "Two Portuguese custard tarts with flaky pastry shells filled with creamy custard, showing caramelized tops",
+        "ingredients": [
+          {
+            "name": "pastry shells",
+            "quantity": "2 tarts",
+            "notes": "made with wheat flour, butter, water"
+          },
+          {
+            "name": "custard filling",
+            "quantity": "approximately 60g",
+            "notes": "made with eggs, milk, sugar, cornstarch"
+          }
+        ],
+        "calories": 260,
+        "protein_g": 4,
+        "carbs_g": 38,
+        "fat_g": 10,
+        "fiber_g": 1,
+        "sugar_g": 20,
+        "sodium_mg": 200,
+        "potassium_mg": 100,
+        "calcium_mg": 60,
+        "iron_mg": 1,
+        "magnesium_mg": 10,
+        "phosphorus_mg": 100,
+        "zinc_mg": 0.5,
+        "vitamin_a_mcg": 80,
+        "vitamin_c_mg": 0,
+        "vitamin_d_mcg": 0.5,
+        "vitamin_e_mg": 0.8,
+        "vitamin_k1_mcg": 2,
+        "vitamin_k2_mcg": 5,
+        "vitamin_b1_mg": 0.1,
+        "vitamin_b2_mg": 0.2,
+        "vitamin_b3_mg": 1,
+        "vitamin_b6_mg": 0.1,
+        "vitamin_b12_mcg": 0.5,
+        "folate_mcg": 20,
+        "omega3_mg": 50,
+        "copper_mg": 0.1,
+        "selenium_mcg": 10,
+        "manganese_mg": 0.2,
+        "vitamin_b5_mg": 0.5,
+        "_thumbFile": "1775548139564_6gwl0j9a587.jpg",
+        "_mime": "image/jpeg"
+      },
+      "thumbFile": "1775548139564_6gwl0j9a587.jpg"
+    },
+    {
+      "id": "lib_1775630287769",
+      "savedAt": "2026-04-08T06:38:07.769Z",
+      "name": "Breakfast with Omelet, Caviar Toast, and Beverages",
+      "defaultMealType": "breakfast",
+      "nutrition": {
+        "meal_name": "Breakfast with Omelet, Caviar Toast, and Beverages",
+        "description": "A luxurious breakfast featuring a butter-cooked omelet made with 2 large eggs, dark whole grain bread topped with red salmon caviar, accompanied by double espresso with milk and fresh citrus juice",
+        "ingredients": [
+          {
+            "name": "eggs",
+            "quantity": "2 large",
+            "notes": "used to make the omelet"
+          },
+          {
+            "name": "butter",
+            "quantity": "1 tablespoon",
+            "notes": "for cooking omelet"
+          },
+          {
+            "name": "dark bread",
+            "quantity": "40 g",
+            "notes": "appears to be whole grain or rye bread"
+          },
+          {
+            "name": "double espresso",
+            "quantity": "1 cup",
+            "notes": "black coffee with milk added"
+          },
+          {
+            "name": "citrus juice",
+            "quantity": "1 cup",
+            "notes": "pressed juicery"
+          },
+          {
+            "name": "red caviar",
+            "quantity": "1 tablespoon",
+            "notes": "salmon roe caviar"
+          }
+        ],
+        "calories": 485,
+        "protein_g": 22.8,
+        "carbs_g": 38.2,
+        "fat_g": 25.4,
+        "fiber_g": 4.8,
+        "sugar_g": 24.6,
+        "sodium_mg": 658,
+        "potassium_mg": 742,
+        "calcium_mg": 168,
+        "iron_mg": 3.2,
+        "magnesium_mg": 42,
+        "phosphorus_mg": 385,
+        "zinc_mg": 2.1,
+        "vitamin_a_mcg": 298,
+        "vitamin_c_mg": 96,
+        "vitamin_d_mcg": 2.8,
+        "vitamin_e_mg": 1.8,
+        "vitamin_k1_mcg": 8.2,
+        "vitamin_k2_mcg": 0.8,
+        "vitamin_b1_mg": 0.18,
+        "vitamin_b2_mg": 0.52,
+        "vitamin_b3_mg": 1.2,
+        "vitamin_b6_mg": 0.28,
+        "vitamin_b12_mcg": 3.8,
+        "folate_mcg": 68,
+        "omega3_mg": 185,
+        "copper_mg": 0.15,
+        "selenium_mcg": 28.5,
+        "manganese_mg": 0.8,
+        "vitamin_b5_mg": 1.4
+      },
+      "thumbFile": "1775629907219_5cjx6uonkwx.jpg"
+    },
+    {
+      "id": "lib_1775631400394",
+      "savedAt": "2026-04-08T06:56:40.394Z",
+      "name": "Wagyu Steak with Red Wine",
+      "defaultMealType": "dinner",
+      "nutrition": {
+        "meal_name": "Wagyu Steak with Red Wine",
+        "description": "9oz American Wagyu steak served with 1.5 glasses of dry red wine",
+        "ingredients": [
+          {
+            "name": "American Wagyu steak",
+            "quantity": "9 oz",
+            "notes": "high-marbled premium beef"
+          },
+          {
+            "name": "Dry red wine",
+            "quantity": "1.5 glasses (7.5 fl oz)",
+            "notes": "approximately 220ml total"
+          }
+        ],
+        "calories": 1045,
+        "protein_g": 54,
+        "carbs_g": 5,
+        "fat_g": 72,
+        "fiber_g": 0,
+        "sugar_g": 1,
+        "sodium_mg": 156,
+        "potassium_mg": 745,
+        "calcium_mg": 28,
+        "iron_mg": 6.2,
+        "magnesium_mg": 58,
+        "phosphorus_mg": 485,
+        "zinc_mg": 12.8,
+        "vitamin_a_mcg": 12,
+        "vitamin_c_mg": 0,
+        "vitamin_d_mcg": 0.8,
+        "vitamin_e_mg": 1.2,
+        "vitamin_k1_mcg": 3.5,
+        "vitamin_k2_mcg": 2.8,
+        "vitamin_b1_mg": 0.15,
+        "vitamin_b2_mg": 0.42,
+        "vitamin_b3_mg": 14.2,
+        "vitamin_b6_mg": 0.85,
+        "vitamin_b12_mcg": 6.8,
+        "folate_mcg": 18,
+        "omega3_mg": 165,
+        "copper_mg": 0.18,
+        "selenium_mcg": 48,
+        "manganese_mg": 0.28,
+        "vitamin_b5_mg": 1.45
+      },
+      "thumbFile": null
+    },
+    {
+      "id": "lib_1775631448378",
+      "savedAt": "2026-04-08T06:57:28.378Z",
+      "name": "Protein Shake",
+      "defaultMealType": "snack",
+      "nutrition": {
+        "meal_name": "Protein Shake",
+        "description": "One serving of a ready-to-drink protein shake in chocolate flavor, consumed directly from the carton",
+        "ingredients": [
+          {
+            "name": "Protein shake (chocolate flavor)",
+            "quantity": "1 shake (11 fl oz)",
+            "notes": "Ready-to-drink protein beverage with 30g protein per serving"
+          }
+        ],
+        "calories": 160,
+        "protein_g": 30,
+        "carbs_g": 4,
+        "fat_g": 3,
+        "fiber_g": 1,
+        "sugar_g": 1,
+        "sodium_mg": 260,
+        "potassium_mg": 400,
+        "calcium_mg": 300,
+        "iron_mg": 1.6,
+        "magnesium_mg": 50,
+        "phosphorus_mg": 200,
+        "zinc_mg": 2,
+        "vitamin_a_mcg": 150,
+        "vitamin_c_mg": 15,
+        "vitamin_d_mcg": 6,
+        "vitamin_e_mg": 3,
+        "vitamin_k1_mcg": 5,
+        "vitamin_k2_mcg": 0,
+        "vitamin_b1_mg": 0.4,
+        "vitamin_b2_mg": 0.5,
+        "vitamin_b3_mg": 5,
+        "vitamin_b6_mg": 0.5,
+        "vitamin_b12_mcg": 1.5,
+        "folate_mcg": 50,
+        "omega3_mg": 50,
+        "copper_mg": 0.3,
+        "selenium_mcg": 15,
+        "manganese_mg": 0.5,
+        "vitamin_b5_mg": 1.5,
+        "_thumbFile": "1775631440043_w1lq8m7nctk.jpg",
+        "_mime": "image/jpeg"
+      },
+      "thumbFile": "1775631440043_w1lq8m7nctk.jpg"
+    },
+    {
+      "id": "lib_1775631679767",
+      "savedAt": "2026-04-08T07:01:19.767Z",
+      "name": "Cantaloupe and Prosciutto with Stuffed Red Peppers",
+      "defaultMealType": "lunch",
+      "nutrition": {
+        "meal_name": "Cantaloupe and Prosciutto with Stuffed Red Peppers",
+        "description": "Two slices of cantaloupe with 3 slices of prosciutto and 4 small Cypressa stuffed red peppers",
+        "ingredients": [
+          {
+            "name": "cantaloupe",
+            "quantity": "2 slices",
+            "notes": "medium thickness slices"
+          },
+          {
+            "name": "prosciutto",
+            "quantity": "3 slices",
+            "notes": "thin deli slices"
+          },
+          {
+            "name": "stuffed red peppers",
+            "quantity": "4 small",
+            "notes": "Cypressa brand"
+          }
+        ],
+        "calories": 285,
+        "protein_g": 18,
+        "carbs_g": 22,
+        "fat_g": 15,
+        "fiber_g": 3,
+        "sugar_g": 16,
+        "sodium_mg": 1450,
+        "potassium_mg": 625,
+        "calcium_mg": 45,
+        "iron_mg": 2.2,
+        "magnesium_mg": 28,
+        "phosphorus_mg": 185,
+        "zinc_mg": 2.8,
+        "vitamin_a_mcg": 185,
+        "vitamin_c_mg": 95,
+        "vitamin_d_mcg": 0.8,
+        "vitamin_e_mg": 1.5,
+        "vitamin_k1_mcg": 8,
+        "vitamin_k2_mcg": 2,
+        "vitamin_b1_mg": 0.15,
+        "vitamin_b2_mg": 0.25,
+        "vitamin_b3_mg": 6.5,
+        "vitamin_b6_mg": 0.35,
+        "vitamin_b12_mcg": 1.2,
+        "folate_mcg": 32,
+        "omega3_mg": 125,
+        "copper_mg": 0.18,
+        "selenium_mcg": 18,
+        "manganese_mg": 0.25,
+        "vitamin_b5_mg": 1.8
+      },
+      "thumbFile": "1775631924740_z2py02qwc9q.jpg"
+    },
+    {
+      "id": "lib_1775803077954",
+      "savedAt": "2026-04-10T06:37:57.954Z",
+      "name": "Salmorejo",
+      "defaultMealType": "dinner",
+      "nutrition": {
+        "meal_name": "Salmorejo",
+        "description": "A silky, salmon-colored purée from Cordoba, Spain, thicker and creamier than gazpacho. Made with tomatoes, bread, garlic and olive oil. Serves 4.",
+        "ingredients": [
+          {
+            "name": "ripe red tomatoes",
+            "quantity": "0.5 pounds",
+            "notes": "peeled"
+          },
+          {
+            "name": "stale French baguette",
+            "quantity": "1 ounce",
+            "notes": "crusts removed and diced"
+          },
+          {
+            "name": "garlic cloves",
+            "quantity": "0.5 cloves",
+            "notes": "halved, green shoots removed, coarsely chopped"
+          },
+          {
+            "name": "extra virgin olive oil",
+            "quantity": "0.75 tablespoons",
+            "notes": "plus additional for drizzling"
+          },
+          {
+            "name": "sherry vinegar",
+            "quantity": "0.5 tablespoons",
+            "notes": "to taste"
+          },
+          {
+            "name": "salt",
+            "quantity": "to taste",
+            "notes": ""
+          },
+          {
+            "name": "diced green pepper or poblano pepper",
+            "quantity": "optional",
+            "notes": "for garnish"
+          }
+        ],
+        "calories": 211,
+        "protein_g": 5,
+        "carbs_g": 24,
+        "fat_g": 11,
+        "fiber_g": 5,
+        "sugar_g": 8,
+        "sodium_mg": 662,
+        "potassium_mg": 450,
+        "calcium_mg": 35,
+        "iron_mg": 2,
+        "magnesium_mg": 25,
+        "phosphorus_mg": 65,
+        "zinc_mg": 1,
+        "vitamin_a_mcg": 95,
+        "vitamin_c_mg": 28,
+        "vitamin_d_mcg": 0,
+        "vitamin_e_mg": 3,
+        "vitamin_k1_mcg": 12,
+        "vitamin_k2_mcg": 0,
+        "vitamin_b1_mg": 0.1,
+        "vitamin_b2_mg": 0.1,
+        "vitamin_b3_mg": 1.5,
+        "vitamin_b6_mg": 0.2,
+        "vitamin_b12_mcg": 0,
+        "folate_mcg": 25,
+        "omega3_mg": 85,
+        "copper_mg": 0.2,
+        "selenium_mcg": 8,
+        "manganese_mg": 0.3,
+        "vitamin_b5_mg": 0.4
+      },
+      "thumbFile": "1775803295661_wfwqd2eeb.jpg"
+    },
+    {
+      "id": "lib_1775803903523",
+      "savedAt": "2026-04-10T06:51:43.523Z",
+      "name": "Almond-Crusted Chilean Sea Bass with Lemon Butter",
+      "defaultMealType": "dinner",
+      "nutrition": {
+        "meal_name": "Almond-Crusted Chilean Sea Bass with Lemon Butter",
+        "description": "Baked Chilean sea bass topped with toasted sliced almonds and lemon butter sauce",
+        "ingredients": [
+          {
+            "name": "sliced almonds",
+            "quantity": "25g",
+            "notes": "toasted almond slices on top and mixed throughout"
+          },
+          {
+            "name": "chilean sea bass",
+            "quantity": "7 oz",
+            "notes": "baked"
+          },
+          {
+            "name": "lemon butter",
+            "quantity": "1/2 tbsp",
+            "notes": ""
+          }
+        ],
+        "calories": 435,
+        "protein_g": 42,
+        "carbs_g": 4,
+        "fat_g": 26,
+        "fiber_g": 3,
+        "sugar_g": 1,
+        "sodium_mg": 180,
+        "potassium_mg": 680,
+        "calcium_mg": 85,
+        "iron_mg": 1.2,
+        "magnesium_mg": 95,
+        "phosphorus_mg": 420,
+        "zinc_mg": 1.8,
+        "vitamin_a_mcg": 45,
+        "vitamin_c_mg": 2,
+        "vitamin_d_mcg": 8,
+        "vitamin_e_mg": 7.5,
+        "vitamin_k1_mcg": 2,
+        "vitamin_k2_mcg": 1,
+        "vitamin_b1_mg": 0.3,
+        "vitamin_b2_mg": 0.2,
+        "vitamin_b3_mg": 8.5,
+        "vitamin_b6_mg": 0.8,
+        "vitamin_b12_mcg": 2.8,
+        "folate_mcg": 15,
+        "omega3_mg": 850,
+        "copper_mg": 0.4,
+        "selenium_mcg": 95,
+        "manganese_mg": 0.8,
+        "vitamin_b5_mg": 1.2,
+        "_thumbFile": "1775803398625_5zbbz1jzrfv.jpg"
+      },
+      "thumbFile": "1775803398625_5zbbz1jzrfv.jpg"
+    },
+    {
+      "id": "lib_1775804489975",
+      "savedAt": "2026-04-10T07:01:29.975Z",
+      "name": "Dense Dark Rye Bread",
+      "defaultMealType": "snack",
+      "nutrition": {
+        "meal_name": "Dense Dark Rye Bread",
+        "description": "A slice of dense, dark rye bread weighing 45 grams",
+        "ingredients": [
+          {
+            "name": "Dark rye bread",
+            "quantity": "45g",
+            "notes": "Dense variety"
+          }
+        ],
+        "calories": 108,
+        "protein_g": 3.6,
+        "carbs_g": 20.3,
+        "fat_g": 1.4,
+        "fiber_g": 3.2,
+        "sugar_g": 0.9,
+        "sodium_mg": 230,
+        "potassium_mg": 95,
+        "calcium_mg": 18,
+        "iron_mg": 1.2,
+        "magnesium_mg": 22,
+        "phosphorus_mg": 65,
+        "zinc_mg": 0.7,
+        "vitamin_a_mcg": 2,
+        "vitamin_c_mg": 0.1,
+        "vitamin_d_mcg": 0,
+        "vitamin_e_mg": 0.4,
+        "vitamin_k1_mcg": 1.8,
+        "vitamin_k2_mcg": 0.5,
+        "vitamin_b1_mg": 0.12,
+        "vitamin_b2_mg": 0.09,
+        "vitamin_b3_mg": 1.4,
+        "vitamin_b6_mg": 0.08,
+        "vitamin_b12_mcg": 0,
+        "folate_mcg": 24,
+        "omega3_mg": 45,
+        "copper_mg": 0.12,
+        "selenium_mcg": 12,
+        "manganese_mg": 0.8,
+        "vitamin_b5_mg": 0.3
+      },
+      "thumbFile": "1775884192264_u9f3ykg5dti.jpg"
+    },
+    {
+      "id": "lib_1775883891018",
+      "savedAt": "2026-04-11T05:04:51.018Z",
+      "name": "Garlic Cellophane Noodles with Roasted Asparagus",
+      "defaultMealType": "dinner",
+      "nutrition": {
+        "meal_name": "Garlic Cellophane Noodles with Roasted Asparagus",
+        "description": "Sweet potato starch noodles in a rich garlic butter sauce with roasted asparagus, finished with Parmesan cheese and seasoned with fish sauce and liquid aminos",
+        "ingredients": [
+          {
+            "name": "extra virgin olive oil",
+            "quantity": "1/4 cup",
+            "notes": "for roasting asparagus"
+          },
+          {
+            "name": "kosher salt",
+            "quantity": "1 teaspoon + 1/2 tablespoon",
+            "notes": "divided between asparagus and sauce"
+          },
+          {
+            "name": "black pepper",
+            "quantity": "1/2 teaspoon",
+            "notes": "ground"
+          },
+          {
+            "name": "sweet potato starch noodles",
+            "quantity": "8 oz",
+            "notes": "cellophane noodles"
+          },
+          {
+            "name": "green onions",
+            "quantity": "1 bunch",
+            "notes": "white and green parts separated"
+          },
+          {
+            "name": "garlic",
+            "quantity": "12 cloves",
+            "notes": "minced"
+          },
+          {
+            "name": "olive oil",
+            "quantity": "1/3 cup",
+            "notes": "for sauce"
+          },
+          {
+            "name": "butter",
+            "quantity": "8 oz",
+            "notes": "cold, cubed"
+          },
+          {
+            "name": "fish sauce",
+            "quantity": "3 tablespoons",
+            "notes": ""
+          },
+          {
+            "name": "Braggs liquid amino",
+            "quantity": "3 tablespoons",
+            "notes": ""
+          },
+          {
+            "name": "Parmesan cheese",
+            "quantity": "1 cup",
+            "notes": "grated"
+          }
+        ],
+        "calories": 2847,
+        "protein_g": 48,
+        "carbs_g": 178,
+        "fat_g": 218,
+        "fiber_g": 8,
+        "sugar_g": 12,
+        "sodium_mg": 4280,
+        "potassium_mg": 1420,
+        "calcium_mg": 1180,
+        "iron_mg": 6.2,
+        "magnesium_mg": 142,
+        "phosphorus_mg": 680,
+        "zinc_mg": 4.8,
+        "vitamin_a_mcg": 1850,
+        "vitamin_c_mg": 45,
+        "vitamin_d_mcg": 2.4,
+        "vitamin_e_mg": 18.5,
+        "vitamin_k1_mcg": 125,
+        "vitamin_k2_mcg": 12,
+        "vitamin_b1_mg": 1.2,
+        "vitamin_b2_mg": 1.8,
+        "vitamin_b3_mg": 8.5,
+        "vitamin_b6_mg": 2.1,
+        "vitamin_b12_mcg": 3.2,
+        "folate_mcg": 145,
+        "omega3_mg": 420,
+        "copper_mg": 1.8,
+        "selenium_mcg": 28,
+        "manganese_mg": 2.4,
+        "vitamin_b5_mg": 3.2
+      },
+      "thumbFile": "1775883992094_dwsokcr6o29.jpg"
+    },
+    {
+      "id": "lib_1775885363419",
+      "savedAt": "2026-04-11T05:29:23.419Z",
+      "name": "Guinness Draught Beer",
+      "defaultMealType": "dinner",
+      "nutrition": {
+        "meal_name": "Guinness Draught Beer",
+        "description": "A single can of Guinness Draught beer, 15 fl oz can with nutrition label visible showing serving information",
+        "ingredients": [
+          {
+            "name": "Guinness Draught Beer",
+            "quantity": "15 fl oz",
+            "notes": "Dark Irish stout beer with nitrogen widget for creamy head"
+          }
+        ],
+        "calories": 156,
+        "protein_g": 1.4,
+        "carbs_g": 11.8,
+        "fat_g": 0,
+        "fiber_g": 0,
+        "sugar_g": 0,
+        "sodium_mg": 12,
+        "potassium_mg": 198,
+        "calcium_mg": 18,
+        "iron_mg": 0.1,
+        "magnesium_mg": 22,
+        "phosphorus_mg": 57,
+        "zinc_mg": 0.04,
+        "vitamin_a_mcg": 0,
+        "vitamin_c_mg": 0,
+        "vitamin_d_mcg": 0,
+        "vitamin_e_mg": 0,
+        "vitamin_k1_mcg": 0,
+        "vitamin_k2_mcg": 0,
+        "vitamin_b1_mg": 0.01,
+        "vitamin_b2_mg": 0.09,
+        "vitamin_b3_mg": 1.83,
+        "vitamin_b6_mg": 0.16,
+        "vitamin_b12_mcg": 0.07,
+        "folate_mcg": 21,
+        "omega3_mg": 0,
+        "copper_mg": 0.014,
+        "selenium_mcg": 4.5,
+        "manganese_mg": 0.018,
+        "vitamin_b5_mg": 0.11,
+        "_thumbFile": "1775885349951_4txnyps4hkr.jpg",
+        "_mime": "image/jpeg"
+      },
+      "thumbFile": "1775885349951_4txnyps4hkr.jpg"
+    },
+    {
+      "id": "lib_1775885532825",
+      "savedAt": "2026-04-11T05:32:12.825Z",
+      "name": "Homemade Lemonade",
+      "defaultMealType": "lunch",
+      "nutrition": {
+        "meal_name": "Homemade Lemonade",
+        "description": "8oz serving of fresh homemade lemonade made with lemon juice, water, and sugar",
+        "ingredients": [
+          {
+            "name": "Fresh lemon juice",
+            "quantity": "2 tablespoons",
+            "notes": "freshly squeezed"
+          },
+          {
+            "name": "Water",
+            "quantity": "7 oz",
+            "notes": "filtered water"
+          },
+          {
+            "name": "Sugar",
+            "quantity": "2 tablespoons",
+            "notes": "granulated white sugar"
+          }
+        ],
+        "calories": 100,
+        "protein_g": 0.2,
+        "carbs_g": 26,
+        "fat_g": 0.1,
+        "fiber_g": 0.1,
+        "sugar_g": 24,
+        "sodium_mg": 2,
+        "potassium_mg": 80,
+        "calcium_mg": 6,
+        "iron_mg": 0.1,
+        "magnesium_mg": 4,
+        "phosphorus_mg": 8,
+        "zinc_mg": 0.1,
+        "vitamin_a_mcg": 1,
+        "vitamin_c_mg": 28,
+        "vitamin_d_mcg": 0,
+        "vitamin_e_mg": 0.1,
+        "vitamin_k1_mcg": 0.5,
+        "vitamin_k2_mcg": 0,
+        "vitamin_b1_mg": 0.02,
+        "vitamin_b2_mg": 0.01,
+        "vitamin_b3_mg": 0.1,
+        "vitamin_b6_mg": 0.03,
+        "vitamin_b12_mcg": 0,
+        "folate_mcg": 4,
+        "omega3_mg": 2,
+        "copper_mg": 0.02,
+        "selenium_mcg": 0.2,
+        "manganese_mg": 0.01,
+        "vitamin_b5_mg": 0.05
+      },
+      "thumbFile": "1775979512066_821kwer8j9o.png"
+    },
+    {
+      "id": "lib_1775971128209",
+      "savedAt": "2026-04-12T05:18:48.209Z",
+      "name": "Trader Joe's Wild Alaskan Black Cod Sablefish with Miso Marinade",
+      "defaultMealType": "dinner",
+      "nutrition": {
+        "meal_name": "Trader Joe's Wild Alaskan Black Cod Sablefish with Miso Marinade",
+        "description": "Frozen black cod sablefish fillet with miso marinade, showing one portion of the two-serving package",
+        "ingredients": [
+          {
+            "name": "black cod sablefish",
+            "quantity": "142g",
+            "notes": "wild Alaskan, one portion from package"
+          },
+          {
+            "name": "miso marinade",
+            "quantity": "included",
+            "notes": "contains sugar, soybean paste, water, soybeans, rice, salt, yeast, koji starter culture"
+          },
+          {
+            "name": "cooking sake",
+            "quantity": "included",
+            "notes": "water, rice, koji starter culture, ethyl alcohol, water, salt"
+          }
+        ],
+        "calories": 480,
+        "protein_g": 20,
+        "carbs_g": 15,
+        "fat_g": 38,
+        "fiber_g": 0,
+        "sugar_g": 8,
+        "sodium_mg": 580,
+        "potassium_mg": 330,
+        "calcium_mg": 10,
+        "iron_mg": 0,
+        "magnesium_mg": 35,
+        "phosphorus_mg": 250,
+        "zinc_mg": 0.5,
+        "vitamin_a_mcg": 25,
+        "vitamin_c_mg": 0,
+        "vitamin_d_mcg": 0,
+        "vitamin_e_mg": 2,
+        "vitamin_k1_mcg": 0,
+        "vitamin_k2_mcg": 0,
+        "vitamin_b1_mg": 0.1,
+        "vitamin_b2_mg": 0.1,
+        "vitamin_b3_mg": 5,
+        "vitamin_b6_mg": 0.4,
+        "vitamin_b12_mcg": 2.5,
+        "folate_mcg": 8,
+        "omega3_mg": 1800,
+        "copper_mg": 0.1,
+        "selenium_mcg": 45,
+        "manganese_mg": 0.1,
+        "vitamin_b5_mg": 0.8,
+        "_thumbFile": "1775971089580_en53gl0x11q.webp",
+        "_mime": "image/webp"
+      },
+      "thumbFile": "1775971089580_en53gl0x11q.webp"
+    },
+    {
+      "id": "lib_1775971492713",
+      "savedAt": "2026-04-12T05:24:52.713Z",
+      "name": "Mixed Berry Yogurt Bowl",
+      "defaultMealType": "breakfast",
+      "nutrition": {
+        "meal_name": "Mixed Berry Yogurt Bowl",
+        "description": "High protein whole milk yogurt topped with fresh strawberries and blueberries",
+        "ingredients": [
+          {
+            "name": "high protein whole milk yogurt",
+            "quantity": "2 tbsp",
+            "notes": "approximately 30g serving"
+          },
+          {
+            "name": "strawberries",
+            "quantity": "1/3 cup",
+            "notes": "fresh, sliced"
+          },
+          {
+            "name": "blueberries",
+            "quantity": "1/3 cup",
+            "notes": "fresh"
+          }
+        ],
+        "calories": 75,
+        "protein_g": 4.2,
+        "carbs_g": 12.8,
+        "fat_g": 1.8,
+        "fiber_g": 2.1,
+        "sugar_g": 10.5,
+        "sodium_mg": 25,
+        "potassium_mg": 165,
+        "calcium_mg": 85,
+        "iron_mg": 0.3,
+        "magnesium_mg": 12,
+        "phosphorus_mg": 70,
+        "zinc_mg": 0.4,
+        "vitamin_a_mcg": 15,
+        "vitamin_c_mg": 28,
+        "vitamin_d_mcg": 0.2,
+        "vitamin_e_mg": 0.4,
+        "vitamin_k1_mcg": 8.5,
+        "vitamin_k2_mcg": 0.8,
+        "vitamin_b1_mg": 0.04,
+        "vitamin_b2_mg": 0.12,
+        "vitamin_b3_mg": 0.3,
+        "vitamin_b6_mg": 0.08,
+        "vitamin_b12_mcg": 0.3,
+        "folate_mcg": 18,
+        "omega3_mg": 25,
+        "copper_mg": 0.05,
+        "selenium_mcg": 3.2,
+        "manganese_mg": 0.15,
+        "vitamin_b5_mg": 0.25
+      },
+      "thumbFile": "1775974787242_9m4j1owkh8.jpg"
+    },
+    {
+      "id": "lib_1775974060800",
+      "savedAt": "2026-04-12T06:07:40.800Z",
+      "name": "Apple Pineapple Lemon Juice with Mint",
+      "defaultMealType": "breakfast",
+      "nutrition": {
+        "meal_name": "Apple Pineapple Lemon Juice with Mint",
+        "description": "A fruit juice blend containing apple juice, pineapple juice, lemon juice, and mint with added vitamin C and probiotic cultures",
+        "ingredients": [
+          {
+            "name": "apple juice",
+            "quantity": "1 cup",
+            "notes": "primary ingredient"
+          },
+          {
+            "name": "pineapple juice",
+            "quantity": "portion of 1 cup",
+            "notes": "secondary ingredient"
+          },
+          {
+            "name": "lemon juice",
+            "quantity": "small amount",
+            "notes": "flavoring"
+          },
+          {
+            "name": "mint",
+            "quantity": "small amount",
+            "notes": "natural flavoring"
+          },
+          {
+            "name": "vitamin c (ascorbic acid)",
+            "quantity": "90mg",
+            "notes": "added nutrient"
+          },
+          {
+            "name": "tapioca starch",
+            "quantity": "trace",
+            "notes": "from probiotic cultures"
+          },
+          {
+            "name": "bacillus coagulans",
+            "quantity": "trace",
+            "notes": "probiotic culture"
+          }
+        ],
+        "calories": 130,
+        "protein_g": 0,
+        "carbs_g": 31,
+        "fat_g": 0,
+        "fiber_g": 0,
+        "sugar_g": 26,
+        "sodium_mg": 15,
+        "potassium_mg": 250,
+        "calcium_mg": 20,
+        "iron_mg": 0.5,
+        "magnesium_mg": 12,
+        "phosphorus_mg": 15,
+        "zinc_mg": 0.1,
+        "vitamin_a_mcg": 2,
+        "vitamin_c_mg": 90,
+        "vitamin_d_mcg": 0,
+        "vitamin_e_mg": 0.2,
+        "vitamin_k1_mcg": 2,
+        "vitamin_k2_mcg": 0,
+        "vitamin_b1_mg": 0.02,
+        "vitamin_b2_mg": 0.02,
+        "vitamin_b3_mg": 0.2,
+        "vitamin_b6_mg": 0.05,
+        "vitamin_b12_mcg": 0,
+        "folate_mcg": 8,
+        "omega3_mg": 5,
+        "copper_mg": 0.05,
+        "selenium_mcg": 0.5,
+        "manganese_mg": 0.15,
+        "vitamin_b5_mg": 0.1,
+        "_thumbFile": "1775974027662_cdoq00p3g4q.jpg",
+        "_mime": "image/jpeg"
+      },
+      "thumbFile": "1775974079130_logdjpmahmd.jpg"
+    },
+    {
+      "id": "lib_1775976940473",
+      "savedAt": "2026-04-12T06:55:40.473Z",
+      "name": "Dark Chocolate Bar",
+      "defaultMealType": "dinner",
+      "nutrition": {
+        "meal_name": "Dark Chocolate Bar",
+        "description": "Trader Joe's dark chocolate bar with cocoa mass, sugar, cocoa butter, soy lecithin, and natural vanilla flavor - appears to be about one full serving (10 pieces/31g) based on the nutrition label visible",
+        "ingredients": [
+          {
+            "name": "dark chocolate",
+            "quantity": "31g",
+            "notes": "cocoa mass, sugar, cocoa butter, soy lecithin, natural vanilla flavor - one serving as per label"
+          }
+        ],
+        "calories": 190,
+        "protein_g": 3,
+        "carbs_g": 10,
+        "fat_g": 15,
+        "fiber_g": 4,
+        "sugar_g": 5,
+        "sodium_mg": 0,
+        "potassium_mg": 180,
+        "calcium_mg": 40,
+        "iron_mg": 0.6,
+        "magnesium_mg": 45,
+        "phosphorus_mg": 85,
+        "zinc_mg": 0.8,
+        "vitamin_a_mcg": 2,
+        "vitamin_c_mg": 0,
+        "vitamin_d_mcg": 0,
+        "vitamin_e_mg": 0.4,
+        "vitamin_k1_mcg": 2,
+        "vitamin_k2_mcg": 0,
+        "vitamin_b1_mg": 0.02,
+        "vitamin_b2_mg": 0.04,
+        "vitamin_b3_mg": 0.5,
+        "vitamin_b6_mg": 0.02,
+        "vitamin_b12_mcg": 0,
+        "folate_mcg": 5,
+        "omega3_mg": 15,
+        "copper_mg": 0.5,
+        "selenium_mcg": 3,
+        "manganese_mg": 0.5,
+        "vitamin_b5_mg": 0.1,
+        "_thumbFile": "1775976931667_uuywdk4dck.jpg",
+        "_mime": "image/jpeg"
+      },
+      "thumbFile": "1775976931667_uuywdk4dck.jpg"
+    },
+    {
+      "id": "lib_1775976947054",
+      "savedAt": "2026-04-12T06:55:47.054Z",
+      "name": "Red Caviar on white Toast with Tea",
+      "defaultMealType": "breakfast",
+      "nutrition": {
+        "meal_name": "Red Caviar on white Toast with Tea",
+        "description": "Three slices of white bread topped with generous portions of salmon roe caviar, served with tea",
+        "ingredients": [
+          {
+            "name": "bread",
+            "quantity": "3 slices",
+            "notes": "white bread, 45 g"
+          },
+          {
+            "name": "red caviar",
+            "quantity": "1.3 tablespoons",
+            "notes": "salmon roe, bright orange-red color, generous portion on each slice"
+          }
+        ],
+        "calories": 189,
+        "protein_g": 11.2,
+        "carbs_g": 22.5,
+        "fat_g": 6.8,
+        "fiber_g": 1.4,
+        "sugar_g": 2.1,
+        "sodium_mg": 485,
+        "potassium_mg": 125,
+        "calcium_mg": 62,
+        "iron_mg": 1.8,
+        "magnesium_mg": 18,
+        "phosphorus_mg": 185,
+        "zinc_mg": 0.8,
+        "vitamin_a_mcg": 95,
+        "vitamin_c_mg": 2.1,
+        "vitamin_d_mcg": 2.8,
+        "vitamin_e_mg": 1.2,
+        "vitamin_k1_mcg": 3.5,
+        "vitamin_k2_mcg": 1.2,
+        "vitamin_b1_mg": 0.25,
+        "vitamin_b2_mg": 0.18,
+        "vitamin_b3_mg": 2.8,
+        "vitamin_b6_mg": 0.12,
+        "vitamin_b12_mcg": 4.2,
+        "folate_mcg": 35,
+        "omega3_mg": 385,
+        "copper_mg": 0.08,
+        "selenium_mcg": 12.5,
+        "manganese_mg": 0.35,
+        "vitamin_b5_mg": 0.45
+      },
+      "thumbFile": "1774896666026_ap9q5kph3r.jpg"
+    },
+    {
+      "id": "lib_1775978204768",
+      "savedAt": "2026-04-12T07:16:44.768Z",
+      "name": "Soft-Boiled Egg with Caviar Toast and Fruit Juice",
+      "defaultMealType": "breakfast",
+      "nutrition": {
+        "meal_name": "Soft-Boiled Egg with Caviar Toast and Fruit Juice",
+        "description": "A gourmet breakfast featuring a soft-boiled egg with runny yolk, three small rye bread sandwiches topped with cheese spread and red salmon caviar, accompanied by fresh orange juice",
+        "ingredients": [
+          {
+            "name": "soft-boiled egg",
+            "quantity": "1 large",
+            "notes": "runny yolk, appears medium-boiled"
+          },
+          {
+            "name": "rye bread",
+            "quantity": "50g total",
+            "notes": "very thinly sliced, used for three small sandwiches"
+          },
+          {
+            "name": "cheese",
+            "quantity": "1 oz",
+            "notes": "appears as orange spread on sandwiches"
+          },
+          {
+            "name": "orange juice",
+            "quantity": "6 oz",
+            "notes": "yellowish colored juice in glass"
+          },
+          {
+            "name": "red caviar",
+            "quantity": "1 oz",
+            "notes": "salmon roe topping on sandwiches"
+          }
+        ],
+        "calories": 485,
+        "protein_g": 22.8,
+        "carbs_g": 35.2,
+        "fat_g": 26.4,
+        "fiber_g": 4.8,
+        "sugar_g": 18.5,
+        "sodium_mg": 1420,
+        "potassium_mg": 485,
+        "calcium_mg": 285,
+        "iron_mg": 3.2,
+        "magnesium_mg": 42,
+        "phosphorus_mg": 385,
+        "zinc_mg": 2.8,
+        "vitamin_a_mcg": 285,
+        "vitamin_c_mg": 85,
+        "vitamin_d_mcg": 2.8,
+        "vitamin_e_mg": 2.2,
+        "vitamin_k1_mcg": 8.5,
+        "vitamin_k2_mcg": 12.5,
+        "vitamin_b1_mg": 0.28,
+        "vitamin_b2_mg": 0.45,
+        "vitamin_b3_mg": 1.8,
+        "vitamin_b6_mg": 0.35,
+        "vitamin_b12_mcg": 8.5,
+        "folate_mcg": 85,
+        "omega3_mg": 1250,
+        "copper_mg": 0.25,
+        "selenium_mcg": 35,
+        "manganese_mg": 0.85,
+        "vitamin_b5_mg": 1.2
+      },
+      "thumbFile": "1775978079006_9x17o8l5y79.jpg"
+    },
+    {
+      "id": "lib_1776039320793",
+      "savedAt": "2026-04-13T00:15:20.793Z",
+      "name": "Shakshuka",
+      "defaultMealType": "breakfast",
+      "nutrition": {
+        "meal_name": "Shakshuka",
+        "description": "A one pan dish with eggs cooked in slow-cooked, gently spiced tomatoes and peppers. Serves 2-4 people.",
+        "ingredients": [
+          {
+            "name": "olive oil",
+            "quantity": "2 tbsp",
+            "notes": ""
+          },
+          {
+            "name": "Pilpelchuma or harissa paste",
+            "quantity": "2 tbsp",
+            "notes": ""
+          },
+          {
+            "name": "tomato purée",
+            "quantity": "2 tsp",
+            "notes": ""
+          },
+          {
+            "name": "red peppers",
+            "quantity": "2 large",
+            "notes": "cut into 0.5cm dice (300g total)"
+          },
+          {
+            "name": "garlic cloves",
+            "quantity": "4",
+            "notes": "finely chopped"
+          },
+          {
+            "name": "ground cumin",
+            "quantity": "1 tsp",
+            "notes": ""
+          },
+          {
+            "name": "ripe tomatoes",
+            "quantity": "5 large",
+            "notes": "chopped (800g total); tinned are also fine"
+          },
+          {
+            "name": "free-range eggs",
+            "quantity": "6 medium",
+            "notes": ""
+          },
+          {
+            "name": "Labneh or thick yoghurt",
+            "quantity": "120g",
+            "notes": ""
+          },
+          {
+            "name": "salt",
+            "quantity": "to taste",
+            "notes": ""
+          }
+        ],
+        "calories": 285,
+        "protein_g": 18,
+        "carbs_g": 15,
+        "fat_g": 19,
+        "fiber_g": 4,
+        "sugar_g": 12,
+        "sodium_mg": 650,
+        "potassium_mg": 580,
+        "calcium_mg": 120,
+        "iron_mg": 3.2,
+        "magnesium_mg": 45,
+        "phosphorus_mg": 280,
+        "zinc_mg": 1.8,
+        "vitamin_a_mcg": 180,
+        "vitamin_c_mg": 85,
+        "vitamin_d_mcg": 2.1,
+        "vitamin_e_mg": 3.5,
+        "vitamin_k1_mcg": 12,
+        "vitamin_k2_mcg": 8,
+        "vitamin_b1_mg": 0.15,
+        "vitamin_b2_mg": 0.45,
+        "vitamin_b3_mg": 2.2,
+        "vitamin_b6_mg": 0.35,
+        "vitamin_b12_mcg": 1.2,
+        "folate_mcg": 85,
+        "omega3_mg": 120,
+        "copper_mg": 0.25,
+        "selenium_mcg": 22,
+        "manganese_mg": 0.8,
+        "vitamin_b5_mg": 1.5
+      },
+      "thumbFile": "1776039382273_u7sqzeip6x.png"
+    },
+    {
+      "id": "lib_1776060537962",
+      "savedAt": "2026-04-13T06:08:57.962Z",
+      "name": "Royal Potato Salad",
+      "defaultMealType": "breakfast",
+      "nutrition": {
+        "meal_name": "Royal Potato Salad",
+        "description": "A highbrow alternative to common potato salad with mayonnaise, featuring Jersey royals, quail eggs, and homemade pesto. Serves 4.",
+        "ingredients": [
+          {
+            "name": "quail eggs",
+            "quantity": "15",
+            "notes": ""
+          },
+          {
+            "name": "Jersey royal potatoes",
+            "quantity": "800g",
+            "notes": "cleaned but not scrubbed"
+          },
+          {
+            "name": "basil leaves",
+            "quantity": "20g",
+            "notes": ""
+          },
+          {
+            "name": "parsley leaves",
+            "quantity": "20g",
+            "notes": "plus extra for garnishing"
+          },
+          {
+            "name": "Parmesan cheese",
+            "quantity": "60g",
+            "notes": "grated"
+          },
+          {
+            "name": "pine nuts",
+            "quantity": "60g",
+            "notes": ""
+          },
+          {
+            "name": "garlic",
+            "quantity": "2 cloves",
+            "notes": "crushed"
+          },
+          {
+            "name": "olive oil",
+            "quantity": "200ml",
+            "notes": ""
+          },
+          {
+            "name": "petit pois",
+            "quantity": "150g",
+            "notes": "blanched for 30 seconds and refreshed"
+          },
+          {
+            "name": "white wine vinegar",
+            "quantity": "0.5 tsp",
+            "notes": ""
+          },
+          {
+            "name": "sorrel leaves",
+            "quantity": "1 bunch",
+            "notes": "or mint, finely shredded"
+          },
+          {
+            "name": "salt",
+            "quantity": "to taste",
+            "notes": ""
+          },
+          {
+            "name": "pepper",
+            "quantity": "to taste",
+            "notes": ""
+          }
+        ],
+        "calories": 485,
+        "protein_g": 18,
+        "carbs_g": 42,
+        "fat_g": 28,
+        "fiber_g": 6,
+        "sugar_g": 8,
+        "sodium_mg": 420,
+        "potassium_mg": 850,
+        "calcium_mg": 280,
+        "iron_mg": 4.2,
+        "magnesium_mg": 85,
+        "phosphorus_mg": 320,
+        "zinc_mg": 2.8,
+        "vitamin_a_mcg": 180,
+        "vitamin_c_mg": 45,
+        "vitamin_d_mcg": 1.8,
+        "vitamin_e_mg": 12,
+        "vitamin_k1_mcg": 85,
+        "vitamin_k2_mcg": 8,
+        "vitamin_b1_mg": 0.35,
+        "vitamin_b2_mg": 0.45,
+        "vitamin_b3_mg": 3.2,
+        "vitamin_b6_mg": 0.42,
+        "vitamin_b12_mcg": 1.8,
+        "folate_mcg": 95,
+        "omega3_mg": 180,
+        "copper_mg": 0.8,
+        "selenium_mcg": 28,
+        "manganese_mg": 1.2,
+        "vitamin_b5_mg": 1.8
+      },
+      "thumbFile": "1776061447590_96cvqe9pav.png"
+    },
+    {
+      "id": "lib_1776060650515",
+      "savedAt": "2026-04-13T06:10:50.515Z",
+      "name": "Brussels Sprouts with Burnt Butter and Black Garlic",
+      "defaultMealType": "dinner",
+      "nutrition": {
+        "meal_name": "Brussels Sprouts with Burnt Butter and Black Garlic",
+        "description": "Side dish serving 4, featuring roasted Brussels sprouts with black garlic paste, burnt butter, and tahini drizzle",
+        "ingredients": [
+          {
+            "name": "Brussels sprouts",
+            "quantity": "112.5g",
+            "notes": "trimmed and halved (1/4 of 450g)"
+          },
+          {
+            "name": "olive oil",
+            "quantity": "0.75 tsp",
+            "notes": ""
+          },
+          {
+            "name": "caraway seeds",
+            "quantity": "0.19 tsp",
+            "notes": "lightly crushed"
+          },
+          {
+            "name": "black garlic cloves",
+            "quantity": "5g",
+            "notes": "about 3 cloves, roughly chopped"
+          },
+          {
+            "name": "thyme leaves",
+            "quantity": "0.5 tbsp",
+            "notes": "picked"
+          },
+          {
+            "name": "unsalted butter",
+            "quantity": "7.5g",
+            "notes": "burnt until dark brown"
+          },
+          {
+            "name": "pumpkin seeds",
+            "quantity": "7.5g",
+            "notes": "toasted"
+          },
+          {
+            "name": "lemon juice",
+            "quantity": "0.38 tsp",
+            "notes": ""
+          },
+          {
+            "name": "tahini",
+            "quantity": "0.75 tsp",
+            "notes": "for drizzling"
+          },
+          {
+            "name": "salt",
+            "quantity": "pinch",
+            "notes": "to taste"
+          }
+        ],
+        "calories": 95,
+        "protein_g": 4.2,
+        "carbs_g": 8.5,
+        "fat_g": 6.8,
+        "fiber_g": 3.8,
+        "sugar_g": 2.1,
+        "sodium_mg": 145,
+        "potassium_mg": 385,
+        "calcium_mg": 48,
+        "iron_mg": 1.4,
+        "magnesium_mg": 28,
+        "phosphorus_mg": 75,
+        "zinc_mg": 0.8,
+        "vitamin_a_mcg": 58,
+        "vitamin_c_mg": 82,
+        "vitamin_d_mcg": 0.1,
+        "vitamin_e_mg": 1.2,
+        "vitamin_k1_mcg": 195,
+        "vitamin_k2_mcg": 2.1,
+        "vitamin_b1_mg": 0.12,
+        "vitamin_b2_mg": 0.08,
+        "vitamin_b3_mg": 0.9,
+        "vitamin_b6_mg": 0.22,
+        "vitamin_b12_mcg": 0.02,
+        "folate_mcg": 62,
+        "omega3_mg": 85,
+        "copper_mg": 0.15,
+        "selenium_mcg": 3.8,
+        "manganese_mg": 0.35,
+        "vitamin_b5_mg": 0.32
+      },
+      "thumbFile": "1776061157311_1v7tze1k4tw.png"
+    },
+    {
+      "id": "lib_1776061032096",
+      "savedAt": "2026-04-13T06:17:12.096Z",
+      "name": "Sous Vide Wagyu Corned Beef",
+      "defaultMealType": "dinner",
+      "nutrition": {
+        "meal_name": "Sous Vide Wagyu Corned Beef",
+        "description": "6 oz portion of premium Wagyu corned beef prepared using sous vide cooking method",
+        "ingredients": [
+          {
+            "name": "Wagyu Corned Beef",
+            "quantity": "6 oz",
+            "notes": "Sous vide preparation"
+          }
+        ],
+        "calories": 480,
+        "protein_g": 36,
+        "carbs_g": 1,
+        "fat_g": 36,
+        "fiber_g": 0,
+        "sugar_g": 0,
+        "sodium_mg": 1890,
+        "potassium_mg": 385,
+        "calcium_mg": 15,
+        "iron_mg": 3.8,
+        "magnesium_mg": 28,
+        "phosphorus_mg": 285,
+        "zinc_mg": 8.2,
+        "vitamin_a_mcg": 0,
+        "vitamin_c_mg": 0,
+        "vitamin_d_mcg": 0.3,
+        "vitamin_e_mg": 0.4,
+        "vitamin_k1_mcg": 2.1,
+        "vitamin_k2_mcg": 1.8,
+        "vitamin_b1_mg": 0.08,
+        "vitamin_b2_mg": 0.25,
+        "vitamin_b3_mg": 6.8,
+        "vitamin_b6_mg": 0.42,
+        "vitamin_b12_mcg": 3.2,
+        "folate_mcg": 12,
+        "omega3_mg": 85,
+        "copper_mg": 0.12,
+        "selenium_mcg": 28,
+        "manganese_mg": 0.02,
+        "vitamin_b5_mg": 0.68
+      },
+      "thumbFile": null
+    },
+    {
+      "id": "lib_1776061619557",
+      "savedAt": "2026-04-13T06:26:59.557Z",
+      "name": "Red Wine",
+      "defaultMealType": "dinner",
+      "nutrition": {
+        "meal_name": "Red Wine",
+        "description": "Two glasses of red wine totaling 300ml",
+        "ingredients": [
+          {
+            "name": "Red wine",
+            "quantity": "300ml",
+            "notes": "approximately 2 standard drinks"
+          }
+        ],
+        "calories": 204,
+        "protein_g": 0.2,
+        "carbs_g": 6.2,
+        "fat_g": 0,
+        "fiber_g": 0,
+        "sugar_g": 0.9,
+        "sodium_mg": 12,
+        "potassium_mg": 354,
+        "calcium_mg": 24,
+        "iron_mg": 1.4,
+        "magnesium_mg": 39,
+        "phosphorus_mg": 69,
+        "zinc_mg": 0.4,
+        "vitamin_a_mcg": 0,
+        "vitamin_c_mg": 0,
+        "vitamin_d_mcg": 0,
+        "vitamin_e_mg": 0,
+        "vitamin_k1_mcg": 0.3,
+        "vitamin_k2_mcg": 0,
+        "vitamin_b1_mg": 0.01,
+        "vitamin_b2_mg": 0.09,
+        "vitamin_b3_mg": 0.7,
+        "vitamin_b6_mg": 0.15,
+        "vitamin_b12_mcg": 0.02,
+        "folate_mcg": 6,
+        "omega3_mg": 0,
+        "copper_mg": 0.04,
+        "selenium_mcg": 0.6,
+        "manganese_mg": 3.9,
+        "vitamin_b5_mg": 0.15
+      },
+      "thumbFile": null
+    },
+    {
+      "id": "lib_1776110176800",
+      "savedAt": "2026-04-13T19:56:16.800Z",
+      "name": "Double Espresso",
+      "defaultMealType": "breakfast",
+      "nutrition": {
+        "meal_name": "Double Espresso",
+        "description": "Two shots of espresso coffee, approximately 60ml total",
+        "ingredients": [
+          {
+            "name": "espresso coffee",
+            "quantity": "60ml",
+            "notes": "double shot"
+          }
+        ],
+        "calories": 5,
+        "protein_g": 0.6,
+        "carbs_g": 0.8,
+        "fat_g": 0.4,
+        "fiber_g": 0,
+        "sugar_g": 0,
+        "sodium_mg": 14,
+        "potassium_mg": 118,
+        "calcium_mg": 10,
+        "iron_mg": 0.02,
+        "magnesium_mg": 23,
+        "phosphorus_mg": 7,
+        "zinc_mg": 0.05,
+        "vitamin_a_mcg": 0,
+        "vitamin_c_mg": 0,
+        "vitamin_d_mcg": 0,
+        "vitamin_e_mg": 0.01,
+        "vitamin_k1_mcg": 0.5,
+        "vitamin_k2_mcg": 0,
+        "vitamin_b1_mg": 0.01,
+        "vitamin_b2_mg": 0.18,
+        "vitamin_b3_mg": 5.2,
+        "vitamin_b6_mg": 0.001,
+        "vitamin_b12_mcg": 0,
+        "folate_mcg": 2,
+        "omega3_mg": 0,
+        "copper_mg": 0.02,
+        "selenium_mcg": 0.6,
+        "manganese_mg": 0.05,
+        "vitamin_b5_mg": 0.25
+      },
+      "thumbFile": "1776110198502_4hv1gpoeftd.webp"
+    },
+    {
+      "id": "lib_1776146053101",
+      "savedAt": "2026-04-14T05:54:13.101Z",
+      "name": "Zucchini and Vegetable Stew in Clay Pot",
+      "defaultMealType": "dinner",
+      "nutrition": {
+        "meal_name": "Zucchini and Vegetable Stew in Clay Pot",
+        "description": "A hearty vegetable stew cooked in a traditional clay pot containing cubed zucchini, garlic, herbs, and vegetables in a creamy broth-based sauce",
+        "ingredients": [
+          {
+            "name": "zucchini",
+            "quantity": "800g",
+            "notes": "cubed, main ingredient"
+          },
+          {
+            "name": "garlic",
+            "quantity": "2 cloves",
+            "notes": "minced"
+          },
+          {
+            "name": "olive oil",
+            "quantity": "2 tablespoons",
+            "notes": "for cooking"
+          },
+          {
+            "name": "vegetable broth",
+            "quantity": "125ml",
+            "notes": "hot"
+          },
+          {
+            "name": "sage leaves",
+            "quantity": "1 tablespoon",
+            "notes": "chopped"
+          },
+          {
+            "name": "cream",
+            "quantity": "6 tablespoons",
+            "notes": "heavy cream"
+          },
+          {
+            "name": "red bell pepper",
+            "quantity": "1 small",
+            "notes": "diced"
+          },
+          {
+            "name": "scallions",
+            "quantity": "2 tablespoons",
+            "notes": "chopped"
+          },
+          {
+            "name": "salt",
+            "quantity": "1 teaspoon",
+            "notes": "to taste"
+          },
+          {
+            "name": "black pepper",
+            "quantity": "1/2 teaspoon",
+            "notes": "freshly ground"
+          }
+        ],
+        "calories": 385,
+        "protein_g": 8,
+        "carbs_g": 22,
+        "fat_g": 32,
+        "fiber_g": 6,
+        "sugar_g": 14,
+        "sodium_mg": 890,
+        "potassium_mg": 920,
+        "calcium_mg": 145,
+        "iron_mg": 2.1,
+        "magnesium_mg": 58,
+        "phosphorus_mg": 165,
+        "zinc_mg": 1.2,
+        "vitamin_a_mcg": 285,
+        "vitamin_c_mg": 65,
+        "vitamin_d_mcg": 0.3,
+        "vitamin_e_mg": 4.2,
+        "vitamin_k1_mcg": 45,
+        "vitamin_k2_mcg": 2,
+        "vitamin_b1_mg": 0.15,
+        "vitamin_b2_mg": 0.18,
+        "vitamin_b3_mg": 2.8,
+        "vitamin_b6_mg": 0.32,
+        "vitamin_b12_mcg": 0.2,
+        "folate_mcg": 48,
+        "omega3_mg": 85,
+        "copper_mg": 0.25,
+        "selenium_mcg": 8,
+        "manganese_mg": 0.45,
+        "vitamin_b5_mg": 0.8,
+        "_thumbFile": "1776145877082_i478wxsiqk9.jpg",
+        "_mime": "image/jpeg"
+      },
+      "thumbFile": "1776145877082_i478wxsiqk9.jpg"
+    },
+    {
+      "id": "lib_1776236107895",
+      "savedAt": "2026-04-15T06:55:07.895Z",
+      "name": "Barley Mushroom Soup with Sour Cream",
+      "defaultMealType": "dinner",
+      "nutrition": {
+        "meal_name": "Barley Mushroom Soup with Sour Cream",
+        "description": "A hearty soup made with barley and mushrooms, topped with a tablespoon of sour cream",
+        "ingredients": [
+          {
+            "name": "barley",
+            "quantity": "0.5 cup cooked",
+            "notes": "pearl barley"
+          },
+          {
+            "name": "mushrooms",
+            "quantity": "1 cup sliced",
+            "notes": "mixed variety"
+          },
+          {
+            "name": "sour cream",
+            "quantity": "1 tablespoon",
+            "notes": "full-fat"
+          },
+          {
+            "name": "vegetable broth",
+            "quantity": "1.5 cups",
+            "notes": "base for soup"
+          },
+          {
+            "name": "onions",
+            "quantity": "0.25 cup diced",
+            "notes": "for flavor"
+          },
+          {
+            "name": "garlic",
+            "quantity": "1 clove",
+            "notes": "minced"
+          }
+        ],
+        "calories": 285,
+        "protein_g": 8.2,
+        "carbs_g": 48.5,
+        "fat_g": 6.8,
+        "fiber_g": 7.2,
+        "sugar_g": 4.1,
+        "sodium_mg": 820,
+        "potassium_mg": 485,
+        "calcium_mg": 65,
+        "iron_mg": 2.8,
+        "magnesium_mg": 58,
+        "phosphorus_mg": 165,
+        "zinc_mg": 1.4,
+        "vitamin_a_mcg": 25,
+        "vitamin_c_mg": 8.5,
+        "vitamin_d_mcg": 0.8,
+        "vitamin_e_mg": 1.2,
+        "vitamin_k1_mcg": 12,
+        "vitamin_k2_mcg": 0.5,
+        "vitamin_b1_mg": 0.18,
+        "vitamin_b2_mg": 0.35,
+        "vitamin_b3_mg": 4.8,
+        "vitamin_b6_mg": 0.25,
+        "vitamin_b12_mcg": 0.15,
+        "folate_mcg": 28,
+        "omega3_mg": 85,
+        "copper_mg": 0.28,
+        "selenium_mcg": 18.5,
+        "manganese_mg": 0.95,
+        "vitamin_b5_mg": 1.2
+      },
+      "thumbFile": null
+    },
+    {
+      "id": "lib_1776236986770",
+      "savedAt": "2026-04-15T07:09:46.770Z",
+      "name": "Organic Noodles with Miso-Glazed Black Cod",
+      "defaultMealType": "dinner",
+      "nutrition": {
+        "meal_name": "Organic Noodles with Miso-Glazed Black Cod",
+        "description": "A serving of organic potato and mung bean starch noodles paired with Wild Alaskan black cod sablefish in miso marinade from Trader Joe's",
+        "ingredients": [
+          {
+            "name": "Organic potato and mung bean starch noodles",
+            "quantity": "42g",
+            "notes": "One serving as shown on package label"
+          },
+          {
+            "name": "Wild Alaskan black cod sablefish with miso marinade",
+            "quantity": "142g",
+            "notes": "One portion from Trader Joe's as specified by user"
+          }
+        ],
+        "calories": 632,
+        "protein_g": 20,
+        "carbs_g": 53,
+        "fat_g": 38,
+        "fiber_g": 1,
+        "sugar_g": 8,
+        "sodium_mg": 584,
+        "potassium_mg": 353,
+        "calcium_mg": 20,
+        "iron_mg": 1,
+        "magnesium_mg": 35,
+        "phosphorus_mg": 250,
+        "zinc_mg": 1,
+        "vitamin_a_mcg": 15,
+        "vitamin_c_mg": 2,
+        "vitamin_d_mcg": 8,
+        "vitamin_e_mg": 2,
+        "vitamin_k1_mcg": 5,
+        "vitamin_k2_mcg": 0,
+        "vitamin_b1_mg": 0.1,
+        "vitamin_b2_mg": 0.1,
+        "vitamin_b3_mg": 4,
+        "vitamin_b6_mg": 0.2,
+        "vitamin_b12_mcg": 3,
+        "folate_mcg": 8,
+        "omega3_mg": 1800,
+        "copper_mg": 0.1,
+        "selenium_mcg": 45,
+        "manganese_mg": 0.2,
+        "vitamin_b5_mg": 0.5,
+        "_thumbFile": "1776236916197_ezb3q6oulgb.jpg",
+        "_mime": "image/jpeg"
+      },
+      "thumbFile": "1776236916197_ezb3q6oulgb.jpg"
+    },
+    {
+      "id": "lib_1776318704088",
+      "savedAt": "2026-04-16T05:51:44.088Z",
+      "name": "Roast Half Duck with Mung Bean Potato Noodles and Roasted Vegetables",
+      "defaultMealType": "dinner",
+      "nutrition": {
+        "meal_name": "Roast Half Duck with Mung Bean Potato Noodles and Roasted Vegetables",
+        "description": "Maple Leaf Farms fully cooked seasoned roast half duck served with mung bean potato noodles and roasted vegetables",
+        "ingredients": [
+          {
+            "name": "roast half duck",
+            "quantity": "5 oz",
+            "notes": "Maple Leaf Farms fully cooked, seasoned, partially boned - about 1.7 servings from package"
+          },
+          {
+            "name": "mung bean potato noodles",
+            "quantity": "2 oz dry",
+            "notes": "Asian glass noodles made from mung bean and potato starch"
+          },
+          {
+            "name": "roasted vegetables",
+            "quantity": "1 cup",
+            "notes": "Mixed roasted vegetables including carrots, bell peppers, and onions"
+          }
+        ],
+        "calories": 485,
+        "protein_g": 35,
+        "carbs_g": 45,
+        "fat_g": 18,
+        "fiber_g": 2,
+        "sugar_g": 4,
+        "sodium_mg": 850,
+        "potassium_mg": 420,
+        "calcium_mg": 25,
+        "iron_mg": 4,
+        "magnesium_mg": 45,
+        "phosphorus_mg": 280,
+        "zinc_mg": 3,
+        "vitamin_a_mcg": 85,
+        "vitamin_c_mg": 25,
+        "vitamin_d_mcg": 2,
+        "vitamin_e_mg": 1,
+        "vitamin_k1_mcg": 15,
+        "vitamin_k2_mcg": 8,
+        "vitamin_b1_mg": 0.3,
+        "vitamin_b2_mg": 0.4,
+        "vitamin_b3_mg": 8,
+        "vitamin_b6_mg": 0.4,
+        "vitamin_b12_mcg": 0.8,
+        "folate_mcg": 25,
+        "omega3_mg": 180,
+        "copper_mg": 0.3,
+        "selenium_mcg": 28,
+        "manganese_mg": 0.8,
+        "vitamin_b5_mg": 1.2,
+        "_thumbFile": "1776318699426_7ihtclrbd2t.png",
+        "_mime": "image/png"
+      },
+      "thumbFile": "1776318699426_7ihtclrbd2t.png"
+    },
+    {
+      "id": "lib_1776462085280",
+      "savedAt": "2026-04-17T21:41:25.280Z",
+      "name": "Пышные бездрожжевые оладьи на кефире",
+      "defaultMealType": "breakfast",
+      "nutrition": {
+        "meal_name": "Пышные бездрожжевые оладьи на кефире",
+        "description": "Fluffy yeast-free pancakes made with kefir. Recipe makes 8 servings.",
+        "ingredients": [
+          {
+            "name": "Кефир (Kefir)",
+            "quantity": "62.5 ml",
+            "notes": "any fat content"
+          },
+          {
+            "name": "Мука (Flour)",
+            "quantity": "56.25 g",
+            "notes": "high grade"
+          },
+          {
+            "name": "Яйцо (Egg)",
+            "quantity": "0.25 pieces",
+            "notes": "room temperature"
+          },
+          {
+            "name": "Сахар (Sugar)",
+            "quantity": "7.5 g",
+            "notes": "2 tablespoons total"
+          },
+          {
+            "name": "Соль (Salt)",
+            "quantity": "0.6 g",
+            "notes": "0.5 teaspoon total"
+          },
+          {
+            "name": "Сода (Baking soda)",
+            "quantity": "0.6 g",
+            "notes": "1 teaspoon total"
+          },
+          {
+            "name": "Растительное масло (Vegetable oil)",
+            "quantity": "5 ml",
+            "notes": "for frying"
+          }
+        ],
+        "calories": 192,
+        "protein_g": 6,
+        "carbs_g": 36,
+        "fat_g": 2,
+        "fiber_g": 1.5,
+        "sugar_g": 9,
+        "sodium_mg": 380,
+        "potassium_mg": 85,
+        "calcium_mg": 78,
+        "iron_mg": 1.8,
+        "magnesium_mg": 12,
+        "phosphorus_mg": 95,
+        "zinc_mg": 0.8,
+        "vitamin_a_mcg": 15,
+        "vitamin_c_mg": 0.5,
+        "vitamin_d_mcg": 0.3,
+        "vitamin_e_mg": 0.8,
+        "vitamin_k1_mcg": 2,
+        "vitamin_k2_mcg": 1,
+        "vitamin_b1_mg": 0.15,
+        "vitamin_b2_mg": 0.12,
+        "vitamin_b3_mg": 1.2,
+        "vitamin_b6_mg": 0.08,
+        "vitamin_b12_mcg": 0.25,
+        "folate_mcg": 25,
+        "omega3_mg": 45,
+        "copper_mg": 0.1,
+        "selenium_mcg": 8,
+        "manganese_mg": 0.4,
+        "vitamin_b5_mg": 0.35
+      },
+      "thumbFile": "1776462195139_6gg025hew6e.jpg"
+    },
+    {
+      "id": "lib_1776462473674",
+      "savedAt": "2026-04-17T21:47:53.674Z",
+      "name": "Petite Breakfast Original Cheese",
+      "defaultMealType": "breakfast",
+      "nutrition": {
+        "meal_name": "Petite Breakfast Original Cheese",
+        "description": "A small round of soft-ripened cheese with white bloomy rind, appears to be a breakfast cheese variety",
+        "ingredients": [
+          {
+            "name": "Petite Breakfast Original Cheese",
+            "quantity": "1 oz (28g)",
+            "notes": "Soft-ripened cheese with white mold rind, made from cultured pasteurized cow's milk and cream"
+          }
+        ],
+        "calories": 100,
+        "protein_g": 5,
+        "carbs_g": 1,
+        "fat_g": 8,
+        "fiber_g": 0,
+        "sugar_g": 0,
+        "sodium_mg": 190,
+        "potassium_mg": 50,
+        "calcium_mg": 100,
+        "iron_mg": 0.1,
+        "magnesium_mg": 8,
+        "phosphorus_mg": 95,
+        "zinc_mg": 0.8,
+        "vitamin_a_mcg": 75,
+        "vitamin_c_mg": 0,
+        "vitamin_d_mcg": 0.3,
+        "vitamin_e_mg": 0.2,
+        "vitamin_k1_mcg": 2,
+        "vitamin_k2_mcg": 8,
+        "vitamin_b1_mg": 0.02,
+        "vitamin_b2_mg": 0.15,
+        "vitamin_b3_mg": 0.1,
+        "vitamin_b6_mg": 0.05,
+        "vitamin_b12_mcg": 0.4,
+        "folate_mcg": 6,
+        "omega3_mg": 15,
+        "copper_mg": 0.02,
+        "selenium_mcg": 4,
+        "manganese_mg": 0.01,
+        "vitamin_b5_mg": 0.3,
+        "_thumbFile": "1776462431902_oe51jll5qr.jpg",
+        "_mime": "image/jpeg"
+      },
+      "thumbFile": "1776462505869_9jwng8vk5kg.jpg"
+    },
+    {
+      "id": "lib_1776462824560",
+      "savedAt": "2026-04-17T21:53:44.560Z",
+      "name": "Swedish Preserve and Guava Spread Combination",
+      "defaultMealType": "breakfast",
+      "nutrition": {
+        "meal_name": "Swedish Preserve and Guava Spread Combination",
+        "description": "One tablespoon each of Swedish Queens Blend Preserve (berry preserve) and Trader Joe's Organic Guava Fruit Spread",
+        "ingredients": [
+          {
+            "name": "Swedish Queens Blend Preserve",
+            "quantity": "1 tbsp",
+            "notes": "Berry preserve with raspberries and blueberries, product of Sweden"
+          },
+          {
+            "name": "Trader Joe's Organic Guava Fruit Spread",
+            "quantity": "1 tbsp",
+            "notes": "Organic guava fruit spread, 10.5 oz jar"
+          }
+        ],
+        "calories": 70,
+        "protein_g": 0.2,
+        "carbs_g": 18,
+        "fat_g": 0.1,
+        "fiber_g": 1.5,
+        "sugar_g": 16,
+        "sodium_mg": 3,
+        "potassium_mg": 85,
+        "calcium_mg": 12,
+        "iron_mg": 0.3,
+        "magnesium_mg": 8,
+        "phosphorus_mg": 15,
+        "zinc_mg": 0.1,
+        "vitamin_a_mcg": 25,
+        "vitamin_c_mg": 55,
+        "vitamin_d_mcg": 0,
+        "vitamin_e_mg": 0.4,
+        "vitamin_k1_mcg": 2,
+        "vitamin_k2_mcg": 0,
+        "vitamin_b1_mg": 0.02,
+        "vitamin_b2_mg": 0.03,
+        "vitamin_b3_mg": 0.4,
+        "vitamin_b6_mg": 0.05,
+        "vitamin_b12_mcg": 0,
+        "folate_mcg": 8,
+        "omega3_mg": 15,
+        "copper_mg": 0.08,
+        "selenium_mcg": 0.5,
+        "manganese_mg": 0.15,
+        "vitamin_b5_mg": 0.2,
+        "_thumbFile": "1776462802176_dc26utr5mww.jpg",
+        "_mime": "image/jpeg"
+      },
+      "thumbFile": "1776462802176_dc26utr5mww.jpg"
+    },
+    {
+      "id": "lib_1776462870986",
+      "savedAt": "2026-04-17T21:54:30.986Z",
+      "name": "Sour Cream",
+      "defaultMealType": "breakfast",
+      "nutrition": {
+        "meal_name": "Sour Cream",
+        "description": "1 tablespoon of regular sour cream",
+        "ingredients": [
+          {
+            "name": "sour cream",
+            "quantity": "1 tbsp",
+            "notes": "regular full-fat sour cream"
+          }
+        ],
+        "calories": 23,
+        "protein_g": 0.4,
+        "carbs_g": 0.5,
+        "fat_g": 2.4,
+        "fiber_g": 0,
+        "sugar_g": 0.4,
+        "sodium_mg": 6,
+        "potassium_mg": 17,
+        "calcium_mg": 14,
+        "iron_mg": 0.01,
+        "magnesium_mg": 1,
+        "phosphorus_mg": 10,
+        "zinc_mg": 0.03,
+        "vitamin_a_mcg": 22,
+        "vitamin_c_mg": 0.1,
+        "vitamin_d_mcg": 0.02,
+        "vitamin_e_mg": 0.1,
+        "vitamin_k1_mcg": 0.2,
+        "vitamin_k2_mcg": 0.5,
+        "vitamin_b1_mg": 0.005,
+        "vitamin_b2_mg": 0.02,
+        "vitamin_b3_mg": 0.01,
+        "vitamin_b6_mg": 0.002,
+        "vitamin_b12_mcg": 0.04,
+        "folate_mcg": 1,
+        "omega3_mg": 2,
+        "copper_mg": 0.001,
+        "selenium_mcg": 0.4,
+        "manganese_mg": 0.001,
+        "vitamin_b5_mg": 0.04
+      },
+      "thumbFile": null
+    },
+    {
+      "id": "lib_1776463871573",
+      "savedAt": "2026-04-17T22:11:11.573Z",
+      "name": "Medium Thin Crust Pizza (1/3 portion)",
+      "defaultMealType": "dinner",
+      "nutrition": {
+        "meal_name": "Medium Thin Crust Pizza (1/3 portion)",
+        "description": "One-third of a 12-inch thin crust pizza with half vegetarian toppings and half all-meat toppings",
+        "ingredients": [
+          {
+            "name": "Thin crust dough",
+            "quantity": "1/3 medium pizza base",
+            "notes": "Wheat flour based"
+          },
+          {
+            "name": "Pizza sauce",
+            "quantity": "3 tbsp",
+            "notes": "Tomato based"
+          },
+          {
+            "name": "Mozzarella cheese",
+            "quantity": "2 oz",
+            "notes": "Whole milk mozzarella"
+          },
+          {
+            "name": "Bell peppers",
+            "quantity": "1/4 cup",
+            "notes": "Mixed colors"
+          },
+          {
+            "name": "Mushrooms",
+            "quantity": "1/4 cup",
+            "notes": "Sliced"
+          },
+          {
+            "name": "Red onions",
+            "quantity": "2 tbsp",
+            "notes": "Diced"
+          },
+          {
+            "name": "Pepperoni",
+            "quantity": "0.75 oz",
+            "notes": "Cured meat"
+          },
+          {
+            "name": "Italian sausage",
+            "quantity": "0.75 oz",
+            "notes": "Cooked ground"
+          },
+          {
+            "name": "Ham",
+            "quantity": "0.5 oz",
+            "notes": "Deli style"
+          }
+        ],
+        "calories": 485,
+        "protein_g": 23,
+        "carbs_g": 38,
+        "fat_g": 26,
+        "fiber_g": 3,
+        "sugar_g": 6,
+        "sodium_mg": 1150,
+        "potassium_mg": 385,
+        "calcium_mg": 315,
+        "iron_mg": 3.2,
+        "magnesium_mg": 45,
+        "phosphorus_mg": 285,
+        "zinc_mg": 2.8,
+        "vitamin_a_mcg": 125,
+        "vitamin_c_mg": 18,
+        "vitamin_d_mcg": 0.8,
+        "vitamin_e_mg": 1.2,
+        "vitamin_k1_mcg": 12,
+        "vitamin_k2_mcg": 8,
+        "vitamin_b1_mg": 0.25,
+        "vitamin_b2_mg": 0.28,
+        "vitamin_b3_mg": 4.5,
+        "vitamin_b6_mg": 0.22,
+        "vitamin_b12_mcg": 1.8,
+        "folate_mcg": 65,
+        "omega3_mg": 85,
+        "copper_mg": 0.15,
+        "selenium_mcg": 22,
+        "manganese_mg": 0.45,
+        "vitamin_b5_mg": 0.85
+      },
+      "thumbFile": "1776464094203_61iq75zfu0y.jpg"
+    },
+    {
+      "id": "lib_1776464274805",
+      "savedAt": "2026-04-17T22:17:54.805Z",
+      "name": "Guinness Draft Beer",
+      "defaultMealType": "dinner",
+      "nutrition": {
+        "meal_name": "Guinness Draft Beer",
+        "description": "440ml can of Guinness draft stout beer",
+        "ingredients": [
+          {
+            "name": "Guinness Draft Beer",
+            "quantity": "440ml",
+            "notes": "canned draft stout"
+          }
+        ],
+        "calories": 176,
+        "protein_g": 1.8,
+        "carbs_g": 13.2,
+        "fat_g": 0,
+        "fiber_g": 0,
+        "sugar_g": 1.3,
+        "sodium_mg": 9,
+        "potassium_mg": 176,
+        "calcium_mg": 18,
+        "iron_mg": 0.13,
+        "magnesium_mg": 26,
+        "phosphorus_mg": 57,
+        "zinc_mg": 0.04,
+        "vitamin_a_mcg": 0,
+        "vitamin_c_mg": 0,
+        "vitamin_d_mcg": 0,
+        "vitamin_e_mg": 0,
+        "vitamin_k1_mcg": 0,
+        "vitamin_k2_mcg": 0,
+        "vitamin_b1_mg": 0.04,
+        "vitamin_b2_mg": 0.18,
+        "vitamin_b3_mg": 1.84,
+        "vitamin_b6_mg": 0.16,
+        "vitamin_b12_mcg": 0.13,
+        "folate_mcg": 26,
+        "omega3_mg": 0,
+        "copper_mg": 0.04,
+        "selenium_mcg": 3.5,
+        "manganese_mg": 0.04,
+        "vitamin_b5_mg": 0.18
+      },
+      "thumbFile": "1776464298011_s2kpxdx3ad.jpg"
+    },
+    {
+      "id": "lib_1776465194578",
+      "savedAt": "2026-04-17T22:33:14.578Z",
+      "name": "Large Soft Boiled Egg",
+      "defaultMealType": "breakfast",
+      "nutrition": {
+        "meal_name": "Large Soft Boiled Egg",
+        "description": "One large soft boiled egg cooked until whites are set but yolk remains runny",
+        "ingredients": [
+          {
+            "name": "large egg",
+            "quantity": "1 whole",
+            "notes": "soft boiled"
+          }
+        ],
+        "calories": 70,
+        "protein_g": 6.3,
+        "carbs_g": 0.4,
+        "fat_g": 4.8,
+        "fiber_g": 0,
+        "sugar_g": 0.2,
+        "sodium_mg": 70,
+        "potassium_mg": 69,
+        "calcium_mg": 28,
+        "iron_mg": 0.9,
+        "magnesium_mg": 6,
+        "phosphorus_mg": 99,
+        "zinc_mg": 0.6,
+        "vitamin_a_mcg": 80,
+        "vitamin_c_mg": 0,
+        "vitamin_d_mcg": 1.1,
+        "vitamin_e_mg": 0.5,
+        "vitamin_k1_mcg": 0.3,
+        "vitamin_k2_mcg": 15,
+        "vitamin_b1_mg": 0.02,
+        "vitamin_b2_mg": 0.25,
+        "vitamin_b3_mg": 0.04,
+        "vitamin_b6_mg": 0.08,
+        "vitamin_b12_mcg": 0.6,
+        "folate_mcg": 22,
+        "omega3_mg": 37,
+        "copper_mg": 0.04,
+        "selenium_mcg": 15.4,
+        "manganese_mg": 0.01,
+        "vitamin_b5_mg": 0.7
+      },
+      "thumbFile": "1776465270575_b91umfknkpq.jpg"
+    },
+    {
+      "id": "lib_1776465461839",
+      "savedAt": "2026-04-17T22:37:41.839Z",
+      "name": "Quarter 14-inch Thin Crust Pizza (Half Veggie, Half Meat)",
+      "defaultMealType": "dinner",
+      "nutrition": {
+        "meal_name": "Quarter 14-inch Thin Crust Pizza (Half Veggie, Half Meat)",
+        "description": "One quarter slice of a 14-inch thin crust pizza with half vegetarian toppings (peppers, onions, mushrooms, olives) and half all-meat toppings (pepperoni, sausage, ham)",
+        "ingredients": [
+          {
+            "name": "Thin pizza crust",
+            "quantity": "1/4 of 14-inch",
+            "notes": "Wheat flour based"
+          },
+          {
+            "name": "Pizza sauce",
+            "quantity": "3 tablespoons",
+            "notes": "Tomato based"
+          },
+          {
+            "name": "Mozzarella cheese",
+            "quantity": "2 oz",
+            "notes": "Shredded"
+          },
+          {
+            "name": "Bell peppers",
+            "quantity": "2 tablespoons",
+            "notes": "Mixed colors, diced"
+          },
+          {
+            "name": "Onions",
+            "quantity": "2 tablespoons",
+            "notes": "Diced"
+          },
+          {
+            "name": "Mushrooms",
+            "quantity": "2 tablespoons",
+            "notes": "Sliced"
+          },
+          {
+            "name": "Black olives",
+            "quantity": "1 tablespoon",
+            "notes": "Sliced"
+          },
+          {
+            "name": "Pepperoni",
+            "quantity": "0.5 oz",
+            "notes": "Sliced"
+          },
+          {
+            "name": "Italian sausage",
+            "quantity": "0.5 oz",
+            "notes": "Crumbled"
+          },
+          {
+            "name": "Ham",
+            "quantity": "0.5 oz",
+            "notes": "Diced"
+          }
+        ],
+        "calories": 520,
+        "protein_g": 24,
+        "carbs_g": 42,
+        "fat_g": 28,
+        "fiber_g": 3,
+        "sugar_g": 6,
+        "sodium_mg": 1180,
+        "potassium_mg": 385,
+        "calcium_mg": 320,
+        "iron_mg": 3.2,
+        "magnesium_mg": 45,
+        "phosphorus_mg": 285,
+        "zinc_mg": 2.8,
+        "vitamin_a_mcg": 125,
+        "vitamin_c_mg": 28,
+        "vitamin_d_mcg": 0.3,
+        "vitamin_e_mg": 1.8,
+        "vitamin_k1_mcg": 12,
+        "vitamin_k2_mcg": 8,
+        "vitamin_b1_mg": 0.35,
+        "vitamin_b2_mg": 0.28,
+        "vitamin_b3_mg": 5.2,
+        "vitamin_b6_mg": 0.22,
+        "vitamin_b12_mcg": 1.1,
+        "folate_mcg": 45,
+        "omega3_mg": 85,
+        "copper_mg": 0.15,
+        "selenium_mcg": 22,
+        "manganese_mg": 0.8,
+        "vitamin_b5_mg": 0.6
+      },
+      "thumbFile": "1776465484855_brr5ytqbt8j.jpg"
+    },
+    {
+      "id": "lib_1776644316930",
+      "savedAt": "2026-04-20T00:18:36.931Z",
+      "name": "Rosemary Chicken with Oven-Roasted Ratatouille",
+      "defaultMealType": "dinner",
+      "nutrition": {
+        "meal_name": "Rosemary Chicken with Oven-Roasted Ratatouille",
+        "description": "A low-fat, one-pot recipe bursting with summer colour and flavour, serves 4",
+        "ingredients": [
+          {
+            "name": "aubergine",
+            "quantity": "0.25",
+            "notes": "cut into chunky pieces"
+          },
+          {
+            "name": "courgettes",
+            "quantity": "0.5",
+            "notes": "sliced into half-moons"
+          },
+          {
+            "name": "mixed peppers",
+            "quantity": "0.75",
+            "notes": "deseeded and roughly chopped"
+          },
+          {
+            "name": "rosemary",
+            "quantity": "0.5 tsp",
+            "notes": "finely chopped plus 1 small sprig"
+          },
+          {
+            "name": "garlic cloves",
+            "quantity": "0.5",
+            "notes": "crushed"
+          },
+          {
+            "name": "olive oil",
+            "quantity": "0.75 tbsp",
+            "notes": ""
+          },
+          {
+            "name": "skinless boneless chicken breast",
+            "quantity": "1",
+            "notes": ""
+          },
+          {
+            "name": "cherry tomatoes",
+            "quantity": "62.5g",
+            "notes": "halved"
+          }
+        ],
+        "calories": 288,
+        "protein_g": 37,
+        "carbs_g": 11,
+        "fat_g": 11,
+        "fiber_g": 5,
+        "sugar_g": 10,
+        "sodium_mg": 213,
+        "potassium_mg": 850,
+        "calcium_mg": 45,
+        "iron_mg": 2.8,
+        "magnesium_mg": 65,
+        "phosphorus_mg": 320,
+        "zinc_mg": 1.5,
+        "vitamin_a_mcg": 185,
+        "vitamin_c_mg": 95,
+        "vitamin_d_mcg": 0.2,
+        "vitamin_e_mg": 3.2,
+        "vitamin_k1_mcg": 25,
+        "vitamin_k2_mcg": 2.5,
+        "vitamin_b1_mg": 0.35,
+        "vitamin_b2_mg": 0.25,
+        "vitamin_b3_mg": 12.5,
+        "vitamin_b6_mg": 1.2,
+        "vitamin_b12_mcg": 0.8,
+        "folate_mcg": 55,
+        "omega3_mg": 125,
+        "copper_mg": 0.3,
+        "selenium_mcg": 28,
+        "manganese_mg": 0.4,
+        "vitamin_b5_mg": 2.1
+      },
+      "thumbFile": "1776644826436_hbgn0yhoc2c.png"
+    },
+    {
+      "id": "lib_1776644557710",
+      "savedAt": "2026-04-20T00:22:37.710Z",
+      "name": "Ratatouille",
+      "defaultMealType": "dinner",
+      "nutrition": {
+        "meal_name": "Ratatouille",
+        "description": "Traditional Mediterranean vegetable stew with aubergine, carrots, potatoes, cherry tomatoes, garlic, rosemary and olive oil",
+        "ingredients": [
+          {
+            "name": "aubergine",
+            "quantity": "0.5 medium",
+            "notes": "cut into chunky pieces"
+          },
+          {
+            "name": "carrots",
+            "quantity": "0.75 medium",
+            "notes": "deseeded and roughly chopped"
+          },
+          {
+            "name": "rosemary",
+            "quantity": "0.5 tsp",
+            "notes": "finely chopped plus 1 small sprig"
+          },
+          {
+            "name": "garlic cloves",
+            "quantity": "0.5 cloves",
+            "notes": "crushed"
+          },
+          {
+            "name": "olive oil",
+            "quantity": "0.75 tbsp",
+            "notes": ""
+          },
+          {
+            "name": "potatoes",
+            "quantity": "3 small",
+            "notes": "halved"
+          },
+          {
+            "name": "cherry tomatoes",
+            "quantity": "62.5g",
+            "notes": "halved"
+          }
+        ],
+        "calories": 285,
+        "protein_g": 6.2,
+        "carbs_g": 42.8,
+        "fat_g": 11.4,
+        "fiber_g": 9.1,
+        "sugar_g": 14.2,
+        "sodium_mg": 18,
+        "potassium_mg": 1245,
+        "calcium_mg": 65,
+        "iron_mg": 2.1,
+        "magnesium_mg": 58,
+        "phosphorus_mg": 145,
+        "zinc_mg": 1.2,
+        "vitamin_a_mcg": 485,
+        "vitamin_c_mg": 28,
+        "vitamin_d_mcg": 0.1,
+        "vitamin_e_mg": 2.8,
+        "vitamin_k1_mcg": 18.5,
+        "vitamin_k2_mcg": 0.2,
+        "vitamin_b1_mg": 0.18,
+        "vitamin_b2_mg": 0.12,
+        "vitamin_b3_mg": 2.8,
+        "vitamin_b6_mg": 0.45,
+        "vitamin_b12_mcg": 0.05,
+        "folate_mcg": 48,
+        "omega3_mg": 95,
+        "copper_mg": 0.28,
+        "selenium_mcg": 2.1,
+        "manganese_mg": 0.42,
+        "vitamin_b5_mg": 0.85
       },
       "thumbFile": null
     }

@@ -28,12 +28,74 @@
       "createdAt": "2026-03-30T00:08:00.644Z"
     },
     {
-      "id": "supp_1774829312690",
+      "id": "supp_1774889451623",
+      "name": "Terra Kai Juce",
+      "nutrients": {
+        "vitamin_c_mg": 45,
+        "vitamin_b12_mcg": 50,
+        "vitamin_b6_mg": 1,
+        "vitamin_e_mg": 6.8,
+        "vitamin_b1_mg": 0.8,
+        "vitamin_b2_mg": 0.9,
+        "vitamin_b3_mg": 4.7,
+        "vitamin_b5_mg": 2.6,
+        "copper_mg": 0.5,
+        "selenium_mcg": 32,
+        "manganese_mg": 1,
+        "calcium_mg": 30,
+        "zinc_mg": 6.9,
+        "sodium_mg": 10,
+        "carbs_g": 9,
+        "fiber_g": 3,
+        "sugar_g": 4,
+        "calories": 30
+      },
+      "createdAt": "2026-03-30T16:50:51.623Z"
+    },
+    {
+      "id": "supp_1774938312102",
+      "name": "Calcium (citrate)",
+      "nutrients": {
+        "calcium_mg": 300
+      },
+      "createdAt": "2026-03-31T06:25:12.102Z"
+    },
+    {
+      "id": "supp_1774939438834",
       "name": "Vitamin K2 200 MCG MK-7",
       "nutrients": {
-        "vitamin_k_mcg": 200
+        "vitamin_k2_mcg": 200
       },
-      "createdAt": "2026-03-30T00:08:32.690Z"
+      "createdAt": "2026-03-31T06:43:58.834Z"
+    },
+    {
+      "id": "supp_1775632065643",
+      "name": "Collagen Peptides",
+      "nutrients": {
+        "sodium_mg": 110,
+        "protein_g": 18,
+        "calories": 70
+      },
+      "createdAt": "2026-04-08T07:07:45.643Z"
+    },
+    {
+      "id": "supp_1775806683704",
+      "name": "Aquamin Calcium & Magnesium",
+      "nutrients": {
+        "calcium_mg": 250,
+        "magnesium_mg": 125
+      },
+      "createdAt": "2026-04-10T07:38:03.704Z"
+    },
+    {
+      "id": "supp_1776319085499",
+      "name": "Vitamin C Liposomal",
+      "nutrients": {
+        "vitamin_c_mg": 1000,
+        "fat_g": 1,
+        "calories": 10
+      },
+      "createdAt": "2026-04-16T05:58:05.499Z"
     }
   ]
 }

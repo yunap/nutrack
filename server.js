@@ -138,7 +138,8 @@ app.post('/api/analyze', upload.single('image'), async (req, res) => {
     if (!req.file) return res.status(400).json({ error: 'No image provided' });
     const base64 = req.file.buffer.toString('base64');
     const mime   = req.file.mimetype || 'image/jpeg';
-    const result = await callClaude(base64, mime, null);
+    const notes  = req.body.notes?.trim() || null;  // optional text augmentation
+    const result = await callClaude(base64, mime, null, notes);
     result._thumbFile = saveThumb(req.file.buffer, mime);
     result._mime = mime;
     res.json(result);
@@ -356,13 +357,31 @@ app.post('/api/library', requireProfile, (req, res) => {
 // ── Update nutrition for a library entry (after edit+recalculate) ─────────────
 app.put('/api/library/:id/nutrition', requireProfile, (req, res) => {
   try {
-    const { nutrition } = req.body;
+    const { nutrition, name } = req.body;
     if (!nutrition) return res.status(400).json({ error: 'Missing nutrition data' });
     const meal = req.dbs.libraryDb.get('meals').find({ id: req.params.id }).value();
     if (!meal) return res.status(404).json({ error: 'Library meal not found' });
+    const finalName = name?.trim() || nutrition.meal_name || meal.name;
     req.dbs.libraryDb.get('meals').find({ id: req.params.id })
-      .assign({ nutrition, name: nutrition.meal_name || meal.name }).write();
+      .assign({ nutrition, name: finalName }).write();
     res.json({ success: true });
+  } catch (err) { res.status(500).json({ error: err.message }); }
+});
+
+// ── Duplicate a library entry ─────────────────────────────────────────────────
+app.post('/api/library/:id/duplicate', requireProfile, (req, res) => {
+  try {
+    const original = req.dbs.libraryDb.get('meals').find({ id: req.params.id }).value();
+    if (!original) return res.status(404).json({ error: 'Library meal not found' });
+    const copy = {
+      ...original,
+      id: 'lib_' + Date.now().toString(),
+      name: 'Copy of ' + original.name,
+      savedAt: new Date().toISOString(),
+      nutrition: { ...original.nutrition, meal_name: 'Copy of ' + original.name }
+    };
+    req.dbs.libraryDb.get('meals').push(copy).write();
+    res.json({ success: true, meal: copy });
   } catch (err) { res.status(500).json({ error: err.message }); }
 });
 
@@ -602,8 +621,9 @@ function sumNutrition(nutritionArray) {
   return sum;
 }
 
-function buildPrompt(corrections) {
+function buildPrompt(corrections, notes) {
   const note = corrections ? `\n\nIMPORTANT: The user has corrected the ingredients. Use EXACTLY these and recalculate:\n${corrections}` : '';
+  const userNotes = notes ? `\n\nUSER CONTEXT: The user has provided this additional information about the meal:\n"${notes}"\nUse this context to improve accuracy — it may clarify cooking methods, portions, brands, or ingredients not visible in the photo.` : '';
   return `You are a professional nutritionist analyzing a meal photo. Return ONLY a valid JSON object (no markdown, no backticks, no extra text).
 
 CRITICAL INSTRUCTIONS:
@@ -617,7 +637,7 @@ Return this JSON:
 "calories":0,"protein_g":0,"carbs_g":0,"fat_g":0,"fiber_g":0,"sugar_g":0,"sodium_mg":0,"potassium_mg":0,
 "calcium_mg":0,"iron_mg":0,"magnesium_mg":0,"phosphorus_mg":0,"zinc_mg":0,"vitamin_a_mcg":0,"vitamin_c_mg":0,
 "vitamin_d_mcg":0,"vitamin_e_mg":0,"vitamin_k1_mcg":0,"vitamin_k2_mcg":0,"vitamin_b1_mg":0,"vitamin_b2_mg":0,"vitamin_b3_mg":0,
-"vitamin_b6_mg":0,"vitamin_b12_mcg":0,"folate_mcg":0,"omega3_mg":0,"copper_mg":0,"selenium_mcg":0,"manganese_mg":0,"vitamin_b5_mg":0}${note}
+"vitamin_b6_mg":0,"vitamin_b12_mcg":0,"folate_mcg":0,"omega3_mg":0,"copper_mg":0,"selenium_mcg":0,"manganese_mg":0,"vitamin_b5_mg":0}${note}${userNotes}
 
 Replace all 0s with your best estimates.`;
 }
@@ -728,7 +748,7 @@ Replace all 0s with realistic estimates.`;
   return JSON.parse(data.content.map(c => c.text || '').join('').replace(/```json|```/g, '').trim());
 }
 
-async function callClaude(base64, mime, corrections) {
+async function callClaude(base64, mime, corrections, notes) {
   const resp = await fetch('https://api.anthropic.com/v1/messages', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json', 'x-api-key': process.env.ANTHROPIC_API_KEY, 'anthropic-version': '2023-06-01' },
@@ -736,7 +756,7 @@ async function callClaude(base64, mime, corrections) {
       model: 'claude-sonnet-4-20250514', max_tokens: 1500,
       messages: [{ role: 'user', content: [
         { type: 'image', source: { type: 'base64', media_type: mime, data: base64 } },
-        { type: 'text', text: buildPrompt(corrections) }
+        { type: 'text', text: buildPrompt(corrections, notes) }
       ]}]
     })
   });

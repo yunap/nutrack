@@ -332,6 +332,11 @@ nav{background:var(--surface);border-bottom:1px solid var(--border);position:sti
           </div>
           <div id="preview-wrap"><img id="preview-img" alt="preview"></div>
         </div>
+        <!-- Optional text augmentation — shown after photo is loaded -->
+        <div id="photo-augment" style="display:none;margin-top:.6rem">
+          <textarea id="photo-notes" placeholder="Optional: add context to improve accuracy&#10;e.g. homemade, the sauce has heavy cream, portion is half the plate" style="width:100%;min-height:72px;font-size:13px;line-height:1.5;padding:.6rem .75rem;border:1.5px solid var(--border);border-radius:var(--rs);background:var(--surface);color:var(--text);resize:vertical;font-family:inherit"></textarea>
+          <p style="font-size:11px;color:var(--t3);margin-top:2px">Photo + notes are analyzed together</p>
+        </div>
       </div>
 
       <!-- TEXT MODE -->
@@ -397,6 +402,12 @@ nav{background:var(--surface);border-bottom:1px solid var(--border);position:sti
         <button class="btn btn-primary" id="save-btn" onclick="saveMeal()">Save to today's log</button>
         <button class="btn btn-lib" id="save-lib-btn" onclick="saveToLibrary()">+ Save to library</button>
       </div>
+      <!-- Post-log library nudge -->
+      <div id="save-lib-nudge" style="display:none;padding:.6rem 1.1rem;border-top:1px solid var(--border);background:var(--gl);display:none;align-items:center;gap:10px;flex-wrap:wrap">
+        <span style="font-size:13px;flex:1">💾 Save this meal to your library for quick reuse?</span>
+        <button class="btn btn-primary btn-sm" onclick="nudgeSaveToLibrary()">Yes, save it</button>
+        <button class="btn btn-outline btn-sm" onclick="dismissNudge()">No thanks</button>
+      </div>
     </div>
   </div>
 </div>
@@ -408,14 +419,24 @@ nav{background:var(--surface);border-bottom:1px solid var(--border);position:sti
       <h3>Saved meals</h3>
       <span style="font-size:11px;color:var(--t2)">Tap a card to see full nutrition info</span>
     </div>
+    <div style="padding:.6rem 1.1rem;border-bottom:1px solid var(--border)">
+      <input type="search" id="lib-search" placeholder="🔍  Search by name or ingredient…"
+        style="width:100%;font-size:13px;padding:.45rem .75rem;border:1px solid var(--border);border-radius:var(--rs);background:var(--surface);color:var(--text)"
+        oninput="filterLibrary(this.value)">
+    </div>
     <div id="lib-content"></div>
   </div>
 
   <!-- Detail panel -->
   <div class="card" id="lib-detail-card" style="display:none">
     <div class="card-head">
-      <div>
-        <div style="font-size:15px;font-weight:600;color:var(--text)" id="lib-det-name"></div>
+      <div style="flex:1;min-width:0">
+        <input id="lib-det-name"
+          style="font-size:15px;font-weight:600;color:var(--text);background:none;border:none;border-bottom:1.5px solid transparent;border-radius:0;padding:1px 2px;width:100%;outline:none;transition:border-color .15s"
+          onfocus="this.style.borderBottomColor='var(--green)'"
+          onblur="saveLibName(this.value)"
+          onkeydown="if(event.key==='Enter'){this.blur();} if(event.key==='Escape'){this.value=_origLibName; this.blur();}"
+          title="Click to rename">
         <div style="font-size:12px;color:var(--t2);margin-top:3px" id="lib-det-desc"></div>
       </div>
       <button class="btn-ghost" onclick="closeDetail()">&#10005; Close</button>
@@ -449,6 +470,7 @@ nav{background:var(--surface);border-bottom:1px solid var(--border);position:sti
     <div style="padding:.85rem 1.1rem;border-top:1px solid var(--border);display:flex;gap:9px;flex-wrap:wrap;align-items:center">
       <button class="btn btn-primary" onclick="openLibModal(currentDetailId, currentDetailType)">Log this meal</button>
       <button class="btn btn-outline btn-sm" onclick="openLibEdit()">✏️ Edit</button>
+      <button class="btn btn-outline btn-sm" onclick="duplicateLibMeal()">⧉ Duplicate</button>
       <button class="btn btn-outline btn-sm" onclick="document.getElementById('lib-photo-input').click()" id="lib-photo-btn">📷 Add photo</button>
       <input type="file" id="lib-photo-input" accept="image/*" style="display:none" onchange="uploadLibPhoto(this.files[0])">
       <button class="btn btn-danger btn-sm" onclick="deleteLibAndClose()">Remove from library</button>
@@ -866,6 +888,7 @@ function handleFile(file) {
     document.getElementById('upload-prompt').style.display='none';
     document.getElementById('analyze-btn').style.display='flex';
     document.getElementById('log-results').style.display='none';
+    document.getElementById('photo-augment').style.display='block';
   };
   reader.readAsDataURL(file);
 }
@@ -929,7 +952,9 @@ async function analyze() {
       currentThumbFile=null;
     } else {
       if(!imageBase64) throw new Error('Please upload a photo first');
+      const notes = document.getElementById('photo-notes')?.value.trim() || '';
       const fd=new FormData(); fd.append('image',b64Blob(imageBase64,imageMime),'meal.jpg');
+      if (notes) fd.append('notes', notes);
       const r=await fetch('/api/analyze',{method:'POST',body:fd});
       d=await r.json(); if(!r.ok) throw new Error(d.error);
       currentThumbFile=d._thumbFile||null;
@@ -1014,7 +1039,24 @@ async function saveMeal() {
     btn.innerHTML='✓ Saved!';
     toast('Meal saved to '+today);
     setTimeout(()=>{ btn.textContent="Save to today's log"; btn.disabled=false; },2000);
+    // show library nudge only if this meal isn't already in library
+    const mealName = currentNutrition?.meal_name;
+    const alreadyInLib = libraryMeals?.some(m => m.name === mealName);
+    if (!alreadyInLib) showNudge();
+
   } catch(e){ showErr('log-err',e.message); btn.disabled=false; btn.textContent="Save to today's log"; }
+}
+function showNudge() {
+  const el = document.getElementById('save-lib-nudge');
+  if (el) el.style.display = 'flex';
+}
+function dismissNudge() {
+  const el = document.getElementById('save-lib-nudge');
+  if (el) el.style.display = 'none';
+}
+async function nudgeSaveToLibrary() {
+  dismissNudge();
+  await saveToLibrary();
 }
 async function saveToLibrary() {
   if(!currentNutrition) return;
@@ -1034,6 +1076,8 @@ function resetLog() {
   document.getElementById('preview-img').src='';
   document.getElementById('preview-wrap').style.display='none';
   document.getElementById('upload-prompt').style.display='block';
+  document.getElementById('photo-augment').style.display='none';
+  document.getElementById('photo-notes').value='';
   document.getElementById('analyze-btn').style.display='none';
   document.getElementById('log-results').style.display='none';
   document.getElementById('log-err').style.display='none';
@@ -1041,6 +1085,7 @@ function resetLog() {
   document.getElementById('meal-description').value='';
   document.getElementById('recipe-url').value='';
   currentThumbFile=null;
+  dismissNudge();
   // reset to photo mode and scroll to top of card
   setInputMode('photo');
   window.scrollTo({top:0, behavior:'smooth'});
@@ -1052,16 +1097,15 @@ function resetLog() {
 let currentDetailId = null, currentDetailType = 'snack';
 let libraryMeals = [];
 
-async function loadLibrary() {
-  const r=await fetch('/api/library');
-  libraryMeals=await r.json();
-  closeDetail();
-  const el=document.getElementById('lib-content');
-  if(!libraryMeals.length){
-    el.innerHTML='<div class="empty"><div class="ei">📚</div><p style="font-weight:500;color:var(--text)">No saved meals yet</p><p style="font-size:13px;margin-top:4px">Analyze a meal and click \"+ Save to library\"</p></div>';
+function renderLibraryGrid(meals) {
+  const el = document.getElementById('lib-content');
+  if (!meals.length) {
+    el.innerHTML = libraryMeals.length
+      ? '<div class="empty"><div class="ei">🔍</div><p style="font-weight:500;color:var(--text)">No meals match your search</p></div>'
+      : '<div class="empty"><div class="ei">📚</div><p style="font-weight:500;color:var(--text)">No saved meals yet</p><p style="font-size:13px;margin-top:4px">Analyze a meal and click &quot;+ Save to library&quot;</p></div>';
     return;
   }
-  el.innerHTML=`<div class="lib-grid">${libraryMeals.map(m=>`
+  el.innerHTML=`<div class="lib-grid">${meals.map(m=>`
     <div class="lib-card" id="lc-${m.id}" onclick="showDetail('${m.id}')">
       ${m.thumbFile
         ? `<img class="lib-card-img" src="/thumbs/${m.thumbFile}" onerror="this.outerHTML='<div class=\'lib-card-ph\'>🍽️</div>'">`
@@ -1077,6 +1121,50 @@ async function loadLibrary() {
     </div>`).join('')}</div>`;
 }
 
+function filterLibrary(query) {
+  const q = query.trim().toLowerCase();
+  if (!q) { renderLibraryGrid(libraryMeals); return; }
+  const filtered = libraryMeals.filter(m => {
+    if (m.name.toLowerCase().includes(q)) return true;
+    const ings = (m.nutrition?.ingredients || []).map(i => i.name.toLowerCase()).join(' ');
+    return ings.includes(q);
+  });
+  renderLibraryGrid(filtered);
+}
+
+async function loadLibrary() {
+  const r=await fetch('/api/library');
+  libraryMeals=await r.json();
+  closeDetail();
+  // clear search on reload
+  const searchEl = document.getElementById('lib-search');
+  if (searchEl) searchEl.value = '';
+  renderLibraryGrid(libraryMeals);
+}
+
+async function saveLibName(newName) {
+  const name = newName.trim();
+  if (!name || name === _origLibName || !currentDetailId) return;
+  const meal = libraryMeals?.find(m => m.id === currentDetailId);
+  if (!meal) return;
+  const r = await fetch('/api/library/' + currentDetailId + '/nutrition', {
+    method: 'PUT', headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ nutrition: { ...meal.nutrition, meal_name: name }, name })
+  });
+  if (!r.ok) {
+    document.getElementById('lib-det-name').value = _origLibName; // revert on error
+    return;
+  }
+  // update local cache
+  meal.name = name;
+  meal.nutrition.meal_name = name;
+  _origLibName = name;
+  // update the library card title live
+  const card = document.getElementById('lc-' + currentDetailId);
+  if (card) card.querySelector('.lib-card-name').textContent = name;
+  toast('Name updated');
+}
+
 function showDetail(id) {
   const m = libraryMeals.find(x=>x.id===id);
   if (!m) return;
@@ -1089,7 +1177,8 @@ function showDetail(id) {
   if (card) card.style.borderColor = 'var(--green)';
 
   // fill detail panel
-  document.getElementById('lib-det-name').textContent = m.name;
+  document.getElementById('lib-det-name').value = m.name;
+  _origLibName = m.name;
   document.getElementById('lib-det-desc').textContent = m.nutrition.description || '';
   const img = document.getElementById('lib-det-img');
   if (m.thumbFile) {
@@ -1300,6 +1389,18 @@ async function recalcLibMeal() {
   btn.disabled = false; btn.innerHTML = 'Recalculate';
 }
 
+
+async function duplicateLibMeal() {
+  if (!currentDetailId) return;
+  const r = await fetch('/api/library/' + currentDetailId + '/duplicate', { method: 'POST' });
+  const d = await r.json();
+  if (!r.ok) { alert('Error: ' + d.error); return; }
+  toast('Duplicate created — opening for editing');
+  await loadLibrary();
+  // open the new copy and immediately enter edit mode
+  showDetail(d.meal.id);
+  setTimeout(() => openLibEdit(), 150); // small delay for DOM to render
+}
 
 async function deleteLibAndClose() {
   if(!currentDetailId) return;

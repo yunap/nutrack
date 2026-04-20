@@ -22,7 +22,8 @@ const MEAL_A = {
   phosphorus_mg: 180, zinc_mg: 1.2, vitamin_a_mcg: 140, vitamin_c_mg: 0,
   vitamin_d_mcg: 2, vitamin_e_mg: 1, vitamin_k1_mcg: 80, vitamin_k2_mcg: 0, vitamin_b1_mg: 0.07,
   vitamin_b2_mg: 0.27, vitamin_b3_mg: 0.07, vitamin_b6_mg: 0.14,
-  vitamin_b12_mcg: 0.89, folate_mcg: 47, omega3_mg: 120, copper_mg: 0.1
+  vitamin_b12_mcg: 0.89, folate_mcg: 47, omega3_mg: 120, copper_mg: 0.1,
+  selenium_mcg: 15, manganese_mg: 0.04, vitamin_b5_mg: 0.7
 };
 
 const MEAL_B = {
@@ -33,7 +34,8 @@ const MEAL_B = {
   phosphorus_mg: 190, zinc_mg: 1.0, vitamin_a_mcg: 0, vitamin_c_mg: 0,
   vitamin_d_mcg: 0, vitamin_e_mg: 0, vitamin_k1_mcg: 0, vitamin_k2_mcg: 0, vitamin_b1_mg: 0.05,
   vitamin_b2_mg: 0.27, vitamin_b3_mg: 0.1, vitamin_b6_mg: 0.1,
-  vitamin_b12_mcg: 1.3, folate_mcg: 10, omega3_mg: 50, copper_mg: 0.05
+  vitamin_b12_mcg: 1.3, folate_mcg: 10, omega3_mg: 50, copper_mg: 0.05,
+  selenium_mcg: 8, manganese_mg: 0.01, vitamin_b5_mg: 0.5
 };
 
 const TODAY = new Date().toISOString().split('T')[0];
@@ -328,6 +330,9 @@ describe('Settings API', () => {
     expect(res.body.targets.copper_mg).toBe(0.9);
     expect(res.body.targets.vitamin_k1_mcg).toBe(120);
     expect(res.body.targets.vitamin_k2_mcg).toBe(200);
+    expect(res.body.targets.selenium_mcg).toBe(55);
+    expect(res.body.targets.manganese_mg).toBe(2.3);
+    expect(res.body.targets.vitamin_b5_mg).toBe(5);
     expect(Array.isArray(res.body.priorityNutrients)).toBe(true);
   });
 
@@ -651,5 +656,237 @@ describe('Library nutrition update & serving size', () => {
     });
     expect(res.body.meal.nutrition.calories).toBe(500);
     expect(res.body.meal.nutrition.protein_g).toBe(36);
+  });
+});
+
+// ══ Library nutrition update covers photo+notes (server accepts notes field) ══
+describe('Photo + notes analyze endpoint', () => {
+  test('POST /api/analyze returns 400 with no image even with notes', async () => {
+    const res = await request(app)
+      .post('/api/analyze')
+      .field('notes', 'homemade with heavy cream');
+    expect(res.status).toBe(400);
+    expect(res.body.error).toBeDefined();
+  });
+});
+
+// ══ Library search (filterLibrary is frontend-only; test data structure) ══
+describe('Library ingredient data for search', () => {
+  let pid;
+  beforeAll(async () => { pid = await makeProfile('SearchUser'); });
+
+  test('library meals include ingredients array for search', async () => {
+    const mealWithIngs = {
+      ...MEAL_A,
+      meal_name: 'Salmon with Broccoli',
+      ingredients: [
+        { name: 'salmon', quantity: '150g', notes: 'grilled' },
+        { name: 'broccoli', quantity: '100g', notes: 'steamed' }
+      ]
+    };
+    await as(pid).post('/api/library', { nutrition: mealWithIngs });
+    const res = await as(pid).get('/api/library');
+    const meal = res.body.find(m => m.name === 'Salmon with Broccoli');
+    expect(meal).toBeDefined();
+    expect(Array.isArray(meal.nutrition.ingredients)).toBe(true);
+    expect(meal.nutrition.ingredients[0].name).toBe('salmon');
+  });
+});
+
+// ══ Duplicate library entry ════════════════════════════════════════════════════
+describe('Library duplicate', () => {
+  let pid, origId;
+
+  beforeAll(async () => {
+    pid = await makeProfile('DupUser');
+    const s = await as(pid).post('/api/library', {
+      nutrition: { ...MEAL_A, meal_name: 'Original Meal' },
+      defaultMealType: 'lunch'
+    });
+    origId = s.body.meal.id;
+  });
+
+  test('POST /api/library/:id/duplicate creates a copy', async () => {
+    const res = await as(pid).post('/api/library/' + origId + '/duplicate');
+    expect(res.status).toBe(200);
+    expect(res.body.success).toBe(true);
+    expect(res.body.meal.name).toBe('Copy of Original Meal');
+    expect(res.body.meal.id).not.toBe(origId);
+    expect(res.body.meal.nutrition.meal_name).toBe('Copy of Original Meal');
+  });
+
+  test('duplicate preserves nutrition values', async () => {
+    const res = await as(pid).post('/api/library/' + origId + '/duplicate');
+    expect(res.body.meal.nutrition.calories).toBe(MEAL_A.calories);
+    expect(res.body.meal.nutrition.protein_g).toBe(MEAL_A.protein_g);
+    expect(res.body.meal.defaultMealType).toBe('lunch');
+  });
+
+  test('duplicate appears in library listing', async () => {
+    const list = await as(pid).get('/api/library');
+    const names = list.body.map(m => m.name);
+    expect(names.filter(n => n.startsWith('Copy of Original Meal')).length).toBeGreaterThan(0);
+  });
+
+  test('duplicate original and copy are independent', async () => {
+    const dupRes = await as(pid).post('/api/library/' + origId + '/duplicate');
+    const dupId = dupRes.body.meal.id;
+    // update the copy's nutrition
+    await as(pid).put('/api/library/' + dupId + '/nutrition', {
+      nutrition: { ...MEAL_A, calories: 999, meal_name: 'Modified Copy' }
+    });
+    // original should be unchanged
+    const list = await as(pid).get('/api/library');
+    const orig = list.body.find(m => m.id === origId);
+    expect(orig.nutrition.calories).toBe(MEAL_A.calories);
+    expect(orig.nutrition.calories).not.toBe(999);
+  });
+
+  test('POST /api/library/:id/duplicate returns 404 for unknown id', async () => {
+    const res = await as(pid).post('/api/library/lib_nonexistent/duplicate');
+    expect(res.status).toBe(404);
+  });
+});
+
+// ══ Coverage gaps — reanalyze text path ═══════════════════════════════════════
+describe('Reanalyze text-only path', () => {
+  let pid;
+  beforeAll(async () => { pid = await makeProfile('ReanalyzeTextUser'); });
+
+  test('reanalyze without image falls back to text analysis (requires API — validates 400 without ingredients)', async () => {
+    // No image + no ingredients = 400
+    const res = await as(pid).post('/api/reanalyze', {
+      mealName: 'Test Meal'
+      // no ingredients
+    });
+    expect(res.status).toBe(400);
+  });
+
+  test('reanalyze with ingredients is validated correctly (ingredients required)', async () => {
+    // Confirms the validation boundary: ingredients field is required.
+    // The text-only Claude call path is an integration concern tested manually.
+    const missingIngredientsRes = await as(pid).post('/api/reanalyze', { mealName: 'Test' });
+    expect(missingIngredientsRes.status).toBe(400);
+    const emptyIngredientsRes = await as(pid).post('/api/reanalyze', { ingredients: '' });
+    // empty string is falsy — should also be 400
+    expect(emptyIngredientsRes.status).toBe(400);
+  });
+});
+
+// ══ Coverage gaps — serving size edge cases ═══════════════════════════════════
+describe('Serving size edge cases', () => {
+  let pid, libId;
+  beforeAll(async () => {
+    pid = await makeProfile('ServingEdgeUser');
+    const s = await as(pid).post('/api/library', {
+      nutrition: { ...MEAL_A, calories: 400, protein_g: 20 }
+    });
+    libId = s.body.meal.id;
+  });
+
+  test('0.75× serving correctly scales', async () => {
+    const res = await as(pid).post('/api/library/' + libId + '/log', {
+      mealType: 'snack', date: '2032-05-01', servingSize: 0.75
+    });
+    expect(res.body.meal.nutrition.calories).toBeCloseTo(300, 0);
+    expect(res.body.meal.nutrition.protein_g).toBeCloseTo(15, 0);
+  });
+
+  test('1.5× serving correctly scales', async () => {
+    const res = await as(pid).post('/api/library/' + libId + '/log', {
+      mealType: 'snack', date: '2032-05-02', servingSize: 1.5
+    });
+    expect(res.body.meal.nutrition.calories).toBeCloseTo(600, 0);
+  });
+
+  test('invalid servingSize defaults to 1×', async () => {
+    const res = await as(pid).post('/api/library/' + libId + '/log', {
+      mealType: 'snack', date: '2032-05-03', servingSize: 0
+    });
+    expect(res.body.meal.nutrition.calories).toBe(400);
+  });
+});
+
+// ══ Coverage gaps — settings K1/K2 migration ══════════════════════════════════
+describe('Settings vitamin_k migration', () => {
+  let pid;
+  beforeAll(async () => { pid = await makeProfile('KMigUser'); });
+
+  test('GET /api/settings migrates vitamin_k_mcg to k1+k2 in priorityNutrients', async () => {
+    // Manually inject stale vitamin_k_mcg into settings
+    // We can simulate by saving a priority list with the old key via direct PUT
+    // then checking GET migrates it
+    await as(pid).put('/api/settings/priority', {
+      priorityNutrients: ['protein_g', 'vitamin_k_mcg', 'calcium_mg']
+    });
+    const res = await as(pid).get('/api/settings');
+    expect(res.body.priorityNutrients).not.toContain('vitamin_k_mcg');
+    expect(res.body.priorityNutrients).toContain('vitamin_k1_mcg');
+    expect(res.body.priorityNutrients).toContain('vitamin_k2_mcg');
+  });
+
+  test('GET /api/settings migrates vitamin_k_mcg target to k1+k2', async () => {
+    // inject stale target
+    await as(pid).put('/api/settings/targets', {
+      targets: { ...{calories:2000,protein_g:50}, vitamin_k_mcg: 120 }
+    });
+    const res = await as(pid).get('/api/settings');
+    expect(res.body.targets.vitamin_k_mcg).toBeUndefined();
+    expect(res.body.targets.vitamin_k1_mcg).toBe(120);
+    expect(res.body.targets.vitamin_k2_mcg).toBe(200);
+  });
+});
+
+// ══ Coverage gaps — supplement delete clears log ══════════════════════════════
+describe('Supplement delete clears log entries', () => {
+  let pid, suppId;
+  const DATE = '2032-07-10';
+
+  beforeAll(async () => {
+    pid = await makeProfile('SuppDelUser');
+    const s = await as(pid).post('/api/supplements', {
+      name: 'Deletable Supp', nutrients: { vitamin_c_mg: 500 }
+    });
+    suppId = s.body.supplement.id;
+    await as(pid).post('/api/supplog', { supplementId: suppId, date: DATE, doses: 1 });
+  });
+
+  test('deleting a supplement removes it from the log', async () => {
+    const before = await as(pid).get('/api/supplog/' + DATE);
+    expect(before.body.length).toBe(1);
+    await as(pid).delete('/api/supplements/' + suppId);
+    const after = await as(pid).get('/api/supplog/' + DATE);
+    expect(after.body).toEqual([]);
+  });
+});
+
+// ══ Library name rename ════════════════════════════════════════════════════════
+describe('Library name rename', () => {
+  let pid, libId;
+  beforeAll(async () => {
+    pid = await makeProfile('RenameUser');
+    const s = await as(pid).post('/api/library', { nutrition: { ...MEAL_A, meal_name: 'Original Name' } });
+    libId = s.body.meal.id;
+  });
+
+  test('PUT /api/library/:id/nutrition with top-level name updates the entry name', async () => {
+    const res = await as(pid).put('/api/library/' + libId + '/nutrition', {
+      nutrition: { ...MEAL_A, meal_name: 'Original Name' },
+      name: 'Renamed Meal'
+    });
+    expect(res.status).toBe(200);
+    const list = await as(pid).get('/api/library');
+    const meal = list.body.find(m => m.id === libId);
+    expect(meal.name).toBe('Renamed Meal');
+  });
+
+  test('name in nutrition.meal_name is used when no top-level name provided', async () => {
+    const res = await as(pid).put('/api/library/' + libId + '/nutrition', {
+      nutrition: { ...MEAL_A, meal_name: 'From meal_name field' }
+    });
+    expect(res.status).toBe(200);
+    const list = await as(pid).get('/api/library');
+    const meal = list.body.find(m => m.id === libId);
+    expect(meal.name).toBe('From meal_name field');
   });
 });
