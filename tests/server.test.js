@@ -890,3 +890,18 @@ describe('Library name rename', () => {
     expect(meal.name).toBe('From meal_name field');
   });
 });
+
+// ══ Direct meal log with servingSize field ═══════════════════════════════════
+describe('Direct meal save with servingSize', () => {
+  let pid;
+  beforeAll(async () => { pid = await makeProfile('DirectSrvUser'); });
+
+  test('POST /api/meals accepts servingSize field', async () => {
+    const scaled = { ...MEAL_A, calories: MEAL_A.calories * 0.5, protein_g: MEAL_A.protein_g * 0.5 };
+    const res = await as(pid).post('/api/meals', {
+      nutrition: scaled, mealType: 'lunch', date: '2032-09-01', servingSize: 0.5
+    });
+    expect(res.status).toBe(200);
+    expect(res.body.meal.nutrition.calories).toBe(MEAL_A.calories * 0.5);
+  });
+});

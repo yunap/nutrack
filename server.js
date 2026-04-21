@@ -157,7 +157,7 @@ app.post('/api/analyze-text', async (req, res) => {
 
 app.post('/api/analyze-url', async (req, res) => {
   try {
-    const { url } = req.body;
+    const { url, notes } = req.body;
     if (!url || !url.trim()) return res.status(400).json({ error: 'No URL provided' });
     let parsed;
     try { parsed = new URL(url.trim()); } catch(e) {
@@ -185,7 +185,7 @@ app.post('/api/analyze-url', async (req, res) => {
       .replace(/<style[\s\S]*?<\/style>/gi, '')
       .replace(/<[^>]+>/g, ' ')
       .replace(/\s+/g, ' ').trim().substring(0, 8000);
-    const result = await callClaudeUrl(url.trim(), text);
+    const result = await callClaudeUrl(url.trim(), text, notes?.trim() || null);
     res.json(result);
   } catch (err) { console.error(err); res.status(500).json({ error: err.message }); }
 });
@@ -642,7 +642,10 @@ Return this JSON:
 Replace all 0s with your best estimates.`;
 }
 
-async function callClaudeUrl(url, pageText) {
+async function callClaudeUrl(url, pageText, notes) {
+  const userNotes = notes
+    ? `\n\nUSER NOTES: The user made these changes to the original recipe:\n"${notes}"\nAdjust the ingredients and nutrition accordingly — use their modifications, not the original recipe values.`
+    : '';
   const prompt = `You are a professional nutritionist. A user has provided a recipe URL and the extracted page text.
 Find the recipe ingredients and serving size, calculate nutrition for ONE serving, and return ONLY valid JSON (no markdown):
 
@@ -656,7 +659,7 @@ ${pageText}
 "calories":0,"protein_g":0,"carbs_g":0,"fat_g":0,"fiber_g":0,"sugar_g":0,"sodium_mg":0,"potassium_mg":0,
 "calcium_mg":0,"iron_mg":0,"magnesium_mg":0,"phosphorus_mg":0,"zinc_mg":0,"vitamin_a_mcg":0,"vitamin_c_mg":0,
 "vitamin_d_mcg":0,"vitamin_e_mg":0,"vitamin_k1_mcg":0,"vitamin_k2_mcg":0,"vitamin_b1_mg":0,"vitamin_b2_mg":0,"vitamin_b3_mg":0,
-"vitamin_b6_mg":0,"vitamin_b12_mcg":0,"folate_mcg":0,"omega3_mg":0,"copper_mg":0,"selenium_mcg":0,"manganese_mg":0,"vitamin_b5_mg":0}
+"vitamin_b6_mg":0,"vitamin_b12_mcg":0,"folate_mcg":0,"omega3_mg":0,"copper_mg":0,"selenium_mcg":0,"manganese_mg":0,"vitamin_b5_mg":0}${userNotes}
 
 If no recipe found, set meal_name to "Recipe not found" and all numbers to 0. Otherwise replace all 0s with estimates.`;
 

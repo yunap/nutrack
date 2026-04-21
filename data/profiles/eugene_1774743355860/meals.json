@@ -10853,6 +10853,730 @@
       "fromLibrary": true,
       "libraryId": "lib_1775978204768",
       "servingSize": 1
+    },
+    {
+      "id": "1776652860719",
+      "date": "2026-04-18",
+      "time": "2026-04-20T02:41:00.719Z",
+      "mealType": "snack",
+      "nutrition": {
+        "meal_name": "Rhubarb Crisp",
+        "description": "A spring dessert with rhubarb topped with a buttery brown sugar crumble made with almonds instead of oats. Serves 8. (0.8× serving)",
+        "ingredients": [
+          {
+            "name": "butter",
+            "quantity": "6 tablespoons",
+            "notes": "cold, cut into small pieces"
+          },
+          {
+            "name": "rhubarb",
+            "quantity": "2.5-3 pounds",
+            "notes": "trimmed and cut into 1.5-inch pieces"
+          },
+          {
+            "name": "white sugar",
+            "quantity": "1/4 cup",
+            "notes": ""
+          },
+          {
+            "name": "orange juice",
+            "quantity": "1 tablespoon",
+            "notes": "or lemon juice"
+          },
+          {
+            "name": "orange zest",
+            "quantity": "1 teaspoon",
+            "notes": "or lemon zest"
+          },
+          {
+            "name": "brown sugar",
+            "quantity": "3/4 cup",
+            "notes": ""
+          },
+          {
+            "name": "all-purpose flour",
+            "quantity": "1/2 cup",
+            "notes": ""
+          },
+          {
+            "name": "cinnamon",
+            "quantity": "1/2 teaspoon",
+            "notes": ""
+          },
+          {
+            "name": "salt",
+            "quantity": "pinch",
+            "notes": ""
+          },
+          {
+            "name": "almonds",
+            "quantity": "1/2 cup",
+            "notes": "substituted for rolled oats"
+          },
+          {
+            "name": "pecans",
+            "quantity": "1/2 cup",
+            "notes": ""
+          }
+        ],
+        "calories": 228,
+        "protein_g": 4,
+        "carbs_g": 29.6,
+        "fat_g": 12,
+        "fiber_g": 4,
+        "sugar_g": 17.6,
+        "sodium_mg": 28,
+        "potassium_mg": 256,
+        "calcium_mg": 68,
+        "iron_mg": 1,
+        "magnesium_mg": 36,
+        "phosphorus_mg": 60,
+        "zinc_mg": 0.6,
+        "vitamin_a_mcg": 60,
+        "vitamin_c_mg": 6.4,
+        "vitamin_d_mcg": 0.1,
+        "vitamin_e_mg": 2.8,
+        "vitamin_k1_mcg": 14.4,
+        "vitamin_k2_mcg": 1.6,
+        "vitamin_b1_mg": 0.1,
+        "vitamin_b2_mg": 0.1,
+        "vitamin_b3_mg": 1,
+        "vitamin_b6_mg": 0.1,
+        "vitamin_b12_mcg": 0.1,
+        "folate_mcg": 20,
+        "omega3_mg": 120,
+        "copper_mg": 0.2,
+        "selenium_mcg": 2,
+        "manganese_mg": 0.8,
+        "vitamin_b5_mg": 0.3
+      },
+      "thumbFile": null,
+      "fromLibrary": true,
+      "libraryId": "lib_1776652834536",
+      "servingSize": 0.8
+    },
+    {
+      "id": "1776669509283",
+      "date": "2026-04-19",
+      "time": "2026-04-20T07:18:29.283Z",
+      "mealType": "dinner",
+      "nutrition": {
+        "meal_name": "Brown Butter Sage Shrimp Tortellini",
+        "description": "Creamy cheese tortellini with pan-seared shrimp in a brown butter sage sauce with parmesan and heavy cream (0.33× serving)",
+        "ingredients": [
+          {
+            "name": "salted butter",
+            "quantity": "1 stick (8 tbsp)",
+            "notes": "for brown butter sauce"
+          },
+          {
+            "name": "fresh sage leaves",
+            "quantity": "10 leaves",
+            "notes": "fried in butter"
+          },
+          {
+            "name": "large shrimp",
+            "quantity": "12 pieces",
+            "notes": "peeled and deveined"
+          },
+          {
+            "name": "cheese tortellini",
+            "quantity": "3 cups",
+            "notes": "cooked al dente"
+          },
+          {
+            "name": "heavy cream",
+            "quantity": "1/2 cup",
+            "notes": "for creamy sauce"
+          },
+          {
+            "name": "shredded parmesan cheese",
+            "quantity": "1 cup",
+            "notes": "freshly grated"
+          },
+          {
+            "name": "pasta water",
+            "quantity": "1/3 cup",
+            "notes": "starchy cooking water"
+          },
+          {
+            "name": "lemon zest",
+            "quantity": "1 lemon",
+            "notes": "freshly zested"
+          },
+          {
+            "name": "black pepper",
+            "quantity": "to taste",
+            "notes": "freshly ground"
+          },
+          {
+            "name": "salt",
+            "quantity": "to taste",
+            "notes": "for seasoning"
+          }
+        ],
+        "calories": 480.5,
+        "protein_g": 17.2,
+        "carbs_g": 28.7,
+        "fat_g": 32.3,
+        "fiber_g": 1.3,
+        "sugar_g": 2.6,
+        "sodium_mg": 706.2,
+        "potassium_mg": 160.1,
+        "calcium_mg": 293.7,
+        "iron_mg": 1.4,
+        "magnesium_mg": 25.7,
+        "phosphorus_mg": 237.6,
+        "zinc_mg": 1.9,
+        "vitamin_a_mcg": 288.8,
+        "vitamin_c_mg": 4,
+        "vitamin_d_mcg": 0.4,
+        "vitamin_e_mg": 0.9,
+        "vitamin_k1_mcg": 14.9,
+        "vitamin_k2_mcg": 2.6,
+        "vitamin_b1_mg": 0.2,
+        "vitamin_b2_mg": 0.3,
+        "vitamin_b3_mg": 2.7,
+        "vitamin_b6_mg": 0.1,
+        "vitamin_b12_mcg": 0.9,
+        "folate_mcg": 41.3,
+        "omega3_mg": 80.9,
+        "copper_mg": 0.3,
+        "selenium_mcg": 28,
+        "manganese_mg": 1.2,
+        "vitamin_b5_mg": 1.8
+      },
+      "thumbFile": null,
+      "fromLibrary": true,
+      "libraryId": "lib_1776669410529",
+      "servingSize": 0.33
+    },
+    {
+      "id": "1776712018253",
+      "date": "2026-04-19",
+      "time": "2026-04-20T19:06:58.253Z",
+      "mealType": "dinner",
+      "nutrition": {
+        "meal_name": "Vegetable Juice",
+        "description": "A serving of 100% vegetable juice containing tomato, carrot, and other vegetable concentrates (1.3× serving)",
+        "ingredients": [
+          {
+            "name": "Vegetable juice blend",
+            "quantity": "8 fl oz (240mL)",
+            "notes": "Contains filtered water, tomato concentrate, carrot juice concentrate, beet juice concentrate, parsley juice concentrate, lettuce juice concentrate, watercress juice concentrate, spinach juice concentrate, potassium chloride, salt, ascorbic acid, vitamin C, citric acid, natural flavors"
+          }
+        ],
+        "calories": 65,
+        "protein_g": 2.6,
+        "carbs_g": 13,
+        "fat_g": 0,
+        "fiber_g": 2.6,
+        "sugar_g": 9.1,
+        "sodium_mg": 182,
+        "potassium_mg": 1170,
+        "calcium_mg": 26,
+        "iron_mg": 0.5,
+        "magnesium_mg": 32.5,
+        "phosphorus_mg": 39,
+        "zinc_mg": 0.4,
+        "vitamin_a_mcg": 585,
+        "vitamin_c_mg": 93.6,
+        "vitamin_d_mcg": 0,
+        "vitamin_e_mg": 2,
+        "vitamin_k1_mcg": 19.5,
+        "vitamin_k2_mcg": 0,
+        "vitamin_b1_mg": 0.1,
+        "vitamin_b2_mg": 0.1,
+        "vitamin_b3_mg": 1.6,
+        "vitamin_b6_mg": 0.3,
+        "vitamin_b12_mcg": 0,
+        "folate_mcg": 32.5,
+        "omega3_mg": 19.5,
+        "copper_mg": 0.1,
+        "selenium_mcg": 2,
+        "manganese_mg": 0.3,
+        "vitamin_b5_mg": 0.4,
+        "_thumbFile": "1775545947250_xzlnrpak8l.jpg",
+        "_mime": "image/jpeg"
+      },
+      "thumbFile": "1775545947250_xzlnrpak8l.jpg",
+      "fromLibrary": true,
+      "libraryId": "lib_1775545952971",
+      "servingSize": 1.3
+    },
+    {
+      "id": "1776712063368",
+      "date": "2026-04-19",
+      "time": "2026-04-20T19:07:43.368Z",
+      "mealType": "snack",
+      "nutrition": {
+        "meal_name": "Dark Rye Bread with Chicken-Apple Pate and Melon",
+        "description": "Three thin slices of dark rye bread topped with chicken-apple pate, served with one slice of fresh melon",
+        "ingredients": [
+          {
+            "name": "dark rye bread",
+            "quantity": "3 thin slices (60g)",
+            "notes": "whole grain dark rye"
+          },
+          {
+            "name": "chicken-apple pate",
+            "quantity": "45g",
+            "notes": "spread across bread slices"
+          },
+          {
+            "name": "melon",
+            "quantity": "1 slice (150g)",
+            "notes": "cantaloupe or similar"
+          }
+        ],
+        "calories": 385,
+        "protein_g": 18.2,
+        "carbs_g": 52.8,
+        "fat_g": 12.4,
+        "fiber_g": 8.1,
+        "sugar_g": 18.6,
+        "sodium_mg": 680,
+        "potassium_mg": 520,
+        "calcium_mg": 45,
+        "iron_mg": 2.8,
+        "magnesium_mg": 48,
+        "phosphorus_mg": 185,
+        "zinc_mg": 1.9,
+        "vitamin_a_mcg": 180,
+        "vitamin_c_mg": 28,
+        "vitamin_d_mcg": 0.3,
+        "vitamin_e_mg": 1.2,
+        "vitamin_k1_mcg": 12,
+        "vitamin_k2_mcg": 2.1,
+        "vitamin_b1_mg": 0.22,
+        "vitamin_b2_mg": 0.18,
+        "vitamin_b3_mg": 6.8,
+        "vitamin_b6_mg": 0.28,
+        "vitamin_b12_mcg": 0.8,
+        "folate_mcg": 42,
+        "omega3_mg": 180,
+        "copper_mg": 0.35,
+        "selenium_mcg": 28,
+        "manganese_mg": 1.2,
+        "vitamin_b5_mg": 1.4
+      },
+      "thumbFile": "1776670126618_vmqpdbus2c9.png",
+      "fromLibrary": true,
+      "libraryId": "lib_1776654896249",
+      "servingSize": 1
+    },
+    {
+      "id": "1776712087396",
+      "date": "2026-04-19",
+      "time": "2026-04-20T19:08:07.396Z",
+      "mealType": "dinner",
+      "nutrition": {
+        "meal_name": "Mediterranean Mixed Salad with Lingonberry Dressing",
+        "description": "Fresh salad with cherry tomatoes, bell peppers, avocado, feta cheese, and strawberry, dressed with olive oil, lemon juice, and lingonberry jam (0.25× serving)",
+        "ingredients": [
+          {
+            "name": "Cherry tomatoes",
+            "quantity": "1 cup",
+            "notes": "red and orange varieties"
+          },
+          {
+            "name": "Yellow bell pepper",
+            "quantity": "1/2 medium pepper",
+            "notes": "sliced into strips"
+          },
+          {
+            "name": "Avocado",
+            "quantity": "1 medium",
+            "notes": "fresh"
+          },
+          {
+            "name": "Feta cheese",
+            "quantity": "1 oz",
+            "notes": "crumbled"
+          },
+          {
+            "name": "Strawberry",
+            "quantity": "1 large",
+            "notes": "fresh"
+          },
+          {
+            "name": "Olive oil",
+            "quantity": "1.5 tbsp",
+            "notes": "extra virgin"
+          },
+          {
+            "name": "Lemon juice",
+            "quantity": "2 tbsp",
+            "notes": "from 1 small lemon"
+          },
+          {
+            "name": "Lingonberry jam",
+            "quantity": "0.5 tsp",
+            "notes": "sweetener"
+          },
+          {
+            "name": "Fresh mint leaves",
+            "quantity": "2 tbsp",
+            "notes": "chopped"
+          }
+        ],
+        "calories": 106.3,
+        "protein_g": 2.3,
+        "carbs_g": 5.5,
+        "fat_g": 9.3,
+        "fiber_g": 3,
+        "sugar_g": 3.5,
+        "sodium_mg": 80,
+        "potassium_mg": 222.5,
+        "calcium_mg": 45,
+        "iron_mg": 0.5,
+        "magnesium_mg": 11.3,
+        "phosphorus_mg": 40,
+        "zinc_mg": 0.3,
+        "vitamin_a_mcg": 23.8,
+        "vitamin_c_mg": 21.3,
+        "vitamin_d_mcg": 0,
+        "vitamin_e_mg": 1.1,
+        "vitamin_k1_mcg": 8.8,
+        "vitamin_k2_mcg": 0.5,
+        "vitamin_b1_mg": 0,
+        "vitamin_b2_mg": 0.1,
+        "vitamin_b3_mg": 0.7,
+        "vitamin_b6_mg": 0.1,
+        "vitamin_b12_mcg": 0.2,
+        "folate_mcg": 30,
+        "omega3_mg": 45,
+        "copper_mg": 0.1
+      },
+      "thumbFile": "1775030430615_p8kekrmwd1.png",
+      "fromLibrary": true,
+      "libraryId": "lib_1774851458800",
+      "servingSize": 0.25
+    },
+    {
+      "id": "1776712141643",
+      "date": "2026-04-19",
+      "time": "2026-04-20T19:09:01.643Z",
+      "mealType": "snack",
+      "nutrition": {
+        "meal_name": "Rhubarb Crisp",
+        "description": "A spring dessert with rhubarb topped with a buttery brown sugar crumble made with almonds instead of oats. Serves 8. (0.8× serving)",
+        "ingredients": [
+          {
+            "name": "butter",
+            "quantity": "6 tablespoons",
+            "notes": "cold, cut into small pieces"
+          },
+          {
+            "name": "rhubarb",
+            "quantity": "2.5-3 pounds",
+            "notes": "trimmed and cut into 1.5-inch pieces"
+          },
+          {
+            "name": "white sugar",
+            "quantity": "1/4 cup",
+            "notes": ""
+          },
+          {
+            "name": "orange juice",
+            "quantity": "1 tablespoon",
+            "notes": "or lemon juice"
+          },
+          {
+            "name": "orange zest",
+            "quantity": "1 teaspoon",
+            "notes": "or lemon zest"
+          },
+          {
+            "name": "brown sugar",
+            "quantity": "3/4 cup",
+            "notes": ""
+          },
+          {
+            "name": "all-purpose flour",
+            "quantity": "1/2 cup",
+            "notes": ""
+          },
+          {
+            "name": "cinnamon",
+            "quantity": "1/2 teaspoon",
+            "notes": ""
+          },
+          {
+            "name": "salt",
+            "quantity": "pinch",
+            "notes": ""
+          },
+          {
+            "name": "almonds",
+            "quantity": "1/2 cup",
+            "notes": "substituted for rolled oats"
+          },
+          {
+            "name": "pecans",
+            "quantity": "1/2 cup",
+            "notes": ""
+          }
+        ],
+        "calories": 228,
+        "protein_g": 4,
+        "carbs_g": 29.6,
+        "fat_g": 12,
+        "fiber_g": 4,
+        "sugar_g": 17.6,
+        "sodium_mg": 28,
+        "potassium_mg": 256,
+        "calcium_mg": 68,
+        "iron_mg": 1,
+        "magnesium_mg": 36,
+        "phosphorus_mg": 60,
+        "zinc_mg": 0.6,
+        "vitamin_a_mcg": 60,
+        "vitamin_c_mg": 6.4,
+        "vitamin_d_mcg": 0.1,
+        "vitamin_e_mg": 2.8,
+        "vitamin_k1_mcg": 14.4,
+        "vitamin_k2_mcg": 1.6,
+        "vitamin_b1_mg": 0.1,
+        "vitamin_b2_mg": 0.1,
+        "vitamin_b3_mg": 1,
+        "vitamin_b6_mg": 0.1,
+        "vitamin_b12_mcg": 0.1,
+        "folate_mcg": 20,
+        "omega3_mg": 120,
+        "copper_mg": 0.2,
+        "selenium_mcg": 2,
+        "manganese_mg": 0.8,
+        "vitamin_b5_mg": 0.3
+      },
+      "thumbFile": "1776670228450_p6eas4bsb8.png",
+      "fromLibrary": true,
+      "libraryId": "lib_1776652834536",
+      "servingSize": 0.8
+    },
+    {
+      "id": "1776712452134",
+      "date": "2026-04-19",
+      "time": "2026-04-20T19:14:12.134Z",
+      "mealType": "breakfast",
+      "nutrition": {
+        "meal_name": "Talenti Gelato Layers Vanilla Fudge Cookie",
+        "description": "2.5 oz portion of Talenti Gelato Layers featuring vanilla gelato with fudge and cookie pieces in distinct layers",
+        "ingredients": [
+          {
+            "name": "vanilla gelato",
+            "quantity": "2.5 oz",
+            "notes": "premium gelato with milk, cream, sugar"
+          },
+          {
+            "name": "fudge layer",
+            "quantity": "portion",
+            "notes": "chocolate fudge swirl"
+          },
+          {
+            "name": "cookie pieces",
+            "quantity": "portion",
+            "notes": "chocolate cookie crumbs distributed throughout"
+          }
+        ],
+        "calories": 280,
+        "protein_g": 4,
+        "carbs_g": 32,
+        "fat_g": 15,
+        "fiber_g": 1,
+        "sugar_g": 28,
+        "sodium_mg": 85,
+        "potassium_mg": 180,
+        "calcium_mg": 120,
+        "iron_mg": 1.2,
+        "magnesium_mg": 25,
+        "phosphorus_mg": 95,
+        "zinc_mg": 0.6,
+        "vitamin_a_mcg": 85,
+        "vitamin_c_mg": 1,
+        "vitamin_d_mcg": 0.3,
+        "vitamin_e_mg": 0.4,
+        "vitamin_k1_mcg": 2,
+        "vitamin_k2_mcg": 1,
+        "vitamin_b1_mg": 0.04,
+        "vitamin_b2_mg": 0.18,
+        "vitamin_b3_mg": 0.3,
+        "vitamin_b6_mg": 0.04,
+        "vitamin_b12_mcg": 0.4,
+        "folate_mcg": 8,
+        "omega3_mg": 15,
+        "copper_mg": 0.1,
+        "selenium_mcg": 3,
+        "manganese_mg": 0.1,
+        "vitamin_b5_mg": 0.3,
+        "_thumbFile": "1776712410726_5ilr0e5ngl.jpg",
+        "_mime": "image/jpeg"
+      },
+      "thumbFile": "1776712410726_5ilr0e5ngl.jpg"
+    },
+    {
+      "id": "1776727179592",
+      "date": "2026-04-20",
+      "time": "2026-04-20T23:19:39.592Z",
+      "mealType": "breakfast",
+      "nutrition": {
+        "meal_name": "Farmers Cheese with Berry Jam",
+        "description": "A bowl of fresh farmers cheese topped with dark berry jam, served as a breakfast meal",
+        "ingredients": [
+          {
+            "name": "farmers cheese",
+            "quantity": "1 cup",
+            "notes": "made from 6% milk, white crumbly texture"
+          },
+          {
+            "name": "berry jam",
+            "quantity": "1 tablespoon",
+            "notes": "dark berry preserve, possibly blueberry or mixed berry"
+          }
+        ],
+        "calories": 285,
+        "protein_g": 28,
+        "carbs_g": 18,
+        "fat_g": 12,
+        "fiber_g": 0.5,
+        "sugar_g": 15,
+        "sodium_mg": 450,
+        "potassium_mg": 180,
+        "calcium_mg": 320,
+        "iron_mg": 0.8,
+        "magnesium_mg": 25,
+        "phosphorus_mg": 280,
+        "zinc_mg": 1.2,
+        "vitamin_a_mcg": 110,
+        "vitamin_c_mg": 2,
+        "vitamin_d_mcg": 0.3,
+        "vitamin_e_mg": 0.2,
+        "vitamin_k_mcg": 1.5,
+        "vitamin_b1_mg": 0.05,
+        "vitamin_b2_mg": 0.35,
+        "vitamin_b3_mg": 0.2,
+        "vitamin_b6_mg": 0.08,
+        "vitamin_b12_mcg": 1.8,
+        "folate_mcg": 15
+      },
+      "thumbFile": "1774748268861_bhf6eh8zjee.png",
+      "fromLibrary": true,
+      "libraryId": "lib_1774733224230",
+      "servingSize": 1
+    },
+    {
+      "id": "1776727216117",
+      "date": "2026-04-20",
+      "time": "2026-04-20T23:20:16.117Z",
+      "mealType": "snack",
+      "nutrition": {
+        "meal_name": "Homemade Lemonade",
+        "description": "8oz serving of fresh homemade lemonade made with lemon juice, water, and sugar",
+        "ingredients": [
+          {
+            "name": "Fresh lemon juice",
+            "quantity": "2 tablespoons",
+            "notes": "freshly squeezed"
+          },
+          {
+            "name": "Water",
+            "quantity": "7 oz",
+            "notes": "filtered water"
+          },
+          {
+            "name": "Sugar",
+            "quantity": "2 tablespoons",
+            "notes": "granulated white sugar"
+          }
+        ],
+        "calories": 100,
+        "protein_g": 0.2,
+        "carbs_g": 26,
+        "fat_g": 0.1,
+        "fiber_g": 0.1,
+        "sugar_g": 24,
+        "sodium_mg": 2,
+        "potassium_mg": 80,
+        "calcium_mg": 6,
+        "iron_mg": 0.1,
+        "magnesium_mg": 4,
+        "phosphorus_mg": 8,
+        "zinc_mg": 0.1,
+        "vitamin_a_mcg": 1,
+        "vitamin_c_mg": 28,
+        "vitamin_d_mcg": 0,
+        "vitamin_e_mg": 0.1,
+        "vitamin_k1_mcg": 0.5,
+        "vitamin_k2_mcg": 0,
+        "vitamin_b1_mg": 0.02,
+        "vitamin_b2_mg": 0.01,
+        "vitamin_b3_mg": 0.1,
+        "vitamin_b6_mg": 0.03,
+        "vitamin_b12_mcg": 0,
+        "folate_mcg": 4,
+        "omega3_mg": 2,
+        "copper_mg": 0.02,
+        "selenium_mcg": 0.2,
+        "manganese_mg": 0.01,
+        "vitamin_b5_mg": 0.05
+      },
+      "thumbFile": "1775979512066_821kwer8j9o.png",
+      "fromLibrary": true,
+      "libraryId": "lib_1775885532825",
+      "servingSize": 1
+    },
+    {
+      "id": "1776727319493",
+      "date": "2026-04-20",
+      "time": "2026-04-20T23:21:59.493Z",
+      "mealType": "snack",
+      "nutrition": {
+        "meal_name": "Protein Shake",
+        "description": "One serving of a ready-to-drink protein shake in chocolate flavor, consumed directly from the carton",
+        "ingredients": [
+          {
+            "name": "Protein shake (chocolate flavor)",
+            "quantity": "1 shake (11 fl oz)",
+            "notes": "Ready-to-drink protein beverage with 30g protein per serving"
+          }
+        ],
+        "calories": 160,
+        "protein_g": 30,
+        "carbs_g": 4,
+        "fat_g": 3,
+        "fiber_g": 1,
+        "sugar_g": 1,
+        "sodium_mg": 260,
+        "potassium_mg": 400,
+        "calcium_mg": 300,
+        "iron_mg": 1.6,
+        "magnesium_mg": 50,
+        "phosphorus_mg": 200,
+        "zinc_mg": 2,
+        "vitamin_a_mcg": 150,
+        "vitamin_c_mg": 15,
+        "vitamin_d_mcg": 6,
+        "vitamin_e_mg": 3,
+        "vitamin_k1_mcg": 5,
+        "vitamin_k2_mcg": 0,
+        "vitamin_b1_mg": 0.4,
+        "vitamin_b2_mg": 0.5,
+        "vitamin_b3_mg": 5,
+        "vitamin_b6_mg": 0.5,
+        "vitamin_b12_mcg": 1.5,
+        "folate_mcg": 50,
+        "omega3_mg": 50,
+        "copper_mg": 0.3,
+        "selenium_mcg": 15,
+        "manganese_mg": 0.5,
+        "vitamin_b5_mg": 1.5,
+        "_thumbFile": "1775631440043_w1lq8m7nctk.jpg",
+        "_mime": "image/jpeg"
+      },
+      "thumbFile": "1775631440043_w1lq8m7nctk.jpg",
+      "fromLibrary": true,
+      "libraryId": "lib_1775631448378",
+      "servingSize": 1
     }
   ]
 }
