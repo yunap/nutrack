@@ -1593,6 +1593,22 @@ function buildDrillPanelInto(key, panel) {
       const barW = grandTotal > 0 ? Math.round((amt / grandTotal) * 120) : 0;
       const mealName = meal.nutrition?.meal_name || 'Meal';
       const mtype = meal.mealType || '';
+      // per-ingredient breakdown if available
+      const ings = (meal.nutrition?.ingredients || [])
+        .filter(ing => ing.nutrients && (parseFloat(ing.nutrients[key]) || 0) > 0)
+        .sort((a, b) => (b.nutrients[key] || 0) - (a.nutrients[key] || 0));
+      const ingHtml = ings.length > 0
+        ? `<div style="margin:.3rem 0 .1rem 1rem;padding-left:.5rem;border-left:2px solid var(--border)">${
+            ings.map(ing => {
+              const iAmt = r2(ing.nutrients[key]);
+              const iPct = amt > 0 ? Math.round((ing.nutrients[key] / amt) * 100) : 0;
+              return `<div style="display:flex;justify-content:space-between;padding:2px 0;font-size:11px;color:var(--t2)">
+                <span>${esc(ing.name)} <span style="color:var(--t3)">${esc(ing.quantity||'')}</span></span>
+                <span style="font-weight:500;color:var(--text);white-space:nowrap">${iAmt} ${unit}</span>
+              </div>`;
+            }).join('')
+          }</div>`
+        : '';
       return `<div class="drill-meal">
         <div style="flex:1">
           <div style="display:flex;align-items:baseline;gap:6px">
@@ -1605,7 +1621,7 @@ function buildDrillPanelInto(key, panel) {
           <div class="drill-meal-amt">${r2(amt)} ${unit}</div>
           <div style="font-size:10px;color:var(--t2)">${pct}% of total</div>
         </div>
-      </div>`;
+      </div>${ingHtml}`;
     }).join('');
   }
 

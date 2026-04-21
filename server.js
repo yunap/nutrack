@@ -6,6 +6,10 @@ const path     = require('path');
 const fs       = require('fs');
 const low      = require('lowdb');
 const FileSync = require('lowdb/adapters/FileSync');
+const log      = require('./logger');
+
+// ── CLI flags ─────────────────────────────────────────────────────────────────
+const isDev = process.argv.includes('--dev');
 
 // ── Base data directory (overridable for tests) ───────────────────────────────
 const BASE_DIR  = process.env.DATA_DIR || path.join(__dirname, 'data');
@@ -15,6 +19,11 @@ const PROF_DIR  = path.join(BASE_DIR, 'profiles');
 [BASE_DIR, THUMB_DIR, PROF_DIR].forEach(d => {
   if (!fs.existsSync(d)) fs.mkdirSync(d, { recursive: true });
 });
+
+// ── Initialize logger ─────────────────────────────────────────────────────────
+if (!process.env.DATA_DIR) { // skip logger in tests (DATA_DIR is set to tmpdir)
+  log.init({ level: isDev ? 'debug' : 'info', dir: path.join(BASE_DIR, 'logs') });
+}
 
 // ── Global profiles registry ──────────────────────────────────────────────────
 const profilesDb = low(new FileSync(path.join(BASE_DIR, 'profiles.json')));
@@ -82,6 +91,7 @@ function requireProfile(req, res, next) {
 const app    = express();
 const upload = multer({ storage: multer.memoryStorage(), limits: { fileSize: 20 * 1024 * 1024 } });
 app.use(express.json({ limit: '25mb' }));
+app.use(log.middleware);
 app.use(express.static(path.join(__dirname, 'public')));
 app.use('/thumbs', express.static(THUMB_DIR));
 
@@ -119,6 +129,7 @@ app.post('/api/profiles', (req, res) => {
   const profile = { id, name: trimmed, createdAt: new Date().toISOString(), avatar: trimmed[0].toUpperCase() };
   profilesDb.get('profiles').push(profile).write();
   profileDir(id);
+  log.info(`Profile created: ${trimmed} (${id})`);
   res.json({ success: true, profile });
 });
 
@@ -139,20 +150,25 @@ app.post('/api/analyze', upload.single('image'), async (req, res) => {
     const base64 = req.file.buffer.toString('base64');
     const mime   = req.file.mimetype || 'image/jpeg';
     const notes  = req.body.notes?.trim() || null;  // optional text augmentation
+    const t0 = Date.now();
     const result = await callClaude(base64, mime, null, notes);
+    log.info(`Photo analysis completed in ${Date.now()-t0}ms: ${result.meal_name}`);
+    log.debug('Photo analysis result', { meal_name: result.meal_name, calories: result.calories, ingredients: result.ingredients?.length });
     result._thumbFile = saveThumb(req.file.buffer, mime);
     result._mime = mime;
     res.json(result);
-  } catch (err) { console.error(err); res.status(500).json({ error: err.message }); }
+  } catch (err) { log.error(err.message, err); res.status(500).json({ error: err.message }); }
 });
 
 app.post('/api/analyze-text', async (req, res) => {
   try {
     const { description } = req.body;
     if (!description || !description.trim()) return res.status(400).json({ error: 'No description provided' });
+    const t0 = Date.now();
     const result = await callClaudeText(description.trim());
+    log.info(`Text analysis completed in ${Date.now()-t0}ms: ${result.meal_name}`);
     res.json(result);
-  } catch (err) { console.error(err); res.status(500).json({ error: err.message }); }
+  } catch (err) { log.error(err.message, err); res.status(500).json({ error: err.message }); }
 });
 
 app.post('/api/analyze-url', async (req, res) => {
@@ -185,9 +201,11 @@ app.post('/api/analyze-url', async (req, res) => {
       .replace(/<style[\s\S]*?<\/style>/gi, '')
       .replace(/<[^>]+>/g, ' ')
       .replace(/\s+/g, ' ').trim().substring(0, 8000);
+    const t0 = Date.now();
     const result = await callClaudeUrl(url.trim(), text, notes?.trim() || null);
+    log.info(`URL analysis completed in ${Date.now()-t0}ms: ${result.meal_name}`);
     res.json(result);
-  } catch (err) { console.error(err); res.status(500).json({ error: err.message }); }
+  } catch (err) { log.error(err.message, err); res.status(500).json({ error: err.message }); }
 });
 
 app.post('/api/reanalyze', requireProfile, async (req, res) => {
@@ -215,7 +233,7 @@ app.post('/api/reanalyze', requireProfile, async (req, res) => {
       result._thumbFile = null;
     }
     res.json(result);
-  } catch (err) { console.error(err); res.status(500).json({ error: err.message }); }
+  } catch (err) { log.error(err.message, err); res.status(500).json({ error: err.message }); }
 });
 
 // ══ PROFILE-SCOPED ROUTES ═════════════════════════════════════════════════════
@@ -230,6 +248,7 @@ app.post('/api/meals', requireProfile, (req, res) => {
       thumbFile: thumbFile || null
     };
     req.dbs.mealsDb.get('meals').push(meal).write();
+    log.info(`Meal logged: ${nutrition.meal_name || 'unnamed'} on ${meal.date}`);
     res.json({ success: true, meal });
   } catch (err) { res.status(500).json({ error: err.message }); }
 });
@@ -350,6 +369,7 @@ app.post('/api/library', requireProfile, (req, res) => {
       nutrition, thumbFile: tf
     };
     req.dbs.libraryDb.get('meals').push(meal).write();
+    log.info(`Library entry saved: ${nutrition.meal_name} (${meal.id})`);
     res.json({ success: true, meal });
   } catch (err) { res.status(500).json({ error: err.message }); }
 });
@@ -542,7 +562,7 @@ app.post('/api/supplements/analyze-label', requireProfile, upload.single('image'
     const mime   = req.file.mimetype || 'image/jpeg';
     const result = await callClaudeSuppLabel(base64, mime);
     res.json(result);
-  } catch (err) { console.error(err); res.status(500).json({ error: err.message }); }
+  } catch (err) { log.error(err.message, err); res.status(500).json({ error: err.message }); }
 });
 
 // ══ SUPPLEMENT DAILY LOG ══════════════════════════════════════════════════════
@@ -622,24 +642,76 @@ function sumNutrition(nutritionArray) {
 }
 
 function buildPrompt(corrections, notes) {
-  const note = corrections ? `\n\nIMPORTANT: The user has corrected the ingredients. Use EXACTLY these and recalculate:\n${corrections}` : '';
-  const userNotes = notes ? `\n\nUSER CONTEXT: The user has provided this additional information about the meal:\n"${notes}"\nUse this context to improve accuracy — it may clarify cooking methods, portions, brands, or ingredients not visible in the photo.` : '';
-  return `You are a professional nutritionist analyzing a meal photo. Return ONLY a valid JSON object (no markdown, no backticks, no extra text).
+  const note = corrections ? `\n\nIMPORTANT — RECALCULATION: The user has corrected the ingredients below. Use EXACTLY these ingredients and quantities — do not add or remove any. Recalculate all nutrition values from scratch based on these corrected ingredients:\n${corrections}` : '';
+  const userNotes = notes ? `\n\nUSER CONTEXT: The user provided this additional information about the meal:\n"${notes}"\nUse this to override your visual interpretation where relevant — the user knows what they ate.` : '';
+  return `You are a professional nutritionist estimating the nutritional content of a meal from a photo. Analyze the image and return ONLY a valid JSON object. No markdown, no backticks, no commentary — just the JSON.
 
-CRITICAL INSTRUCTIONS:
-1. If a nutrition label is visible in the photo, READ IT CAREFULLY and use the exact values from the label scaled to the actual portion shown.
-2. Identify all food items visible. Pay close attention to portion sizes.
-3. If a food has multiple plausible identities, describe what you see precisely in the ingredients list.
-4. For omega3_mg: estimate total Omega-3 in milligrams. Key sources: fatty fish (salmon ~2000mg/100g, sardines ~1480mg/100g, mackerel ~2670mg/100g), flaxseed (~2350mg/tbsp), walnuts (~2570mg/28g), chia seeds (~5060mg/28g). Most other foods <100mg.
+PHOTO ANALYSIS RULES:
 
-Return this JSON:
-{"meal_name":"string","description":"string","ingredients":[{"name":"string","quantity":"string","notes":"string"}],
-"calories":0,"protein_g":0,"carbs_g":0,"fat_g":0,"fiber_g":0,"sugar_g":0,"sodium_mg":0,"potassium_mg":0,
-"calcium_mg":0,"iron_mg":0,"magnesium_mg":0,"phosphorus_mg":0,"zinc_mg":0,"vitamin_a_mcg":0,"vitamin_c_mg":0,
-"vitamin_d_mcg":0,"vitamin_e_mg":0,"vitamin_k1_mcg":0,"vitamin_k2_mcg":0,"vitamin_b1_mg":0,"vitamin_b2_mg":0,"vitamin_b3_mg":0,
-"vitamin_b6_mg":0,"vitamin_b12_mcg":0,"folate_mcg":0,"omega3_mg":0,"copper_mg":0,"selenium_mcg":0,"manganese_mg":0,"vitamin_b5_mg":0}${note}${userNotes}
+1. NUTRITION LABELS: If a label or packaging is visible, read it carefully and use those exact values, scaled to the portion actually shown (which may differ from the label's serving size).
 
-Replace all 0s with your best estimates.`;
+2. PORTION ESTIMATION: Estimate how much food is actually on the plate/bowl.
+   Visual references: a standard dinner plate is 10–11 inches (25–28cm) across. A cupped adult hand holds roughly ½ cup. A thumb tip ≈ 1 tsp. A closed fist ≈ 1 cup. A deck of cards ≈ 3oz (85g) of meat.
+   When uncertain, estimate the middle of the plausible range — do not default to the smallest possible portion.
+
+3. HIDDEN CALORIES — DO NOT UNDERCOUNT THESE:
+   - Cooking oils and butter: if food appears pan-fried, sautéed, or roasted, estimate the oil/butter used in cooking and include it. A typical home-cooked sauté uses 1–2 tbsp oil (~120–240 kcal).
+   - Dressings and sauces: if a salad looks dressed or food has a visible sauce/glaze, estimate and include it.
+   - Cheese: estimate by visual thickness and coverage area.
+   These are the most commonly underestimated calorie sources. List them as separate ingredients.
+
+4. COOKED WEIGHTS: All ingredient quantities should reflect the food as shown (cooked weight for cooked items, raw weight for raw items). State which in the notes field.
+
+5. MULTIPLE ITEMS: If the photo shows multiple plates or servings, estimate for ONE person's portion unless the user's notes say otherwise.
+
+6. AMBIGUOUS FOODS: If you cannot confidently identify a food, describe its appearance precisely (e.g., "creamy orange soup — likely butternut squash or carrot") and estimate based on the most probable identification.
+
+NUTRIENT ESTIMATION METHOD — THIS IS CRITICAL:
+You MUST estimate nutrients PER INGREDIENT FIRST, then sum them for the meal totals.
+Do NOT estimate meal totals holistically. Calculate each ingredient's contribution individually using the reference values below, then add them up. The meal-level totals must equal the sum of the ingredient-level values.
+
+Reference values for commonly underestimated nutrients:
+Potassium: banana ~422mg/large, yogurt ~322mg/cup, potato ~926mg/medium, avocado ~485mg/half, spinach ~419mg/½cup cooked, salmon ~534mg/100g, sweet potato ~542mg/medium.
+Magnesium: banana ~37mg/large, yogurt ~30mg/cup, almonds ~80mg/28g, spinach ~78mg/½cup cooked, dark chocolate ~65mg/28g, avocado ~29mg/half, black beans ~60mg/½cup.
+Vitamin C: strawberries ~12mg/large berry (NOT per cup — per individual berry), orange ~70mg/medium, bell pepper ~95mg/medium, broccoli ~51mg/½cup, kiwi ~64mg/medium, banana ~12mg/large.
+Vitamin K1: kale ~547mcg/cup raw, spinach ~145mcg/½cup cooked, broccoli ~110mcg/½cup, lettuce ~48mcg/cup. Most non-leafy-green foods have <5mcg.
+Omega-3: salmon ~2000mg/100g, sardines ~1480mg/100g, flaxseed ~2350mg/tbsp, walnuts ~2570mg/28g, chia seeds ~5060mg/28g. Most other foods <100mg.
+
+CALORIE CROSS-CHECK: For each ingredient, verify (protein_g × 4) + (carbs_g × 4) + (fat_g × 9) ≈ calories (within 10%). Then verify the meal totals are consistent too.
+
+JSON FORMAT — each ingredient carries its own nutrient values, and meal totals are the sum:
+{
+  "meal_name": "short descriptive name",
+  "description": "1 sentence — what the meal is, estimated total portion size",
+  "ingredients": [
+    {
+      "name": "ingredient name",
+      "quantity": "amount with unit",
+      "notes": "preparation, brand, or clarification",
+      "nutrients": {
+        "calories": 0, "protein_g": 0, "carbs_g": 0, "fat_g": 0, "fiber_g": 0, "sugar_g": 0,
+        "sodium_mg": 0, "potassium_mg": 0, "calcium_mg": 0, "iron_mg": 0,
+        "magnesium_mg": 0, "phosphorus_mg": 0, "zinc_mg": 0,
+        "vitamin_a_mcg": 0, "vitamin_c_mg": 0, "vitamin_d_mcg": 0, "vitamin_e_mg": 0,
+        "vitamin_k1_mcg": 0, "vitamin_k2_mcg": 0,
+        "vitamin_b1_mg": 0, "vitamin_b2_mg": 0, "vitamin_b3_mg": 0, "vitamin_b5_mg": 0,
+        "vitamin_b6_mg": 0, "vitamin_b12_mcg": 0, "folate_mcg": 0,
+        "omega3_mg": 0, "copper_mg": 0, "selenium_mcg": 0, "manganese_mg": 0
+      }
+    }
+  ],
+  "calories": 0,
+  "protein_g": 0, "carbs_g": 0, "fat_g": 0, "fiber_g": 0, "sugar_g": 0,
+  "sodium_mg": 0, "potassium_mg": 0, "calcium_mg": 0, "iron_mg": 0,
+  "magnesium_mg": 0, "phosphorus_mg": 0, "zinc_mg": 0,
+  "vitamin_a_mcg": 0, "vitamin_c_mg": 0, "vitamin_d_mcg": 0, "vitamin_e_mg": 0,
+  "vitamin_k1_mcg": 0, "vitamin_k2_mcg": 0,
+  "vitamin_b1_mg": 0, "vitamin_b2_mg": 0, "vitamin_b3_mg": 0, "vitamin_b5_mg": 0,
+  "vitamin_b6_mg": 0, "vitamin_b12_mcg": 0, "folate_mcg": 0,
+  "omega3_mg": 0, "copper_mg": 0, "selenium_mcg": 0, "manganese_mg": 0
+}
+
+The meal-level values MUST be the exact sum of the per-ingredient values. Replace every 0 with your estimate. Use 0 only when genuinely absent.${note}${userNotes}`;
 }
 
 async function callClaudeUrl(url, pageText, notes) {
@@ -655,18 +727,32 @@ Page text:
 ${pageText}
 ---
 
-{"meal_name":"string","description":"string (include serving size)","ingredients":[{"name":"string","quantity":"string","notes":"string"}],
-"calories":0,"protein_g":0,"carbs_g":0,"fat_g":0,"fiber_g":0,"sugar_g":0,"sodium_mg":0,"potassium_mg":0,
-"calcium_mg":0,"iron_mg":0,"magnesium_mg":0,"phosphorus_mg":0,"zinc_mg":0,"vitamin_a_mcg":0,"vitamin_c_mg":0,
-"vitamin_d_mcg":0,"vitamin_e_mg":0,"vitamin_k1_mcg":0,"vitamin_k2_mcg":0,"vitamin_b1_mg":0,"vitamin_b2_mg":0,"vitamin_b3_mg":0,
-"vitamin_b6_mg":0,"vitamin_b12_mcg":0,"folate_mcg":0,"omega3_mg":0,"copper_mg":0,"selenium_mcg":0,"manganese_mg":0,"vitamin_b5_mg":0}${userNotes}
+Estimate nutrients PER INGREDIENT first, then sum for meal totals. Each ingredient must carry its own nutrients object. Meal-level totals MUST equal the sum of ingredient values.
 
-If no recipe found, set meal_name to "Recipe not found" and all numbers to 0. Otherwise replace all 0s with estimates.`;
+{
+  "meal_name": "string",
+  "description": "string (include serving size)",
+  "ingredients": [
+    {"name": "string", "quantity": "string per serving", "notes": "string",
+     "nutrients": {"calories":0,"protein_g":0,"carbs_g":0,"fat_g":0,"fiber_g":0,"sugar_g":0,
+       "sodium_mg":0,"potassium_mg":0,"calcium_mg":0,"iron_mg":0,"magnesium_mg":0,"phosphorus_mg":0,"zinc_mg":0,
+       "vitamin_a_mcg":0,"vitamin_c_mg":0,"vitamin_d_mcg":0,"vitamin_e_mg":0,"vitamin_k1_mcg":0,"vitamin_k2_mcg":0,
+       "vitamin_b1_mg":0,"vitamin_b2_mg":0,"vitamin_b3_mg":0,"vitamin_b5_mg":0,"vitamin_b6_mg":0,"vitamin_b12_mcg":0,
+       "folate_mcg":0,"omega3_mg":0,"copper_mg":0,"selenium_mcg":0,"manganese_mg":0}}
+  ],
+  "calories":0,"protein_g":0,"carbs_g":0,"fat_g":0,"fiber_g":0,"sugar_g":0,
+  "sodium_mg":0,"potassium_mg":0,"calcium_mg":0,"iron_mg":0,"magnesium_mg":0,"phosphorus_mg":0,"zinc_mg":0,
+  "vitamin_a_mcg":0,"vitamin_c_mg":0,"vitamin_d_mcg":0,"vitamin_e_mg":0,"vitamin_k1_mcg":0,"vitamin_k2_mcg":0,
+  "vitamin_b1_mg":0,"vitamin_b2_mg":0,"vitamin_b3_mg":0,"vitamin_b5_mg":0,"vitamin_b6_mg":0,"vitamin_b12_mcg":0,
+  "folate_mcg":0,"omega3_mg":0,"copper_mg":0,"selenium_mcg":0,"manganese_mg":0
+}${userNotes}
+
+If no recipe found, set meal_name to "Recipe not found" and all numbers to 0. Otherwise replace every 0 with your estimate.`;
 
   const resp = await fetch('https://api.anthropic.com/v1/messages', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json', 'x-api-key': process.env.ANTHROPIC_API_KEY, 'anthropic-version': '2023-06-01' },
-    body: JSON.stringify({ model: 'claude-sonnet-4-20250514', max_tokens: 1500, messages: [{ role: 'user', content: prompt }] })
+    body: JSON.stringify({ model: 'claude-sonnet-4-20250514', max_tokens: 4000, messages: [{ role: 'user', content: prompt }] })
   });
   if (!resp.ok) { const e = await resp.json(); throw new Error(e.error?.message || `API error ${resp.status}`); }
   const data = await resp.json();
@@ -718,7 +804,7 @@ Unknown blend → use 17.5%. Always log elemental mg, never the blend weight.`;
     method: 'POST',
     headers: { 'Content-Type': 'application/json', 'x-api-key': process.env.ANTHROPIC_API_KEY, 'anthropic-version': '2023-06-01' },
     body: JSON.stringify({
-      model: 'claude-sonnet-4-20250514', max_tokens: 1500,
+      model: 'claude-sonnet-4-20250514', max_tokens: 4000,
       messages: [{ role: 'user', content: [
         { type: 'image', source: { type: 'base64', media_type: mime, data: base64 } },
         { type: 'text', text: prompt }
@@ -731,20 +817,33 @@ Unknown blend → use 17.5%. Always log elemental mg, never the blend weight.`;
 }
 
 async function callClaudeText(description) {
-  const prompt = `You are a professional nutritionist. The user has described a meal. Return ONLY valid JSON (no markdown):
-{"meal_name":"string","description":"string","ingredients":[{"name":"string","quantity":"string","notes":"string"}],
-"calories":0,"protein_g":0,"carbs_g":0,"fat_g":0,"fiber_g":0,"sugar_g":0,"sodium_mg":0,"potassium_mg":0,
-"calcium_mg":0,"iron_mg":0,"magnesium_mg":0,"phosphorus_mg":0,"zinc_mg":0,"vitamin_a_mcg":0,"vitamin_c_mg":0,
-"vitamin_d_mcg":0,"vitamin_e_mg":0,"vitamin_k1_mcg":0,"vitamin_k2_mcg":0,"vitamin_b1_mg":0,"vitamin_b2_mg":0,"vitamin_b3_mg":0,
-"vitamin_b6_mg":0,"vitamin_b12_mcg":0,"folate_mcg":0,"omega3_mg":0,"copper_mg":0,"selenium_mcg":0,"manganese_mg":0,"vitamin_b5_mg":0}
+  const prompt = `You are a professional nutritionist. The user has described a meal. Estimate nutrients PER INGREDIENT first, then sum for meal totals. Return ONLY valid JSON (no markdown):
+{
+  "meal_name": "string",
+  "description": "string",
+  "ingredients": [
+    {"name": "string", "quantity": "string", "notes": "string",
+     "nutrients": {"calories":0,"protein_g":0,"carbs_g":0,"fat_g":0,"fiber_g":0,"sugar_g":0,
+       "sodium_mg":0,"potassium_mg":0,"calcium_mg":0,"iron_mg":0,"magnesium_mg":0,"phosphorus_mg":0,"zinc_mg":0,
+       "vitamin_a_mcg":0,"vitamin_c_mg":0,"vitamin_d_mcg":0,"vitamin_e_mg":0,"vitamin_k1_mcg":0,"vitamin_k2_mcg":0,
+       "vitamin_b1_mg":0,"vitamin_b2_mg":0,"vitamin_b3_mg":0,"vitamin_b5_mg":0,"vitamin_b6_mg":0,"vitamin_b12_mcg":0,
+       "folate_mcg":0,"omega3_mg":0,"copper_mg":0,"selenium_mcg":0,"manganese_mg":0}}
+  ],
+  "calories":0,"protein_g":0,"carbs_g":0,"fat_g":0,"fiber_g":0,"sugar_g":0,
+  "sodium_mg":0,"potassium_mg":0,"calcium_mg":0,"iron_mg":0,"magnesium_mg":0,"phosphorus_mg":0,"zinc_mg":0,
+  "vitamin_a_mcg":0,"vitamin_c_mg":0,"vitamin_d_mcg":0,"vitamin_e_mg":0,"vitamin_k1_mcg":0,"vitamin_k2_mcg":0,
+  "vitamin_b1_mg":0,"vitamin_b2_mg":0,"vitamin_b3_mg":0,"vitamin_b5_mg":0,"vitamin_b6_mg":0,"vitamin_b12_mcg":0,
+  "folate_mcg":0,"omega3_mg":0,"copper_mg":0,"selenium_mcg":0,"manganese_mg":0
+}
 
-Meal description: "${description}"
-Replace all 0s with realistic estimates.`;
+Meal-level totals MUST equal the sum of per-ingredient values. Replace every 0 with your estimate.
+
+Meal description: "${description}"`;
 
   const resp = await fetch('https://api.anthropic.com/v1/messages', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json', 'x-api-key': process.env.ANTHROPIC_API_KEY, 'anthropic-version': '2023-06-01' },
-    body: JSON.stringify({ model: 'claude-sonnet-4-20250514', max_tokens: 1500, messages: [{ role: 'user', content: prompt }] })
+    body: JSON.stringify({ model: 'claude-sonnet-4-20250514', max_tokens: 4000, messages: [{ role: 'user', content: prompt }] })
   });
   if (!resp.ok) { const e = await resp.json(); throw new Error(e.error?.message || `API error ${resp.status}`); }
   const data = await resp.json();
@@ -756,7 +855,7 @@ async function callClaude(base64, mime, corrections, notes) {
     method: 'POST',
     headers: { 'Content-Type': 'application/json', 'x-api-key': process.env.ANTHROPIC_API_KEY, 'anthropic-version': '2023-06-01' },
     body: JSON.stringify({
-      model: 'claude-sonnet-4-20250514', max_tokens: 1500,
+      model: 'claude-sonnet-4-20250514', max_tokens: 4000,
       messages: [{ role: 'user', content: [
         { type: 'image', source: { type: 'base64', media_type: mime, data: base64 } },
         { type: 'text', text: buildPrompt(corrections, notes) }
