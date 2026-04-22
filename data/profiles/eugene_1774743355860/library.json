@@ -702,12 +702,12 @@
       "defaultMealType": "breakfast",
       "nutrition": {
         "meal_name": "Red Caviar Toast with Tea",
-        "description": "Three slices of rye bread topped with generous portions of salmon roe caviar, served with a cup of black tea",
+        "description": "Three slices of white bread topped with salmon roe caviar, served with black tea",
         "ingredients": [
           {
             "name": "bread",
             "quantity": "3 slices",
-            "notes": "rye bread, 45 g"
+            "notes": "white bread, 45 g"
           },
           {
             "name": "red caviar",
@@ -720,38 +720,38 @@
             "notes": "black tea"
           }
         ],
-        "calories": 245,
-        "protein_g": 12.8,
-        "carbs_g": 32.1,
-        "fat_g": 8.2,
-        "fiber_g": 4.1,
-        "sugar_g": 1.8,
-        "sodium_mg": 485,
-        "potassium_mg": 168,
-        "calcium_mg": 28,
-        "iron_mg": 1.9,
-        "magnesium_mg": 31,
-        "phosphorus_mg": 158,
-        "zinc_mg": 0.8,
-        "vitamin_a_mcg": 85,
-        "vitamin_c_mg": 0.8,
-        "vitamin_d_mcg": 2.1,
-        "vitamin_e_mg": 1.2,
-        "vitamin_k1_mcg": 2.8,
-        "vitamin_k2_mcg": 0.3,
-        "vitamin_b1_mg": 0.18,
-        "vitamin_b2_mg": 0.12,
-        "vitamin_b3_mg": 1.8,
-        "vitamin_b6_mg": 0.15,
+        "calories": 170,
+        "protein_g": 10.8,
+        "carbs_g": 23.6,
+        "fat_g": 3.2,
+        "fiber_g": 1.1,
+        "sugar_g": 1.4,
+        "sodium_mg": 534,
+        "potassium_mg": 209,
+        "calcium_mg": 114,
+        "iron_mg": 3.8,
+        "magnesium_mg": 73,
+        "phosphorus_mg": 402,
+        "zinc_mg": 0.5,
+        "vitamin_a_mcg": 271,
+        "vitamin_c_mg": 0,
+        "vitamin_d_mcg": 2.9,
+        "vitamin_e_mg": 2,
+        "vitamin_k1_mcg": 0.5,
+        "vitamin_k2_mcg": 0,
+        "vitamin_b1_mg": 0.3,
+        "vitamin_b2_mg": 0.3,
+        "vitamin_b3_mg": 1.9,
+        "vitamin_b5_mg": 0.8,
+        "vitamin_b6_mg": 0.2,
         "vitamin_b12_mcg": 3.2,
-        "folate_mcg": 28,
-        "omega3_mg": 245,
-        "copper_mg": 0.15,
-        "selenium_mcg": 18.5,
-        "manganese_mg": 0.85,
-        "vitamin_b5_mg": 0.42
+        "folate_mcg": 58,
+        "omega3_mg": 603,
+        "copper_mg": 0.2,
+        "selenium_mcg": 75.4,
+        "manganese_mg": 0.9
       },
-      "thumbFile": "1774896666026_ap9q5kph3r.jpg"
+      "thumbFile": "1776810324950_i34cty4mi0j.jpg"
     },
     {
       "id": "lib_1774898101191",
@@ -3682,7 +3682,7 @@
         "manganese_mg": 0.35,
         "vitamin_b5_mg": 0.45
       },
-      "thumbFile": "1774896666026_ap9q5kph3r.jpg"
+      "thumbFile": null
     },
     {
       "id": "lib_1775978204768",
@@ -5604,6 +5604,146 @@
         "manganese_mg": 0.15
       },
       "thumbFile": null
+    },
+    {
+      "id": "lib_1776814829012",
+      "savedAt": "2026-04-21T23:40:29.012Z",
+      "name": "Caviar Toast Appetizer",
+      "defaultMealType": "breakfast",
+      "nutrition": {
+        "meal_name": "Caviar Toast Appetizer",
+        "description": "3 small slices of crusty artisan bread topped with butter and generous portions of high-quality salmon roe (red caviar)",
+        "ingredients": [
+          {
+            "name": "crusty bread",
+            "quantity": "50g",
+            "notes": "3 small slices, appears to be baguette or similar artisan bread"
+          },
+          {
+            "name": "butter",
+            "quantity": "3g",
+            "notes": "spread under caviar, approximately 4g per slice"
+          },
+          {
+            "name": "salmon roe (red caviar)",
+            "quantity": "25g",
+            "notes": "generous portions on each slice, high-quality orange-red roe"
+          }
+        ],
+        "calories": 217,
+        "protein_g": 11.33,
+        "carbs_g": 26.52,
+        "fat_g": 8,
+        "fiber_g": 2.1,
+        "sugar_g": 1.12,
+        "sodium_mg": 641,
+        "potassium_mg": 108,
+        "calcium_mg": 97,
+        "iron_mg": 4.7,
+        "magnesium_mg": 88,
+        "phosphorus_mg": 220,
+        "zinc_mg": 0.7,
+        "vitamin_a_mcg": 167,
+        "vitamin_c_mg": 4,
+        "vitamin_d_mcg": 14.64,
+        "vitamin_e_mg": 2.07,
+        "vitamin_k1_mcg": 0.7,
+        "vitamin_k2_mcg": 0.5,
+        "vitamin_b1_mg": 0.3,
+        "vitamin_b2_mg": 0.2,
+        "vitamin_b3_mg": 2.4,
+        "vitamin_b5_mg": 1.1,
+        "vitamin_b6_mg": 0.18,
+        "vitamin_b12_mcg": 4.805,
+        "folate_mcg": 70.1,
+        "omega3_mg": 462,
+        "copper_mg": 0.2,
+        "selenium_mcg": 30.43,
+        "manganese_mg": 0.43
+      },
+      "thumbFile": "1776814773304_e9thij4lmnl.jpg"
+    },
+    {
+      "id": "lib_1776816961625",
+      "savedAt": "2026-04-22T00:16:01.625Z",
+      "name": "Kombucha Tea Beverage",
+      "defaultMealType": "breakfast",
+      "nutrition": {
+        "meal_name": "Kombucha Tea Beverage",
+        "description": "One 14 fl oz bottle of kombucha tea with 3% juice content",
+        "ingredients": [
+          {
+            "name": "Kombucha Tea",
+            "quantity": "14 fl oz",
+            "notes": "Fermented tea beverage with 3% juice, contains live cultures",
+            "nutrients": {
+              "calories": 70,
+              "protein_g": 0,
+              "carbs_g": 17,
+              "fat_g": 0,
+              "fiber_g": 0,
+              "sugar_g": 13,
+              "sodium_mg": 0,
+              "potassium_mg": 60,
+              "calcium_mg": 8,
+              "iron_mg": 0.1,
+              "magnesium_mg": 4,
+              "phosphorus_mg": 8,
+              "zinc_mg": 0.1,
+              "vitamin_a_mcg": 0,
+              "vitamin_c_mg": 8,
+              "vitamin_d_mcg": 0,
+              "vitamin_e_mg": 0.1,
+              "vitamin_k1_mcg": 2,
+              "vitamin_k2_mcg": 0,
+              "vitamin_b1_mg": 0.02,
+              "vitamin_b2_mg": 0.03,
+              "vitamin_b3_mg": 0.2,
+              "vitamin_b5_mg": 0.1,
+              "vitamin_b6_mg": 0.02,
+              "vitamin_b12_mcg": 0.1,
+              "folate_mcg": 8,
+              "omega3_mg": 0,
+              "copper_mg": 0.02,
+              "selenium_mcg": 1,
+              "manganese_mg": 0.1
+            }
+          }
+        ],
+        "calories": 70,
+        "protein_g": 0,
+        "carbs_g": 17,
+        "fat_g": 0,
+        "fiber_g": 0,
+        "sugar_g": 13,
+        "sodium_mg": 0,
+        "potassium_mg": 60,
+        "calcium_mg": 8,
+        "iron_mg": 0.1,
+        "magnesium_mg": 4,
+        "phosphorus_mg": 8,
+        "zinc_mg": 0.1,
+        "vitamin_a_mcg": 0,
+        "vitamin_c_mg": 8,
+        "vitamin_d_mcg": 0,
+        "vitamin_e_mg": 0.1,
+        "vitamin_k1_mcg": 2,
+        "vitamin_k2_mcg": 0,
+        "vitamin_b1_mg": 0.02,
+        "vitamin_b2_mg": 0.03,
+        "vitamin_b3_mg": 0.2,
+        "vitamin_b5_mg": 0.1,
+        "vitamin_b6_mg": 0.02,
+        "vitamin_b12_mcg": 0.1,
+        "folate_mcg": 8,
+        "omega3_mg": 0,
+        "copper_mg": 0.02,
+        "selenium_mcg": 1,
+        "manganese_mg": 0.1,
+        "_thumbFile": "1776816913803_fp47askti7c.jpg",
+        "_mime": "image/jpeg"
+      },
+      "thumbFile": "1776816991728_qrstfachf.jpg"
     }
   ]
 }

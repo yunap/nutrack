@@ -109,8 +109,36 @@ let pendingLibId=null, pendingLibDefaultType='snack';
 // ═══════════════════════════════════════════════════════════════════════════
 // INIT
 // ═══════════════════════════════════════════════════════════════════════════
+// ── Auth-aware fetch wrapper ──────────────────────────────────────────────────
+(function() {
+  const origFetch = fetch.bind(window);
+  window.fetch = async function(...args) {
+    const resp = await origFetch(...args);
+    if (resp.status === 401 && !String(args[0]).includes('/api/auth/me')) {
+      window.location.href = '/login';
+    }
+    return resp;
+  };
+})();
+
+let _authUser = null;
+
 async function init() {
   setTodayDate();
+  // check auth status
+  try {
+    const authRes = await fetch('/api/auth/me');
+    const authData = await authRes.json();
+    if (authData.authenticated) {
+      _authUser = authData.user;
+      const authEl = document.getElementById('auth-user-info');
+      if (authEl) {
+        authEl.innerHTML = `<span style="font-size:12px;color:var(--t2)">${esc(_authUser.name)}</span>
+          <a href="/auth/logout" style="font-size:11px;color:var(--t2);text-decoration:underline;margin-left:6px">Sign out</a>`;
+        authEl.style.display = 'flex';
+      }
+    }
+  } catch(e) { /* auth not enabled — continue */ }
   await loadProfileScreen();
   // try to restore last used profile
   const savedId   = localStorage.getItem('activeProfileId');

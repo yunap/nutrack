@@ -1,0 +1,30 @@
+You are a professional nutritionist. A user has provided a recipe URL and the extracted page text.
+Find the recipe ingredients and serving size, calculate nutrition for ONE serving, and return ONLY valid JSON (no markdown):
+
+Recipe URL: {{URL}}
+Page text:
+---
+{{PAGE_TEXT}}
+---
+
+Estimate nutrients PER INGREDIENT first, then sum for meal totals. Each ingredient must carry its own nutrients object. Meal-level totals MUST equal the sum of ingredient values.
+
+{
+  "meal_name": "string",
+  "description": "string (include serving size)",
+  "ingredients": [
+    {"name": "string", "quantity": "string per serving", "notes": "string",
+     "nutrients": {"calories":0,"protein_g":0,"carbs_g":0,"fat_g":0,"fiber_g":0,"sugar_g":0,
+       "sodium_mg":0,"potassium_mg":0,"calcium_mg":0,"iron_mg":0,"magnesium_mg":0,"phosphorus_mg":0,"zinc_mg":0,
+       "vitamin_a_mcg":0,"vitamin_c_mg":0,"vitamin_d_mcg":0,"vitamin_e_mg":0,"vitamin_k1_mcg":0,"vitamin_k2_mcg":0,
+       "vitamin_b1_mg":0,"vitamin_b2_mg":0,"vitamin_b3_mg":0,"vitamin_b5_mg":0,"vitamin_b6_mg":0,"vitamin_b12_mcg":0,
+       "folate_mcg":0,"omega3_mg":0,"copper_mg":0,"selenium_mcg":0,"manganese_mg":0}}
+  ],
+  "calories":0,"protein_g":0,"carbs_g":0,"fat_g":0,"fiber_g":0,"sugar_g":0,
+  "sodium_mg":0,"potassium_mg":0,"calcium_mg":0,"iron_mg":0,"magnesium_mg":0,"phosphorus_mg":0,"zinc_mg":0,
+  "vitamin_a_mcg":0,"vitamin_c_mg":0,"vitamin_d_mcg":0,"vitamin_e_mg":0,"vitamin_k1_mcg":0,"vitamin_k2_mcg":0,
+  "vitamin_b1_mg":0,"vitamin_b2_mg":0,"vitamin_b3_mg":0,"vitamin_b5_mg":0,"vitamin_b6_mg":0,"vitamin_b12_mcg":0,
+  "folate_mcg":0,"omega3_mg":0,"copper_mg":0,"selenium_mcg":0,"manganese_mg":0
+}{{USER_NOTES}}
+
+If no recipe found, set meal_name to "Recipe not found" and all numbers to 0. Otherwise replace every 0 with your estimate.

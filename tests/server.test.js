@@ -905,3 +905,19 @@ describe('Direct meal save with servingSize', () => {
     expect(res.body.meal.nutrition.calories).toBe(MEAL_A.calories * 0.5);
   });
 });
+
+// ══ Auth endpoints ════════════════════════════════════════════════════════════
+describe('Auth (dev mode — no OAuth configured)', () => {
+  test('GET /api/auth/me returns unauthenticated when no OAuth', async () => {
+    const res = await request(app).get('/api/auth/me');
+    // In dev mode (no OAuth), this should return { authenticated: false }
+    // or succeed with 200 since auth middleware is bypassed
+    expect(res.status).toBe(200);
+  });
+
+  test('API endpoints are accessible without auth in dev mode', async () => {
+    const res = await request(app).get('/api/profiles');
+    expect(res.status).toBe(200);
+    expect(Array.isArray(res.body)).toBe(true);
+  });
+});

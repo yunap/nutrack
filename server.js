@@ -1,5 +1,6 @@
 require('dotenv').config();
 const express  = require('express');
+const session  = require('express-session');
 const multer   = require('multer');
 const fetch    = require('node-fetch');
 const path     = require('path');
@@ -7,6 +8,7 @@ const fs       = require('fs');
 const low      = require('lowdb');
 const FileSync = require('lowdb/adapters/FileSync');
 const log      = require('./logger');
+const auth     = require('./auth');
 
 // ── CLI flags ─────────────────────────────────────────────────────────────────
 const isDev = process.argv.includes('--dev');
@@ -23,6 +25,12 @@ const PROF_DIR  = path.join(BASE_DIR, 'profiles');
 // ── Initialize logger ─────────────────────────────────────────────────────────
 if (!process.env.DATA_DIR) { // skip logger in tests (DATA_DIR is set to tmpdir)
   log.init({ level: isDev ? 'debug' : 'info', dir: path.join(BASE_DIR, 'logs') });
+}
+
+// ── Load prompt templates ──────────────────────────────────────────────────────
+const PROMPTS_DIR = path.join(__dirname, 'prompts');
+function loadPrompt(name) {
+  return fs.readFileSync(path.join(PROMPTS_DIR, name), 'utf8');
 }
 
 // ── Global profiles registry ──────────────────────────────────────────────────
@@ -84,7 +92,8 @@ function requireProfile(req, res, next) {
   if (!exists) return res.status(404).json({ error: `Profile "${profileId}" not found` });
   req.profileId = profileId;
   req.dbs = getProfileDbs(profileId);
-  next();
+  // check ownership
+  auth.requireProfileAccess(req, res, next);
 }
 
 // ── App setup ─────────────────────────────────────────────────────────────────
@@ -92,6 +101,23 @@ const app    = express();
 const upload = multer({ storage: multer.memoryStorage(), limits: { fileSize: 20 * 1024 * 1024 } });
 app.use(express.json({ limit: '25mb' }));
 app.use(log.middleware);
+
+// ── Session + Auth ────────────────────────────────────────────────────────────
+if (auth.isEnabled()) {
+  app.use(session({
+    secret: process.env.SESSION_SECRET || 'nutrack-dev-secret-change-me',
+    resave: false,
+    saveUninitialized: false,
+    cookie: {
+      secure: process.env.NODE_ENV === 'production',  // requires HTTPS in prod
+      maxAge: 30 * 24 * 60 * 60 * 1000  // 30 days
+    }
+  }));
+}
+auth.init({ baseDir: BASE_DIR, log, profilesDb });
+auth.addRoutes(app);
+app.use(auth.requireAuth);
+
 app.use(express.static(path.join(__dirname, 'public')));
 app.use('/thumbs', express.static(THUMB_DIR));
 
@@ -116,7 +142,8 @@ function saveThumbFromBase64(base64, mime) {
 // ══ PROFILE ROUTES ════════════════════════════════════════════════════════════
 
 app.get('/api/profiles', (req, res) => {
-  res.json(profilesDb.get('profiles').value());
+  const visible = auth.visibleProfiles(req.user);
+  res.json(visible || profilesDb.get('profiles').value());
 });
 
 app.post('/api/profiles', (req, res) => {
@@ -126,7 +153,8 @@ app.post('/api/profiles', (req, res) => {
   const id = trimmed.toLowerCase().replace(/[^a-z0-9]/g, '_').replace(/_+/g, '_').replace(/^_|_$/g, '') + '_' + Date.now();
   const existing = profilesDb.get('profiles').find(p => p.name.toLowerCase() === trimmed.toLowerCase()).value();
   if (existing) return res.status(400).json({ error: `A profile named "${trimmed}" already exists` });
-  const profile = { id, name: trimmed, createdAt: new Date().toISOString(), avatar: trimmed[0].toUpperCase() };
+  const ownerId = req.user?.id || null;
+  const profile = { id, name: trimmed, createdAt: new Date().toISOString(), avatar: trimmed[0].toUpperCase(), ownerId };
   profilesDb.get('profiles').push(profile).write();
   profileDir(id);
   log.info(`Profile created: ${trimmed} (${id})`);
@@ -642,112 +670,27 @@ function sumNutrition(nutritionArray) {
 }
 
 function buildPrompt(corrections, notes) {
-  const note = corrections ? `\n\nIMPORTANT — RECALCULATION: The user has corrected the ingredients below. Use EXACTLY these ingredients and quantities — do not add or remove any. Recalculate all nutrition values from scratch based on these corrected ingredients:\n${corrections}` : '';
-  const userNotes = notes ? `\n\nUSER CONTEXT: The user provided this additional information about the meal:\n"${notes}"\nUse this to override your visual interpretation where relevant — the user knows what they ate.` : '';
-  return `You are a professional nutritionist estimating the nutritional content of a meal from a photo. Analyze the image and return ONLY a valid JSON object. No markdown, no backticks, no commentary — just the JSON.
-
-PHOTO ANALYSIS RULES:
-
-1. NUTRITION LABELS: If a label or packaging is visible, read it carefully and use those exact values, scaled to the portion actually shown (which may differ from the label's serving size).
-
-2. PORTION ESTIMATION: Estimate how much food is actually on the plate/bowl.
-   Visual references: a standard dinner plate is 10–11 inches (25–28cm) across. A cupped adult hand holds roughly ½ cup. A thumb tip ≈ 1 tsp. A closed fist ≈ 1 cup. A deck of cards ≈ 3oz (85g) of meat.
-   When uncertain, estimate the middle of the plausible range — do not default to the smallest possible portion.
-
-3. HIDDEN CALORIES — DO NOT UNDERCOUNT THESE:
-   - Cooking oils and butter: if food appears pan-fried, sautéed, or roasted, estimate the oil/butter used in cooking and include it. A typical home-cooked sauté uses 1–2 tbsp oil (~120–240 kcal).
-   - Dressings and sauces: if a salad looks dressed or food has a visible sauce/glaze, estimate and include it.
-   - Cheese: estimate by visual thickness and coverage area.
-   These are the most commonly underestimated calorie sources. List them as separate ingredients.
-
-4. COOKED WEIGHTS: All ingredient quantities should reflect the food as shown (cooked weight for cooked items, raw weight for raw items). State which in the notes field.
-
-5. MULTIPLE ITEMS: If the photo shows multiple plates or servings, estimate for ONE person's portion unless the user's notes say otherwise.
-
-6. AMBIGUOUS FOODS: If you cannot confidently identify a food, describe its appearance precisely (e.g., "creamy orange soup — likely butternut squash or carrot") and estimate based on the most probable identification.
-
-NUTRIENT ESTIMATION METHOD — THIS IS CRITICAL:
-You MUST estimate nutrients PER INGREDIENT FIRST, then sum them for the meal totals.
-Do NOT estimate meal totals holistically. Calculate each ingredient's contribution individually using the reference values below, then add them up. The meal-level totals must equal the sum of the ingredient-level values.
-
-Reference values for commonly underestimated nutrients:
-Potassium: banana ~422mg/large, yogurt ~322mg/cup, potato ~926mg/medium, avocado ~485mg/half, spinach ~419mg/½cup cooked, salmon ~534mg/100g, sweet potato ~542mg/medium.
-Magnesium: banana ~37mg/large, yogurt ~30mg/cup, almonds ~80mg/28g, spinach ~78mg/½cup cooked, dark chocolate ~65mg/28g, avocado ~29mg/half, black beans ~60mg/½cup.
-Vitamin C: strawberries ~12mg/large berry (NOT per cup — per individual berry), orange ~70mg/medium, bell pepper ~95mg/medium, broccoli ~51mg/½cup, kiwi ~64mg/medium, banana ~12mg/large.
-Vitamin K1: kale ~547mcg/cup raw, spinach ~145mcg/½cup cooked, broccoli ~110mcg/½cup, lettuce ~48mcg/cup. Most non-leafy-green foods have <5mcg.
-Omega-3: salmon ~2000mg/100g, sardines ~1480mg/100g, flaxseed ~2350mg/tbsp, walnuts ~2570mg/28g, chia seeds ~5060mg/28g. Most other foods <100mg.
-
-CALORIE CROSS-CHECK: For each ingredient, verify (protein_g × 4) + (carbs_g × 4) + (fat_g × 9) ≈ calories (within 10%). Then verify the meal totals are consistent too.
-
-JSON FORMAT — each ingredient carries its own nutrient values, and meal totals are the sum:
-{
-  "meal_name": "short descriptive name",
-  "description": "1 sentence — what the meal is, estimated total portion size",
-  "ingredients": [
-    {
-      "name": "ingredient name",
-      "quantity": "amount with unit",
-      "notes": "preparation, brand, or clarification",
-      "nutrients": {
-        "calories": 0, "protein_g": 0, "carbs_g": 0, "fat_g": 0, "fiber_g": 0, "sugar_g": 0,
-        "sodium_mg": 0, "potassium_mg": 0, "calcium_mg": 0, "iron_mg": 0,
-        "magnesium_mg": 0, "phosphorus_mg": 0, "zinc_mg": 0,
-        "vitamin_a_mcg": 0, "vitamin_c_mg": 0, "vitamin_d_mcg": 0, "vitamin_e_mg": 0,
-        "vitamin_k1_mcg": 0, "vitamin_k2_mcg": 0,
-        "vitamin_b1_mg": 0, "vitamin_b2_mg": 0, "vitamin_b3_mg": 0, "vitamin_b5_mg": 0,
-        "vitamin_b6_mg": 0, "vitamin_b12_mcg": 0, "folate_mcg": 0,
-        "omega3_mg": 0, "copper_mg": 0, "selenium_mcg": 0, "manganese_mg": 0
-      }
-    }
-  ],
-  "calories": 0,
-  "protein_g": 0, "carbs_g": 0, "fat_g": 0, "fiber_g": 0, "sugar_g": 0,
-  "sodium_mg": 0, "potassium_mg": 0, "calcium_mg": 0, "iron_mg": 0,
-  "magnesium_mg": 0, "phosphorus_mg": 0, "zinc_mg": 0,
-  "vitamin_a_mcg": 0, "vitamin_c_mg": 0, "vitamin_d_mcg": 0, "vitamin_e_mg": 0,
-  "vitamin_k1_mcg": 0, "vitamin_k2_mcg": 0,
-  "vitamin_b1_mg": 0, "vitamin_b2_mg": 0, "vitamin_b3_mg": 0, "vitamin_b5_mg": 0,
-  "vitamin_b6_mg": 0, "vitamin_b12_mcg": 0, "folate_mcg": 0,
-  "omega3_mg": 0, "copper_mg": 0, "selenium_mcg": 0, "manganese_mg": 0
-}
-
-The meal-level values MUST be the exact sum of the per-ingredient values. Replace every 0 with your estimate. Use 0 only when genuinely absent.${note}${userNotes}`;
+  const correctionsBlock = corrections
+    ? '\nIMPORTANT — RECALCULATION: The user has corrected the ingredients below. Use EXACTLY these ingredients and quantities — do not add or remove any. Recalculate all nutrition values from scratch based on these corrected ingredients:\n' + corrections
+    : '';
+  const userNotesBlock = notes
+    ? '\nUSER CONTEXT: The user provided this additional information about the meal:\n"' + notes + '"\nUse this to override your visual interpretation where relevant — the user knows what they ate.'
+    : '';
+  return loadPrompt('photo-analysis.txt')
+    .replace('{{CORRECTIONS}}', correctionsBlock)
+    .replace('{{USER_NOTES}}', userNotesBlock)
+    .trim();
 }
 
 async function callClaudeUrl(url, pageText, notes) {
-  const userNotes = notes
-    ? `\n\nUSER NOTES: The user made these changes to the original recipe:\n"${notes}"\nAdjust the ingredients and nutrition accordingly — use their modifications, not the original recipe values.`
+  const userNotesBlock = notes
+    ? '\nUSER NOTES: The user made these changes to the original recipe:\n"' + notes + '"\nAdjust the ingredients and nutrition accordingly — use their modifications, not the original recipe values.'
     : '';
-  const prompt = `You are a professional nutritionist. A user has provided a recipe URL and the extracted page text.
-Find the recipe ingredients and serving size, calculate nutrition for ONE serving, and return ONLY valid JSON (no markdown):
-
-Recipe URL: ${url}
-Page text:
----
-${pageText}
----
-
-Estimate nutrients PER INGREDIENT first, then sum for meal totals. Each ingredient must carry its own nutrients object. Meal-level totals MUST equal the sum of ingredient values.
-
-{
-  "meal_name": "string",
-  "description": "string (include serving size)",
-  "ingredients": [
-    {"name": "string", "quantity": "string per serving", "notes": "string",
-     "nutrients": {"calories":0,"protein_g":0,"carbs_g":0,"fat_g":0,"fiber_g":0,"sugar_g":0,
-       "sodium_mg":0,"potassium_mg":0,"calcium_mg":0,"iron_mg":0,"magnesium_mg":0,"phosphorus_mg":0,"zinc_mg":0,
-       "vitamin_a_mcg":0,"vitamin_c_mg":0,"vitamin_d_mcg":0,"vitamin_e_mg":0,"vitamin_k1_mcg":0,"vitamin_k2_mcg":0,
-       "vitamin_b1_mg":0,"vitamin_b2_mg":0,"vitamin_b3_mg":0,"vitamin_b5_mg":0,"vitamin_b6_mg":0,"vitamin_b12_mcg":0,
-       "folate_mcg":0,"omega3_mg":0,"copper_mg":0,"selenium_mcg":0,"manganese_mg":0}}
-  ],
-  "calories":0,"protein_g":0,"carbs_g":0,"fat_g":0,"fiber_g":0,"sugar_g":0,
-  "sodium_mg":0,"potassium_mg":0,"calcium_mg":0,"iron_mg":0,"magnesium_mg":0,"phosphorus_mg":0,"zinc_mg":0,
-  "vitamin_a_mcg":0,"vitamin_c_mg":0,"vitamin_d_mcg":0,"vitamin_e_mg":0,"vitamin_k1_mcg":0,"vitamin_k2_mcg":0,
-  "vitamin_b1_mg":0,"vitamin_b2_mg":0,"vitamin_b3_mg":0,"vitamin_b5_mg":0,"vitamin_b6_mg":0,"vitamin_b12_mcg":0,
-  "folate_mcg":0,"omega3_mg":0,"copper_mg":0,"selenium_mcg":0,"manganese_mg":0
-}${userNotes}
-
-If no recipe found, set meal_name to "Recipe not found" and all numbers to 0. Otherwise replace every 0 with your estimate.`;
+  const prompt = loadPrompt('url-analysis.txt')
+    .replace('{{URL}}', url)
+    .replace('{{PAGE_TEXT}}', pageText)
+    .replace('{{USER_NOTES}}', userNotesBlock)
+    .trim();
 
   const resp = await fetch('https://api.anthropic.com/v1/messages', {
     method: 'POST',
@@ -760,45 +703,7 @@ If no recipe found, set meal_name to "Recipe not found" and all numbers to 0. Ot
 }
 
 async function callClaudeSuppLabel(base64, mime) {
-  const prompt = `You are analyzing a supplement label photo. Extract the supplement name and all nutrient amounts per serving.
-Return ONLY a valid JSON object (no markdown, no backticks):
-{
-  "name": "string (product name)",
-  "serving_size": "string (e.g. 1 scoop, 1 capsule)",
-  "nutrients": {
-    "calories": 0, "protein_g": 0, "carbs_g": 0, "fat_g": 0, "fiber_g": 0, "sugar_g": 0,
-    "sodium_mg": 0, "potassium_mg": 0, "calcium_mg": 0, "iron_mg": 0, "magnesium_mg": 0,
-    "phosphorus_mg": 0, "zinc_mg": 0, "selenium_mcg": 0, "manganese_mg": 0, "chromium_mcg": 0,
-    "vitamin_a_mcg": 0, "vitamin_c_mg": 0, "vitamin_d_mcg": 0, "vitamin_e_mg": 0,
-    "vitamin_k1_mcg": 0, "vitamin_k2_mcg": 0,
-    "vitamin_b1_mg": 0, "vitamin_b2_mg": 0, "vitamin_b3_mg": 0, "vitamin_b5_mg": 0,
-    "vitamin_b6_mg": 0, "vitamin_b12_mcg": 0, "folate_mcg": 0,
-    "omega3_mg": 0, "copper_mg": 0
-  }
-}
-
-CRITICAL — READ EVERY LINE OF THE LABEL:
-- Read ALL macros: Calories, Total Carbohydrate → carbs_g, Dietary Fiber → fiber_g, Total Sugars → sugar_g, Protein → protein_g, Total Fat → fat_g. These matter for greens powders, protein supplements, and meal replacements.
-- Thiamine / Thiamin = vitamin_b1_mg
-- Riboflavin = vitamin_b2_mg (do NOT skip this)
-- Niacin / Niacinamide = vitamin_b3_mg
-- Pantothenic Acid / Pantothenate = vitamin_b5_mg
-- Pyridoxine / Pyridoxal = vitamin_b6_mg
-- Cyanocobalamin / Methylcobalamin = vitamin_b12_mcg
-- Folate / Folic Acid = folate_mcg
-- Selenium = selenium_mcg (convert mg → mcg if needed: 1mg = 1000mcg)
-- Manganese = manganese_mg
-- Chromium = chromium_mcg
-
-UNITS: IU → mcg for fat-soluble vitamins (D: 1 IU = 0.025mcg; A: 1 IU = 0.3mcg; E: 1 IU = 0.67mg). mg stays mg. mcg stays mcg.
-Only include nutrients actually on the label. Leave others as 0.
-For omega3_mg: look for EPA + DHA or "Total Omega-3".
-For Vitamin K: MK-4/MK-7/MK-9/menaquinone → vitamin_k2_mcg. Phylloquinone/K1 → vitamin_k1_mcg. Unlabeled "Vitamin K" in a multivitamin → vitamin_k1_mcg.
-
-MAGNESIUM PROPRIETARY BLENDS:
-If magnesium is listed as a blend total (not elemental), estimate elemental using:
-oxide ~60%, citrate ~16%, glycinate/bisglycinate ~14%, malate ~15%, taurinate ~8%, threonate ~8%, chloride ~12%.
-Unknown blend → use 17.5%. Always log elemental mg, never the blend weight.`;
+  const prompt = loadPrompt('supplement-label.txt').trim();
 
   const resp = await fetch('https://api.anthropic.com/v1/messages', {
     method: 'POST',
@@ -817,28 +722,9 @@ Unknown blend → use 17.5%. Always log elemental mg, never the blend weight.`;
 }
 
 async function callClaudeText(description) {
-  const prompt = `You are a professional nutritionist. The user has described a meal. Estimate nutrients PER INGREDIENT first, then sum for meal totals. Return ONLY valid JSON (no markdown):
-{
-  "meal_name": "string",
-  "description": "string",
-  "ingredients": [
-    {"name": "string", "quantity": "string", "notes": "string",
-     "nutrients": {"calories":0,"protein_g":0,"carbs_g":0,"fat_g":0,"fiber_g":0,"sugar_g":0,
-       "sodium_mg":0,"potassium_mg":0,"calcium_mg":0,"iron_mg":0,"magnesium_mg":0,"phosphorus_mg":0,"zinc_mg":0,
-       "vitamin_a_mcg":0,"vitamin_c_mg":0,"vitamin_d_mcg":0,"vitamin_e_mg":0,"vitamin_k1_mcg":0,"vitamin_k2_mcg":0,
-       "vitamin_b1_mg":0,"vitamin_b2_mg":0,"vitamin_b3_mg":0,"vitamin_b5_mg":0,"vitamin_b6_mg":0,"vitamin_b12_mcg":0,
-       "folate_mcg":0,"omega3_mg":0,"copper_mg":0,"selenium_mcg":0,"manganese_mg":0}}
-  ],
-  "calories":0,"protein_g":0,"carbs_g":0,"fat_g":0,"fiber_g":0,"sugar_g":0,
-  "sodium_mg":0,"potassium_mg":0,"calcium_mg":0,"iron_mg":0,"magnesium_mg":0,"phosphorus_mg":0,"zinc_mg":0,
-  "vitamin_a_mcg":0,"vitamin_c_mg":0,"vitamin_d_mcg":0,"vitamin_e_mg":0,"vitamin_k1_mcg":0,"vitamin_k2_mcg":0,
-  "vitamin_b1_mg":0,"vitamin_b2_mg":0,"vitamin_b3_mg":0,"vitamin_b5_mg":0,"vitamin_b6_mg":0,"vitamin_b12_mcg":0,
-  "folate_mcg":0,"omega3_mg":0,"copper_mg":0,"selenium_mcg":0,"manganese_mg":0
-}
-
-Meal-level totals MUST equal the sum of per-ingredient values. Replace every 0 with your estimate.
-
-Meal description: "${description}"`;
+  const prompt = loadPrompt('text-analysis.txt')
+    .replace('{{DESCRIPTION}}', description)
+    .trim();
 
   const resp = await fetch('https://api.anthropic.com/v1/messages', {
     method: 'POST',

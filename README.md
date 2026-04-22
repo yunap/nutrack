@@ -220,6 +220,67 @@ All profile-scoped routes require `x-profile-id` header.
 
 ---
 
+
+---
+
+## Authentication (optional)
+
+Auth is **disabled by default** — the app runs in open mode for local use. Enable it by adding OAuth credentials to `.env`.
+
+### Setup
+
+1. **Google OAuth** — go to [Google Cloud Console](https://console.cloud.google.com/apis/credentials), create an OAuth 2.0 Client ID. Set the authorized redirect URI to `https://your-domain.com/auth/google/callback`.
+
+2. **GitHub OAuth** — go to [GitHub Developer Settings](https://github.com/settings/developers), create a new OAuth App. Set the callback URL to `https://your-domain.com/auth/github/callback`.
+
+3. Add to `.env`:
+```
+GOOGLE_CLIENT_ID=your-id
+GOOGLE_CLIENT_SECRET=your-secret
+GITHUB_CLIENT_ID=your-id
+GITHUB_CLIENT_SECRET=your-secret
+BASE_URL=https://your-domain.com
+SESSION_SECRET=openssl-rand-hex-32
+NODE_ENV=production
+```
+
+You can configure one or both providers.
+
+### Profile assignment
+
+After both users have signed in once, check `data/users.json` for their IDs:
+
+```json
+{
+  "users": [
+    { "id": "google_118234567890", "name": "Yuna", "email": "yuna@gmail.com", "isAdmin": true },
+    { "id": "google_998765432100", "name": "Eugene", "email": "eugene@gmail.com", "isAdmin": false }
+  ]
+}
+```
+
+Then edit `data/profiles.json` to assign ownership:
+
+```json
+{
+  "profiles": [
+    { "id": "prof_abc", "name": "Yuna", "avatar": "Y", "ownerId": "google_118234567890" },
+    { "id": "prof_def", "name": "Eugene", "avatar": "E", "ownerId": "google_998765432100" }
+  ]
+}
+```
+
+To make both users admins, set `"isAdmin": true` for both entries in `users.json`.
+
+### Access control
+
+- **Admins** can see and manage all profiles
+- **Non-admin users** see only profiles assigned to them (via `ownerId`)
+- **Unassigned profiles** (no `ownerId`) are visible only to admins
+- **New profiles** created via the UI are automatically assigned to the creating user
+- **Dev mode** (no OAuth configured) — all profiles are accessible to everyone
+
+
 ## Cost
 ~$0.01-0.03 per meal analysis with Claude Sonnet. Label scans are similar. No ongoing costs when browsing, logging from library, or viewing dashboards.
 
