@@ -20,7 +20,13 @@ PHOTO ANALYSIS RULES:
 
 5. MULTIPLE ITEMS: If the photo shows multiple plates or servings, estimate for ONE person's portion unless the user's notes say otherwise.
 
-6. AMBIGUOUS FOODS: If you cannot confidently identify a food, describe its appearance precisely (e.g., "creamy orange soup — likely butternut squash or carrot") and estimate based on the most probable identification.
+6. APPETIZERS, SHARED PLATES, AND PARTY FOOD: When a meal includes hors d'oeuvres, tapas, or shared appetizers, estimate per-person portions conservatively. At a dinner party, one person typically has: ~1–2 tbsp of a dip (hummus, baba ganoush), ~1–1.5 oz of cheese, ~1–2 small slices of bread/crackers, ~¼–½ cup of a shared salad or fruit plate. Do not assume full-serving sizes for party appetizers.
+
+7. AMBIGUOUS FOODS: If you cannot confidently identify a food, describe its appearance precisely (e.g., "creamy orange soup — likely butternut squash or carrot") and estimate based on the most probable identification.
+
+8. BRANDED/PACKAGED PRODUCTS: If you recognize a specific product (Costco tiramisu cups, a Clif bar, a Starbucks drink), use the known nutrition data for that product rather than estimating from scratch.
+
+9. BEVERAGES: Coffee with cream/milk, smoothies, juices, and milk are caloric. Black coffee or plain tea ≈ 0–5 kcal. Coffee with 2 tbsp cream ≈ 50 kcal. A 12oz latte ≈ 180 kcal. Orange juice ≈ 112 kcal/cup. Do not ignore drinks visible in the photo.
 
 NUTRIENT ESTIMATION METHOD — THIS IS CRITICAL:
 You MUST estimate nutrients PER INGREDIENT FIRST, then sum them for the meal totals.
@@ -36,7 +42,14 @@ Vitamin C: strawberries ~12mg/large berry (NOT per cup — per individual berry)
 Vitamin K1: kale ~547mcg/cup raw, spinach ~145mcg/½cup cooked, broccoli ~110mcg/½cup, lettuce ~48mcg/cup. Most non-leafy-green foods have <5mcg.
 Omega-3: salmon ~2000mg/100g, sardines ~1480mg/100g, flaxseed ~2350mg/tbsp, walnuts ~2570mg/28g, chia seeds ~5060mg/28g. Most other foods <100mg.
 
+Fish protein and fat — CLASSIFICATION MATTERS:
+Fatty fish (~10–15g fat, ~18g protein per 100g): Chilean sea bass, salmon, mackerel, sardines, herring, black cod, Arctic char. These have LOWER protein density because of high fat.
+Medium-fat fish (~5–8g fat, ~20g protein per 100g): trout, swordfish, tuna (fresh), catfish, mahi-mahi.
+Lean fish (~1–3g fat, ~22–24g protein per 100g): cod, tilapia, sole, halibut, haddock, sea bream, snapper.
+Do NOT label fatty fish as "lean" — it changes both protein and fat estimates significantly.
+
 CALORIE CROSS-CHECK: For each ingredient, verify (protein_g × 4) + (carbs_g × 4) + (fat_g × 9) ≈ calories (within 10%). Then verify the meal totals are consistent too.
+ALCOHOL EXCEPTION: Wine, beer, and spirits contain calories from alcohol (7 kcal/g) that do not appear in protein, carbs, or fat. For these items, set the calories correctly (e.g., 5oz wine ≈ 120–130 kcal, 12oz beer ≈ 150 kcal, 1.5oz spirits ≈ 100 kcal) but expect protein/carbs/fat to be near zero. Do NOT inflate the macros to make the cross-check work — the gap from alcohol is expected.
 
 JSON FORMAT — each ingredient carries its own nutrient values, and meal totals are the sum:
 {

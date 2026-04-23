@@ -33,6 +33,34 @@ function loadPrompt(name) {
   return fs.readFileSync(path.join(PROMPTS_DIR, name), 'utf8');
 }
 
+function parseClaudeResponse(data) {
+  if (data.stop_reason === 'max_tokens') {
+    log.warn('Claude response truncated (max_tokens reached)');
+  }
+  const raw = data.content.map(c => c.text || '').join('').replace(/```json|```/g, '').trim();
+  try {
+    return JSON.parse(raw);
+  } catch(e) {
+    log.error('Failed to parse Claude response', raw.substring(0, 500));
+    // try to salvage: if truncated JSON, attempt to close it
+    let fixed = raw;
+    // count open/close braces
+    const opens = (fixed.match(/{/g) || []).length;
+    const closes = (fixed.match(/}/g) || []).length;
+    if (opens > closes) {
+      // remove trailing comma or incomplete value
+      fixed = fixed.replace(/,\s*$/, '');
+      for (let i = 0; i < opens - closes; i++) fixed += '}';
+      try {
+        const result = JSON.parse(fixed);
+        log.info('Salvaged truncated JSON response');
+        return result;
+      } catch(e2) { /* fall through */ }
+    }
+    throw new Error('Claude returned incomplete data — please try again. The recipe may have too many ingredients for a single analysis.');
+  }
+}
+
 // ── Global profiles registry ──────────────────────────────────────────────────
 const profilesDb = low(new FileSync(path.join(BASE_DIR, 'profiles.json')));
 profilesDb.defaults({ profiles: [] }).write();
@@ -228,7 +256,7 @@ app.post('/api/analyze-url', async (req, res) => {
       .replace(/<script[\s\S]*?<\/script>/gi, '')
       .replace(/<style[\s\S]*?<\/style>/gi, '')
       .replace(/<[^>]+>/g, ' ')
-      .replace(/\s+/g, ' ').trim().substring(0, 8000);
+      .replace(/\s+/g, ' ').trim().substring(0, 5000);
     const t0 = Date.now();
     const result = await callClaudeUrl(url.trim(), text, notes?.trim() || null);
     log.info(`URL analysis completed in ${Date.now()-t0}ms: ${result.meal_name}`);
@@ -695,11 +723,19 @@ async function callClaudeUrl(url, pageText, notes) {
   const resp = await fetch('https://api.anthropic.com/v1/messages', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json', 'x-api-key': process.env.ANTHROPIC_API_KEY, 'anthropic-version': '2023-06-01' },
-    body: JSON.stringify({ model: 'claude-sonnet-4-20250514', max_tokens: 4000, messages: [{ role: 'user', content: prompt }] })
+    body: JSON.stringify({ model: 'claude-sonnet-4-20250514', max_tokens: 8000, messages: [{ role: 'user', content: prompt }] })
   });
-  if (!resp.ok) { const e = await resp.json(); throw new Error(e.error?.message || `API error ${resp.status}`); }
-  const data = await resp.json();
-  return JSON.parse(data.content.map(c => c.text || '').join('').replace(/```json|```/g, '').trim());
+  if (!resp.ok) {
+    let errMsg = `API error ${resp.status}`;
+    try { const e = await resp.json(); errMsg = e.error?.message || errMsg; } catch(e) {}
+    throw new Error(errMsg);
+  }
+  let data;
+  try { data = await resp.json(); } catch(e) {
+    log.error('Failed to parse API response body', e.message);
+    throw new Error('Claude API returned an invalid response — the recipe may be too complex. Try simplifying or using the Describe mode instead.');
+  }
+  return parseClaudeResponse(data);
 }
 
 async function callClaudeSuppLabel(base64, mime) {
@@ -709,16 +745,24 @@ async function callClaudeSuppLabel(base64, mime) {
     method: 'POST',
     headers: { 'Content-Type': 'application/json', 'x-api-key': process.env.ANTHROPIC_API_KEY, 'anthropic-version': '2023-06-01' },
     body: JSON.stringify({
-      model: 'claude-sonnet-4-20250514', max_tokens: 4000,
+      model: 'claude-sonnet-4-20250514', max_tokens: 8000,
       messages: [{ role: 'user', content: [
         { type: 'image', source: { type: 'base64', media_type: mime, data: base64 } },
         { type: 'text', text: prompt }
       ]}]
     })
   });
-  if (!resp.ok) { const e = await resp.json(); throw new Error(e.error?.message || `API error ${resp.status}`); }
-  const data = await resp.json();
-  return JSON.parse(data.content.map(c => c.text || '').join('').replace(/```json|```/g, '').trim());
+  if (!resp.ok) {
+    let errMsg = `API error ${resp.status}`;
+    try { const e = await resp.json(); errMsg = e.error?.message || errMsg; } catch(e) {}
+    throw new Error(errMsg);
+  }
+  let data;
+  try { data = await resp.json(); } catch(e) {
+    log.error('Failed to parse API response body', e.message);
+    throw new Error('Claude API returned an invalid response — the recipe may be too complex. Try simplifying or using the Describe mode instead.');
+  }
+  return parseClaudeResponse(data);
 }
 
 async function callClaudeText(description) {
@@ -729,11 +773,19 @@ async function callClaudeText(description) {
   const resp = await fetch('https://api.anthropic.com/v1/messages', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json', 'x-api-key': process.env.ANTHROPIC_API_KEY, 'anthropic-version': '2023-06-01' },
-    body: JSON.stringify({ model: 'claude-sonnet-4-20250514', max_tokens: 4000, messages: [{ role: 'user', content: prompt }] })
+    body: JSON.stringify({ model: 'claude-sonnet-4-20250514', max_tokens: 8000, messages: [{ role: 'user', content: prompt }] })
   });
-  if (!resp.ok) { const e = await resp.json(); throw new Error(e.error?.message || `API error ${resp.status}`); }
-  const data = await resp.json();
-  return JSON.parse(data.content.map(c => c.text || '').join('').replace(/```json|```/g, '').trim());
+  if (!resp.ok) {
+    let errMsg = `API error ${resp.status}`;
+    try { const e = await resp.json(); errMsg = e.error?.message || errMsg; } catch(e) {}
+    throw new Error(errMsg);
+  }
+  let data;
+  try { data = await resp.json(); } catch(e) {
+    log.error('Failed to parse API response body', e.message);
+    throw new Error('Claude API returned an invalid response — the recipe may be too complex. Try simplifying or using the Describe mode instead.');
+  }
+  return parseClaudeResponse(data);
 }
 
 async function callClaude(base64, mime, corrections, notes) {
@@ -741,16 +793,24 @@ async function callClaude(base64, mime, corrections, notes) {
     method: 'POST',
     headers: { 'Content-Type': 'application/json', 'x-api-key': process.env.ANTHROPIC_API_KEY, 'anthropic-version': '2023-06-01' },
     body: JSON.stringify({
-      model: 'claude-sonnet-4-20250514', max_tokens: 4000,
+      model: 'claude-sonnet-4-20250514', max_tokens: 8000,
       messages: [{ role: 'user', content: [
         { type: 'image', source: { type: 'base64', media_type: mime, data: base64 } },
         { type: 'text', text: buildPrompt(corrections, notes) }
       ]}]
     })
   });
-  if (!resp.ok) { const e = await resp.json(); throw new Error(e.error?.message || `API error ${resp.status}`); }
-  const data = await resp.json();
-  return JSON.parse(data.content.map(c => c.text || '').join('').replace(/```json|```/g, '').trim());
+  if (!resp.ok) {
+    let errMsg = `API error ${resp.status}`;
+    try { const e = await resp.json(); errMsg = e.error?.message || errMsg; } catch(e) {}
+    throw new Error(errMsg);
+  }
+  let data;
+  try { data = await resp.json(); } catch(e) {
+    log.error('Failed to parse API response body', e.message);
+    throw new Error('Claude API returned an invalid response — the recipe may be too complex. Try simplifying or using the Describe mode instead.');
+  }
+  return parseClaudeResponse(data);
 }
 
 if (require.main === module) {

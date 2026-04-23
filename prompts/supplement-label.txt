@@ -6,7 +6,7 @@ Return ONLY a valid JSON object (no markdown, no backticks):
   "nutrients": {
     "calories": 0, "protein_g": 0, "carbs_g": 0, "fat_g": 0, "fiber_g": 0, "sugar_g": 0,
     "sodium_mg": 0, "potassium_mg": 0, "calcium_mg": 0, "iron_mg": 0, "magnesium_mg": 0,
-    "phosphorus_mg": 0, "zinc_mg": 0, "selenium_mcg": 0, "manganese_mg": 0, "chromium_mcg": 0,
+    "phosphorus_mg": 0, "zinc_mg": 0, "selenium_mcg": 0, "manganese_mg": 0,
     "vitamin_a_mcg": 0, "vitamin_c_mg": 0, "vitamin_d_mcg": 0, "vitamin_e_mg": 0,
     "vitamin_k1_mcg": 0, "vitamin_k2_mcg": 0,
     "vitamin_b1_mg": 0, "vitamin_b2_mg": 0, "vitamin_b3_mg": 0, "vitamin_b5_mg": 0,
@@ -26,88 +26,21 @@ CRITICAL — READ EVERY LINE OF THE LABEL:
 - Folate / Folic Acid = folate_mcg
 - Selenium = selenium_mcg (convert mg → mcg if needed: 1mg = 1000mcg)
 - Manganese = manganese_mg
-- Chromium = chromium_mcg
+- Chromium → ignore (not tracked)
 
-UNITS: IU → mcg for fat-soluble vitamins (D: 1 IU = 0.025mcg; A: 1 IU = 0.3mcg; E: 1 IU = 0.67mg). mg stays mg. mcg stays mcg.
+UNITS — convert all values to match the JSON keys:
+- Vitamin D: 1 IU = 0.025 mcg (so 5000 IU = 125 mcg)
+- Vitamin A: 1 IU = 0.3 mcg
+- Vitamin E: 1 IU = 0.67 mg
+- mg stays mg, mcg stays mcg
 Only include nutrients actually on the label. Leave others as 0.
+
 For omega3_mg: look for EPA + DHA or "Total Omega-3".
 For Vitamin K: MK-4/MK-7/MK-9/menaquinone → vitamin_k2_mcg. Phylloquinone/K1 → vitamin_k1_mcg. Unlabeled "Vitamin K" in a multivitamin → vitamin_k1_mcg.
 
 MAGNESIUM PROPRIETARY BLENDS:
 If magnesium is listed as a blend total (not elemental), estimate elemental using:
 oxide ~60%, citrate ~16%, glycinate/bisglycinate ~14%, malate ~15%, taurinate ~8%, threonate ~8%, chloride ~12%.
-Unknown blend → use 17.5%. Always log elemental mg, never the blend weight.`;
+Unknown blend → use 17.5%. Always log elemental mg, never the blend weight.
 
-  const resp = await fetch('https://api.anthropic.com/v1/messages', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json', 'x-api-key': process.env.ANTHROPIC_API_KEY, 'anthropic-version': '2023-06-01' },
-    body: JSON.stringify({
-      model: 'claude-sonnet-4-20250514', max_tokens: 4000,
-      messages: [{ role: 'user', content: [
-        { type: 'image', source: { type: 'base64', media_type: mime, data: base64 } },
-        { type: 'text', text: prompt }
-      ]}]
-    })
-  });
-  if (!resp.ok) { const e = await resp.json(); throw new Error(e.error?.message || `API error ${resp.status}`); }
-  const data = await resp.json();
-  return JSON.parse(data.content.map(c => c.text || '').join('').replace(/```json|```/g, '').trim());
-}
-
-async function callClaudeText(description) {
-  const prompt = `You are a professional nutritionist. The user has described a meal. Estimate nutrients PER INGREDIENT first, then sum for meal totals. Return ONLY valid JSON (no markdown):
-{
-  "meal_name": "string",
-  "description": "string",
-  "ingredients": [
-    {"name": "string", "quantity": "string", "notes": "string",
-     "nutrients": {"calories":0,"protein_g":0,"carbs_g":0,"fat_g":0,"fiber_g":0,"sugar_g":0,
-       "sodium_mg":0,"potassium_mg":0,"calcium_mg":0,"iron_mg":0,"magnesium_mg":0,"phosphorus_mg":0,"zinc_mg":0,
-       "vitamin_a_mcg":0,"vitamin_c_mg":0,"vitamin_d_mcg":0,"vitamin_e_mg":0,"vitamin_k1_mcg":0,"vitamin_k2_mcg":0,
-       "vitamin_b1_mg":0,"vitamin_b2_mg":0,"vitamin_b3_mg":0,"vitamin_b5_mg":0,"vitamin_b6_mg":0,"vitamin_b12_mcg":0,
-       "folate_mcg":0,"omega3_mg":0,"copper_mg":0,"selenium_mcg":0,"manganese_mg":0}}
-  ],
-  "calories":0,"protein_g":0,"carbs_g":0,"fat_g":0,"fiber_g":0,"sugar_g":0,
-  "sodium_mg":0,"potassium_mg":0,"calcium_mg":0,"iron_mg":0,"magnesium_mg":0,"phosphorus_mg":0,"zinc_mg":0,
-  "vitamin_a_mcg":0,"vitamin_c_mg":0,"vitamin_d_mcg":0,"vitamin_e_mg":0,"vitamin_k1_mcg":0,"vitamin_k2_mcg":0,
-  "vitamin_b1_mg":0,"vitamin_b2_mg":0,"vitamin_b3_mg":0,"vitamin_b5_mg":0,"vitamin_b6_mg":0,"vitamin_b12_mcg":0,
-  "folate_mcg":0,"omega3_mg":0,"copper_mg":0,"selenium_mcg":0,"manganese_mg":0
-}
-
-Meal-level totals MUST equal the sum of per-ingredient values. Replace every 0 with your estimate.
-
-Meal description: "${description}"`;
-
-  const resp = await fetch('https://api.anthropic.com/v1/messages', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json', 'x-api-key': process.env.ANTHROPIC_API_KEY, 'anthropic-version': '2023-06-01' },
-    body: JSON.stringify({ model: 'claude-sonnet-4-20250514', max_tokens: 4000, messages: [{ role: 'user', content: prompt }] })
-  });
-  if (!resp.ok) { const e = await resp.json(); throw new Error(e.error?.message || `API error ${resp.status}`); }
-  const data = await resp.json();
-  return JSON.parse(data.content.map(c => c.text || '').join('').replace(/```json|```/g, '').trim());
-}
-
-async function callClaude(base64, mime, corrections, notes) {
-  const resp = await fetch('https://api.anthropic.com/v1/messages', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json', 'x-api-key': process.env.ANTHROPIC_API_KEY, 'anthropic-version': '2023-06-01' },
-    body: JSON.stringify({
-      model: 'claude-sonnet-4-20250514', max_tokens: 4000,
-      messages: [{ role: 'user', content: [
-        { type: 'image', source: { type: 'base64', media_type: mime, data: base64 } },
-        { type: 'text', text: buildPrompt(corrections, notes) }
-      ]}]
-    })
-  });
-  if (!resp.ok) { const e = await resp.json(); throw new Error(e.error?.message || `API error ${resp.status}`); }
-  const data = await resp.json();
-  return JSON.parse(data.content.map(c => c.text || '').join('').replace(/```json|```/g, '').trim());
-}
-
-if (require.main === module) {
-  const PORT = process.env.PORT || 3000;
-  app.listen(PORT, () => console.log(`\n✅ Meal Nutrition Tracker v3 running at http://localhost:${PORT}\n`));
-}
-
-module.exports = { app, sumNutrition };
+Use the "per serving" or "per capsule/tablet" amounts, not the whole bottle.
