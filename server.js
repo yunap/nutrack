@@ -723,7 +723,7 @@ async function callClaudeUrl(url, pageText, notes) {
   const resp = await fetch('https://api.anthropic.com/v1/messages', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json', 'x-api-key': process.env.ANTHROPIC_API_KEY, 'anthropic-version': '2023-06-01' },
-    body: JSON.stringify({ model: 'claude-sonnet-4-20250514', max_tokens: 8000, messages: [{ role: 'user', content: prompt }] })
+    body: JSON.stringify({ model: 'claude-sonnet-4-6', max_tokens: 8000, messages: [{ role: 'user', content: prompt }] })
   });
   if (!resp.ok) {
     let errMsg = `API error ${resp.status}`;
@@ -745,7 +745,7 @@ async function callClaudeSuppLabel(base64, mime) {
     method: 'POST',
     headers: { 'Content-Type': 'application/json', 'x-api-key': process.env.ANTHROPIC_API_KEY, 'anthropic-version': '2023-06-01' },
     body: JSON.stringify({
-      model: 'claude-sonnet-4-20250514', max_tokens: 8000,
+      model: 'claude-sonnet-4-6', max_tokens: 8000,
       messages: [{ role: 'user', content: [
         { type: 'image', source: { type: 'base64', media_type: mime, data: base64 } },
         { type: 'text', text: prompt }
@@ -773,7 +773,7 @@ async function callClaudeText(description) {
   const resp = await fetch('https://api.anthropic.com/v1/messages', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json', 'x-api-key': process.env.ANTHROPIC_API_KEY, 'anthropic-version': '2023-06-01' },
-    body: JSON.stringify({ model: 'claude-sonnet-4-20250514', max_tokens: 8000, messages: [{ role: 'user', content: prompt }] })
+    body: JSON.stringify({ model: 'claude-sonnet-4-6', max_tokens: 8000, messages: [{ role: 'user', content: prompt }] })
   });
   if (!resp.ok) {
     let errMsg = `API error ${resp.status}`;
@@ -793,7 +793,7 @@ async function callClaude(base64, mime, corrections, notes) {
     method: 'POST',
     headers: { 'Content-Type': 'application/json', 'x-api-key': process.env.ANTHROPIC_API_KEY, 'anthropic-version': '2023-06-01' },
     body: JSON.stringify({
-      model: 'claude-sonnet-4-20250514', max_tokens: 8000,
+      model: 'claude-sonnet-4-6', max_tokens: 8000,
       messages: [{ role: 'user', content: [
         { type: 'image', source: { type: 'base64', media_type: mime, data: base64 } },
         { type: 'text', text: buildPrompt(corrections, notes) }
